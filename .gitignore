@@ -72,6 +72,7 @@ local.properties
 
 # User-specific stuff:
 .idea/**/workspace.xml
+.idea/artifacts
 .idea/**/tasks.xml
 
 # Sensitive or high-churn files:
@@ -117,5 +118,5 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
-
-# End of https://www.gitignore.io/api/eclipse,intellij
+VideoInterview Web.iml
+.idea/
