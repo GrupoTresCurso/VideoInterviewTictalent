@@ -120,3 +120,6 @@ fabric.properties
 # *.ipr
 VideoInterview Web.iml
 .idea/
+/target/
+
+VideoInterviewTictalent.iml
