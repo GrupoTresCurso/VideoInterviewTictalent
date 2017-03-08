@@ -1,5 +1,6 @@
 package beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,6 +16,7 @@ public class Usuario {
    /*@Column(name="idUsuario")
     @GeneratedValue(strategy=GenerationType.IDENTITY)*/
     private int idUsuario;
+    @Column(unique=true)
     private String nombreUsuario;
     private String password;
     private boolean isAdministrador;
