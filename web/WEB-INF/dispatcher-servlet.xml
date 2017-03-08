@@ -9,9 +9,9 @@
     <!--Configuración Spring/JPA-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://DIRECCION-SERVER" />
+        <property name="url" value="jdbc:mysql://172.16.112.41:3306" />
         <property name="username" value="root" />
-        <property name="password" value="curso2017" />
+        <property name="password" value="tictum" />
     </bean>
     <bean id="factory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -21,7 +21,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
             </props>
         </property>
@@ -39,7 +39,7 @@
     <mvc:annotation-driven/>
 
     <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/Agenda/"/>
+        <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
