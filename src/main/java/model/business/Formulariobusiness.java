@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Formulariobusiness implements BaseBusiness<Formulario> {
     public void crearNuevo(Formulario object) {
-        
+
     }
 
     public Formulario recuperarPorId(int id) {
