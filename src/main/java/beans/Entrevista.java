@@ -16,6 +16,8 @@ public class Entrevista {
    /*@Column(name="idEntrevista")
     @GeneratedValue(strategy=GenerationType.IDENTITY)*/
     private int idEntrevista;
+    private String nombreEntrevista;
+    private String nombrePuesto;
     private boolean tieneVideoIntro;
     private ArrayList<Formulario> formularios;
     private ArrayList<Video> videoTransicion;
@@ -27,8 +29,10 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(int idEntrevista, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
+    public Entrevista(int idEntrevista, String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
         this.idEntrevista = idEntrevista;
+        this.nombreEntrevista = nombreEntrevista;
+        this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
         this.formularios = formularios;
         this.videoTransicion = videoTransicion;
@@ -92,6 +96,21 @@ public class Entrevista {
 
     public void setCuestionarioSatifaccion(beans.Formulario cuestionarioSatifaccion) {
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
+    }
+    public String getNombreEntrevista() {
+        return nombreEntrevista;
+    }
+
+    public void setNombreEntrevista(String nombreEntrevista) {
+        this.nombreEntrevista = nombreEntrevista;
+    }
+
+    public String getNombrePuesto() {
+        return nombrePuesto;
+    }
+
+    public void setNombrePuesto(String nombrePuesto) {
+        this.nombrePuesto = nombrePuesto;
     }
 
     public void setAdjunto(ArrayList<Adjunto> adjunto) {
