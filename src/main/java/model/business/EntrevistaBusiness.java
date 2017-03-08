@@ -11,9 +11,6 @@ import java.util.List;
 @Service
 public class EntrevistaBusiness implements BaseBusiness<Entrevista> {
 
-    @Autowired
-    CandidatoDAO candidatoDAO;
-
     @Transactional
     public void crearNuevo(Entrevista object) {
 

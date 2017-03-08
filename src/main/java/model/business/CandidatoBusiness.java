@@ -15,22 +15,22 @@ public class CandidatoBusiness implements BaseBusiness<Candidato> {
     CandidatoDAO candidatoDAO;
 
     @Transactional
-    public void crearNuevo(Candidato object) {
-
+    public void crearNuevo(Candidato candidato) {
+        candidatoDAO.insert(candidato);
     }
 
     @Transactional(readOnly=true)
     public Candidato recuperarPorId(int id) {
-        return null;
+        return candidatoDAO.selectOne(id);
     }
 
     @Transactional(readOnly=true)
     public List<Candidato> recuperarTodos() {
-        return null;
+        return candidatoDAO.selectAll();
     }
 
     @Transactional
     public void borrarPorId(int id) {
-
+        candidatoDAO.delete(id);
     }
 }
