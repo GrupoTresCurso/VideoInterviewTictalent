@@ -1,13 +1,20 @@
 package beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Created by TictumManaña on 08/03/2017.
  */
-public class Entrevista {
+@Entity
+/*@Table(name="ENTREVISTA")*/
 
+public class Entrevista {
+    @Id
+   /*@Column(name="idEntrevista")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
     private int idEntrevista;
     private boolean tieneVideoIntro;
     private ArrayList<Formulario> Formulario;

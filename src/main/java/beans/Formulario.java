@@ -1,10 +1,19 @@
 package beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.ArrayList;
+
 /**
  * Created by TictumManaña on 08/03/2017.
  */
-public class Formulario {
+@Entity
+/*@Table(name="FORMULARIO")*/
 
+public class Formulario {
+    @Id
+   /*@Column(name="idFormulario")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
     private int idFormulario;
     private String nombreFormulario;
     private ArrayList<Pregunta> preguntas;
