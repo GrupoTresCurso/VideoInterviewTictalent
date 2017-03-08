@@ -8,7 +8,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-/*@Table(name="PREGUNTA")*/
+/*@Table(name="VIDEO")*/
 public class Video {
     @Id
    /*@Column(name="idVideo")
