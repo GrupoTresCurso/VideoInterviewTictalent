@@ -1,9 +1,13 @@
 package model.business;
 
 import beans.Usuario;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class UsuarioBusiness implements BaseBusiness<Usuario> {
     public void crearNuevo(Usuario object) {
 
