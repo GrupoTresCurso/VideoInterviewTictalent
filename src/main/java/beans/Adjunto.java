@@ -1,6 +1,8 @@
 package beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -11,8 +13,8 @@ import javax.persistence.Id;
 
 public class Adjunto {
     @Id
-   /*@Column(name="idAdjunto")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+   /*@Column(name="idAdjunto")*/
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idAdjunto;
     private String etiquetaAdjunto;
     private int posicionEnEntrevista;
@@ -20,8 +22,7 @@ public class Adjunto {
     public Adjunto() {
     }
 
-    public Adjunto(int idAdjunto, String etiquetaAdjunto, int posicionEnEntrevista) {
-        this.idAdjunto = idAdjunto;
+    public Adjunto(String etiquetaAdjunto, int posicionEnEntrevista) {
         this.etiquetaAdjunto = etiquetaAdjunto;
         this.posicionEnEntrevista = posicionEnEntrevista;
     }

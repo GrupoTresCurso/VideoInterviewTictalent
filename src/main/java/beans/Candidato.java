@@ -1,6 +1,8 @@
 package beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -10,8 +12,8 @@ import javax.persistence.Id;
 /*@Table(name="CANDIDATO")*/
 public class Candidato {
     @Id
-   /*@Column(name="idCandidato")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+   /*@Column(name="idCandidato")*/
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idCandidato;
     private String nombre;
     private String apellidos;
@@ -24,14 +26,13 @@ public class Candidato {
     public Candidato() {
     }
 
-    public Candidato(int idCandidato, String nombre, String apellidos, String dni, String numeroTelefono, boolean entrevistaRealizada, Integer nota, String cv) {
-        this.idCandidato = idCandidato;
+    public Candidato(String nombre, String apellidos, String dni, String numeroTelefono, boolean entrevistaRealizada, Integer nota, String cv) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.numeroTelefono = numeroTelefono;
         this.entrevistaRealizada = entrevistaRealizada;
-        this.nota = null;
+        this.nota = nota;
         this.cv = cv;
     }
 

@@ -1,8 +1,9 @@
 package beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 
 public class Entrevista {
     @Id
-   /*@Column(name="idEntrevista")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+   /*@Column(name="idEntrevista")*/
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idEntrevista;
     private String nombreEntrevista;
     private String nombrePuesto;
@@ -29,8 +30,7 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(int idEntrevista, String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
-        this.idEntrevista = idEntrevista;
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;

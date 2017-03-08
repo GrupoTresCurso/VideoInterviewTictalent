@@ -1,6 +1,8 @@
 package beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
 
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 
 public class Formulario {
     @Id
-   /*@Column(name="idFormulario")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+   /*@Column(name="idFormulario")*/
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idFormulario;
     private String nombreFormulario;
     private ArrayList<Pregunta> preguntas;
@@ -21,8 +23,7 @@ public class Formulario {
     public Formulario() {
     }
 
-    public Formulario(int idFormulario, String nombreFormulario, ArrayList<Pregunta> preguntas) {
-        this.idFormulario = idFormulario;
+    public Formulario(String nombreFormulario, ArrayList<Pregunta> preguntas) {
         this.nombreFormulario = nombreFormulario;
         this.preguntas = preguntas;
     }
