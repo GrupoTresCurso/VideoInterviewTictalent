@@ -17,7 +17,7 @@ public class Entrevista {
     @GeneratedValue(strategy=GenerationType.IDENTITY)*/
     private int idEntrevista;
     private boolean tieneVideoIntro;
-    private ArrayList<Formulario> Formulario;
+    private ArrayList<Formulario> formularios;
     private ArrayList<Video> videoTransicion;
     private ArrayList<Video> preguntaVideo;
     private Formulario cuestionarioSatifaccion;
@@ -27,10 +27,10 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(int idEntrevista, boolean tieneVideoIntro, ArrayList<beans.Formulario> formulario, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, beans.Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
+    public Entrevista(int idEntrevista, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
         this.idEntrevista = idEntrevista;
         this.tieneVideoIntro = tieneVideoIntro;
-        Formulario = formulario;
+        this.formularios = formularios;
         this.videoTransicion = videoTransicion;
         this.preguntaVideo = preguntaVideo;
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
@@ -46,8 +46,8 @@ public class Entrevista {
         return tieneVideoIntro;
     }
 
-    public ArrayList<beans.Formulario> getFormulario() {
-        return Formulario;
+    public ArrayList<Formulario> getFormularios() {
+        return formularios;
     }
 
     public ArrayList<Video> getVideoTransicion() {
@@ -78,8 +78,8 @@ public class Entrevista {
         this.tieneVideoIntro = tieneVideoIntro;
     }
 
-    public void setFormulario(ArrayList<beans.Formulario> formulario) {
-        Formulario = formulario;
+    public void setFormularios(ArrayList<Formulario> formularios) {
+        this.formularios = formularios;
     }
 
     public void setVideoTransicion(ArrayList<Video> videoTransicion) {
