@@ -15,11 +15,14 @@ public class Entrevista {
     private boolean tieneVideoIntro;
     @ManyToMany
     private List<Formulario> formularios;
+    @ManyToMany
     private List<Video> videoTransicion;
+    @ManyToMany
     private List<Video> preguntaVideo;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
+    @ManyToMany
     private List<Adjunto> adjunto;
     private String mensaje;
 

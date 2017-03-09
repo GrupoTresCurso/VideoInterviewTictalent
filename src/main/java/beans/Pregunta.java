@@ -4,8 +4,6 @@ package beans;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Pregunta {
@@ -15,13 +13,13 @@ public class Pregunta {
     private int idPregunta;
     private String labelPregunta;
     private String tipoPregunta;
-    private List<String> opciones;
+    private String[] opciones;
     private int posicionEnFormulario;
 
     public Pregunta() {
     }
 
-    public Pregunta(String labelPregunta, String tipoPregunta, ArrayList<String> opciones, int posicionEnFormulario) {
+    public Pregunta(String labelPregunta, String tipoPregunta, String[] opciones, int posicionEnFormulario) {
         this.labelPregunta = labelPregunta;
         this.tipoPregunta = tipoPregunta;
         this.opciones = opciones;
@@ -52,11 +50,11 @@ public class Pregunta {
         this.tipoPregunta = tipoPregunta;
     }
 
-    public List<String> getOpciones() {
+    public String[] getOpciones() {
         return opciones;
     }
 
-    public void setOpciones(ArrayList<String> opciones) {
+    public void setOpciones(String[] opciones) {
         this.opciones = opciones;
     }
 

@@ -3,6 +3,7 @@ package beans;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Formulario {
     @GeneratedValue
     private int idFormulario;
     private String nombreFormulario;
+    @ManyToMany
     private List<Pregunta> preguntas;
 
     public Formulario() {
