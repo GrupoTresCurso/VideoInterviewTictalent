@@ -5,9 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Created by Tictum on 08/03/2017.
- */
 
 @Entity
 /*@Table(name="VIDEO")*/

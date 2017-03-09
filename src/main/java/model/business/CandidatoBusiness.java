@@ -12,7 +12,7 @@ import java.util.List;
 public class CandidatoBusiness implements BaseBusiness<Candidato> {
 
     @Autowired
-    CandidatoDAO candidatoDAO;
+    private CandidatoDAO candidatoDAO;
 
     @Transactional
     public void crearNuevo(Candidato candidato) {
@@ -32,5 +32,10 @@ public class CandidatoBusiness implements BaseBusiness<Candidato> {
     @Transactional
     public void borrarPorId(int id) {
         candidatoDAO.delete(id);
+    }
+
+    @Override
+    public void actualizar(Candidato candidato) {
+        candidatoDAO.update(candidato);
     }
 }

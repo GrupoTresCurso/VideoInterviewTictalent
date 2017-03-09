@@ -7,9 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
 
-/**
- * Created by Tictum on 08/03/2017.
- */
 @Entity
 /*@Table(name="PREGUNTA")*/
 public class Pregunta {

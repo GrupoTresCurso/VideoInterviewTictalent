@@ -2,10 +2,6 @@ package beans;
 
 import javax.persistence.*;
 
-/**
- * Created by Tictum on 08/03/2017.
- */
-
 @Entity
 /*@Table(name="USUARIO")*/
 public class Usuario {

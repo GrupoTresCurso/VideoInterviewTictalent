@@ -20,4 +20,9 @@ public class Formulariobusiness implements BaseBusiness<Formulario> {
     public void borrarPorId(int id) {
 
     }
+
+    @Override
+    public void actualizar(Formulario object) {
+
+    }
 }

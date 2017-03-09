@@ -7,4 +7,5 @@ public interface BaseBusiness<T> {
     T recuperarPorId(int id);
     List<T> recuperarTodos();
     void borrarPorId(int id);
+    void actualizar(T object);
 }

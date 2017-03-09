@@ -20,4 +20,9 @@ public class PreguntaBusiness implements BaseBusiness<Pregunta> {
     public void borrarPorId(int id) {
 
     }
+
+    @Override
+    public void actualizar(Pregunta object) {
+
+    }
 }

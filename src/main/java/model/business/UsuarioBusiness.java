@@ -24,4 +24,9 @@ public class UsuarioBusiness implements BaseBusiness<Usuario> {
     public void borrarPorId(int id) {
 
     }
+
+    @Override
+    public void actualizar(Usuario object) {
+
+    }
 }

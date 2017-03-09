@@ -1,8 +1,6 @@
 package model.business;
 
 import beans.Entrevista;
-import model.dao.CandidatoDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +26,11 @@ public class EntrevistaBusiness implements BaseBusiness<Entrevista> {
 
     @Transactional
     public void borrarPorId(int id) {
+
+    }
+
+    @Override
+    public void actualizar(Entrevista object) {
 
     }
 }
