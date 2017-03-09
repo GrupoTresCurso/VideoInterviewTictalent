@@ -1,5 +1,6 @@
 package beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,9 +16,11 @@ public class Candidato {
     private String dni;
     private String email;
     private int edad;
-    private boolean isHombre;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isHombre = false;
     private String numeroTelefono;
-    private boolean entrevistaRealizada;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean entrevistaRealizada = false;
     private Integer nota;
     private String cv;
 

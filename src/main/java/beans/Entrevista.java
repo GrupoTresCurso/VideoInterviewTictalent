@@ -12,7 +12,8 @@ public class Entrevista {
     private int idEntrevista;
     private String nombreEntrevista;
     private String nombrePuesto;
-    private boolean tieneVideoIntro;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean tieneVideoIntro = false;
     @ManyToMany
     private List<Formulario> formularios;
     @ManyToMany

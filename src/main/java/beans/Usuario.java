@@ -11,10 +11,17 @@ public class Usuario {
     @Column(unique = true)
     private String nombreUsuario;
     private String password;
-    private boolean isAdministrador;
-    private boolean isReclutador;
-    private boolean isResponsableContratacion;
-    private boolean isCandidato;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isAdministrador = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isReclutador = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isResponsableContratacion = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isCandidato = false;
 
     public Usuario() {
     }
