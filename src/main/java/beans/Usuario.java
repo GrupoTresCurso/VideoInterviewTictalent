@@ -3,12 +3,10 @@ package beans;
 import javax.persistence.*;
 
 @Entity
-/*@Table(name="USUARIO")*/
 public class Usuario {
 
     @Id
-   /*@Column(name="idUsuario")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int idUsuario;
     @Column(unique = true)
     private String nombreUsuario;

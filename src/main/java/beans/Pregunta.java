@@ -3,20 +3,19 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-/*@Table(name="PREGUNTA")*/
 public class Pregunta {
+
     @Id
-   /*@Column(name="idPregunta")*/
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int idPregunta;
     private String labelPregunta;
     private String tipoPregunta;
-    private ArrayList<String> opciones;
+    private List<String> opciones;
     private int posicionEnFormulario;
 
     public Pregunta() {
@@ -53,7 +52,7 @@ public class Pregunta {
         this.tipoPregunta = tipoPregunta;
     }
 
-    public ArrayList<String> getOpciones() {
+    public List<String> getOpciones() {
         return opciones;
     }
 

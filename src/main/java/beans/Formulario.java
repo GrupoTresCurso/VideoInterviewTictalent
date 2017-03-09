@@ -2,23 +2,18 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by TictumManaña on 08/03/2017.
- */
 @Entity
-/*@Table(name="FORMULARIO")*/
-
 public class Formulario {
+
     @Id
-   /*@Column(name="idFormulario")*/
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int idFormulario;
     private String nombreFormulario;
-    private ArrayList<Pregunta> preguntas;
+    private List<Pregunta> preguntas;
 
     public Formulario() {
     }
@@ -48,7 +43,7 @@ public class Formulario {
         return nombreFormulario;
     }
 
-    public ArrayList<Pregunta> getPreguntas() {
+    public List<Pregunta> getPreguntas() {
         return preguntas;
     }
 }

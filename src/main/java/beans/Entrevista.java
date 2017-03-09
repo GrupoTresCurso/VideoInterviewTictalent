@@ -1,30 +1,26 @@
 package beans;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by TictumManaña on 08/03/2017.
- */
 @Entity
-/*@Table(name="ENTREVISTA")*/
-
 public class Entrevista {
+
     @Id
-   /*@Column(name="idEntrevista")*/
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int idEntrevista;
     private String nombreEntrevista;
     private String nombrePuesto;
     private boolean tieneVideoIntro;
-    private ArrayList<Formulario> formularios;
-    private ArrayList<Video> videoTransicion;
-    private ArrayList<Video> preguntaVideo;
+    @ManyToMany
+    private List<Formulario> formularios;
+    private List<Video> videoTransicion;
+    private List<Video> preguntaVideo;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
-    private ArrayList<Adjunto> adjunto;
+    private List<Adjunto> adjunto;
     private String mensaje;
 
     public Entrevista() {
@@ -50,15 +46,15 @@ public class Entrevista {
         return tieneVideoIntro;
     }
 
-    public ArrayList<Formulario> getFormularios() {
+    public List<Formulario> getFormularios() {
         return formularios;
     }
 
-    public ArrayList<Video> getVideoTransicion() {
+    public List<Video> getVideoTransicion() {
         return videoTransicion;
     }
 
-    public ArrayList<Video> getPreguntaVideo() {
+    public List<Video> getPreguntaVideo() {
         return preguntaVideo;
     }
 
@@ -66,7 +62,7 @@ public class Entrevista {
         return cuestionarioSatifaccion;
     }
 
-    public ArrayList<Adjunto> getAdjunto() {
+    public List<Adjunto> getAdjunto() {
         return adjunto;
     }
 
@@ -97,6 +93,7 @@ public class Entrevista {
     public void setCuestionarioSatifaccion(beans.Formulario cuestionarioSatifaccion) {
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
     }
+
     public String getNombreEntrevista() {
         return nombreEntrevista;
     }

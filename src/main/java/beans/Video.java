@@ -2,16 +2,14 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
-/*@Table(name="VIDEO")*/
 public class Video {
+
     @Id
-   /*@Column(name="idVideo")*/
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int idVideo;
     private String nombreVideo;
     private String linkVideo;

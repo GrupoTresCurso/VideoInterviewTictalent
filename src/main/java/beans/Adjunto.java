@@ -2,19 +2,13 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Created by TictumManaña on 08/03/2017.
- */
 @Entity
-/*@Table(name="ADJUNTO")*/
-
 public class Adjunto {
+
     @Id
-   /*@Column(name="idAdjunto")*/
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int idAdjunto;
     private String etiquetaAdjunto;
     private int posicionEnEntrevista;
