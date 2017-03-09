@@ -1,28 +1,42 @@
 package model.business;
 
 import beans.Formulario;
+import model.dao.FormularioDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class Formulariobusiness implements BaseBusiness<Formulario> {
-    public void crearNuevo(Formulario object) {
+@Service("FormularioBusiness")
+public class FormularioBusiness implements BaseBusiness<Formulario> {
 
+    @Autowired
+    @Qualifier("FormularioDAO")
+    FormularioDAO formularioDAO;
+
+    @Transactional
+    public void crearNuevo(Formulario formulario) {
+        formularioDAO.insert(formulario);
     }
-
+    @Transactional(readOnly=true)
     public Formulario recuperarPorId(int id) {
-        return null;
+        return formularioDAO.selectOne(id);
     }
 
+    @Transactional(readOnly=true)
     public List<Formulario> recuperarTodos() {
-        return null;
+        return formularioDAO.selectAll();
     }
 
+    @Transactional
     public void borrarPorId(int id) {
-
+        formularioDAO.delete(id);
     }
 
-    @Override
-    public void actualizar(Formulario object) {
-
+    @Transactional
+    public void actualizar(Formulario formulario) {
+        formularioDAO.update(formulario);
     }
 }

@@ -3,15 +3,17 @@ package model.business;
 import beans.Candidato;
 import model.dao.CandidatoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("CandidatoBusiness")
 public class CandidatoBusiness implements BaseBusiness<Candidato> {
 
     @Autowired
+    @Qualifier("CandidatoDAO")
     private CandidatoDAO candidatoDAO;
 
     @Transactional

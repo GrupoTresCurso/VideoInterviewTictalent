@@ -1,36 +1,43 @@
 package model.business;
 
 import beans.Entrevista;
+import model.dao.EntrevistaDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("EntrevistaBusiness")
 public class EntrevistaBusiness implements BaseBusiness<Entrevista> {
 
-    @Transactional
-    public void crearNuevo(Entrevista object) {
+    @Autowired
+    @Qualifier("EntrevistaDAO")
+    EntrevistaDAO entrevistaDAO;
 
+    @Transactional
+    public void crearNuevo(Entrevista entrevista) {
+        entrevistaDAO.insert(entrevista);
     }
 
     @Transactional(readOnly=true)
     public Entrevista recuperarPorId(int id) {
-        return null;
+        return entrevistaDAO.selectOne(id);
     }
 
     @Transactional(readOnly=true)
     public List<Entrevista> recuperarTodos() {
-        return null;
+        return entrevistaDAO.selectAll();
     }
 
     @Transactional
     public void borrarPorId(int id) {
-
+        entrevistaDAO.delete(id);
     }
 
-    @Override
-    public void actualizar(Entrevista object) {
-
+    @Transactional
+    public void actualizar(Entrevista entrevista) {
+        entrevistaDAO.update(entrevista);
     }
 }
