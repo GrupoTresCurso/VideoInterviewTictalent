@@ -7,8 +7,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class UsuarioBusiness implements BaseBusiness<Usuario> {
+
+    @Transactional
     public void crearNuevo(Usuario object) {
 
     }
