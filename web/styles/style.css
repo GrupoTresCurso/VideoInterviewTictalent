@@ -1,69 +1,28 @@
 body {
     text-align: center;
-    margin: 0px;
+    padding: 0px;
     background-color: rgba(93,182,225,0.2);
+    font-size: 20px;
 }
 main{
-    width: 100%;
-    margin: 0px auto;
-    text-align: left;
-}
-header{
-    background-color: rgb(93, 182, 225);
-    text-align:right;
-    box-shadow: rgb(150,150,150) 0px 5px 10px;
-    width: 100%;
-    position: fixed;
-    z-index: 100;
-    padding-right: 20px;
-    margin: 0px;
-}
-nav{
-    text-align: center;
-    padding-right: 30px;
-}
-nav > ul > li > a{
-    font-size:20px;
-    font-family:menuFontFamily;
-    color: white;
-}
-nav > ul > li > a:link{
-    text-decoration: none;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 13px;
-    padding-bottom: 14px;
-}
-nav > ul > li > a:visited{
-    text-decoration: none;
-}
-nav > ul > li > a:hover{
-    background-color: rgb(36, 133, 179);
-}
-nav > ul > li > a:active{
-    background-color: black;
-}
-nav > ul{
-    margin: 0px;
-    padding: 13px;
-}
-nav > ul > li {
-    display: inline;
-    list-style: none;
-    padding: 5px;
-    font: bold 14px verdana, sans-serif;
-
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:700px;
 }
 section{
-    float: left;
-    width: 715px;
-    margin-top: 50px;
-    margin-left: 240px;
-    text-align: center;
+    width:99.5%;
+    height:650px;
+    border:3px solid black;
+}
+header{
+    width:99.5%;
+    height:100px;
+    border:3px solid black;
+    border-bottom: 0px;
 }
 #principal{
-    backgroun: url("http://www.gender-budgets.org/wp-content/uploads/Alquilar-oficinas-en-Barcelona-por-d%C3%ADas-o-por-horas.jpg");
-    background-size: cover;
+    margin-left: 240px;
 }
 #listaEntrevistasDiv{
     background-color: grey;
@@ -117,4 +76,72 @@ section{
 }
 .listaEntrevistas li:hover .listaEntrevistasMain{
     color: rgb(93, 182, 225);
+}
+#izquierda li{
+    list-style-type: none;
+}
+a:link{
+    text-decoration:none;
+    color: #fff;
+}
+#izquierda{
+    float: left;
+    display:inline-block;
+    border-right:3px solid black;
+    width:250px;
+    height:580px;
+    font-size: 20px;
+    padding: 35px 25px;
+}
+.derecha{
+    display:inline-block;
+    margin-left:5px;
+    width:900px;
+    height:650px;
+    font-size: 20px;
+    padding: 35px 50px;
+}
+#nuevaEntrevista, #clonarEntrevista{
+    display: block;
+    font-size: 20px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+    left: 500px;
+}
+#nuevaEntrevista{
+    top: 100px;
+}
+#clonarEntrevista{
+    top:150px;
+}
+#seleccionArchivo{
+    display: block;
+    border: 3px dashed black;
+    border-radius: 20px;
+    height: 300px;
+}
+table {
+    border-collapse: collapse;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+
+tr:hover{
+    background-color:rgba(0,0,0,0.2)
+}
+#arrastrar{
+    height: 200px;
+}
+#opaco{
+    color: darkgrey;
+}
+button{
+    font-size: 20px;
+    margin: 20px;
 }
