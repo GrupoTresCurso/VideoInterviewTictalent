@@ -1,0 +1,120 @@
+body {
+    text-align: center;
+    margin: 0px;
+    background-color: rgba(93,182,225,0.2);
+}
+main{
+    width: 100%;
+    margin: 0px auto;
+    text-align: left;
+}
+header{
+    background-color: rgb(93, 182, 225);
+    text-align:right;
+    box-shadow: rgb(150,150,150) 0px 5px 10px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    padding-right: 20px;
+    margin: 0px;
+}
+nav{
+    text-align: center;
+    padding-right: 30px;
+}
+nav > ul > li > a{
+    font-size:20px;
+    font-family:menuFontFamily;
+    color: white;
+}
+nav > ul > li > a:link{
+    text-decoration: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 13px;
+    padding-bottom: 14px;
+}
+nav > ul > li > a:visited{
+    text-decoration: none;
+}
+nav > ul > li > a:hover{
+    background-color: rgb(36, 133, 179);
+}
+nav > ul > li > a:active{
+    background-color: black;
+}
+nav > ul{
+    margin: 0px;
+    padding: 13px;
+}
+nav > ul > li {
+    display: inline;
+    list-style: none;
+    padding: 5px;
+    font: bold 14px verdana, sans-serif;
+
+}
+section{
+    float: left;
+    width: 715px;
+    margin-top: 50px;
+    margin-left: 240px;
+    text-align: center;
+}
+#principal{
+    backgroun: url("http://www.gender-budgets.org/wp-content/uploads/Alquilar-oficinas-en-Barcelona-por-d%C3%ADas-o-por-horas.jpg");
+    background-size: cover;
+}
+#listaEntrevistasDiv{
+    background-color: grey;
+    opacity: 0.5;
+    position: relative;
+}
+.listaEntrevistas{
+    padding:0;
+    margin:20px auto;
+    width: 1020px;
+}
+.listaEntrevistas li{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    float:left;
+    background: #fff;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    margin-right: 4px;
+    transition: all 300ms linear;
+    bottom:5px;
+    right:10px;
+}
+.listaEntrevistas li:last-child{
+    margin-right: 0px;
+}
+.listaEntrevistas li a{
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #333;
+    position: relative;
+}
+.listaEntrevistasContent{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 50%;
+    top: 50%;
+}
+.listaEntrevistasMain{
+    font-size: 30px;
+    opacity: 0.8;
+    text-align: center;
+    transition: all 200ms linear;
+}
+.listaEntrevistas li:hover{
+    background-color: rgb(36, 133, 179);
+}
+.listaEntrevistas li:hover .listaEntrevistasMain{
+    color: rgb(93, 182, 225);
+}

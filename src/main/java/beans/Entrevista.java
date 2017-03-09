@@ -1,36 +1,40 @@
 package beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.lang.reflect.Array;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by TictumManaña on 08/03/2017.
- */
 @Entity
-/*@Table(name="ENTREVISTA")*/
-
 public class Entrevista {
+
     @Id
-   /*@Column(name="idEntrevista")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+    @GeneratedValue
     private int idEntrevista;
-    private boolean tieneVideoIntro;
-    private ArrayList<Formulario> Formulario;
-    private ArrayList<Video> videoTransicion;
-    private ArrayList<Video> preguntaVideo;
+    private String nombreEntrevista;
+    private String nombrePuesto;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean tieneVideoIntro = false;
+    @ManyToMany
+    private List<Formulario> formularios;
+    @ManyToMany
+    private List<Video> videoTransicion;
+    @ManyToMany
+    private List<Video> preguntaVideo;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
-    private ArrayList<Adjunto> adjunto;
+    @ManyToMany
+    private List<Adjunto> adjunto;
     private String mensaje;
 
     public Entrevista() {
     }
 
-    public Entrevista(int idEntrevista, boolean tieneVideoIntro, ArrayList<beans.Formulario> formulario, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, beans.Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
-        this.idEntrevista = idEntrevista;
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
+        this.nombreEntrevista = nombreEntrevista;
+        this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
-        Formulario = formulario;
+        this.formularios = formularios;
         this.videoTransicion = videoTransicion;
         this.preguntaVideo = preguntaVideo;
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
@@ -46,15 +50,15 @@ public class Entrevista {
         return tieneVideoIntro;
     }
 
-    public ArrayList<beans.Formulario> getFormulario() {
-        return Formulario;
+    public List<Formulario> getFormularios() {
+        return formularios;
     }
 
-    public ArrayList<Video> getVideoTransicion() {
+    public List<Video> getVideoTransicion() {
         return videoTransicion;
     }
 
-    public ArrayList<Video> getPreguntaVideo() {
+    public List<Video> getPreguntaVideo() {
         return preguntaVideo;
     }
 
@@ -62,7 +66,7 @@ public class Entrevista {
         return cuestionarioSatifaccion;
     }
 
-    public ArrayList<Adjunto> getAdjunto() {
+    public List<Adjunto> getAdjunto() {
         return adjunto;
     }
 
@@ -78,8 +82,8 @@ public class Entrevista {
         this.tieneVideoIntro = tieneVideoIntro;
     }
 
-    public void setFormulario(ArrayList<beans.Formulario> formulario) {
-        Formulario = formulario;
+    public void setFormularios(ArrayList<Formulario> formularios) {
+        this.formularios = formularios;
     }
 
     public void setVideoTransicion(ArrayList<Video> videoTransicion) {
@@ -92,6 +96,22 @@ public class Entrevista {
 
     public void setCuestionarioSatifaccion(beans.Formulario cuestionarioSatifaccion) {
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
+    }
+
+    public String getNombreEntrevista() {
+        return nombreEntrevista;
+    }
+
+    public void setNombreEntrevista(String nombreEntrevista) {
+        this.nombreEntrevista = nombreEntrevista;
+    }
+
+    public String getNombrePuesto() {
+        return nombrePuesto;
+    }
+
+    public void setNombrePuesto(String nombrePuesto) {
+        this.nombrePuesto = nombrePuesto;
     }
 
     public void setAdjunto(ArrayList<Adjunto> adjunto) {

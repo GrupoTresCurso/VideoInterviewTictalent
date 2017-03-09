@@ -1,32 +1,32 @@
 package beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-/**
- * Created by Tictum on 08/03/2017.
- */
+import javax.persistence.*;
 
 @Entity
-/*@Table(name="USUARIO")*/
 public class Usuario {
 
     @Id
-   /*@Column(name="idUsuario")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)*/
+    @GeneratedValue
     private int idUsuario;
+    @Column(unique = true)
     private String nombreUsuario;
     private String password;
-    private boolean isAdministrador;
-    private boolean isReclutador;
-    private boolean isResponsableContratacion;
-    private boolean isCandidato;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isAdministrador = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isReclutador = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isResponsableContratacion = false;
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isCandidato = false;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String password, boolean isAdministrador, boolean isReclutador, boolean isResponsableContratacion, boolean isCandidato) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombreUsuario, String password, boolean isAdministrador, boolean isReclutador, boolean isResponsableContratacion, boolean isCandidato) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.isAdministrador = isAdministrador;
