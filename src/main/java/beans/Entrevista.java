@@ -23,14 +23,12 @@ public class Entrevista {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
-    @ManyToMany
-    private List<Adjunto> adjunto;
     private String mensaje;
 
     public Entrevista() {
     }
 
-    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, ArrayList<Adjunto> adjunto, String mensaje) {
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, String mensaje) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
@@ -38,7 +36,6 @@ public class Entrevista {
         this.videoTransicion = videoTransicion;
         this.preguntaVideo = preguntaVideo;
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
-        this.adjunto = adjunto;
         this.mensaje = mensaje;
     }
 
@@ -64,10 +61,6 @@ public class Entrevista {
 
     public beans.Formulario getCuestionarioSatifaccion() {
         return cuestionarioSatifaccion;
-    }
-
-    public List<Adjunto> getAdjunto() {
-        return adjunto;
     }
 
     public String getMensaje() {
@@ -112,10 +105,6 @@ public class Entrevista {
 
     public void setNombrePuesto(String nombrePuesto) {
         this.nombrePuesto = nombrePuesto;
-    }
-
-    public void setAdjunto(ArrayList<Adjunto> adjunto) {
-        this.adjunto = adjunto;
     }
 
     public void setMensaje(String mensaje) {
