@@ -24,11 +24,13 @@ public class Entrevista {
     @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
     private String mensaje;
+    @ManyToMany
+    private List<Candidato> listaCandidatos;
 
     public Entrevista() {
     }
 
-    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntasVideo, Formulario cuestionarioSatifaccion, String mensaje) {
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, List<Formulario> formularios, List<Video> videoTransicion, List<Video> preguntasVideo, Formulario cuestionarioSatifaccion, String mensaje, List<Candidato> listaCandidatos) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
@@ -37,58 +39,15 @@ public class Entrevista {
         this.preguntasVideo = preguntasVideo;
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
         this.mensaje = mensaje;
+        this.listaCandidatos = listaCandidatos;
     }
 
     public int getIdEntrevista() {
         return idEntrevista;
     }
 
-    public boolean isTieneVideoIntro() {
-        return tieneVideoIntro;
-    }
-
-    public List<Formulario> getFormularios() {
-        return formularios;
-    }
-
-    public List<Video> getVideoTransicion() {
-        return videoTransicion;
-    }
-
-    public List<Video> getPreguntasVideo() {
-        return preguntasVideo;
-    }
-
-    public beans.Formulario getCuestionarioSatifaccion() {
-        return cuestionarioSatifaccion;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
     public void setIdEntrevista(int idEntrevista) {
         this.idEntrevista = idEntrevista;
-    }
-
-    public void setTieneVideoIntro(boolean tieneVideoIntro) {
-        this.tieneVideoIntro = tieneVideoIntro;
-    }
-
-    public void setFormularios(ArrayList<Formulario> formularios) {
-        this.formularios = formularios;
-    }
-
-    public void setVideoTransicion(ArrayList<Video> videoTransicion) {
-        this.videoTransicion = videoTransicion;
-    }
-
-    public void setPreguntasVideo(ArrayList<Video> preguntasVideo) {
-        this.preguntasVideo = preguntasVideo;
-    }
-
-    public void setCuestionarioSatifaccion(beans.Formulario cuestionarioSatifaccion) {
-        this.cuestionarioSatifaccion = cuestionarioSatifaccion;
     }
 
     public String getNombreEntrevista() {
@@ -107,7 +66,59 @@ public class Entrevista {
         this.nombrePuesto = nombrePuesto;
     }
 
+    public boolean isTieneVideoIntro() {
+        return tieneVideoIntro;
+    }
+
+    public void setTieneVideoIntro(boolean tieneVideoIntro) {
+        this.tieneVideoIntro = tieneVideoIntro;
+    }
+
+    public List<Formulario> getFormularios() {
+        return formularios;
+    }
+
+    public void setFormularios(List<Formulario> formularios) {
+        this.formularios = formularios;
+    }
+
+    public List<Video> getVideoTransicion() {
+        return videoTransicion;
+    }
+
+    public void setVideoTransicion(List<Video> videoTransicion) {
+        this.videoTransicion = videoTransicion;
+    }
+
+    public List<Video> getPreguntasVideo() {
+        return preguntasVideo;
+    }
+
+    public void setPreguntasVideo(List<Video> preguntasVideo) {
+        this.preguntasVideo = preguntasVideo;
+    }
+
+    public Formulario getCuestionarioSatifaccion() {
+        return cuestionarioSatifaccion;
+    }
+
+    public void setCuestionarioSatifaccion(Formulario cuestionarioSatifaccion) {
+        this.cuestionarioSatifaccion = cuestionarioSatifaccion;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public List<Candidato> getListaCandidatos() {
+        return listaCandidatos;
+    }
+
+    public void setListaCandidatos(List<Candidato> listaCandidatos) {
+        this.listaCandidatos = listaCandidatos;
     }
 }
