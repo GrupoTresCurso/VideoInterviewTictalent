@@ -19,7 +19,7 @@ public class Entrevista {
     @ManyToMany
     private List<Video> videoTransicion;
     @ManyToMany
-    private List<Video> preguntaVideo;
+    private List<Video> preguntasVideo;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idFormulario")
     private Formulario cuestionarioSatifaccion;
@@ -28,13 +28,13 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntaVideo, Formulario cuestionarioSatifaccion, String mensaje) {
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, ArrayList<Formulario> formularios, ArrayList<Video> videoTransicion, ArrayList<Video> preguntasVideo, Formulario cuestionarioSatifaccion, String mensaje) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
         this.formularios = formularios;
         this.videoTransicion = videoTransicion;
-        this.preguntaVideo = preguntaVideo;
+        this.preguntasVideo = preguntasVideo;
         this.cuestionarioSatifaccion = cuestionarioSatifaccion;
         this.mensaje = mensaje;
     }
@@ -55,8 +55,8 @@ public class Entrevista {
         return videoTransicion;
     }
 
-    public List<Video> getPreguntaVideo() {
-        return preguntaVideo;
+    public List<Video> getPreguntasVideo() {
+        return preguntasVideo;
     }
 
     public beans.Formulario getCuestionarioSatifaccion() {
@@ -83,8 +83,8 @@ public class Entrevista {
         this.videoTransicion = videoTransicion;
     }
 
-    public void setPreguntaVideo(ArrayList<Video> preguntaVideo) {
-        this.preguntaVideo = preguntaVideo;
+    public void setPreguntasVideo(ArrayList<Video> preguntasVideo) {
+        this.preguntasVideo = preguntasVideo;
     }
 
     public void setCuestionarioSatifaccion(beans.Formulario cuestionarioSatifaccion) {
