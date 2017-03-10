@@ -19,15 +19,12 @@ public class Candidato {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean isHombre = false;
     private String numeroTelefono;
-    @Column(columnDefinition = "TINYINT(1)")
-    private boolean entrevistaRealizada = false;
-    private Integer nota;
     private String cv;
 
     public Candidato() {
     }
 
-    public Candidato(String nombre, String apellidos, String dni, String email, int edad, boolean isHombre, String numeroTelefono, boolean entrevistaRealizada, Integer nota, String cv) {
+    public Candidato(String nombre, String apellidos, String dni, String email, int edad, boolean isHombre, String numeroTelefono, String cv) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -35,8 +32,6 @@ public class Candidato {
         this.edad = edad;
         this.isHombre = isHombre;
         this.numeroTelefono = numeroTelefono;
-        this.entrevistaRealizada = entrevistaRealizada;
-        this.nota = nota;
         this.cv = cv;
     }
 
@@ -102,22 +97,6 @@ public class Candidato {
 
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
-    }
-
-    public boolean isEntrevistaRealizada() {
-        return entrevistaRealizada;
-    }
-
-    public void setEntrevistaRealizada(boolean entrevistaRealizada) {
-        this.entrevistaRealizada = entrevistaRealizada;
-    }
-
-    public Integer getNota() {
-        return nota;
-    }
-
-    public void setNota(Integer nota) {
-        this.nota = nota;
     }
 
     public String getCv() {
