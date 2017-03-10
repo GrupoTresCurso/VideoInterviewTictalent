@@ -1,7 +1,14 @@
 package beans;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Archivo {
-	
+
+	@Id
+	@GeneratedValue
 	private int idArchivo;
 	private String nombreArchivo;
 	private String rutaArchivo;
@@ -10,9 +17,8 @@ public class Archivo {
 		super();
 	}
 
-	public Archivo(int idArchivo, String nombreArchivo, String rutaArchivo) {
+	public Archivo(String nombreArchivo, String rutaArchivo) {
 		super();
-		this.idArchivo = idArchivo;
 		this.nombreArchivo = nombreArchivo;
 		this.rutaArchivo = rutaArchivo;
 	}
