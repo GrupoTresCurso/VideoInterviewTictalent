@@ -2,97 +2,174 @@
 <html>
 <head>
     <title>VideoInterview</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_candidato.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
   <main>
-    <header>
-
-
-    </header>
+    <header></header>
+    <nav>
+      <table id="tableMenu">
+        <tr>
+          <td><a href="principal.html" class="linkMenu">Principal</a></td>
+          <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
+          <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
+          <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
+          <td><a href="video.html" class="linkMenu">Video</a></td>
+        </tr>
+      </table>
+    </nav>
+    <aside>
+      <h4>Candidatos</h4>
+      <table id="tableCandidatos">
+        <tr>
+          <td>
+            <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px" height="50px"/>
+          </td>
+          <td>María Rodríguez</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="http://gruporivas.com.mx/wp-content/uploads/2015/07/C3tK-qgN_400x400.jpeg" width="50px" height="50px"/>
+          </td>
+          <td>Luis Hernández</td>
+        </tr>
+      </table>
+    </aside>
     <section>
-      <div id="panelIzquierda">
-        Candidatos
-        <table id="tableCandidatos">
-          <tr>
-            <td>
-              <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px" height="50px"
-            </td>
-            <td>
-              María Rodríguez
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="http://gruporivas.com.mx/wp-content/uploads/2015/07/C3tK-qgN_400x400.jpeg" width="50px" height="50px"
-            </td>
-            <td>
-              Luis Hernández
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div id="panelDerecha">
-        <form id="formNuevoCandidato">
-          <fieldset>
-            <legend>Agregar candidato:</legend>
-            <table>
-              <tr>
-                <td id="celdaFormulario">
-                  <table id="tableNuevoCandidato">
-                    <tr>
-                      <td>Nombres:</td>
-                      <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                      <td>Apellidos: </td>
-                      <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                      <td>DNI:</td>
-                      <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                      <td>Sexo:</td>
-                      <td>
-                        <input type="radio" name="gender" value="hombre"> Hombre<br>
-                        <input type="radio" name="gender" value="mujer"> Mujer<br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Email:</td>
-                      <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                      <td>Teléfono:</td>
-                      <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                      <td>Edad:</td>
-                      <td><input type="number"></td>
-                    </tr>
-                  </table>
-                </td>
-                <td id="celdaImagen">
-                  <div id="imagenCandidato">
-                      Adjuntar foto
-                  </div>
-                </td>
-              </tr>
-              <tr >
-                <td colspan="2" style="text-align: right">
-                  <input type="submit" value="Guardar"/>
-                </td>
-              </tr>
+      <form id="formNuevoCandidato">
+          <table>
+            <tr>
+              <td><h4>Agregar candidato:</h4></td>
+            </tr>
+            <tr>
+              <td id="celdaFormulario">
+                <table id="tableNuevoCandidato">
+                  <tr>
+                    <td>
+                      <div class="elementoText">
+                        <table class="tableElementoText">
+                          <tr>
+                            <td class="celda">
+                              <img src="images/user.png" width="30px" height="30px">
+                            </td>
+                            <td class="celda">
+                              <input type="text" name="nombre" placeholder="Introduzca nombre" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="elementoText">
+                        <table class="tableElementoText">
+                          <tr>
+                            <td class="celda">
+                              <img src="images/user.png" width="30px" height="30px">
+                            </td>
+                            <td class="celda">
+                              <input type="text" name="apellidos" placeholder="Introduzca apellidos" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="elementoText">
+                        <table class="tableElementoText">
+                          <tr>
+                            <td class="celda">
+                              <img src="images/dni.png" width="30px" height="30px">
+                            </td>
+                            <td class="celda">
+                              <input type="text" name="dni" placeholder="Introduzca DNI" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="elementoRadio">
+                        <label>Edad:</label>
+                        <input type="number" name="edad" min="1" max="90" value="18"/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="elementoRadio">
+                        <label>Sexo:</label>
 
-            </table>
+                        <input type="radio" name="sexo" id="hombre">
+                        <label for="hombre">Hombre</label>
 
-          </fieldset>
-        </form>
-      </div>
+                        <input type="radio" name="sexo" id="mujer">
+                        <label for="mujer">Mujer</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="elementoText">
+                        <table class="tableElementoText">
+                          <tr>
+                            <td class="celda">
+                              <img src="images/email.png" width="30px" height="30px">
+                            </td>
+                            <td class="celda">
+                              <input type="text" name="email" placeholder="Introduzca email" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="elementoText">
+                        <table class="tableElementoText">
+                          <tr>
+                            <td class="celda">
+                              <img src="images/phone.png" width="30px" height="30px">
+                            </td>
+                            <td class="celda">
+                              <input type="text" name="telefono" placeholder="Introduzca teléfono" />
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <div class="elementoRadio">
+                        <label>Imagen perfil:</label>
+
+                        <input type="file" name="imagen" />
+
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td id="celdaBotonGuardar">
+                <input type="submit" value="Guardar" class="botonGuardar"/>
+              </td>
+            </tr>
+          </table>
+
+      </form>
     </section>
 
   </main>
+
+    <script>
+
+
+    </script>
 
 </body>
 </html>
