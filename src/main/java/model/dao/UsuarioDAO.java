@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("UsuarioDAO")
-@Transactional
 public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @PersistenceContext

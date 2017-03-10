@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("BaseDAO")
 public interface BaseDAO<T> {
     void insert(T object);
     T selectOne(int id);

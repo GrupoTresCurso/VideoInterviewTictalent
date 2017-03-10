@@ -15,7 +15,7 @@ public class UsuarioBusiness implements BaseBusiness<Usuario> {
 
     @Autowired
     @Qualifier("UsuarioDAO")
-    UsuarioDAO usuarioDAO;
+    private UsuarioDAO usuarioDAO;
 
     @Transactional //Comprobacion de nombre unico para el Registro
     public void crearNuevo(Usuario usuario) {
