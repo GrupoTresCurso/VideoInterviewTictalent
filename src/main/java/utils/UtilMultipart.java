@@ -5,6 +5,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+@Service
 public class UtilMultipart implements BaseUtil{
     
     public Archivo obtenerArchivo(MultipartFile multipartFile, String nombreAleatorio){
