@@ -8,11 +8,9 @@ import java.io.IOException;
 import java.util.UUID;
 
 
-public class UtilServer {
+public class UtilServer implements BaseUtil {
 
-    private final String RUTA_FICHEROS =Thread.currentThread().getContextClassLoader().getResource("../../").getPath()+"/ficheros/";
-
-    private void subirMultipart(MultipartFile multipartFile, String nombreAleatorio){
+    public void subirMultipart(MultipartFile multipartFile, String nombreAleatorio){
         if(!multipartFile.isEmpty()){
             String nombreOriginalArchivo=multipartFile.getOriginalFilename();
             String extension= FilenameUtils.getExtension(nombreOriginalArchivo);
@@ -26,7 +24,7 @@ public class UtilServer {
 
     }
 
-    private String crearNombreAleatorio(){
+    public String crearNombreAleatorio(){
         return UUID.randomUUID().toString();
     }
 
