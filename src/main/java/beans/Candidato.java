@@ -19,12 +19,12 @@ public class Candidato {
     @Column(columnDefinition = "TINYINT(1)")
     private boolean isHombre = false;
     private String numeroTelefono;
-    private String cv;
+    private String rutaCurriculum;
 
     public Candidato() {
     }
 
-    public Candidato(String nombre, String apellidos, String dni, String email, int edad, boolean isHombre, String numeroTelefono, String cv) {
+    public Candidato(String nombre, String apellidos, String dni, String email, int edad, boolean isHombre, String numeroTelefono, String rutaCurriculum) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -32,7 +32,7 @@ public class Candidato {
         this.edad = edad;
         this.isHombre = isHombre;
         this.numeroTelefono = numeroTelefono;
-        this.cv = cv;
+        this.rutaCurriculum = rutaCurriculum;
     }
 
     public int getIdCandidato() {
@@ -99,11 +99,11 @@ public class Candidato {
         this.numeroTelefono = numeroTelefono;
     }
 
-    public String getCv() {
-        return cv;
+    public String getRutaCurriculum() {
+        return rutaCurriculum;
     }
 
-    public void setCv(String cv) {
-        this.cv = cv;
+    public void setRutaCurriculum(String rutaCurriculum) {
+        this.rutaCurriculum = rutaCurriculum;
     }
 }
