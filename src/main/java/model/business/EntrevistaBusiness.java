@@ -14,7 +14,7 @@ public class EntrevistaBusiness implements BaseBusiness<Entrevista> {
 
     @Autowired
     @Qualifier("EntrevistaDAO")
-    EntrevistaDAO entrevistaDAO;
+    private EntrevistaDAO entrevistaDAO;
 
     @Transactional
     public void crearNuevo(Entrevista entrevista) {

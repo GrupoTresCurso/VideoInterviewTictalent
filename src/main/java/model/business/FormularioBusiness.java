@@ -14,7 +14,7 @@ public class FormularioBusiness implements BaseBusiness<Formulario> {
 
     @Autowired
     @Qualifier("FormularioDAO")
-    FormularioDAO formularioDAO;
+    private FormularioDAO formularioDAO;
 
     @Transactional
     public void crearNuevo(Formulario formulario) {

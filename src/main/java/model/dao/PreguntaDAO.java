@@ -24,7 +24,7 @@ public class PreguntaDAO implements BaseDAO<Pregunta> {
 
     public List<Pregunta> selectAll() {
 
-        String sql = "SELECT p FROM beans.Pregunta p";
+        String sql = "SELECT pregunta FROM beans.Pregunta pregunta";
         Query query = entityManager.createQuery(sql);
 
         return query.getResultList();

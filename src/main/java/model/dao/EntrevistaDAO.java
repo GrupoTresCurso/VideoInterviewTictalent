@@ -32,7 +32,7 @@ public class EntrevistaDAO implements BaseDAO<Entrevista>{
     public List<Entrevista> selectAll() {
         List<Entrevista> listaEntrevistas=new ArrayList<>();
         try {
-            String sql = "SELECT e FROM beans.Entrevista e";
+            String sql = "SELECT entrevista FROM beans.Entrevista entrevista";
             Query query = entityManager.createQuery(sql);
             listaEntrevistas = query.getResultList();
         } catch (Exception e) {

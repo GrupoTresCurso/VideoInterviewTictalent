@@ -4,9 +4,11 @@ import beans.Respuesta;
 import model.dao.RespuestaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service()
 public class RespuestaBusiness implements BaseBusiness<Respuesta> {
 
     @Autowired

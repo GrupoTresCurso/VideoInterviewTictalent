@@ -14,7 +14,7 @@ public class PreguntaBusiness implements BaseBusiness<Pregunta> {
 
     @Autowired
     @Qualifier("PreguntaDAO")
-    PreguntaDAO preguntaDAO;
+    private PreguntaDAO preguntaDAO;
 
     @Transactional
     public void crearNuevo(Pregunta pregunta) {
