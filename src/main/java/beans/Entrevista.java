@@ -1,14 +1,13 @@
 package beans;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Entrevista {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idEntrevista;
     private String nombreEntrevista;
     private String nombrePuesto;
@@ -20,9 +19,8 @@ public class Entrevista {
     private List<Video> videoTransicion;
     @ManyToMany
     private List<Video> preguntasVideo;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idFormulario")
-    private Formulario cuestionarioSatifaccion;
+    @ManyToOne
+    private Formulario cuestionarioSatisfaccion;
     private String mensaje;
     @ManyToMany
     private List<Candidato> listaCandidatos;
@@ -30,14 +28,14 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, List<Formulario> formularios, List<Video> videoTransicion, List<Video> preguntasVideo, Formulario cuestionarioSatifaccion, String mensaje, List<Candidato> listaCandidatos) {
+    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, List<Formulario> formularios, List<Video> videoTransicion, List<Video> preguntasVideo, Formulario cuestionarioSatisfaccion, String mensaje, List<Candidato> listaCandidatos) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
         this.formularios = formularios;
         this.videoTransicion = videoTransicion;
         this.preguntasVideo = preguntasVideo;
-        this.cuestionarioSatifaccion = cuestionarioSatifaccion;
+        this.cuestionarioSatisfaccion = cuestionarioSatisfaccion;
         this.mensaje = mensaje;
         this.listaCandidatos = listaCandidatos;
     }
@@ -98,12 +96,12 @@ public class Entrevista {
         this.preguntasVideo = preguntasVideo;
     }
 
-    public Formulario getCuestionarioSatifaccion() {
-        return cuestionarioSatifaccion;
+    public Formulario getCuestionarioSatisfaccion() {
+        return cuestionarioSatisfaccion;
     }
 
-    public void setCuestionarioSatifaccion(Formulario cuestionarioSatifaccion) {
-        this.cuestionarioSatifaccion = cuestionarioSatifaccion;
+    public void setCuestionarioSatisfaccion(Formulario cuestionarioSatisfaccion) {
+        this.cuestionarioSatisfaccion = cuestionarioSatisfaccion;
     }
 
     public String getMensaje() {

@@ -2,6 +2,7 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 public class Video {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idVideo;
     private String nombreVideo;
     private String linkVideo;

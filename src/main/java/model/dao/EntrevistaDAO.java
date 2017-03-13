@@ -9,18 +9,15 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Tictum on 09/03/2017.
- */
 @Repository("EntrevistaDAO")
 public class EntrevistaDAO implements BaseDAO<Entrevista>{
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public void insert(Entrevista entrevista) {
-        entityManager.persist(entrevista);
+        entityManager.merge(entrevista);
     }
 
     @Override

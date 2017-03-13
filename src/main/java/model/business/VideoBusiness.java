@@ -5,6 +5,7 @@ import model.dao.VideoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,27 +17,32 @@ public class VideoBusiness implements BaseBusiness<Video> {
     private VideoDAO videoDAO;
 
     @Override
-    public void crearNuevo(Video object) {
-
+    @Transactional
+    public void crearNuevo(Video video) {
+        videoDAO.insert(video);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Video recuperarPorId(int id) {
-        return null;
+        return videoDAO.selectOne(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Video> recuperarTodos() {
-        return null;
+        return videoDAO.selectAll();
     }
 
     @Override
+    @Transactional
     public void borrarPorId(int id) {
-
+        videoDAO.delete(id);
     }
 
     @Override
-    public void actualizar(Video object) {
-
+    @Transactional
+    public void actualizar(Video video) {
+        videoDAO.update(video);
     }
 }
