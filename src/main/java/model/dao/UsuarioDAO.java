@@ -25,13 +25,15 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public Usuario selectByName(String nombreUsuario){
-        List<Usuario> usuariosEncontrados = null;
         String sql = "Select u FROM beans.Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario";
         Query query = entityManager.createQuery(sql);
         query.setParameter("nombreUsuario", "%"+nombreUsuario+"%");
-        usuariosEncontrados = query.getResultList();
-        Usuario usuarioDDBB=usuariosEncontrados.get(0);
-        return usuarioDDBB;
+        List<Usuario> usuariosEncontrados = query.getResultList();
+        if(usuariosEncontrados.size()==0){
+            return null;
+        } else{
+            return usuariosEncontrados.get(0);
+        }
     }
 
     public List<Usuario> selectAll() {

@@ -19,9 +19,14 @@ public class UsuarioBusiness implements BaseBusiness<Usuario> {
 
     @Transactional //Comprobacion de nombre unico para el Registro
     public void crearNuevo(Usuario usuario) {
-        if(usuarioDAO.selectByName(usuario.getNombreUsuario())==null){
+        String nombreUsuario = usuario.getNombreUsuario();
+        if(isNotRegister(nombreUsuario)){
             usuarioDAO.insert(usuario);
         }
+    }
+
+    private boolean isNotRegister(String nombreUsuario) {
+        return usuarioDAO.selectByName(nombreUsuario)==null;
     }
 
     @Transactional(readOnly=true)
