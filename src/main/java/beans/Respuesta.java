@@ -19,7 +19,7 @@ public class Respuesta {
     @OneToMany
 	private List<Video> videosRespuestas;
 
-	private List<String> respuestas;
+	private String[] respuestas;
 
 	@OneToMany
 	private List<Archivo> adjuntos;
@@ -67,11 +67,11 @@ public class Respuesta {
         this.videosRespuestas = videosRespuestas;
     }
 
-    public List<String> getRespuestas() {
+    public String[] getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(List<String> respuestas) {
+    public void setRespuestas(String[] respuestas) {
         this.respuestas = respuestas;
     }
 
