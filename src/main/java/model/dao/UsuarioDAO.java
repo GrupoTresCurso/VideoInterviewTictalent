@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public void insert(Usuario usuario) {
         entityManager.persist(usuario);
@@ -24,31 +24,10 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         return entityManager.find(Usuario.class, id);
     }
 
-    public Usuario selectByName(String nombreUsuario){
-        String sql = "Select u FROM beans.Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario";
-        Query query = entityManager.createQuery(sql);
-        query.setParameter("nombreUsuario", "%"+nombreUsuario+"%");
-        List<Usuario> usuariosEncontrados = query.getResultList();
-        if(usuariosEncontrados.size()==0){
-            return null;
-        } else{
-            return usuariosEncontrados.get(0);
-        }
-    }
-
     public List<Usuario> selectAll() {
-        List<Usuario> listaUsuarios=new ArrayList();
-
-        try {
-            String sql = "SELECT u FROM beans.Usuario u";
-            Query query = entityManager.createQuery(sql);
-            listaUsuarios = query.getResultList();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return listaUsuarios;
+        String sql = "SELECT u FROM beans.Usuario u";
+        Query query = entityManager.createQuery(sql);
+        return query.getResultList();
     }
 
     public void update(Usuario usuario) {
@@ -56,6 +35,18 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public void delete(int id) {
-        entityManager.remove(entityManager.find(Usuario.class,id));
+        entityManager.remove(entityManager.find(Usuario.class, id));
+    }
+
+    public Usuario selectByName(String nombreUsuario) {
+        String sql = "Select u FROM beans.Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario";
+        Query query = entityManager.createQuery(sql);
+        query.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
+        List<Usuario> usuariosEncontrados = query.getResultList();
+        if (usuariosEncontrados.size() == 0) {
+            return null;
+        } else {
+            return usuariosEncontrados.get(0);
+        }
     }
 }
