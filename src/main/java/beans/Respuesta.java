@@ -1,112 +1,85 @@
 package beans;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Respuesta {
-	
+
+    @Id
+    @GeneratedValue
 	private int idRespuesta;
-	private int idEntrevista;
-	private int idCandidato;
+
+    @ManyToOne
+	private Entrevista entrevistaRespondida;
+
+    @OneToOne
+	private Candidato candidato;
+
+    @OneToMany
 	private List<Video> videosRespuestas;
+
 	private List<String> respuestas;
+
+	@OneToMany
 	private List<Archivo> adjuntos;
-	
-	
-	
-	public Respuesta() {
-		super();
-	}
 
+    public Respuesta() {
+    }
 
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, List<String> respuestas, List<Archivo> adjuntos) {
+        this.entrevistaRespondida = entrevistaRespondida;
+        this.candidato = candidato;
+        this.videosRespuestas = videosRespuestas;
+        this.respuestas = respuestas;
+        this.adjuntos = adjuntos;
+    }
 
-	public Respuesta(int idRespuesta, int idEntrevista, int idCandidato, List<Video> videosRespuestas,
-			List<String> respuestas, List<Archivo> adjuntos) {
-		super();
-		this.idRespuesta = idRespuesta;
-		this.idEntrevista = idEntrevista;
-		this.idCandidato = idCandidato;
-		this.videosRespuestas = videosRespuestas;
-		this.respuestas = respuestas;
-		this.adjuntos = adjuntos;
-	}
+    public int getIdRespuesta() {
+        return idRespuesta;
+    }
 
+    public void setIdRespuesta(int idRespuesta) {
+        this.idRespuesta = idRespuesta;
+    }
 
+    public Entrevista getEntrevistaRespondida() {
+        return entrevistaRespondida;
+    }
 
-	public int getIdRespuesta() {
-		return idRespuesta;
-	}
+    public void setEntrevistaRespondida(Entrevista entrevistaRespondida) {
+        this.entrevistaRespondida = entrevistaRespondida;
+    }
 
+    public Candidato getCandidato() {
+        return candidato;
+    }
 
+    public void setCandidato(Candidato candidato) {
+        this.candidato = candidato;
+    }
 
-	public void setIdRespuesta(int idRespuesta) {
-		this.idRespuesta = idRespuesta;
-	}
+    public List<Video> getVideosRespuestas() {
+        return videosRespuestas;
+    }
 
+    public void setVideosRespuestas(List<Video> videosRespuestas) {
+        this.videosRespuestas = videosRespuestas;
+    }
 
+    public List<String> getRespuestas() {
+        return respuestas;
+    }
 
-	public int getIdEntrevista() {
-		return idEntrevista;
-	}
+    public void setRespuestas(List<String> respuestas) {
+        this.respuestas = respuestas;
+    }
 
+    public List<Archivo> getAdjuntos() {
+        return adjuntos;
+    }
 
-
-	public void setIdEntrevista(int idEntrevista) {
-		this.idEntrevista = idEntrevista;
-	}
-
-
-
-	public int getIdCandidato() {
-		return idCandidato;
-	}
-
-
-
-	public void setIdCandidato(int idCandidato) {
-		this.idCandidato = idCandidato;
-	}
-
-
-
-	public List<Video> getVideosRespuestas() {
-		return videosRespuestas;
-	}
-
-
-
-	public void setVideosRespuestas(List<Video> videosRespuestas) {
-		this.videosRespuestas = videosRespuestas;
-	}
-
-
-
-	public List<String> getRespuestas() {
-		return respuestas;
-	}
-
-
-
-	public void setRespuestas(List<String> respuestas) {
-		this.respuestas = respuestas;
-	}
-
-
-
-	public List<Archivo> getAdjuntos() {
-		return adjuntos;
-	}
-
-
-
-	public void setAdjuntos(List<Archivo> adjuntos) {
-		this.adjuntos = adjuntos;
-	}
-	
-	
-	
-	
-	
-	
-	
-
+    public void setAdjuntos(List<Archivo> adjuntos) {
+        this.adjuntos = adjuntos;
+    }
 }
