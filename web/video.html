@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VideoInterview</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_video.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile1.4.5.min.js"></script>
+</head>
+<body>
+<main>
+    <header></header>
+    <nav>
+        <table id="tableMenu">
+            <tr>
+                <td><a href="principal.html" class="linkMenu">Principal</a></td>
+                <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
+                <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
+                <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
+                <td><a href="video.html" class="linkMenu">Video</a></td>
+            </tr>
+        </table>
+    </nav>
+    <aside>
+        <h4>Opciones de vídeo</h4>
+        <table id="tableOpcionesVideo">
+            <tr>
+                <td>
+                    <a href="grabar_video.html">
+                        <img src="icons/webcam.png" width="50px" height="50px"/>
+                    </a>
+                </td>
+                <td><a href="grabar_video.html">Crear vídeo</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="cargar_video.html">
+                        <img src="icons/file.png" width="50px" height="50px"/>
+                    </a>
+                </td>
+                <td><a href="cargar_video.html">Cargar vídeo</a></td>
+            </a></tr>
+        </table>
+    </aside>
+    <section>
+        <h4>Arrastrar y soltar vídeo</h4><br/>
+        <form id="formSubirVideo">
+            <td rowspan="3" id="celdaImagen" class="celdaColumna2">
+                <input type="file" id="file" onchange="processFiles(this.files)"/>
+                <label for="file">
+                    <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+                    </div>
+                </label>
+
+        </form>
+    </section>
+
+</main>
+</body>
+</html>
