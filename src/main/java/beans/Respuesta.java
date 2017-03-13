@@ -27,7 +27,7 @@ public class Respuesta {
     public Respuesta() {
     }
 
-    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, List<String> respuestas, List<Archivo> adjuntos) {
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, String[] respuestas, List<Archivo> adjuntos) {
         this.entrevistaRespondida = entrevistaRespondida;
         this.candidato = candidato;
         this.videosRespuestas = videosRespuestas;
