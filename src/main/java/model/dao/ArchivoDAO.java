@@ -8,10 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Tictum on 10/03/2017.
- */
-
 @Repository("ArchivoDAO")
 public class ArchivoDAO implements BaseDAO<Archivo>{
 
