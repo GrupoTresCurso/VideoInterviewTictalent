@@ -16,13 +16,15 @@ public class Formulario {
     private String nombreFormulario;
     @ManyToMany
     private List<Pregunta> preguntas;
+    private int posicionEnEntrevista;
 
     public Formulario() {
     }
 
-    public Formulario(String nombreFormulario, ArrayList<Pregunta> preguntas) {
+    public Formulario(String nombreFormulario, List<Pregunta> preguntas, int posicionEnEntrevista) {
         this.nombreFormulario = nombreFormulario;
         this.preguntas = preguntas;
+        this.posicionEnEntrevista = posicionEnEntrevista;
     }
 
     public void setIdFormulario(int idFormulario) {
@@ -47,5 +49,17 @@ public class Formulario {
 
     public List<Pregunta> getPreguntas() {
         return preguntas;
+    }
+
+    public void setPreguntas(List<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
+    public int getPosicionEnEntrevista() {
+        return posicionEnEntrevista;
+    }
+
+    public void setPosicionEnEntrevista(int posicionEnEntrevista) {
+        this.posicionEnEntrevista = posicionEnEntrevista;
     }
 }

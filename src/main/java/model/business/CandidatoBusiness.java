@@ -36,7 +36,7 @@ public class CandidatoBusiness implements BaseBusiness<Candidato> {
         candidatoDAO.delete(id);
     }
 
-    @Override
+    @Transactional
     public void actualizar(Candidato candidato) {
         candidatoDAO.update(candidato);
     }

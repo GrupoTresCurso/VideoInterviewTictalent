@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VideoInterview</title>
+    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+  <main>
+    <header></header>
+    <nav>
+      <table id="tableMenu">
+        <tr>
+          <td><a href="principal.html" class="linkMenu">Principal</a></td>
+          <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
+          <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
+          <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
+          <td><a href="video.html" class="linkMenu">Video</a></td>
+        </tr>
+      </table>
+    </nav>
+
+    <div id="cuerpo">
+        <h3>Clonar Entrevista:</h3><br/>
+        <table id="tableEntrevista">
+            <tr>
+                <td>
+                    <div class="entrevista" id="entrevista1" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 1</div>
+                </td>
+                <td>
+                    <div class="entrevista" id="entrevista2" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 2</div>
+                </td>
+                <td>
+                    <div class="entrevista" id="entrevista3" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 3</div>
+                </td>
+            </tr>
+        </table>
+        <div class="elementoText" id="save">
+            <table class="tableElementoText">
+                <tr>
+                    <td class="celda">
+                        <input type="text" name="nombre" placeholder="Introduzca nombre de entrevista"  size="35"/>
+                    </td>
+                    <td id="celdaBotonGuardar">
+                        <input type="submit" value="Guardar" class="botonGuardar"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+  </main>
+
+    <script>
+        function seleccionar(clase, id){
+            var entrevistas = document.getElementsByClassName(clase);
+            for(var i=0; i<entrevistas.length; i++){
+                entrevistas[i].style.backgroundColor = "white";
+            }
+            document.getElementById(id).style.backgroundColor = "#C0C0C0";
+        }
+
+    </script>
+
+</body>
+</html>
