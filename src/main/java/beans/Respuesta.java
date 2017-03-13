@@ -24,15 +24,18 @@ public class Respuesta {
 	@OneToMany
 	private List<Archivo> adjuntos;
 
+	private float notaCandidato;
+
     public Respuesta() {
     }
 
-    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, String[] respuestas, List<Archivo> adjuntos) {
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, String[] respuestas, List<Archivo> adjuntos, float notaCandidato) {
         this.entrevistaRespondida = entrevistaRespondida;
         this.candidato = candidato;
         this.videosRespuestas = videosRespuestas;
         this.respuestas = respuestas;
         this.adjuntos = adjuntos;
+        this.notaCandidato = notaCandidato;
     }
 
     public int getIdRespuesta() {
@@ -81,5 +84,13 @@ public class Respuesta {
 
     public void setAdjuntos(List<Archivo> adjuntos) {
         this.adjuntos = adjuntos;
+    }
+
+    public float getNotaCandidato() {
+        return notaCandidato;
+    }
+
+    public void setNotaCandidato(float notaCandidato) {
+        this.notaCandidato = notaCandidato;
     }
 }
