@@ -1,5 +1,8 @@
 package beans;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,8 @@ public class Formulario {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int idFormulario;
     private String nombreFormulario;
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Pregunta> preguntas;
     private int posicionEnEntrevista;
 

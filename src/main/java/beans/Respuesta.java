@@ -1,5 +1,8 @@
 package beans;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,18 +13,20 @@ public class Respuesta {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRespuesta;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private Entrevista entrevistaRespondida;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private Candidato candidato;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
 	private List<Video> videoRespuestas;
 
 	private String[] respuestas;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
 	private List<Archivo> adjuntos;
 
 	private float notaCandidato;
