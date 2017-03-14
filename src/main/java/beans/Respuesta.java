@@ -7,7 +7,7 @@ import java.util.List;
 public class Respuesta {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRespuesta;
 
     @ManyToOne
@@ -17,7 +17,7 @@ public class Respuesta {
 	private Candidato candidato;
 
     @OneToMany
-	private List<Video> videosRespuestas;
+	private List<Video> videoRespuestas;
 
 	private String[] respuestas;
 
@@ -29,10 +29,9 @@ public class Respuesta {
     public Respuesta() {
     }
 
-    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, String[] respuestas, List<Archivo> adjuntos, float notaCandidato) {
-        this.entrevistaRespondida = entrevistaRespondida;
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String[] respuestas, List<Archivo> adjuntos, float notaCandidato) {        this.entrevistaRespondida = entrevistaRespondida;
         this.candidato = candidato;
-        this.videosRespuestas = videosRespuestas;
+        this.videoRespuestas = videoRespuestas;
         this.respuestas = respuestas;
         this.adjuntos = adjuntos;
         this.notaCandidato = notaCandidato;
@@ -62,12 +61,12 @@ public class Respuesta {
         this.candidato = candidato;
     }
 
-    public List<Video> getVideosRespuestas() {
-        return videosRespuestas;
+    public List<Video> getVideoRespuestas() {
+        return videoRespuestas;
     }
 
-    public void setVideosRespuestas(List<Video> videosRespuestas) {
-        this.videosRespuestas = videosRespuestas;
+    public void setVideoRespuestas(List<Video> videoRespuestas) {
+        this.videoRespuestas = videoRespuestas;
     }
 
     public String[] getRespuestas() {

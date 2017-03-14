@@ -10,8 +10,9 @@ import javax.persistence.Id;
 public class Video {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int idVideo;
+
     private String nombreVideo;
     private String linkVideo;
     private int posicionEnEntrevista;

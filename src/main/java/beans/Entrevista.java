@@ -7,7 +7,7 @@ import java.util.List;
 public class Entrevista {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int idEntrevista;
     private String nombreEntrevista;
     private String nombrePuesto;
@@ -16,9 +16,7 @@ public class Entrevista {
     @ManyToMany
     private List<Formulario> formularios;
     @ManyToMany
-    private List<Video> videoTransicion;
-    @ManyToMany
-    private List<Video> preguntasVideo;
+    private List<Video> listaVideos;
     @ManyToOne
     private Formulario cuestionarioSatisfaccion;
     private String mensaje;
@@ -28,13 +26,12 @@ public class Entrevista {
     public Entrevista() {
     }
 
-    public Entrevista(String nombreEntrevista, String nombrePuesto, boolean tieneVideoIntro, List<Formulario> formularios, List<Video> videoTransicion, List<Video> preguntasVideo, Formulario cuestionarioSatisfaccion, String mensaje, List<Candidato> listaCandidatos) {
+    public Entrevista(String nombreEntrevista, String nombrePuesto, String mensaje, List<Formulario> formularios, Formulario cuestionarioSatisfaccion, boolean tieneVideoIntro, List<Video> listaVideos, List<Candidato> listaCandidatos) {
         this.nombreEntrevista = nombreEntrevista;
         this.nombrePuesto = nombrePuesto;
         this.tieneVideoIntro = tieneVideoIntro;
         this.formularios = formularios;
-        this.videoTransicion = videoTransicion;
-        this.preguntasVideo = preguntasVideo;
+        this.listaVideos = listaVideos;
         this.cuestionarioSatisfaccion = cuestionarioSatisfaccion;
         this.mensaje = mensaje;
         this.listaCandidatos = listaCandidatos;
@@ -80,20 +77,12 @@ public class Entrevista {
         this.formularios = formularios;
     }
 
-    public List<Video> getVideoTransicion() {
-        return videoTransicion;
+    public List<Video> getListaVideos() {
+        return listaVideos;
     }
 
-    public void setVideoTransicion(List<Video> videoTransicion) {
-        this.videoTransicion = videoTransicion;
-    }
-
-    public List<Video> getPreguntasVideo() {
-        return preguntasVideo;
-    }
-
-    public void setPreguntasVideo(List<Video> preguntasVideo) {
-        this.preguntasVideo = preguntasVideo;
+    public void setListaVideos(List<Video> listaVideos) {
+        this.listaVideos = listaVideos;
     }
 
     public Formulario getCuestionarioSatisfaccion() {
