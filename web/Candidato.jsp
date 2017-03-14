@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +31,12 @@
     <aside>
       <h4>Candidatos</h4>
       <table id="tableCandidatos">
+        <c:forEach var="candidato" items="${listaCandidatos}">
+          <td>
+            <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px" height="50px"/>
+          </td>
+          <td><c:out value="${candidato.nombre}" /></td>
+        </c:forEach>
         <tr>
           <td>
             <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px" height="50px"/>
@@ -41,7 +53,7 @@
     </aside>
     <section>
         <h4>Agregar candidato:</h4><br/>
-      <form id="formNuevoCandidato">
+      <form id="formNuevoCandidato" action="${pageContext.request.contextPath}/guardarCandidato.do" method="post">
           <table>
             <tr>
               <td id="celdaFormulario">
@@ -145,7 +157,7 @@
                               <img src="images/phone.png" width="30px" height="30px">
                             </td>
                             <td class="celda">
-                              <input type="text" name="telefono" id="telefono" placeholder="Introduzca teléfono" />
+                              <input type="text" name="numeroTelefono" id="telefono" placeholder="Introduzca teléfono" />
                             </td>
                           </tr>
                         </table>
