@@ -41,7 +41,7 @@
                     </a>
                 </td>
                 <td><a href="cargar_video.html">Cargar vídeo</a></td>
-            </a></tr>
+                </a></tr>
         </table>
     </aside>
     <section>
@@ -53,10 +53,63 @@
                     <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
                     </div>
                 </label>
-
+                <input type="submit"  value="Guardar" class="botonGuardar"/>
         </form>
     </section>
 
 </main>
+
+<script>
+    function processFiles(files) {
+        var file = files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var output = document.getElementById("contenedorVideo");
+            //output.style.backgroundImage = "url('" + e.target.result + "')";
+            output.style.backgroundImage = "url('')";   //resetea fondo
+            if(file.type == "video/mp4"){
+                output.innerHTML =  "<img src='images/mp4.png' width='80px' height='80px'/> " +
+                    "<p id='nombreArchivo'>"+file.name+"</p>";
+            }else{
+                output.innerHTML =  "<img src='images/video_file.png' width='80px' height='80px'/> " +
+                    "<p id='nombreArchivo'>"+file.name+"</p>";
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function ignoreDrag(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function enter(e) {
+        ignoreDrag(e);
+        e.target.classList.add('over');
+    }
+
+    function leave(e) {
+        e.target.classList.remove('over');
+    }
+
+    function over(e) {
+        ignoreDrag(e);
+        var id = e.target.id;
+        if (id == 'contenedorVideo'){
+            return false;
+        }
+    }
+
+    function drop(e){
+        ignoreDrag(e);
+        var data = e.dataTransfer;
+        var files = data.files;
+
+        processFiles(files);
+        e.target.classList.remove('over');
+    }
+
+</script>
+
 </body>
 </html>

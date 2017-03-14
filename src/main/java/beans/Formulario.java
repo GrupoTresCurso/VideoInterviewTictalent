@@ -1,9 +1,6 @@
 package beans;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +8,7 @@ import java.util.List;
 public class Formulario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idFormulario;
     private String nombreFormulario;
     @ManyToMany
