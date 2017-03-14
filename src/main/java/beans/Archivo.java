@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Archivo {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int idArchivo;
 	private String nombreArchivo;
 	private String rutaArchivo;

@@ -8,7 +8,7 @@ import java.util.List;
 public class Formulario {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int idFormulario;
     private String nombreFormulario;
     @ManyToMany
