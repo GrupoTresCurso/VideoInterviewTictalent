@@ -6,12 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
-//videos mpg mp4 avi mov
 
 @Service
 public class UtilServer implements BaseUtil {
@@ -35,7 +32,7 @@ public class UtilServer implements BaseUtil {
 
     }
 
-    private boolean comprobarExtensionVideos(String extension) {
+    public boolean comprobarExtensionVideos(String extension) {
         List<String> extensiones = Arrays.asList("mpg", "mp4", "avi", "mov");
         for (String ext : extensiones) {
             if (extension.equals(ext)) {
