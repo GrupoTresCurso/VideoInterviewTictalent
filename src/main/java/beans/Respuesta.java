@@ -10,18 +10,18 @@ public class Respuesta {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRespuesta;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
 	private Entrevista entrevistaRespondida;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
 	private Candidato candidato;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
 	private List<Video> videoRespuestas;
 
 	private String[] respuestas;
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Archivo> adjuntos;
 
 	private float notaCandidato;

@@ -11,7 +11,7 @@ public class Formulario {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int idFormulario;
     private String nombreFormulario;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Pregunta> preguntas;
     private int posicionEnEntrevista;
 

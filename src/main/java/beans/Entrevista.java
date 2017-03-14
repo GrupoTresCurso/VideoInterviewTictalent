@@ -13,14 +13,14 @@ public class Entrevista {
     private String nombrePuesto;
     @Column(columnDefinition = "TINYINT(1)")
     private boolean tieneVideoIntro = false;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Formulario> formularios;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Video> listaVideos;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Formulario cuestionarioSatisfaccion;
     private String mensaje;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private List<Candidato> listaCandidatos;
 
     public Entrevista() {
