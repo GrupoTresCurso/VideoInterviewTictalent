@@ -13,21 +13,20 @@ public class Candidato {
     private String dni;
     private String email;
     private int edad;
-    @Column(columnDefinition = "TINYINT(1)")
-    private boolean isHombre = false;
+    private String sexo;
     private String numeroTelefono;
     private String rutaCurriculum;
 
     public Candidato() {
     }
 
-    public Candidato(String nombre, String apellidos, String dni, String email, int edad, boolean isHombre, String numeroTelefono, String rutaCurriculum) {
+    public Candidato(String nombre, String apellidos, String dni, String email, int edad, String sexo, String numeroTelefono, String rutaCurriculum) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.email = email;
         this.edad = edad;
-        this.isHombre = isHombre;
+        this.sexo = sexo;
         this.numeroTelefono = numeroTelefono;
         this.rutaCurriculum = rutaCurriculum;
     }
@@ -80,12 +79,12 @@ public class Candidato {
         this.edad = edad;
     }
 
-    public boolean isHombre() {
-        return isHombre;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setHombre(boolean hombre) {
-        isHombre = hombre;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getNumeroTelefono() {
