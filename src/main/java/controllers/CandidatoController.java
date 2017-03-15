@@ -2,7 +2,6 @@ package controllers;
 
 import beans.Candidato;
 import model.business.BaseBusiness;
-import model.business.CandidatoBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

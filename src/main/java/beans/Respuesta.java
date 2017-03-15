@@ -1,5 +1,6 @@
 package beans;
 
+import com.mysql.cj.api.mysqla.result.ColumnDefinition;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -23,6 +24,7 @@ public class Respuesta {
     @Fetch(value = FetchMode.SUBSELECT)
 	private List<Video> videoRespuestas;
 
+    @Column(columnDefinition="MEDIUMTEXT")
 	private String[] respuestas;
 
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
