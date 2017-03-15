@@ -1,6 +1,5 @@
 package beans;
 
-import com.mysql.cj.api.mysqla.result.ColumnDefinition;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -25,7 +24,10 @@ public class Respuesta {
 	private List<Video> videoRespuestas;
 
     @Column(columnDefinition="MEDIUMTEXT")
-	private String[] respuestas;
+	private String respuestas;
+
+    @Transient
+    private String[] arrayRespuestas;
 
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
@@ -36,10 +38,22 @@ public class Respuesta {
     public Respuesta() {
     }
 
-    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String[] respuestas, List<Archivo> adjuntos, float notaCandidato) {        this.entrevistaRespondida = entrevistaRespondida;
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String[] arrayRespuestas, List<Archivo> adjuntos, float notaCandidato) {
+        this.entrevistaRespondida = entrevistaRespondida;
+        this.candidato = candidato;
+        this.videoRespuestas = videoRespuestas;
+        this.arrayRespuestas = arrayRespuestas;
+        this.respuestas = HelperBeans.getStringFromArray(arrayRespuestas);
+        this.adjuntos = adjuntos;
+        this.notaCandidato = notaCandidato;
+    }
+
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String respuestas, List<Archivo> adjuntos, float notaCandidato) {
+        this.entrevistaRespondida = entrevistaRespondida;
         this.candidato = candidato;
         this.videoRespuestas = videoRespuestas;
         this.respuestas = respuestas;
+        this.arrayRespuestas = HelperBeans.getArrayFromString(respuestas);
         this.adjuntos = adjuntos;
         this.notaCandidato = notaCandidato;
     }
@@ -76,12 +90,20 @@ public class Respuesta {
         this.videoRespuestas = videoRespuestas;
     }
 
-    public String[] getRespuestas() {
+    public String getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(String[] respuestas) {
+    public void setRespuestas(String respuestas) {
         this.respuestas = respuestas;
+    }
+
+    public String[] getArrayRespuestas() {
+        return arrayRespuestas;
+    }
+
+    public void setArrayRespuestas(String[] arrayRespuestas) {
+        this.arrayRespuestas = arrayRespuestas;
     }
 
     public List<Archivo> getAdjuntos() {
