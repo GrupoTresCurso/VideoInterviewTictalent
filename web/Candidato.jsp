@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +38,9 @@
                         <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px"
                              height="50px"/>
                     </td>
-                    <td><a href="${pageContext.request.contextPath}/recuperarCandidato.do?idCandidato=${candidato.idCandidato}"><c:out value="${candidato.nombre}"/></a></td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/recuperarCandidato.do?idCandidato=${candidato.idCandidato}"><c:out
+                                value="${candidato.nombre}"/></a></td>
                 </tr>
             </c:forEach>
             <!--<tr>
@@ -77,7 +79,8 @@
                                                 </td>
                                                 <td class="celda">
                                                     <input type="text" name="nombre" id="nombre"
-                                                           placeholder="Introduzca nombre" size="30" value="${candidato.nombre}"/>
+                                                           placeholder="Introduzca nombre" size="30"
+                                                           value="${candidato.nombre}"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -103,7 +106,8 @@
                                                 </td>
                                                 <td class="celda">
                                                     <input type="text" name="apellidos" id="apellidos"
-                                                           placeholder="Introduzca apellidos" size="30" value="${candidato.apellidos}"/>
+                                                           placeholder="Introduzca apellidos" size="30"
+                                                           value="${candidato.apellidos}"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -132,7 +136,8 @@
                                     <div class="elemento">
                                         <label>Sexo:</label>
                                         <c:if test="${candidato.sexo==null}">
-                                            <input type="radio" name="sexo" value="hombre" id="hombre" checked="checked"/>
+                                            <input type="radio" name="sexo" value="hombre" id="hombre"
+                                                   checked="checked"/>
                                             <label for="hombre">Hombre</label>
 
 
@@ -140,7 +145,8 @@
                                             <label for="mujer">Mujer</label>
                                         </c:if>
                                         <c:if test="${candidato.sexo.equals('hombre')}">
-                                            <input type="radio" name="sexo" value="hombre" id="hombre" checked="checked"/>
+                                            <input type="radio" name="sexo" value="hombre" id="hombre"
+                                                   checked="checked"/>
                                             <label for="hombre">Hombre</label>
 
                                             <input type="radio" name="sexo" value="mujer" id="mujer"/>
@@ -161,8 +167,13 @@
                                     <div class="elemento">
                                         <label>Edad:</label>
                                         <span class='number-wrapper'>
-                              <input type="number" name="edad" id="edad" min="1" max="90" value="18"/>
-                           </span>
+                                            <c:if test="${candidato.edad==null}">
+                                                <input type="number" name="edad" id="edad" min="1" max="90" value="18"/>
+                                            </c:if>
+                                            <c:if test="${candidato.edad!=null}">
+                                                <input type="number" name="edad" id="edad" min="1" max="90" value="${candidato.edad}"/>
+                                            </c:if>
+                                         </span>
                                     </div>
                                 </td>
                             </tr>
@@ -176,7 +187,8 @@
                                                 </td>
                                                 <td class="celda">
                                                     <input type="text" name="email" id="email"
-                                                           placeholder="Introduzca email" size="30" value="${candidato.email}"/>
+                                                           placeholder="Introduzca email" size="30"
+                                                           value="${candidato.email}"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -191,7 +203,8 @@
                                                 </td>
                                                 <td class="celda">
                                                     <input type="text" name="numeroTelefono" id="telefono"
-                                                           placeholder="Introduzca teléfono" value="${candidato.numeroTelefono}"/>
+                                                           placeholder="Introduzca teléfono"
+                                                           value="${candidato.numeroTelefono}"/>
                                                 </td>
                                             </tr>
                                         </table>
