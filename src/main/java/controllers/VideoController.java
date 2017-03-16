@@ -39,8 +39,7 @@ public class VideoController implements BaseController {
     @RequestMapping(value = "/recuperarVideo.do", method = RequestMethod.GET)
     public ResponseEntity<FileSystemResource> recuperarVideo(@RequestParam("filename") String fileName) {
         FileSystemResource resource = new FileSystemResource(new File(BASE_PATH, fileName));
-        ResponseEntity<FileSystemResource> responseEntity = new ResponseEntity<>(resource, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(resource, HttpStatus.OK);
     }
 
     @RequestMapping(value="/subir.do",method= RequestMethod.GET)
@@ -50,6 +49,6 @@ public class VideoController implements BaseController {
         utilServer.subirMultipart(multipartFile, nombreAleatorio);
         Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,-1,"");
         videoBusiness.crearNuevo(video);
-        return "cargar_video";
+        return CARGAR_VIDEO;
     }
 }
