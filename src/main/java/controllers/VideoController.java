@@ -49,7 +49,7 @@ public class VideoController implements BaseController {
         MultipartFile multipartFile = listaVideos.getArchivos().get(0);
         String nombreAleatorio = utilServer.crearNombreAleatorio();
         utilServer.subirMultipart(multipartFile, nombreAleatorio);
-        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,-1,"");
+        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,-1,"Aun no seleccionado");
         videoBusiness.crearNuevo(video);
         return "cargar_video";
     }
