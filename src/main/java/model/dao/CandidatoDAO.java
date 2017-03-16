@@ -15,7 +15,7 @@ public class CandidatoDAO implements BaseDAO<Candidato> {
     private EntityManager manager;
 
     public void insert(Candidato candidato) {
-        manager.persist(candidato);
+        manager.merge(candidato);
     }
 
     public Candidato selectOne(int id) {

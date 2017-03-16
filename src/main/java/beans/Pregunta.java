@@ -1,28 +1,37 @@
 package beans;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Pregunta {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int idPregunta;
     private String labelPregunta;
     private String tipoPregunta;
-    private String[] opciones;
+    @Column(columnDefinition="MEDIUMTEXT")
+    private String opciones;
+    @Transient
+    private String[] arrayOpciones;
     private int posicionEnFormulario;
 
     public Pregunta() {
     }
 
-    public Pregunta(String labelPregunta, String tipoPregunta, String[] opciones, int posicionEnFormulario) {
+    public Pregunta(String labelPregunta, String tipoPregunta, String[] arrayOpciones, int posicionEnFormulario) {
         this.labelPregunta = labelPregunta;
         this.tipoPregunta = tipoPregunta;
+        this.arrayOpciones = arrayOpciones;
+        this.opciones = HelperBeans.getStringFromArray(arrayOpciones);
+        this.posicionEnFormulario = posicionEnFormulario;
+    }
+
+    public Pregunta(String labelPregunta, String tipoPregunta, String opciones, int posicionEnFormulario) {
+        this.labelPregunta = labelPregunta;
+        this.tipoPregunta = tipoPregunta;
+        this.arrayOpciones = HelperBeans.getArrayFromString(opciones);
         this.opciones = opciones;
         this.posicionEnFormulario = posicionEnFormulario;
     }
@@ -51,12 +60,20 @@ public class Pregunta {
         this.tipoPregunta = tipoPregunta;
     }
 
-    public String[] getOpciones() {
+    public String getOpciones() {
         return opciones;
     }
 
-    public void setOpciones(String[] opciones) {
+    public void setOpciones(String opciones) {
         this.opciones = opciones;
+    }
+
+    public String[] getArrayOpciones() {
+        return arrayOpciones;
+    }
+
+    public void setArrayOpciones(String[] arrayOpciones) {
+        this.arrayOpciones = arrayOpciones;
     }
 
     public int getPosicionEnFormulario() {

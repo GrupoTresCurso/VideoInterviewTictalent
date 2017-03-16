@@ -1,5 +1,8 @@
 package beans;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,21 +10,27 @@ import java.util.List;
 public class Respuesta {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRespuesta;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private Entrevista entrevistaRespondida;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private Candidato candidato;
 
-    @OneToMany
-	private List<Video> videosRespuestas;
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+	private List<Video> videoRespuestas;
 
-	private String[] respuestas;
+    @Column(columnDefinition="MEDIUMTEXT")
+	private String respuestas;
 
-	@OneToMany
+    @Transient
+    private String[] arrayRespuestas;
+
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
 	private List<Archivo> adjuntos;
 
 	private float notaCandidato;
@@ -29,11 +38,22 @@ public class Respuesta {
     public Respuesta() {
     }
 
-    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videosRespuestas, String[] respuestas, List<Archivo> adjuntos, float notaCandidato) {
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String[] arrayRespuestas, List<Archivo> adjuntos, float notaCandidato) {
         this.entrevistaRespondida = entrevistaRespondida;
         this.candidato = candidato;
-        this.videosRespuestas = videosRespuestas;
+        this.videoRespuestas = videoRespuestas;
+        this.arrayRespuestas = arrayRespuestas;
+        this.respuestas = HelperBeans.getStringFromArray(arrayRespuestas);
+        this.adjuntos = adjuntos;
+        this.notaCandidato = notaCandidato;
+    }
+
+    public Respuesta(Entrevista entrevistaRespondida, Candidato candidato, List<Video> videoRespuestas, String respuestas, List<Archivo> adjuntos, float notaCandidato) {
+        this.entrevistaRespondida = entrevistaRespondida;
+        this.candidato = candidato;
+        this.videoRespuestas = videoRespuestas;
         this.respuestas = respuestas;
+        this.arrayRespuestas = HelperBeans.getArrayFromString(respuestas);
         this.adjuntos = adjuntos;
         this.notaCandidato = notaCandidato;
     }
@@ -62,20 +82,28 @@ public class Respuesta {
         this.candidato = candidato;
     }
 
-    public List<Video> getVideosRespuestas() {
-        return videosRespuestas;
+    public List<Video> getVideoRespuestas() {
+        return videoRespuestas;
     }
 
-    public void setVideosRespuestas(List<Video> videosRespuestas) {
-        this.videosRespuestas = videosRespuestas;
+    public void setVideoRespuestas(List<Video> videoRespuestas) {
+        this.videoRespuestas = videoRespuestas;
     }
 
-    public String[] getRespuestas() {
+    public String getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(String[] respuestas) {
+    public void setRespuestas(String respuestas) {
         this.respuestas = respuestas;
+    }
+
+    public String[] getArrayRespuestas() {
+        return arrayRespuestas;
+    }
+
+    public void setArrayRespuestas(String[] arrayRespuestas) {
+        this.arrayRespuestas = arrayRespuestas;
     }
 
     public List<Archivo> getAdjuntos() {

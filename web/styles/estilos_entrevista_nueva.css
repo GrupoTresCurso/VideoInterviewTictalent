@@ -217,7 +217,7 @@ input[type='radio']:checked:after {
     height: 170px;
 }
 
-#contenedorVideo{
+#contenedorEntrevista{
     border: 2px solid #94B2B6;
     width: 750px;
     height: 250px;
@@ -231,7 +231,7 @@ input[type='radio']:checked:after {
     word-wrap: break-word;
 }
 
-#contenedorVideo.over {
+#contenedorEntrevista.over {
     border: 2px dashed #94B2B6;
 }
 
@@ -272,7 +272,7 @@ p{
     font-size: 12px;
 }
 
-#contenedorVideo{
+#contenedorEntrevista{
     border: 2px solid #94B2B6;
     width: 750px;
     height: 250px;

@@ -16,7 +16,7 @@ public class ArchivoDAO implements BaseDAO<Archivo>{
 
     @Override
     public void insert(Archivo archivo) {
-        manager.persist(archivo);
+        manager.merge(archivo);
     }
 
     @Override

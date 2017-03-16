@@ -12,29 +12,29 @@ import java.util.List;
 public class PreguntaDAO implements BaseDAO<Pregunta> {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager manager;
 
     public void insert(Pregunta pregunta) {
-        entityManager.persist(pregunta);
+        manager.merge(pregunta);
     }
 
     public Pregunta selectOne(int id) {
-        return entityManager.find(Pregunta.class, id);
+        return manager.find(Pregunta.class, id);
     }
 
     public List<Pregunta> selectAll() {
 
         String sql = "SELECT pregunta FROM beans.Pregunta pregunta";
-        Query query = entityManager.createQuery(sql);
+        Query query = manager.createQuery(sql);
 
         return query.getResultList();
     }
 
     public void update(Pregunta pregunta) {
-        entityManager.merge(pregunta);
+        manager.merge(pregunta);
     }
 
     public void delete(int id) {
-        entityManager.remove(entityManager.find(Pregunta.class, id));
+        manager.remove(manager.find(Pregunta.class, id));
     }
 }

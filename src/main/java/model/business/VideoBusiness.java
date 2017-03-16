@@ -23,13 +23,13 @@ public class VideoBusiness implements BaseBusiness<Video> {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly=true)
     public Video recuperarPorId(int id) {
         return videoDAO.selectOne(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly=true)
     public List<Video> recuperarTodos() {
         return videoDAO.selectAll();
     }

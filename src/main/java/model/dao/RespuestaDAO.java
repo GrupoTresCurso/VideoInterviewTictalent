@@ -12,33 +12,33 @@ import java.util.List;
 public class RespuestaDAO implements BaseDAO<Respuesta> {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager manager;
 
     @Override
     public void insert(Respuesta respuesta) {
-        entityManager.persist(respuesta);
+        manager.merge(respuesta);
     }
 
     @Override
     public Respuesta selectOne(int id) {
-        return entityManager.find(Respuesta.class, id);
+        return manager.find(Respuesta.class, id);
     }
 
     @Override
     public List<Respuesta> selectAll() {
         String sql = "SELECT respuesta FROM beans.Respuesta respuesta";
-        Query query = entityManager.createQuery(sql);
+        Query query = manager.createQuery(sql);
 
         return query.getResultList();
     }
 
     @Override
     public void update(Respuesta respuesta) {
-        entityManager.merge(respuesta);
+        manager.merge(respuesta);
     }
 
     @Override
     public void delete(int id) {
-        entityManager.remove(entityManager.find(Respuesta.class, id));
+        manager.remove(manager.find(Respuesta.class, id));
     }
 }

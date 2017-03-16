@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +24,7 @@
                 <td><a href="principal.html" class="linkMenu">Principal</a></td>
                 <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
                 <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
-                <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
+                <td><a href="entrevista_index.jsp" class="linkMenu">Entrevista</a></td>
                 <td><a href="video.html" class="linkMenu">Video</a></td>
             </tr>
         </table>
@@ -36,19 +42,29 @@
             </tr>
             <tr>
                 <td>
+<<<<<<< HEAD:web/cargar_video.html
                     <a href="cargar_video.html">
                         <img class="imagenP" src="icons/file.png" width="50px" height="50px"/>
+=======
+                    <a href="cargar_video.jsp">
+                        <img src="icons/file.png" width="50px" height="50px"/>
+>>>>>>> 6d64a9b95d1d59cb376142728a6902e1ecba9198:web/cargar_video.jsp
                     </a>
                 </td>
-                <td><a href="cargar_video.html">Cargar vídeo</a></td>
-                </a></tr>
+                <td><a href="cargar_video.jsp">Cargar vídeo</a></td>
+            </tr>
         </table>
     </aside>
     <section>
+<<<<<<< HEAD:web/cargar_video.html
 
         <form id="formSubirVideo">
+=======
+        <h4>Arrastrar y soltar vídeo</h4><br/>
+        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST" enctype="multipart/form-data"  modelAttribute="listaVideos">
+>>>>>>> 6d64a9b95d1d59cb376142728a6902e1ecba9198:web/cargar_video.jsp
             <td rowspan="3" id="celdaImagen" class="celdaColumna2">
-                <input type="file" id="file" onchange="processFiles(this.files)"/>
+                <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
                 <label for="file">
                     <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
                         <h1 id="divArrastrar">Arrastrar y soltar vídeo</h1>

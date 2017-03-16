@@ -16,7 +16,7 @@ public class FormularioDAO implements BaseDAO<Formulario> {
     private EntityManager manager;
 
     public void insert(Formulario formulario) {
-        manager.persist(formulario);
+        manager.merge(formulario);
     }
 
     public Formulario selectOne(int id) {

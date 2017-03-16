@@ -12,32 +12,32 @@ import java.util.List;
 public class VideoDAO implements BaseDAO<Video> {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private EntityManager manager;
 
     @Override
     public void insert(Video video) {
-        entityManager.persist(video);
+        manager.merge(video);
     }
 
     @Override
     public Video selectOne(int id) {
-        return entityManager.find(Video.class, id);
+        return manager.find(Video.class, id);
     }
 
     @Override
     public List<Video> selectAll() {
         String sql = "SELECT video FROM beans.Video video";
-        Query query = entityManager.createQuery(sql);
+        Query query = manager.createQuery(sql);
         return query.getResultList();
     }
 
     @Override
     public void update(Video video) {
-        entityManager.merge(video);
+        manager.merge(video);
     }
 
     @Override
     public void delete(int id) {
-        entityManager.remove(entityManager.find(Video.class, id));
+        manager.remove(manager.find(Video.class, id));
     }
 }

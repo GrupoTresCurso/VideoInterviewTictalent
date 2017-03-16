@@ -13,16 +13,16 @@ import java.util.List;
 public class EntrevistaDAO implements BaseDAO<Entrevista>{
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private EntityManager manager;
 
     @Override
     public void insert(Entrevista entrevista) {
-        entityManager.merge(entrevista);
+        manager.merge(entrevista);
     }
 
     @Override
     public Entrevista selectOne(int id) {
-        return entityManager.find(Entrevista.class,id);
+        return manager.find(Entrevista.class,id);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class EntrevistaDAO implements BaseDAO<Entrevista>{
         List<Entrevista> listaEntrevistas=new ArrayList<>();
         try {
             String sql = "SELECT entrevista FROM beans.Entrevista entrevista";
-            Query query = entityManager.createQuery(sql);
+            Query query = manager.createQuery(sql);
             listaEntrevistas = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,13 +41,13 @@ public class EntrevistaDAO implements BaseDAO<Entrevista>{
 
     @Override
     public void update(Entrevista entrevista) {
-        entityManager.merge(entrevista);
+        manager.merge(entrevista);
 
     }
 
     @Override
     public void delete(int id) {
-        Entrevista entrevistaDDBB=entityManager.find(Entrevista.class,id);
-        entityManager.remove(entrevistaDDBB);
+        Entrevista entrevistaDDBB= manager.find(Entrevista.class,id);
+        manager.remove(entrevistaDDBB);
     }
 }

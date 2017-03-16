@@ -21,7 +21,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
             </props>
         </property>
@@ -36,6 +36,7 @@
     <context:component-scan base-package="model.business"/>
     <context:component-scan base-package="model.dao"/>
     <context:component-scan base-package="beans"/>
+    <context:component-scan base-package="utils"/>
     <mvc:annotation-driven/>
 
     <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
