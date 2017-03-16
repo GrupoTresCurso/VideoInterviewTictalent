@@ -20,6 +20,7 @@ import utils.UtilServer;
 
 import java.io.File;
 
+
 @Controller
 public class VideoController implements BaseController {
 
@@ -42,12 +43,12 @@ public class VideoController implements BaseController {
         return new ResponseEntity<>(resource, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/subir.do",method= RequestMethod.GET)
+    @RequestMapping(value="/subirVideo.do",method= RequestMethod.POST)
     public String subirVideo(@ModelAttribute("listaVideos")ListaArchivos listaVideos) {
         MultipartFile multipartFile = listaVideos.getArchivos().get(0);
         String nombreAleatorio = utilServer.crearNombreAleatorio();
         utilServer.subirMultipart(multipartFile, nombreAleatorio);
-        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,-1,"");
+        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,-1,"Aun no seleccionado");
         videoBusiness.crearNuevo(video);
         return CARGAR_VIDEO;
     }

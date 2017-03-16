@@ -35,7 +35,7 @@
             <tr>
                 <td>
                     <a href="grabar_video.html">
-                        <img src="icons/webcam.png" width="50px" height="50px"/>
+                        <img class="imagenP" src="icons/webcam.png" width="50px" height="50px"/>
                     </a>
                 </td>
                 <td><a href="grabar_video.html">Crear vídeo</a></td>
@@ -52,11 +52,14 @@
     </aside>
     <section>
         <h4>Arrastrar y soltar vídeo</h4><br/>
-        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="GET" enctype="multipart/form-data" modelAttribute="listaVideos">
+
+        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST" enctype="multipart/form-data"  modelAttribute="listaVideos">
             <td rowspan="3" id="celdaImagen" class="celdaColumna2">
                 <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
                 <label for="file">
                     <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+                        <h1 id="divArrastrar">Arrastrar y soltar vídeo</h1>
+                        <img class="imagenP" src="images/upload.png" width="100px" height="100px">
                     </div>
                 </label>
                 <input type="submit"  value="Guardar" class="botonGuardar"/>
@@ -74,10 +77,16 @@
             //output.style.backgroundImage = "url('" + e.target.result + "')";
             output.style.backgroundImage = "url('')";   //resetea fondo
             if(file.type == "video/mp4"){
-                output.innerHTML =  "<img src='images/mp4.png' width='80px' height='80px'/> " +
+                output.innerHTML =  "<img src='images/mp4.png' width='100px' height='100px'/> " +
+                    "<p id='nombreArchivo'>"+file.name+"</p>";
+            }else if(file.type == "video/avi"){
+                output.innerHTML =  "<img src='images/avi.png' width='100px' height='100px'/> " +
+                    "<p id='nombreArchivo'>"+file.name+"</p>";
+            }else if(file.type == "video/mov"){
+                output.innerHTML =  "<img src='images/mov.png' width='100px' height='100px'/> " +
                     "<p id='nombreArchivo'>"+file.name+"</p>";
             }else{
-                output.innerHTML =  "<img src='images/video_file.png' width='80px' height='80px'/> " +
+                output.innerHTML =  "<img src='images/video_file.png' width='100px' height='100px'/> " +
                     "<p id='nombreArchivo'>"+file.name+"</p>";
             }
         };

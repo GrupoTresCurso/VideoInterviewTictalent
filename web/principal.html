@@ -21,31 +21,23 @@
         <div id="principal">
             <h1>Video Interview</h1>
             <h3>Este sistema te permite la creacción de entrevistas, a través de un sencillo constructor con el que puedes añadir distintos tipos de secciones y elementos.</h3>
-            <div id="listaEntrevistasDiv">
-                <ul class="listaEntrevistas">
-                    <li>
-                        <a href="#">
-                            <div class="listaEntrevistasContent">
-                                <h2 class="listaEntrevistasMain">Entrevista 1</h2>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="listaEntrevistasContent">
-                                <h2 class="listaEntrevistasMain">Entrevista 2</h2>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="listaEntrevistasContent">
-                                <h2 class="listaEntrevistasMain">Entrevista 3</h2>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+            <div id="listadoEntrevistas">
+                <table id="tableEntrevista">
+                    <tr>
+                        <td>
+                            <div class="entrevista" id="entrevista1" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 1</div>
+                        </td>
+                        <td>
+                            <div class="entrevista" id="entrevista2" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 2</div>
+                        </td>
+                        <td>
+                            <div class="entrevista" id="entrevista3" onclick="seleccionar(this.className, this.id)"><img src="images/fileE.png" width="45px" height="45px"/>Entrevista 3</div>
+                        </td>
+                    </tr>
+                </table>
+
             </div>
+
         </div>
     </section>
 
