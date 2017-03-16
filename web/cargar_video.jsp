@@ -52,7 +52,7 @@
     </aside>
     <section>
         <h4>Arrastrar y soltar vídeo</h4><br/>
-        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subir.do" method="GET" enctype="multipart/form-data"  modelAttribute="listaVideos">
+        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST" enctype="multipart/form-data"  modelAttribute="listaVideos">
             <td rowspan="3" id="celdaImagen" class="celdaColumna2">
                 <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
                 <label for="file">

@@ -19,6 +19,7 @@ import utils.UtilServer;
 
 import java.io.File;
 
+
 public class VideoController implements BaseController {
 
     private static final String BASE_PATH = BaseUtil.RUTA_FICHEROS + BaseUtil.CARPETA_VIDEOS;
@@ -41,7 +42,7 @@ public class VideoController implements BaseController {
         return responseEntity;
     }
 
-    @RequestMapping(value="/subir.do",method= RequestMethod.GET)
+    @RequestMapping(value="/subirVideo.do",method= RequestMethod.POST)
     public String subirVideo(@ModelAttribute("listaVideos")ListaArchivos listaVideos) {
         MultipartFile multipartFile = listaVideos.getArchivos().get(0);
         String nombreAleatorio = utilServer.crearNombreAleatorio();
