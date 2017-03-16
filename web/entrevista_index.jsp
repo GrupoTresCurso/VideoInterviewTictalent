@@ -30,7 +30,7 @@
     <div id="cuerpo">
         <h3>Generar Entrevista:</h3><br/>
         <a href="entrevista_clonar.jsp"><div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/>Clonar Entrevista</div></a><br/>
-        <a href="entrevista_nueva.html"><div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/>Nueva Entrevista</div></a><br/>
+        <a href="prueba_entrevista_nueva.html"><div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/>Nueva Entrevista</div></a><br/>
 
     </div>
 
