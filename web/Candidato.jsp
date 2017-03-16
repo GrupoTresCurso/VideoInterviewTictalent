@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +24,7 @@
                 <td><a href="principal.html" class="linkMenu">Principal</a></td>
                 <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
                 <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
-                <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
+                <td><a href="entrevista_index.jsp" class="linkMenu">Entrevista</a></td>
                 <td><a href="video.html" class="linkMenu">Video</a></td>
             </tr>
         </table>
@@ -43,20 +43,6 @@
                                 value="${candidato.nombre}"/></a></td>
                 </tr>
             </c:forEach>
-            <!--<tr>
-                <td>
-                    <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px"
-                         height="50px"/>
-                </td>
-                <td>María Rodríguez</td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="http://gruporivas.com.mx/wp-content/uploads/2015/07/C3tK-qgN_400x400.jpeg" width="50px"
-                         height="50px"/>
-                </td>
-                <td>Luis Hernández</td>
-            </tr>-->
         </table>
     </aside>
     <section>

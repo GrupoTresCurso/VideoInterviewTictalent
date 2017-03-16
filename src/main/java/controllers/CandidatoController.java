@@ -27,25 +27,25 @@ public class CandidatoController implements BaseController {
     public void guardarCandidato(@ModelAttribute("candidato") Candidato candidato,HttpServletResponse response) {
         candidatoBusiness.actualizar(candidato);
         try {
-            response.sendRedirect( "recuperarLista.do");
+            response.sendRedirect( "recuperarCandidatos.do");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @RequestMapping(value = "/recuperarLista.do",method = RequestMethod.GET)
-    public String recuperarLista(HttpSession session){
+    @RequestMapping(value = "/recuperarCandidatos.do",method = RequestMethod.GET)
+    public String recuperarCandidatos(HttpSession session){
         ArrayList<Candidato> listaCandidatos= (ArrayList<Candidato>) candidatoBusiness.recuperarTodos();
         session.setAttribute("listaCandidatos",listaCandidatos);
         session.setAttribute("candidato",null);
-        return "Candidato";
+        return "candidato";
     }
 
     @RequestMapping(value = "/recuperarCandidato.do",method = RequestMethod.GET)
     public String recuperarCandidato(@RequestParam(value="idCandidato",required=true) int id,HttpSession session, HttpServletResponse response){
         Candidato candidato=candidatoBusiness.recuperarPorId(id);
         session.setAttribute("candidato",candidato);
-        return "Candidato";
+        return "candidato";
     }
 
 }
