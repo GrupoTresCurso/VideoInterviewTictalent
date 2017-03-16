@@ -41,4 +41,10 @@ public class EntrevistaController implements BaseController {
         }
     }
 
+    @RequestMapping(value = "/recuperar.do", method = RequestMethod.GET)
+    public void recuperar(HttpSession session) {
+
+    }
+
+
 }
