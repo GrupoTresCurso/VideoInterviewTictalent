@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,9 +9,9 @@
 <html>
 <head>
     <title>VideoInterview</title>
-    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista.css">
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista"/>>
+    <link rel="stylesheet" href=<sptag:message code="fonts_route"/>>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
@@ -18,40 +19,40 @@
     <nav>
         <table id="tableMenu">
             <tr>
-                <td><a href="principal.html" class="linkMenu">Principal</a></td>
-                <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
-                <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
-                <td><a href="entrevista_index.jsp" class="linkMenu">Entrevista</a></td>
-                <td><a href="video.html" class="linkMenu">Video</a></td>
+                <td><a href="principal.html" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
+                <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
+                <td><a href="formulario.html" class="linkMenu"><sptag:message code="menu_opc3"/></a></td>
+                <td><a href="entrevista_index.jsp" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
+                <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
             </tr>
         </table>
     </nav>
     <!--<p ondblclick="myFunction()">Double-click me</p>-->
     <div id="cuerpo">
-        <h3>Clonar Entrevista:</h3><br/>
+        <h3><sptag:message code="label_clonar_entrevista"/></h3><br/>
         <table id="tableEntrevista">
             <tr>
                 <c:forEach var="entrevista" items="${listaEntrevistas}">
                     <td>
                         <div class="entrevista" id="${entrevista.idEntrevista}"
                              onclick="seleccionar(this.className, this.id)"><img
-                                src="images/fileE.png" width="45px" height="45px"/>${entrevista.nombreEntrevista}
+                                width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>${entrevista.nombreEntrevista}
                         </div>
                     </td>
                 </c:forEach>
                 <td>
                     <div class="entrevista" id="entrevista1" onclick="seleccionar(this.className, this.id)"><img
-                            src="images/fileE.png" width="45px" height="45px"/>Entrevista 1
+                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 1
                     </div>
                 </td>
                 <td>
                     <div class="entrevista" id="entrevista2" onclick="seleccionar(this.className, this.id)"><img
-                            src="images/fileE.png" width="45px" height="45px"/>Entrevista 2
+                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 2
                     </div>
                 </td>
                 <td>
                     <div class="entrevista" id="entrevista3" onclick="seleccionar(this.className, this.id)"><img
-                            src="images/fileE.png" width="45px" height="45px"/>Entrevista 3
+                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 3
                     </div>
                 </td>
             </tr>
@@ -62,10 +63,10 @@
                 <table class="tableElementoText">
                     <tr>
                         <td class="celda">
-                            <input type="text" name="nombre" placeholder="Introduzca nombre de entrevista" size="35"/>
+                            <input type="text" name="nombre" size="35" placeholder=<sptag:message code="placeholder_nombre_entrevista"/>/>
                         </td>
                         <td id="celdaBotonGuardar">
-                            <input type="submit" value="Guardar" class="botonGuardar" id="botonGuardar"/>
+                            <input type="submit" value=<sptag:message code="button_guardar"/> class="botonGuardar" id="botonGuardar"/>
                         </td>
                     </tr>
                 </table>

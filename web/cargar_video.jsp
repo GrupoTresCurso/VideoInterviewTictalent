@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -7,13 +8,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoInterview</title>
+    <title><sptag:message code="app_title"/></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_video.css">
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_video"/>>
+    <link  rel="stylesheet" href=<sptag:message code="fonts_route"/>>
 
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile1.4.5.min.js"></script>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
@@ -21,57 +21,47 @@
     <nav>
         <table id="tableMenu">
             <tr>
-                <td><a href="principal.html" class="linkMenu">Principal</a></td>
-                <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
-                <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
-                <td><a href="entrevista_index.jsp" class="linkMenu">Entrevista</a></td>
-                <td><a href="video.html" class="linkMenu">Video</a></td>
+                <td><a href="principal.html" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
+                <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
+                <td><a href="formulario.html" class="linkMenu"><sptag:message code="menu_opc3"/></a></td>
+                <td><a href="entrevista_index.jsp" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
+                <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
             </tr>
         </table>
     </nav>
     <aside>
-        <h4>Opciones de vídeo</h4>
+        <h4><sptag:message code="label_opc_video"/></h4>
         <table id="tableOpcionesVideo">
             <tr>
                 <td>
                     <a href="grabar_video.html">
-                        <img class="imagenP" src="icons/webcam.png" width="50px" height="50px"/>
+                        <img class="imagenP" width="50px" height="50px"src=<sptag:message code="src_webcam"/>/>
                     </a>
                 </td>
-                <td><a href="grabar_video.html">Crear vídeo</a></td>
+                <td><a href="grabar_video.html"><sptag:message code="label_crear_video"/></a></td>
             </tr>
             <tr>
                 <td>
-<<<<<<< HEAD:web/cargar_video.html
-                    <a href="cargar_video.html">
-                        <img class="imagenP" src="icons/file.png" width="50px" height="50px"/>
-=======
                     <a href="cargar_video.jsp">
-                        <img src="icons/file.png" width="50px" height="50px"/>
->>>>>>> 6d64a9b95d1d59cb376142728a6902e1ecba9198:web/cargar_video.jsp
+                        <img class="imagenP" width="50px" height="50px" src=<sptag:message code="src_file"/>/>
                     </a>
                 </td>
-                <td><a href="cargar_video.jsp">Cargar vídeo</a></td>
+                <td><a href="cargar_video.jsp"><sptag:message code="label_cargar_video"/></a></td>
             </tr>
         </table>
     </aside>
     <section>
-<<<<<<< HEAD:web/cargar_video.html
-
-        <form id="formSubirVideo">
-=======
-        <h4>Arrastrar y soltar vídeo</h4><br/>
+        <h4><sptag:message code="label_arrastrar_video"/></h4><br/>
         <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST" enctype="multipart/form-data"  modelAttribute="listaVideos">
->>>>>>> 6d64a9b95d1d59cb376142728a6902e1ecba9198:web/cargar_video.jsp
             <td rowspan="3" id="celdaImagen" class="celdaColumna2">
                 <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
                 <label for="file">
                     <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
-                        <h1 id="divArrastrar">Arrastrar y soltar vídeo</h1>
-                        <img class="imagenP" src="images/upload.png" width="100px" height="100px">
+                        <h1 id="divArrastrar"><sptag:message code="label_arrastrar_video"/></h1>
+                        <img class="imagenP" width="100px" height="100px" src=<sptag:message code="src_img_upload"/>>
                     </div>
                 </label>
-                <input type="submit"  value="Guardar" class="botonGuardar"/>
+                <input type="submit" value=src=<sptag:message code="button_guardar"/> class="botonGuardar"/>
         </form>
     </section>
 
