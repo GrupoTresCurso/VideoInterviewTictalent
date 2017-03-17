@@ -44,7 +44,7 @@ public class ArchivoController implements BaseController {
     @RequestMapping(value= "/subirArchivo.do",method= RequestMethod.GET)
     public String subirVideo(@ModelAttribute("listaVideos") ListaArchivos listaVideos) {
         MultipartFile multipartFile = listaVideos.getArchivos().get(0);
-        String nombreAleatorio = utilServer.getNombreAleatorio();
+        String nombreAleatorio = utilServer.crearNombreAleatorio();
         utilServer.subirMultipart(multipartFile, nombreAleatorio);
         Archivo archivo = utilMultipart.obtenerArchivo(multipartFile, nombreAleatorio);
         archivoBusiness.crearNuevo(archivo);
