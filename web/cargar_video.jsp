@@ -43,11 +43,7 @@
             <tr>
                 <td>
                     <a href="cargar_video.jsp">
-<<<<<<< HEAD
                         <img class="imagenP" width="50px" height="50px" src=<sptag:message code="src_file"/>/>
-=======
-                        <img src="icons/file.png" width="50px" height="50px"/>
->>>>>>> 5521e0886f71499ea47a34868f342820abdd6ad4
                     </a>
                 </td>
                 <td><a href="cargar_video.jsp"><sptag:message code="label_cargar_video"/></a></td>
@@ -55,12 +51,7 @@
         </table>
     </aside>
     <section>
-<<<<<<< HEAD
         <h4><sptag:message code="label_arrastrar_video"/></h4><br/>
-=======
-        <h4>Arrastrar y soltar vídeo</h4><br/>
-
->>>>>>> 5521e0886f71499ea47a34868f342820abdd6ad4
         <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST" enctype="multipart/form-data"  modelAttribute="listaVideos">
             <td rowspan="3" id="celdaImagen" class="celdaColumna2">
                 <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>

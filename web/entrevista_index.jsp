@@ -29,15 +29,9 @@
     </nav>
 
     <div id="cuerpo">
-<<<<<<< HEAD
         <h3><sptag:message code="label_generar_entrevista"/></h3><br/>
         <a href="entrevista_clonar.jsp"><div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/><sptag:message code="label_clonar_entrevista"/></div></a><br/>
         <a href="prueba_entrevista_nueva.html"><div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message code="label_nueva_entrvista"/></div></a><br/>
-=======
-        <h3>Generar Entrevista:</h3><br/>
-        <a href="entrevista_clonar.jsp"><div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/>Clonar Entrevista</div></a><br/>
-        <a href="entrevista_nueva.jsp"><div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/>Nueva Entrevista</div></a><br/>
->>>>>>> 5521e0886f71499ea47a34868f342820abdd6ad4
 
     </div>
 
