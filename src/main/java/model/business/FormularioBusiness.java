@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Formulario;
+import beans.entities.Formulario;
 import model.dao.FormularioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

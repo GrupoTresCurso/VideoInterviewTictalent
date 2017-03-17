@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Candidato;
+import beans.entities.Candidato;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,14 +19,14 @@ public class CandidatoDAO implements BaseDAO<Candidato> {
     }
 
     public Candidato selectOne(int id) {
-        String prepareQuery = "select candidato from beans.Candidato candidato where idCandidato = :id";
+        String prepareQuery = "select candidato from beans.entities.Candidato candidato where idCandidato = :id";
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("id", id);
         return (Candidato) query.getSingleResult();
     }
 
     public List<Candidato> selectAll() {
-        String prepareQuery = "select candidato from beans.Candidato candidato";
+        String prepareQuery = "select candidato from beans.entities.Candidato candidato";
         Query query = manager.createQuery(prepareQuery);
         return query.getResultList();
     }

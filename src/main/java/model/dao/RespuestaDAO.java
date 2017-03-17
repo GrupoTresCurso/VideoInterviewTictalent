@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Respuesta;
+import beans.entities.Respuesta;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -26,7 +26,7 @@ public class RespuestaDAO implements BaseDAO<Respuesta> {
 
     @Override
     public List<Respuesta> selectAll() {
-        String sql = "SELECT respuesta FROM beans.Respuesta respuesta";
+        String sql = "SELECT respuesta FROM beans.entities.Respuesta respuesta";
         Query query = manager.createQuery(sql);
 
         return query.getResultList();

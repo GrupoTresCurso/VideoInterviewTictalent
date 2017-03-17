@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Video;
+import beans.entities.Video;
 import model.dao.VideoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

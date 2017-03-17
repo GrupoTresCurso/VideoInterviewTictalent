@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Pregunta;
+import beans.entities.Pregunta;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -24,7 +24,7 @@ public class PreguntaDAO implements BaseDAO<Pregunta> {
 
     public List<Pregunta> selectAll() {
 
-        String sql = "SELECT pregunta FROM beans.Pregunta pregunta";
+        String sql = "SELECT pregunta FROM beans.entities.Pregunta pregunta";
         Query query = manager.createQuery(sql);
 
         return query.getResultList();

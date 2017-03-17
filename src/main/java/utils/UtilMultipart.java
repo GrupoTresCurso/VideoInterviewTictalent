@@ -1,7 +1,7 @@
 package utils;
 
-import beans.Archivo;
-import beans.Video;
+import beans.entities.Archivo;
+import beans.entities.Video;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

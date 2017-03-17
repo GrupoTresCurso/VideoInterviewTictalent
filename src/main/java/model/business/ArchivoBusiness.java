@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Archivo;
+import beans.entities.Archivo;
 
 import model.dao.ArchivoDAO;
 import org.springframework.beans.factory.annotation.Autowired;

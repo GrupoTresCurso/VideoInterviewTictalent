@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Candidato;
+import beans.entities.Candidato;
 import model.dao.CandidatoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

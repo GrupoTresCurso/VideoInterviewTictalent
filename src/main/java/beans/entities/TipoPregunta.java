@@ -1,4 +1,4 @@
-package beans;
+package beans.entities;
 
 public interface TipoPregunta {
 
