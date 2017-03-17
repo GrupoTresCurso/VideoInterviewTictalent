@@ -114,21 +114,22 @@
     <details>
         <summary>Candidatos</summary>
         <table>
-            <tr>
-                <td>
-                    <div draggable="true" class="entrevista" id="candidatos1" ondragstart="start(event)"
-                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                        <div class="contenedorIcono">
-                            <img src="images/user.png" width="45px" height="45px"/>
-                            <p>Candidatos 1</p>
+            <c:forEach var="candidato" items="${candidatos}">
+                <tr>
+                    <td>
+                        <div draggable="true" class="entrevista" id="candidatos1" ondragstart="start(event)"
+                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
+                            <div class="contenedorIcono">
+                                <img src="images/user.png" width="45px" height="45px"/>
+                                <p>${candidato.nombre}</p>
+                            </div>
+                            <div class="elemento">
+                                <img src="images/user.png" width="45px" height="45px"/>
+                            </div>
                         </div>
-                        <div class="elemento">
-                            <img src="images/user.png" width="45px" height="45px"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
     </details>
 </aside>

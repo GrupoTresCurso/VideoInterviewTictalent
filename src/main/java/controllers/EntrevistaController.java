@@ -32,6 +32,10 @@ public class EntrevistaController implements BaseController {
     private BaseBusiness<Formulario> formularioBusiness;
 
     @Autowired
+    @Qualifier("CandidatoBusiness")
+    private BaseBusiness<Candidato> candidatoBusiness;
+
+    @Autowired
     @Qualifier("UtilBusiness")
     private BaseUtilBusiness baseUtilBusiness;
 
@@ -61,10 +65,12 @@ public class EntrevistaController implements BaseController {
         List<Video> videosPreguntas = baseUtilBusiness.recuperarPorTipo("videoPregunta");
         List<Video> videosTransiciones = baseUtilBusiness.recuperarPorTipo("videoTransicion");
         List<Formulario> formularios = formularioBusiness.recuperarTodos();
+        List<Candidato> candidatos=candidatoBusiness.recuperarTodos();
         session.setAttribute("videosIntroductorios", videosIntroductorios);
         session.setAttribute("videosPreguntas", videosPreguntas);
         session.setAttribute("videosTransiciones", videosTransiciones);
         session.setAttribute("formularios", formularios);
+        session.setAttribute("candidatos",candidatos);
         return ENTREVISTA_NUEVA;
     }
 
