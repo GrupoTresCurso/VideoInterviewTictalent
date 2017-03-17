@@ -30,77 +30,85 @@
     <details>
         <summary>Videos introductorios</summary>
         <table>
-            <tr>
-                <td>
-                    <div draggable="true" class="entrevista" id="videoIntro1" ondragstart="start(event)"
-                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                        <div class="contenedorIcono">
-                            <img src="images/movie.png" width="45px" height="45px"/>
-                            <p>Video Intro 1</p>
+            <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
+                <tr>
+                    <td>
+                        <div draggable="true" class="entrevista" id="videoIntro1" ondragstart="start(event)"
+                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
+                            <div class="contenedorIcono">
+                                <img src="images/movie.png" width="45px" height="45px"/>
+                                <p>${videoIntroductorio.nombreVideo}</p>
+                            </div>
+                            <div class="elemento">
+                                <img src="images/movie.png" width="45px" height="45px"/>
+                            </div>
                         </div>
-                        <div class="elemento">
-                            <img src="images/movie.png" width="45px" height="45px"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
     </details>
     <details>
         <summary>Formularios</summary>
         <table>
-            <tr>
-                <td>
-                    <div draggable="true" class="entrevista" id="formulario1" ondragstart="start(event)"
-                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                        <div class="contenedorIcono">
-                            <img src="images/form.png" width="45px" height="45px"/>
-                            <p>Formulario 1</p>
+            <c:forEach var="formulario" items="${formularios}">
+                <tr>
+                    <td>
+                        <div draggable="true" class="entrevista" id="formulario1" ondragstart="start(event)"
+                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
+                            <div class="contenedorIcono">
+                                <img src="images/form.png" width="45px" height="45px"/>
+                                <p>${formulario.nombreFormulario}</p>
+                            </div>
+                            <div class="elemento">
+                                <img src="images/form.png" width="45px" height="45px"/>
+                            </div>
                         </div>
-                        <div class="elemento">
-                            <img src="images/form.png" width="45px" height="45px"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
     </details>
     <details>
         <summary>Preguntas tipo vídeo</summary>
         <table>
-            <tr>
-                <td>
-                    <div draggable="true" class="entrevista" id="videoPregunta1" ondragstart="start(event)"
-                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                        <div class="contenedorIcono">
-                            <img src="images/webcam.png" width="45px" height="45px"/>
-                            <p>Pregunta Vídeo 1</p>
+            <c:forEach var="videoPregunta" items="${videosPreguntas}">
+                <tr>
+                    <td>
+                        <div draggable="true" class="entrevista" id="videoPregunta1" ondragstart="start(event)"
+                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
+                            <div class="contenedorIcono">
+                                <img src="images/webcam.png" width="45px" height="45px"/>
+                                <p>${videoPregunta.nombreVideo}</p>
+                            </div>
+                            <div class="elemento">
+                                <img src="images/webcam.png" width="45px" height="45px"/>
+                            </div>
                         </div>
-                        <div class="elemento">
-                            <img src="images/webcam.png" width="45px" height="45px"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
     </details>
     <details>
         <summary>Videos transición</summary>
         <table>
-            <tr>
-                <td>
-                    <div draggable="true" class="entrevista" id="videoTransicion1" ondragstart="start(event)"
-                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                        <div class="contenedorIcono">
-                            <img src="images/movie.png" width="45px" height="45px"/>
-                            <p>Video Transicion 1</p>
+            <c:forEach var="videoTransicion" items="${videosTransiciones}">
+                <tr>
+                    <td>
+                        <div draggable="true" class="entrevista" id="videoTransicion1" ondragstart="start(event)"
+                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
+                            <div class="contenedorIcono">
+                                <img src="images/movie.png" width="45px" height="45px"/>
+                                <p>${videoTransicion.nombreVideo}</p>
+                            </div>
+                            <div class="elemento">
+                                <img src="images/movie.png" width="45px" height="45px"/>
+                            </div>
                         </div>
-                        <div class="elemento">
-                            <img src="images/movie.png" width="45px" height="45px"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
     </details>
     <details>
@@ -128,7 +136,6 @@
 <table>
     <tr>
         <td id="medio">
-
             <section>
                 <div id="superior">
                     <div id="guia">
@@ -251,7 +258,7 @@
             tr.appendChild(elementoGuia);
 
             /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +
-                "<p>Video Intro 1</p>";*/
+             "<p>Video Intro 1</p>";*/
 
             contador++;
         }
@@ -281,7 +288,7 @@
         }
     }
 
-    function dropPapelera(e){
+    function dropPapelera(e) {
         elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data")); // Elemento arrastrado
         elementoArrastrado.parentNode.removeChild(elementoArrastrado); // Elimina el elemento
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
