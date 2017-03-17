@@ -11,5 +11,6 @@ public interface BaseController {
     String PANEL_ADMIN = "panel_administrador";
     String PAGINA_PRINCIPAL = "principal";
     String LOGIN_USUARIO = "login";
+    String CREAR_USUARIO="crear_usuario";
 
 }

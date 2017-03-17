@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-
 @Controller("UsuarioController")
 public class UsuarioController implements BaseController {
 
@@ -38,4 +37,24 @@ public class UsuarioController implements BaseController {
         return LOGIN_USUARIO;
     }
 
+    @RequestMapping(value = "/crearUsuario.do", method = RequestMethod.POST)
+    public String crearUsuario(@RequestParam(value="nombreUsuario") String nombreUsuario,@RequestParam(value="password") String password,@RequestParam(value="rol") String rol) {
+        Usuario usuario;
+        switch (rol) {
+            case "administrador":
+                usuario = new Usuario(nombreUsuario, password, true, false, false, false);
+                break;
+            case "reclutador":
+                usuario = new Usuario(nombreUsuario, password, false, true, false, false);
+                break;
+            case "responsableContratacion":
+                usuario = new Usuario(nombreUsuario, password, false, false, true, false);
+                break;
+            default:
+                usuario = new Usuario(nombreUsuario, password, false, false, false, true);
+                break;
+        }
+        usuarioBusiness.crearNuevo(usuario);
+        return CREAR_USUARIO;
+    }
 }
