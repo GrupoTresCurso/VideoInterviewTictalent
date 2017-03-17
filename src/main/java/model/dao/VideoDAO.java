@@ -40,4 +40,14 @@ public class VideoDAO implements BaseDAO<Video> {
     public void delete(int id) {
         manager.remove(manager.find(Video.class, id));
     }
+
+
+    public List<Video> selectByType(String typeVideo){
+        List<Video> videosEncontradas = null;
+        String sql = "SELECT video FROM beans.Video video WHERE video.tipoVideo LIKE :tipo ";
+        Query query = manager.createQuery(sql);
+        query.setParameter("tipo", "%"+typeVideo+"%");
+        videosEncontradas=query.getResultList();
+        return videosEncontradas;
+    }
 }

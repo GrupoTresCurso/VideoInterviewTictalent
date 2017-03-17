@@ -45,4 +45,10 @@ public class VideoBusiness implements BaseBusiness<Video> {
     public void actualizar(Video video) {
         videoDAO.update(video);
     }
+
+    @Transactional(readOnly=true)
+    public List<Video> recuperarPorTipo(String tipo) {
+        return videoDAO.selectByType(tipo);
+    }
+
 }

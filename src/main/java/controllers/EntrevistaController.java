@@ -2,7 +2,10 @@ package controllers;
 
 import beans.Candidato;
 import beans.Entrevista;
+import beans.Formulario;
+import beans.Video;
 import model.business.BaseBusiness;
+import model.business.VideoBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller("EntrevistaController")
 public class EntrevistaController implements BaseController {
@@ -22,11 +26,19 @@ public class EntrevistaController implements BaseController {
     @Qualifier("EntrevistaBusiness")
     private BaseBusiness<Entrevista> entrevistaBusiness;
 
+    @Autowired
+    @Qualifier("FormularioBusiness")
+    private BaseBusiness<Formulario> formularioBusiness;
+
+    @Autowired
+    @Qualifier("VideoBusiness")
+    private BaseBusiness<Video> videoBusiness;
+
     @RequestMapping(value = "/recuperarEntrevistas.do", method = RequestMethod.GET)
     public String recuperarEntrevistas(HttpSession session) {
         ArrayList<Entrevista> listaEntrevistas= (ArrayList<Entrevista>) entrevistaBusiness.recuperarTodos();
         session.setAttribute("listaEntrevistas",listaEntrevistas);
-        return "entrevista_clonar";
+        return ENTREVISTA_CLONAR;
     }
 
     @RequestMapping(value = "/clonarEntrevista.do", method = RequestMethod.GET)
@@ -40,11 +52,19 @@ public class EntrevistaController implements BaseController {
             e.printStackTrace();
         }
     }
-
-    @RequestMapping(value = "/recuperar.do", method = RequestMethod.GET)
-    public void recuperar(HttpSession session) {
-
+    /*
+    @RequestMapping(value = "/recuperarVideosFormularios.do", method = RequestMethod.GET)
+    public String recuperar(HttpSession session) {
+        List<Video> videosIntroductorios=((VideoBusiness)videoBusiness).recuperarPorTipo("videoIntroductorio");
+        List<Video> videosPreguntas=((VideoBusiness)videoBusiness).recuperarPorTipo("videoPregunta");
+        List<Video> videosTransiciones=((VideoBusiness)videoBusiness).recuperarPorTipo("videoTransicion");
+        List<Formulario> formularios=formularioBusiness.recuperarTodos();
+        session.setAttribute("videosIntroductorios",videosIntroductorios);
+        session.setAttribute("videosPreguntas",videosPreguntas);
+        session.setAttribute("videosTransiciones",videosTransiciones);
+        session.setAttribute("formularios",formularios);
+        return ENTREVISTA_NUEVA;
     }
-
+    */
 
 }
