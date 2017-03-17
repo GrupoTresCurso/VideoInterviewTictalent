@@ -12,7 +12,7 @@ public class UtilMultipart implements BaseUtil {
     public Archivo obtenerArchivo(MultipartFile multipartFile, String nombreAleatorio) {
         String nombreOriginalArchivo = multipartFile.getOriginalFilename();
         String extension = FilenameUtils.getExtension(nombreOriginalArchivo);
-        String rutaEnFicheros = RUTA_FICHEROS + CARPETA_DOCS + nombreAleatorio + "." + extension;
+        String rutaEnFicheros = SERVLET_EXTENSION_ARCHIVO + nombreAleatorio + "." + extension;
         return new Archivo(nombreOriginalArchivo, rutaEnFicheros);
     }
 
