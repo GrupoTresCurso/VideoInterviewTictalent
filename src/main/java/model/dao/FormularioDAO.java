@@ -19,14 +19,14 @@ public class FormularioDAO implements BaseDAO<Formulario> {
     }
 
     public Formulario selectOne(int id) {
-        String prepareQuery = "select formulario from beans.Formulario formulario where idFormulario = :id";
+        String prepareQuery = "select formulario from beans.entities.Formulario formulario where idFormulario = :id";
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("id", id);
         return (Formulario) query.getSingleResult();
     }
 
     public List<Formulario> selectAll() {
-        String prepareQuery = "select formulario from beans.Formulario formulario";
+        String prepareQuery = "select formulario from beans.entities.Formulario formulario";
         Query query = manager.createQuery(prepareQuery);
         return query.getResultList();
     }

@@ -26,7 +26,7 @@ public class VideoDAO implements BaseDAO<Video> {
 
     @Override
     public List<Video> selectAll() {
-        String sql = "SELECT video FROM beans.Video video";
+        String sql = "SELECT video FROM beans.entities.Video video";
         Query query = manager.createQuery(sql);
         return query.getResultList();
     }
@@ -44,7 +44,7 @@ public class VideoDAO implements BaseDAO<Video> {
 
     public List<Video> selectByType(String typeVideo){
         List<Video> videosEncontradas = null;
-        String sql = "SELECT video FROM beans.Video video WHERE video.tipoVideo LIKE :tipo ";
+        String sql = "SELECT video FROM beans.entities.Video video WHERE video.tipoVideo LIKE :tipo ";
         Query query = manager.createQuery(sql);
         query.setParameter("tipo", "%"+typeVideo+"%");
         videosEncontradas=query.getResultList();

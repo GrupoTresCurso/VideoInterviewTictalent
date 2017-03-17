@@ -26,7 +26,7 @@ public class ArchivoDAO implements BaseDAO<Archivo>{
 
     @Override
     public List<Archivo> selectAll() {
-        String prepareQuery = "select archivo from beans.Archivo archivo";
+        String prepareQuery = "select archivo from beans.entities.Archivo archivo";
         Query query = manager.createQuery(prepareQuery);
         return query.getResultList();
     }

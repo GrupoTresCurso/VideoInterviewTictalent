@@ -23,7 +23,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public List<Usuario> selectAll() {
-        String sql = "SELECT u FROM beans.Usuario u";
+        String sql = "SELECT u FROM beans.entities.Usuario u";
         Query query = manager.createQuery(sql);
         return query.getResultList();
     }
@@ -37,7 +37,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public Usuario selectByName(String nombreUsuario) {
-        String sql = "Select u FROM beans.Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario";
+        String sql = "Select u FROM beans.entities.Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario";
         Query query = manager.createQuery(sql);
         query.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
         List<Usuario> usuariosEncontrados = query.getResultList();
