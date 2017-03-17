@@ -1,12 +1,11 @@
 package controllers;
 
-import beans.Candidato;
-import beans.Entrevista;
-import beans.Formulario;
-import beans.Video;
+import beans.entities.Candidato;
+import beans.entities.Entrevista;
+import beans.entities.Formulario;
+import beans.entities.Video;
 import model.business.BaseBusiness;
 import model.business.BaseUtilBusiness;
-import model.business.VideoBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

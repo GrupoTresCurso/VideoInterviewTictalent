@@ -1,4 +1,4 @@
-package beans;
+package beans.helpers;
 
 import org.springframework.web.multipart.MultipartFile;
 

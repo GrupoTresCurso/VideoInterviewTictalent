@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Entrevista;
+import beans.entities.Entrevista;
 import model.dao.EntrevistaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

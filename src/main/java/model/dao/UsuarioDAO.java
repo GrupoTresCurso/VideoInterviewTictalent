@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Usuario;
+import beans.entities.Usuario;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

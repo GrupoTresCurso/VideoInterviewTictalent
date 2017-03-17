@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Entrevista;
+import beans.entities.Entrevista;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

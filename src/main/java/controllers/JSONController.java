@@ -1,6 +1,6 @@
 package controllers;
 
-import beans.Entrevista;
+import beans.entities.Entrevista;
 import model.business.BaseBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

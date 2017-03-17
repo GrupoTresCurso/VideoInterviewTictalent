@@ -1,7 +1,7 @@
 package controllers;
 
-import beans.ListaArchivos;
-import beans.Video;
+import beans.helpers.ListaArchivos;
+import beans.entities.Video;
 import model.business.BaseBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

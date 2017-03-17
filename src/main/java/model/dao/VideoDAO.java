@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Video;
+import beans.entities.Video;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

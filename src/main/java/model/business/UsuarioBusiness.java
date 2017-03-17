@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Usuario;
+import beans.entities.Usuario;
 import model.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

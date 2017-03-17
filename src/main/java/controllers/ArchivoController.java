@@ -1,7 +1,7 @@
 package controllers;
 
-import beans.Archivo;
-import beans.ListaArchivos;
+import beans.entities.Archivo;
+import beans.helpers.ListaArchivos;
 import model.business.BaseBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Candidato;
+import beans.entities.Candidato;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Video;
+import beans.entities.Video;
 
 import java.util.List;
 

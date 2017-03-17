@@ -1,6 +1,6 @@
 package model.business;
 
-import beans.Pregunta;
+import beans.entities.Pregunta;
 import model.dao.PreguntaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

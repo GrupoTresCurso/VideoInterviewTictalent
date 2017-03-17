@@ -1,6 +1,6 @@
 package model.dao;
 
-import beans.Pregunta;
+import beans.entities.Pregunta;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

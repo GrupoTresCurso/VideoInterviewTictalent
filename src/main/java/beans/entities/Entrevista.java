@@ -1,4 +1,4 @@
-package beans;
+package beans.entities;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

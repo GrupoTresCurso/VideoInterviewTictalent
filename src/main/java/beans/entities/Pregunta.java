@@ -1,5 +1,7 @@
-package beans;
+package beans.entities;
 
+
+import beans.helpers.HelperBeans;
 
 import javax.persistence.*;
 
