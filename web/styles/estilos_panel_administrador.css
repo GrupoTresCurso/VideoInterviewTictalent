@@ -1,0 +1,234 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: myFont, "Arial Black";
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
+
+.colorTictum{
+    color:#00B4DF;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+main {
+    padding: 0px;
+    margin: 0px;
+    font-family: myFont, "Verdana";
+    min-height: 100% !important;
+}
+
+nav {
+    height: 70px;
+    width: 90%;
+    background: black;
+    list-style-type: none;
+    padding: 0px 30px;
+    padding-right: 0px !important;
+    padding-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    /*box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);*/
+}
+
+section{
+    padding: 10px auto;
+    width: 99%;
+
+}
+
+#tableMenu td {
+    padding: 10px 0px;
+    padding-right: 70px;
+    vertical-align: middle;
+}
+
+#logoTictum {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+.linkMenu {
+    text-decoration: none;
+    color: white;
+}
+
+.linkActual {
+    color: #00B4DF;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#tableMenu td a:hover {
+    transform: scale(1.4);
+    color: #00B4DF;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
+
+.tableElementoText {
+    border: 2px solid black;
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+}
+
+td{
+    text-align: left;
+}
+
+input{
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0px;
+}
+
+button{
+    font-size: 18px;
+    border: 0px;
+    font-family: myFont, "Arial Black";
+    background-color: #00B4DF;
+    padding: 10px 25px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #1681B4;
+}
+
+#celdaBotonGuardar{
+    text-align: right;
+}
+#contenedorFormulario{
+    text-align: center;
+}
+.errores{
+    color: red;
+    font-weight: bold;
+}
+
+h2{
+    color: #00B4DF;
+}
+
+select {
+    height: 45px;
+    width: 280px;
+    border: 2px solid black;
+    font-size: 18px;
+    font-family: myFont, "Arial Black";
+}
+
+option{
+    font-size: 18px;
+}
+
+.select-wrapper {
+    position: relative;
+    border: 0px;
+}
+
+.select-wrapper:after {
+    position: absolute;
+    right: 6px;
+    width: 1.5em;
+    height: 1em;
+    font-size: 10px;
+    pointer-events: none;
+    background: transparent;
+    content: url("../images/arrow_down2.png");
+    margin-top: -44px;
+    padding-right: 2px;
+    padding-left: 10px;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    border-left: 2px solid black;
+}
+
+
+.botonGuardar {
+    background-color: #00B4DF;
+    padding: 7px 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botonGuardar:hover{
+    background-color: #1681B4;
+}
+
+#contenedorPrincipal{
+    margin: 76px auto;
+    text-align: center;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
+    background-color: white;
+    padding: 40px 0px;
+}
+
+#tableFormulario{
+    margin: 10px auto;
+}
+
+label{
+    font-size: 18px;
+}
+
+
+#columna2{
+    vertical-align: top;
+    padding-left: 40px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#logoUser{
+    text-align: right;
+    padding-left: 20px !important;
+    padding-right:20px !important;
+    padding-top: 5px !important;
+    margin-top: -100px;
+}
+
+#logoUser img{
+    cursor: pointer;
+}
+
+#userInfo{
+    text-align: left;
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    background-color: white;
+    top:70px;
+    padding: 10px;
+    font-size: 13px;
+    border-left:2px solid #00B4DF;
+    border-bottom:2px solid #00B4DF;
+}
+
+#userInfo h3{
+    color: #00B4DF;
+}
+#userInfo a{
+    padding-left: 70px;
+    color: red;
+    font-weight: bold;
+}
+
+
