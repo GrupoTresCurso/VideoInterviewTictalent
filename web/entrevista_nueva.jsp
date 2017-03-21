@@ -275,7 +275,7 @@
 
     function agregarCampos(){
         nextinput++;
-        campo = '<input type="text" size="20" id="campo' + nextinput + '"&nbsp; name="campo' + nextinput + '"&nbsp; />';
+        campo = '<input type="hidden" size="20" id="campo' + nextinput + '" name="campo' + nextinput + '"/>';
         $("#crearEntrevista").append(campo);
         campo = '';
     }
