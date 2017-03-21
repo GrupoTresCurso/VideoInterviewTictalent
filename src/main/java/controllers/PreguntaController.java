@@ -37,15 +37,18 @@ public class PreguntaController implements BaseController {
     public String recuperarPreguntas(HttpSession session){
         ArrayList<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
         session.setAttribute("listaPreguntas",listaPreguntas);
-        session.setAttribute("pregunta",null);
         return "pregunta";
     }
 
-    @RequestMapping(value = "/recuperarPregunta.do",method = RequestMethod.GET)
-    public String recuperarPregunta(@RequestParam(value="idPregunta",required=true) int id, HttpSession session, HttpServletResponse response){
-        Pregunta pregunta=preguntaBusiness.recuperarPorId(id);
-        session.setAttribute("pregunta",pregunta);
-        return "pregunta";
+
+    @RequestMapping(value = "/eliminarPregunta.do",method = RequestMethod.GET)
+    public void eliminarPregunta(@RequestParam(value="idPregunta",required=true) int id, HttpServletResponse response){
+        preguntaBusiness.borrarPorId(id);
+        try {
+            response.sendRedirect( "recuperarPreguntas.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
