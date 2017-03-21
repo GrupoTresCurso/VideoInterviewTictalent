@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import utils.UtilHash;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller("UsuarioController")
@@ -20,12 +22,14 @@ public class UsuarioController implements BaseController {
 
     @RequestMapping(value = "loginUsuario.do", method = RequestMethod.POST)
     public String loginUsuario(@RequestParam("nombreUsuario") String nombreUsuario,
-                               @RequestParam("passwordUsuario") String passwordUsuario){
+                               @RequestParam("passwordUsuario") String passwordUsuario,
+                                HttpSession session){
         List<Usuario> usuarios = usuarioBusiness.recuperarTodos();
 
         if(usuarios.size()>0){
             for (Usuario usuario : usuarios) {
-                if(usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getPassword().equals(passwordUsuario)){
+                if(nameIsCorrect(nombreUsuario, usuario) && passwordIsCorrect(passwordUsuario, usuario)){
+                    session.setAttribute("usuario", usuario);
                     if(usuario.isAdministrador()){
                         return PANEL_ADMIN;
                     } else{
@@ -35,6 +39,21 @@ public class UsuarioController implements BaseController {
             }
         }
         return INDEX;
+    }
+
+    @RequestMapping(value = "logoutUsuario.do", method = RequestMethod.GET)
+    public String loginUsuario(HttpSession session){
+        session.invalidate();
+        return INDEX;
+    }
+
+    private boolean passwordIsCorrect(@RequestParam("passwordUsuario") String passwordIntroducida, Usuario usuario) {
+        String passwordGuardada = usuario.getPassword();
+        return passwordGuardada.equals(UtilHash.doHash(passwordIntroducida));
+    }
+
+    private boolean nameIsCorrect(@RequestParam("nombreUsuario") String nombreUsuario, Usuario usuario) {
+        return usuario.getNombreUsuario().equals(nombreUsuario);
     }
 
     @RequestMapping(value = "/crearUsuario.do", method = RequestMethod.POST)
@@ -54,6 +73,7 @@ public class UsuarioController implements BaseController {
                 usuario = new Usuario(nombreUsuario, password, false, false, false, true);
                 break;
         }
+        usuario.setPassword(UtilHash.doHash(usuario.getPassword()));
         usuarioBusiness.crearNuevo(usuario);
         return PANEL_ADMIN;
     }

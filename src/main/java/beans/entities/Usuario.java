@@ -90,4 +90,6 @@ public class Usuario {
     public void setCandidato(boolean candidato) {
         isCandidato = candidato;
     }
+
+
 }
