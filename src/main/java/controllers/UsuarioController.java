@@ -34,7 +34,7 @@ public class UsuarioController implements BaseController {
                 }
             }
         }
-        return LOGIN_USUARIO;
+        return INDEX;
     }
 
     @RequestMapping(value = "/crearUsuario.do", method = RequestMethod.POST)
@@ -55,6 +55,6 @@ public class UsuarioController implements BaseController {
                 break;
         }
         usuarioBusiness.crearNuevo(usuario);
-        return CREAR_USUARIO;
+        return PANEL_ADMIN;
     }
 }
