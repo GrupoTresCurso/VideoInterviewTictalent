@@ -604,11 +604,7 @@
                 </td>
             </tr>
         </table>
-        <div id="userInfo">
-            <h3>Usuario1</h3>
-            <p>Responsable de contratación</p><br/>
-            <a href="">Logout</a>
-        </div>
+        <%@include file="userInfo.jsp"%>
     </section>
 </main>
 <script type='text/javascript' src="js/formulario.js"></script>
