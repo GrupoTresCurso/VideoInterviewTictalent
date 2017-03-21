@@ -83,30 +83,7 @@
                 </div>
             </form>
         </div>
-        <div id="userInfo">
-            <h3>${sessionScope.usuario.nombreUsuario}</h3>
-            <p>
-                <c:choose>
-                    <c:when test="${sessionScope.usuario.reclutador}">
-                        <sptag:message code="label_reclutador"/>
-                    </c:when>
-                    <c:when test="${sessionScope.usuario.responsableContratacion}">
-                        <sptag:message code="label_responsable_contratacion"/>
-                    </c:when>
-                    <c:when test="${sessionScope.usuario.candidato}">
-                        <sptag:message code="label_candidato"/>
-                    </c:when>
-                    <c:when test="${sessionScope.usuario.administrador}">
-                        <sptag:message code="label_administrador"/>
-                    </c:when>
-                    <c:otherwise>
-                        KK
-                    </c:otherwise>
-                </c:choose>
-            </p>
-            <br/>
-            <a href="${pageContext.request.contextPath}/logoutUsuario.do"><sptag:message code="label_logout"/></a>
-        </div>
+        <%@include file="userInfo.jsp"%>
     </section>
 
     <script type='text/javascript' src="js/panel_administrador.js"></script>
