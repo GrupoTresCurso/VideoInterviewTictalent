@@ -5,10 +5,9 @@
 <html>
 <head>
     <title><sptag:message code="app_title"/></title>
-    <link rel="stylesheet" type="text/css" href="styles/estilos_formulario.css">
-    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_formulario"/>/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
@@ -16,12 +15,12 @@
         <table id="tableMenu">
             <tr>
                 <td><a href="principal.jsp" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
-                <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
+                <td><a href="candidato.jsp" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
                 <td><a href="formulario.jsp" class="linkMenu linkActual"><sptag:message code="menu_opc3"/></a></td>
                 <td><a href="entrevista_index.html" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
                 <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
-                <td id="logoTictum"><img src="images/logo1Negro.png" width="173px" height="60px"/></td>
-                <td id="logoUser"><img src="images/usuario.png" width="35px" height="35px"
+                <td id="logoTictum"><img src=<sptag:message code="src_img_logo"/> width="173px" height="60px"/></td>
+                <td id="logoUser"><img src==<sptag:message code="src_img_usuario"/> width="35px" height="35px"
                                        onclick="mostrarOcultarInfoUsuario()"/></td>
             </tr>
 
@@ -43,17 +42,17 @@
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
-                                                    <img src="images/icon_text.png" width="55px" height="55px"><br/>
-                                                    <label><sptag:message code="label_icon_campo_texto"/>/label>
+                                                    <img src=<sptag:message code="src_img_icon_text"/> width="55px" height="55px"><br/>
+                                                    <label><sptag:message code="label_icon_campo_texto"/></label>
                                                 </div>
                                                 <div class="elemento">
                                                     <table class="tableElementoText">
                                                         <tr>
                                                             <td class="celda">
-                                                                <img src="images/user.png" width="30px" height="30px">
+                                                                <img src=<sptag:message code="src_img_user"/> width="30px" height="30px">
                                                             </td>
                                                             <td class="celda">
-                                                                <input type="text" placeholder="Etiqueta" size="25"/>
+                                                                <input type="text" placeholder=<sptag:message code="placeholder_label_elemento"/> size="25"/>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -66,7 +65,7 @@
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
-                                                    <img src="images/icon_textarea.png" width="55px" height="55px"><br/>
+                                                    <img src=<sptag:message code="src_img_icon_textarea"/> width="55px" height="55px"><br/>
                                                     <label><sptag:message code="label_icon_area_texto"/></label>
                                                 </div>
                                                 <div class="elemento elementoGrande">
@@ -74,7 +73,7 @@
                                                         <tr>
                                                             <td>
                                                                 <textarea rows="5" cols="50"
-                                                                          placeholder="Etiqueta"></textarea>
+                                                                          placeholder=<sptag:message code="placeholder_label_elemento"/>> </textarea>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -89,24 +88,24 @@
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
-                                                    <img src="images/icon_radio.png" width="55px" height="55px"><br/>
+                                                    <img src=<sptag:message code="src_img_icon_radio"/> width="55px" height="55px"><br/>
                                                     <label><sptag:message code="label_icon_boton_opcion"/></label>
                                                 </div>
                                                 <div class="elemento">
-                                                    <b><label>Etiqueta</label>:</b><br/>
+                                                    <b><label><sptag:message code="label_elemento"/></label>:</b><br/>
                                                     <table>
                                                         <tr>
                                                             <td class="celdaOpcion">
                                                                 <input type="radio" name="opcion" id="opcionR1">
-                                                                <label for="opcionR1" class="labelOpcionR1 opcion">Opción1</label>
+                                                                <label for="opcionR1" class="labelOpcionR1 opcion"><sptag:message code="label_opcion_1"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="radio" name="opcion" id="opcionR2">
-                                                                <label for="opcionR2" class="labelOpcionR2 opcion">Opción2</label>
+                                                                <label for="opcionR2" class="labelOpcionR2 opcion"><sptag:message code="label_opcion_2"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="radio" name="opcion" id="opcionR3">
-                                                                <label for="opcionR3" class="labelOpcionR3 opcion">Opción3</label>
+                                                                <label for="opcionR3" class="labelOpcionR3 opcion"><sptag:message code="label_opcion_3"/></label>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -119,38 +118,38 @@
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
-                                                    <img src="images/icon_checkbox.png" width="55px" height="55px"><br/>
-                                                    <label>Casilla verificación</label>
+                                                    <img src=<sptag:message code="src_img_icon_checkbox"/> width="55px" height="55px"><br/>
+                                                    <label><sptag:message code="label_icon_casilla_verificacion"/></label>
                                                 </div>
                                                 <div class="elemento elementoGrande">
-                                                    <b><label>Etiqueta</label>:</b><br/>
+                                                    <b><label><sptag:message code="label_elemento"/></label>:</b><br/>
                                                     <table>
                                                         <tr>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB1">
-                                                                <label for="opcionCB1" class="labelOpcionCB1 opcion">Opción1</label>
+                                                                <label for="opcionCB1" class="labelOpcionCB1 opcion"><sptag:message code="label_opcion_1"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB2">
-                                                                <label for="opcionCB2" class="labelOpcionCB2 opcion">Opción2</label>
+                                                                <label for="opcionCB2" class="labelOpcionCB2 opcion"><sptag:message code="label_opcion_2"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB3">
-                                                                <label for="opcionCB3" class="labelOpcionCB3 opcion">Opción3</label>
+                                                                <label for="opcionCB3" class="labelOpcionCB3 opcion"><sptag:message code="label_opcion_3"/></label>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB4">
-                                                                <label for="opcionCB4" class="labelOpcionCB4 opcion">Opción4</label>
+                                                                <label for="opcionCB4" class="labelOpcionCB4 opcion"><sptag:message code="label_opcion_4"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB5">
-                                                                <label for="opcionCB5" class="labelOpcionCB5 opcion">Opción5</label>
+                                                                <label for="opcionCB5" class="labelOpcionCB5 opcion"><sptag:message code="label_opcion_5"/></label>
                                                             </td>
                                                             <td class="celdaOpcion">
                                                                 <input type="checkbox" name="opcion" id="opcionCB6">
-                                                                <label for="opcionCB6" class="labelOpcionCB6 opcion">Opción6</label>
+                                                                <label for="opcionCB6" class="labelOpcionCB6 opcion"><sptag:message code="label_opcion_6"/></label>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -165,18 +164,18 @@
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
-                                                    <img src="images/icon_select.png" width="55px" height="55px"><br/>
-                                                    <label>Lista desplegable</label>
+                                                    <img src=<sptag:message code="src_img_icon_select"/> width="55px" height="55px"><br/>
+                                                    <label><sptag:message code="label_icon_lista_desplegable"/></label>
                                                 </div>
                                                 <div class="elemento elementoPequenio">
-                                                    <b><label class="labelLinea">Etiqueta</label>:</b>
+                                                    <b><label class="labelLinea"><sptag:message code="label_elemento"/></label>:</b>
                                                     <span class="select-wrapper">
-                                        <select>
-                                            <option value="opcion1" class="opcionSelect1">Opción 1</option>
-                                            <option value="opcion2" class="opcionSelect2">Opción 2</option>
-                                            <option value="opcion3" class="opcionSelect3">Opción 3</option>
-                                        </select>
-                                    </span>
+                                                        <select>
+                                                            <option value="opcion1" class="opcionSelect1"><sptag:message code="label_opcion_1"/></option>
+                                                            <option value="opcion2" class="opcionSelect2"><sptag:message code="label_opcion_2"/></option>
+                                                            <option value="opcion3" class="opcionSelect3"><sptag:message code="label_opcion_3"/></option>
+                                                        </select>
+                                                    </span>
                                                 </div>
                                                 <div class="capaSuperior"></div>
                                             </div>
@@ -187,7 +186,7 @@
                             </details>
                             <br/>
                             <details id="detailsEP" onclick="seleccionarTipoElementos(this.id)">
-                                <summary><b class="colorTictum">Elementos predefinidos</b></summary>
+                                <summary><b class="colorTictum"><sptag:message code="label_elemetos_predefinidos_title"/></b></summary>
                                 <table id="tableElementosPredefinidos">
                                     <tr id="rowP1">
                                         <td>
@@ -531,13 +530,13 @@
                         <div id="estadoContenedor">
                             <div id="mensajeDefecto">
                                 <br/>
-                                <h4 class="colorTictum">Generador de formularios</h4><br/><br/>
-                                <p>Arrastrar y soltar elementos.</p>
+                                <h4 class="colorTictum"><sptag:message code="label_contenedor_title"/></h4><br/><br/>
+                                <p><sptag:message code="label_contenedor_defecto_message"/></p>
                             </div>
                             <div id="nuevoForm">
                                 <input type="text" name="nombreFormulario" class="nombreFormulario"
-                                       placeholder="Introduzca nombre de formulario" size="35"/>
-                                <button type="submit" class="botonGuardar">Guardar</button>
+                                       placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                <button type="submit" class="botonGuardar"><sptag:message code="button_guardar"/></button>
                                 <br/><br/>
                                 <hr/>
                                 <br/>
@@ -546,7 +545,7 @@
                                          ondragstart="start(event)" ondragend="end(event)"
                                          onclick="seleccionar(this.id)">
                                         <div class="elemento elementoPequenio elementoLabel">
-                                            <b><label id="etiquetaLabel">Título de formulario</label></b>
+                                            <b><label id="etiquetaLabel"><sptag:message code="label_formulario_title"/></label></b>
                                         </div>
                                     </div>
                                     <br/>
@@ -565,14 +564,14 @@
                     </div>
                 </td>
                 <td id="derecha">
-                    <h5 class="colorTictum">Propiedades</h5>
+                    <h5 class="colorTictum"><sptag:message code="label_propiedades_title"/></h5>
                     <div id="propiedades">
                         <div id="contenedorPropiedadesDefecto"><br/><br/>
-                            <p id="mensajePropiedadesDefecto">No hay elemento seleccionado.</p></div>
+                            <p id="mensajePropiedadesDefecto"><sptag:message code="label_propiedades_defecto_message"/></p></div>
                         <div id="contenedorEtiqueta">
                             <table>
                                 <tr>
-                                    <td><p><sptag:message code="cualquiercosa"/></p></td>
+                                    <td><p><sptag:message code="label_propiedades_etiqueta"/></p></td>
                                     <td><input type="text" name="etiqueta" id="etiquetaPropiedades" size="25"
                                                onblur="actualizarEtiqueta()"/></td>
                                 </tr>
@@ -582,7 +581,7 @@
                         <div id="contenedorOpciones">
                             <table>
                                 <tr>
-                                    <td><p>Nº opciones:</p></td>
+                                    <td><p><sptag:message code="label_propiedades_num_opciones"/></p></td>
                                     <td>
                                         <div id="contenedorNumber">
                                             <span class='number-wrapper' id="spanOpciones">
@@ -604,15 +603,15 @@
                         </div>
                         <br/>
                         <div id="contenedorActivarPredefinido">
-                            <label>Predefinido:</label>
+                            <label><sptag:message code="label_propiedades_predefinido"/></label>
                             <input type="checkbox" id="checkPredefinido" onchange="agregarAPredefinidos()">
                         </div>
                     </div>
                     <div id="eliminar" onclick="deseleccionar()">
-                        <p>Arrastrar y soltar en la papelera para eliminar elementos</p><br/>
+                        <p><sptag:message code="label_papelera_message"/></p><br/>
                         <div id="papelera" ondragenter="return enter(event)" ondragover="return overPapelera(event)"
                              ondragleave="return leavePapelera(event)" ondrop="return dropPapelera(event)">
-                            <img id="imagenPapelera" src="images/papelera_close.png" width="150px" height="150px"
+                            <img id="imagenPapelera" src=<sptag:message code="src_img_papelera_close"/> width="150px" height="150px"
                                  draggable="false">
                         </div>
                     </div>
