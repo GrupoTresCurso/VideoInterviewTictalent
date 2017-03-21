@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,7 @@
 <nav>
     <table id="tableMenu">
         <tr>
-            <td><a href="principal.html" class="linkMenu">Principal</a></td>
+            <td><a href="principal.jsp" class="linkMenu">Principal</a></td>
             <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
             <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
             <td><a href="entrevista_index.jsp" class="linkMenu">Entrevista</a></td>
