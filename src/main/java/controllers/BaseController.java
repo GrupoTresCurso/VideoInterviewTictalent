@@ -9,7 +9,6 @@ public interface BaseController {
     String ENTREVISTA_CLONAR="entrevista_clonar";
     String ENTREVISTA_NUEVA="entrevista_nueva";
     String PAGINA_PRINCIPAL = "principal";
-    String LOGIN_USUARIO = "login";
     String PANEL_ADMIN="panel_administrador";
     String INDEX="index";
 
