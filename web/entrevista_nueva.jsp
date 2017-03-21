@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -7,22 +8,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoInterview</title>
+    <title><sptag:message code="app_title"/></title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista_nueva.css">
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <header></header>
 <nav>
     <table id="tableMenu">
         <tr>
-            <td><a href="principal.jsp" class="linkMenu">Principal</a></td>
-            <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
-            <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
-            <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
-            <td><a href="video.html" class="linkMenu">Video</a></td>
+            <td><a href="principal.html" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
+            <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
+            <td><a href="formulario.html" class="linkMenu"><sptag:message code="menu_opc3"/></a></td>
+            <td><a href="entrevista_index.jsp" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
+            <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
         </tr>
     </table>
 </nav>
@@ -33,13 +34,14 @@
             <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoIntro1" ondragstart="start(event)"
+                        <div draggable="true" class="entrevista" id="videoIntro" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
                                 <p>${videoIntroductorio.nombreVideo}</p>
+                                <p>${videoIntroductorio.idVideo}</p>
                             </div>
-                            <div class="elemento">
+                            <div id="elementoVideoIntro" class="elemento">
                                 <img src="images/movie.png" width="45px" height="45px"/>
                             </div>
                         </div>
@@ -54,13 +56,14 @@
             <c:forEach var="formulario" items="${formularios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="formulario1" ondragstart="start(event)"
+                        <div draggable="true" class="entrevista" id="formulario" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/form.png" width="45px" height="45px"/>
                                 <p>${formulario.nombreFormulario}</p>
+                                <p>${formulario.idFormulario}</p>
                             </div>
-                            <div class="elemento">
+                            <div id="elementoFormulario" class="elemento">
                                 <img src="images/form.png" width="45px" height="45px"/>
                             </div>
                         </div>
@@ -75,13 +78,13 @@
             <c:forEach var="videoPregunta" items="${videosPreguntas}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoPregunta1" ondragstart="start(event)"
+                        <div draggable="true" class="entrevista" id="videoPregunta" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/webcam.png" width="45px" height="45px"/>
                                 <p>${videoPregunta.nombreVideo}</p>
                             </div>
-                            <div class="elemento">
+                            <div id="elementoVideoPregunta" class="elemento">
                                 <img src="images/webcam.png" width="45px" height="45px"/>
                             </div>
                         </div>
@@ -96,13 +99,13 @@
             <c:forEach var="videoTransicion" items="${videosTransiciones}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoTransicion1" ondragstart="start(event)"
+                        <div draggable="true" class="entrevista" id="videoTransicion" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
                                 <p>${videoTransicion.nombreVideo}</p>
                             </div>
-                            <div class="elemento">
+                            <div id="elementoVideoTransicion" class="elemento">
                                 <img src="images/movie.png" width="45px" height="45px"/>
                             </div>
                         </div>
@@ -117,13 +120,13 @@
             <c:forEach var="candidato" items="${candidatos}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="candidatos1" ondragstart="start(event)"
+                        <div draggable="true" class="entrevista" id="candidatos" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/user.png" width="45px" height="45px"/>
                                 <p>${candidato.nombre}</p>
                             </div>
-                            <div class="elemento">
+                            <div id="elementoCandidato" class="elemento">
                                 <img src="images/user.png" width="45px" height="45px"/>
                             </div>
                         </div>
@@ -140,7 +143,6 @@
             <section>
                 <div id="superior">
                     <div id="guia">
-
                     </div>
                 </div>
                 <form id="crearEntrevista">
@@ -174,6 +176,7 @@
     var elementoArrastrado = null;
     var elementoCopiado = null;
     var elementoGuia = null;
+    var nextinput = 0;
 
     var elementos = document.getElementsByClassName("elemento");
     for (var i = 0; i < elementos.length; i++) {
@@ -252,19 +255,29 @@
             elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
             elementoCopiado.querySelectorAll('.elemento')[0].style.display = 'block';
             //elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
-            e.target.appendChild(elementoCopiado);
+            //e.target.appendChild(elementoCopiado);
 
             elementoGuia = elementoCopiado.cloneNode(true);
             var tr = document.getElementById("guia");
             tr.appendChild(elementoGuia);
 
+
+            //e.target.appendChild();
             /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +
              "<p>Video Intro 1</p>";*/
 
+            agregarCampos();
             contador++;
         }
         e.target.classList.remove('over');
 
+    }
+
+    function agregarCampos(){
+        nextinput++;
+        campo = '<input type="hidden" size="20" id="campo' + nextinput + '" name="campo' + nextinput + '"/>';
+        $("#crearEntrevista").append(campo);
+        campo = '';
     }
 
     function devolverTipoElemento(elemento) {
@@ -294,7 +307,6 @@
         elementoArrastrado.parentNode.removeChild(elementoArrastrado); // Elimina el elemento
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
     }
-
 
 </script>
 
