@@ -34,12 +34,11 @@
             <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoIntro" ondragstart="start(event)"
+                        <div draggable="true" class="video" id="video_${videoIntroductorio.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
                                 <p>${videoIntroductorio.nombreVideo}</p>
-                                <p>${videoIntroductorio.idVideo}</p>
                             </div>
                             <div id="elementoVideoIntro" class="elemento">
                                 <img src="images/movie.png" width="45px" height="45px"/>
@@ -56,12 +55,11 @@
             <c:forEach var="formulario" items="${formularios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="formulario" ondragstart="start(event)"
+                        <div draggable="true" class="formulario" id="${formulario.idFormulario}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/form.png" width="45px" height="45px"/>
                                 <p>${formulario.nombreFormulario}</p>
-                                <p>${formulario.idFormulario}</p>
                             </div>
                             <div id="elementoFormulario" class="elemento">
                                 <img src="images/form.png" width="45px" height="45px"/>
@@ -78,7 +76,7 @@
             <c:forEach var="videoPregunta" items="${videosPreguntas}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoPregunta" ondragstart="start(event)"
+                        <div draggable="true" class="video" id="${videoPregunta.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/webcam.png" width="45px" height="45px"/>
@@ -99,7 +97,7 @@
             <c:forEach var="videoTransicion" items="${videosTransiciones}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="videoTransicion" ondragstart="start(event)"
+                        <div draggable="true" class="video" id="${videoTransicion.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
@@ -120,7 +118,7 @@
             <c:forEach var="candidato" items="${candidatos}">
                 <tr>
                     <td>
-                        <div draggable="true" class="entrevista" id="candidatos" ondragstart="start(event)"
+                        <div draggable="true" class="candidato" id="candidatos" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/user.png" width="45px" height="45px"/>
@@ -237,11 +235,9 @@
 
     function drop(e) {
         contenedorActual = e.target;
-
         if (elementoMovido.parentNode != contenedorActual) {
             elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
             elementoCopiado = elementoArrastrado.cloneNode(true);
-            elementoCopiado.id = "elemento" + contador;
             elementoCopiado.style.transform = 'scale(1.0)';
             elementoCopiado.style.width = '420px';
             elementoCopiado.style.height = '51px';
@@ -266,17 +262,25 @@
             /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +
              "<p>Video Intro 1</p>";*/
 
-            agregarCampos();
+            agregarCampos(elementoCopiado);
             contador++;
         }
         e.target.classList.remove('over');
 
     }
 
-    function agregarCampos(){
-        nextinput++;
-        campo = '<input type="hidden" size="20" id="campo' + nextinput + '" name="campo' + nextinput + '"/>';
-        $("#crearEntrevista").append(campo);
+    function agregarCampos(elementoCopiado){
+        var aux=elementoCopiado.id.split("_");
+        var tipo=aux[0];
+        var id=aux[1];
+        if(tipo==="video"){
+            campo = '<input type="hidden" size="20" name="videos[]" value="'+id+'"/>';
+        }else if(tipo==="formulario"){
+            campo = '<input type="hidden" size="20" name="formularios[]" value="'+id+'"/>';
+        }else {
+            campo = '<input type="hidden" size="20" name="candidatos[]" value="'+id+'"/>';
+        }
+        $("#contenedorEntrevista").append(campo);
         campo = '';
     }
 
