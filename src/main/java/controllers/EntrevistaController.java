@@ -31,6 +31,10 @@ public class EntrevistaController implements BaseController {
     private BaseBusiness<Formulario> formularioBusiness;
 
     @Autowired
+    @Qualifier("VideoBusiness")
+    private BaseBusiness<Video> videoBusiness;
+
+    @Autowired
     @Qualifier("CandidatoBusiness")
     private BaseBusiness<Candidato> candidatoBusiness;
 
@@ -72,6 +76,30 @@ public class EntrevistaController implements BaseController {
         session.setAttribute("candidatos",candidatos);
         return ENTREVISTA_NUEVA;
     }
+
+    @RequestMapping(value = "/crearEntrevista.do", method = RequestMethod.GET)
+    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,@RequestParam("formularios[]")List<Integer> intFormularios,@RequestParam("candidatos[]")List<Integer> intCandidatos) {
+        List<Video> listaVideos=new ArrayList();
+        List<Formulario> listaFormularios=new ArrayList();
+        List<Candidato> listaCandidatos=new ArrayList();
+        for (Integer intVideo : intVideos) {
+            Video video=videoBusiness.recuperarPorId(intVideo);
+            listaVideos.add(video);
+        };
+        for (Integer intFormulario : intFormularios) {
+            Formulario formulario=formularioBusiness.recuperarPorId(intFormulario);
+            listaFormularios.add(formulario);
+        }
+        for (Integer intCandidato : intCandidatos) {
+            Candidato candidato=candidatoBusiness.recuperarPorId(intCandidato);
+            listaCandidatos.add(candidato);
+        }
+        Entrevista entrevista=new Entrevista("ASD","ASD","ASD",listaFormularios,listaFormularios.get(0),false,listaVideos,listaCandidatos);
+        entrevistaBusiness.crearNuevo(entrevista);
+        return ENTREVISTA_NUEVA;
+    }
+
+
 
 
 }

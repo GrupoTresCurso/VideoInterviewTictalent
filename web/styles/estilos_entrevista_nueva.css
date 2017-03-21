@@ -32,7 +32,7 @@ section{
     margin-top: 100px;
     display:inline-block;
     margin-left:350px;
-    width:900px;
+    width:500px;
     height:500px;
     font-size: 20px;
     padding: 35px 50px;
@@ -192,7 +192,7 @@ input[type='radio']:checked:after {
 
 #contenedorEntrevista{
     border: 2px solid #94B2B6;
-    width: 750px;
+    width: 500px;
     height: 250px;
     background-color: #d1f6ff;
     background-size: 100%;

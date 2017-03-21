@@ -23,7 +23,7 @@
             <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="video" id="video_${videoIntroductorio.idVideo}" ondragstart="start(event)"
+                        <div draggable="true" id="video_${videoIntroductorio.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
@@ -44,7 +44,7 @@
             <c:forEach var="formulario" items="${formularios}">
                 <tr>
                     <td>
-                        <div draggable="true" class="formulario" id="${formulario.idFormulario}" ondragstart="start(event)"
+                        <div draggable="true" id="formulario_${formulario.idFormulario}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/form.png" width="45px" height="45px"/>
@@ -65,7 +65,7 @@
             <c:forEach var="videoPregunta" items="${videosPreguntas}">
                 <tr>
                     <td>
-                        <div draggable="true" class="video" id="${videoPregunta.idVideo}" ondragstart="start(event)"
+                        <div draggable="true" id="video_${videoPregunta.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/webcam.png" width="45px" height="45px"/>
@@ -86,7 +86,7 @@
             <c:forEach var="videoTransicion" items="${videosTransiciones}">
                 <tr>
                     <td>
-                        <div draggable="true" class="video" id="${videoTransicion.idVideo}" ondragstart="start(event)"
+                        <div draggable="true" id="video_${videoTransicion.idVideo}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/movie.png" width="45px" height="45px"/>
@@ -107,7 +107,7 @@
             <c:forEach var="candidato" items="${candidatos}">
                 <tr>
                     <td>
-                        <div draggable="true" class="candidato" id="candidatos" ondragstart="start(event)"
+                        <div draggable="true" id="candidato_${candidato.idCandidato}" ondragstart="start(event)"
                              ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
                             <div class="contenedorIcono">
                                 <img src="images/user.png" width="45px" height="45px"/>
@@ -132,7 +132,7 @@
                     <div id="guia">
                     </div>
                 </div>
-                <form id="crearEntrevista">
+                <form id="crearEntrevista" action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET">
                     <div id="contenedorEntrevista" ondragenter="return enter(event)" ondragover="return over(event)"
                          ondragleave="return leave(event)" ondrop="return drop(event)">
                     </div>
