@@ -20,7 +20,7 @@
         <tr>
             <td><a href="principal.html" class="linkMenu">Principal</a></td>
             <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
-            <td><a href="formulario.html" class="linkMenu">Formulario</a></td>
+            <td><a href="formulario.jsp" class="linkMenu">Formulario</a></td>
             <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
             <td><a href="video.html" class="linkMenu">Video</a></td>
         </tr>

@@ -23,7 +23,7 @@
             <tr>
                 <td><a href="principal.html" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
                 <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
-                <td><a href="formulario.html" class="linkMenu"><sptag:message code="menu_opc3"/></a></td>
+                <td><a href="formulario.jsp" class="linkMenu"><sptag:message code="menu_opc3"/></a></td>
                 <td><a href="entrevista_index.jsp" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
                 <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
             </tr>

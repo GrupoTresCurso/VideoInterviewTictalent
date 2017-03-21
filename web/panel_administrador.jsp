@@ -15,7 +15,6 @@
 </head>
 <body>
 <main>
-    <header></header>
     <nav>
         <table id="tableMenu">
             <tr>

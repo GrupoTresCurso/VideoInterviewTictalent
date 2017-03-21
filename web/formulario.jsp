@@ -1,25 +1,25 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoInterview</title>
+    <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="styles/estilos_formulario.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
 </head>
 <body>
 <main>
-    <header></header>
-
     <nav onclick="deseleccionar()">
         <table id="tableMenu">
             <tr>
-                <td><a href="principal.html" class="linkMenu">Principal</a></td>
-                <td><a href="candidato.html" class="linkMenu">Candidato</a></td>
-                <td><a href="formulario.html" class="linkMenu linkActual">Formulario</a></td>
-                <td><a href="entrevista_index.html" class="linkMenu">Entrevista</a></td>
-                <td><a href="video.html" class="linkMenu">Video</a></td>
+                <td><a href="principal.html" class="linkMenu"><sptag:message code="menu_opc1"/></a></td>
+                <td><a href="candidato.html" class="linkMenu"><sptag:message code="menu_opc2"/></a></td>
+                <td><a href="formulario.jsp" class="linkMenu linkActual"><sptag:message code="menu_opc3"/></a></td>
+                <td><a href="entrevista_index.html" class="linkMenu"><sptag:message code="menu_opc4"/></a></td>
+                <td><a href="video.html" class="linkMenu"><sptag:message code="menu_opc5"/></a></td>
                 <td id="logoTictum"><img src="images/logo1Negro.png" width="173px" height="60px"/></td>
                 <td id="logoUser"><img src="images/usuario.png" width="35px" height="35px"
                                        onclick="mostrarOcultarInfoUsuario()"/></td>
@@ -35,7 +35,7 @@
                     <div id="panelElementosPrincipal">
                         <div id="panelElementos" onclick="deseleccionar()">
                             <details id="detailsE" onclick="seleccionarTipoElementos(this.id)" open>
-                                <summary id="summaryE"><b class="colorTictum">Elementos</b></summary>
+                                <summary id="summaryE"><b class="colorTictum"><sptag:message code="label_elemetos_title"/></b></summary>
                                 <table>
                                     <tr>
                                         <td>
@@ -44,7 +44,7 @@
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
                                                     <img src="images/icon_text.png" width="55px" height="55px"><br/>
-                                                    <label>Campo de texto</label>
+                                                    <label><sptag:message code="label_icon_campo_texto"/>/label>
                                                 </div>
                                                 <div class="elemento">
                                                     <table class="tableElementoText">
@@ -67,7 +67,7 @@
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
                                                     <img src="images/icon_textarea.png" width="55px" height="55px"><br/>
-                                                    <label>Área de texto</label>
+                                                    <label><sptag:message code="label_icon_area_texto"/></label>
                                                 </div>
                                                 <div class="elemento elementoGrande">
                                                     <table class="tableElementoText">
@@ -90,7 +90,7 @@
                                                  onclick="seleccionar(this.id)">
                                                 <div class="contenedorIcono">
                                                     <img src="images/icon_radio.png" width="55px" height="55px"><br/>
-                                                    <label>Botón opción</label>
+                                                    <label><sptag:message code="label_icon_boton_opcion"/></label>
                                                 </div>
                                                 <div class="elemento">
                                                     <b><label>Etiqueta</label>:</b><br/>
@@ -572,7 +572,7 @@
                         <div id="contenedorEtiqueta">
                             <table>
                                 <tr>
-                                    <td><p>Etiqueta:</p></td>
+                                    <td><p><sptag:message code="cualquiercosa"/></p></td>
                                     <td><input type="text" name="etiqueta" id="etiquetaPropiedades" size="25"
                                                onblur="actualizarEtiqueta()"/></td>
                                 </tr>
