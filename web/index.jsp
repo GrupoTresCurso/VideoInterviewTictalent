@@ -7,25 +7,25 @@
     <title>
         <sptag:message code="app_title"/>
     </title>
-    <link rel="stylesheet" type="text/css" href="styles/estilos_index.css">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_index"/>>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
     <header>
-        <img src="images/logo1Negro.png" width="288px" height="100px"/>
+        <img width="288px" height="100px" src=<sptag:message code="src_img_logo"/>/>
     </header>
     <aside>
-        <img src="images/videoInterviewPNG.png" width="199px" height="200px"/><br/><br/>
-        <h2>Video Interview</h2>
+        <img width="199px" height="200px" src=<sptag:message code="src_img_videoInterviewPNG"/>/><br/><br/>
+        <h2><sptag:message code="label_video_intewview"/></h2>
     </aside>
     <div id="separador"></div>
     <section>
         <form action="${pageContext.request.contextPath}/loginUsuario.do" method="post">
             <h2>
-                <sptag:message code="login_title"/>
+                <sptag:message code="label_video_intewview"/>
             </h2>
             <br/>
             <div id="contenedorFormulario">
@@ -68,7 +68,7 @@
                     </tr>
                     <tr>
                         <td id="celdaBotonGuardar">
-                            <p id="errores">Datos incorrectos</p><br/>
+                            <p id="errores"><sptag:message code="label_datos_incorrectos"/></p><br/>
                             <button type="submit" tabindex="3">
                                 <sptag:message code="iniciar_sesion"/>
                             </button>

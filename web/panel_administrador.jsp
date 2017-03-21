@@ -10,16 +10,15 @@
     <link rel="stylesheet" type="text/css" href="styles/estilos_panel_administrador.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 
 </head>
 <body>
 <main>
-    <header></header>
     <nav>
         <table id="tableMenu">
             <tr>
-                <td><a href="panel_administrador.jsp" class="linkMenu linkActual">Panel de administración</a></td>
+                <td><a href="panel_administrador.jsp" class="linkMenu linkActual"><sptag:message code="label_panel_admin"/></a></td>
                 <td id="logoTictum"><img src="images/logo1Negro.png" width="173px" height="60px"/></td>
                 <td id="logoUser"><img src="images/usuario.png" width="35px" height="35px"
                                        onclick="mostrarOcultarInfoUsuario()"/></td>
@@ -51,7 +50,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="errores">Dato no válido</p>
+                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
                                 <br/>
                             </td>
                             <td id="columna2">
@@ -81,7 +80,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="errores">Datos no válido</p>
+                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
                             </td>
                         </tr>
                         <tr>
@@ -95,9 +94,9 @@
             </form>
         </div>
         <div id="userInfo">
-            <h3>Usuario1</h3>
-            <p>Responsable de contratación</p><br/>
-            <a href="">Logout</a>
+            <h3><sptag:message code="label_usuario"/></h3>
+            <p><sptag:message code="label_responsable_contratacion"/></p><br/>
+            <a href=""><sptag:message code="label_logout"/></a>
         </div>
     </section>
 
