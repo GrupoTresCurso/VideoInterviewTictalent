@@ -1,6 +1,19 @@
 package controllers;
 
+import beans.entities.Formulario;
+import model.business.BaseBusiness;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller("FormularioController")
 public class FormularioController implements BaseController {
@@ -11,7 +24,7 @@ public class FormularioController implements BaseController {
 
 
     @RequestMapping(value = "/guardarFormulario.do", method = RequestMethod.GET)
-    public void guardarFormulario(@ModelAttribute("formulario") Formulario formulario,HttpServletResponse response) {
+    public void guardarFormulario(@ModelAttribute("formulario") Formulario formulario, HttpServletResponse response) {
         formularioBusiness.actualizar(formulario);
         try {
             response.sendRedirect( "recuperarFormularios.do");
@@ -29,7 +42,7 @@ public class FormularioController implements BaseController {
     }
 
     @RequestMapping(value = "/recuperarFormulario.do",method = RequestMethod.GET)
-    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id,HttpSession session, HttpServletResponse response){
+    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session, HttpServletResponse response){
         Formulario formulario=formularioBusiness.recuperarPorId(id);
         session.setAttribute("formulario",formulario);
         return "formulario";
