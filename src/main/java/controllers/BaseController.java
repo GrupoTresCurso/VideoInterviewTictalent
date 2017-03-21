@@ -8,9 +8,8 @@ public interface BaseController {
     String CARGAR_VIDEO = "cargar_video";
     String ENTREVISTA_CLONAR="entrevista_clonar";
     String ENTREVISTA_NUEVA="entrevista_nueva";
-    String PANEL_ADMIN = "panel_administrador";
     String PAGINA_PRINCIPAL = "principal";
     String LOGIN_USUARIO = "login";
-    String CREAR_USUARIO="crear_usuario";
+    String PANEL_ADMIN="panel_administrador";
 
 }

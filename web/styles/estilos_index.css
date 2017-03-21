@@ -1,0 +1,85 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: myFont, "Arial Black";
+}
+body {
+    background: #F2F2F2;
+}
+main {
+    margin: 76px auto;
+    text-align: center;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
+    background-color: white;
+}
+header {
+    background-color: black;
+    padding: 2px 0px;
+}
+aside {
+    display: inline-block;
+    float: left;
+    padding: 40px 0px;
+}
+#separador{
+    display: inline-block;
+    float: left;
+    margin: 0px 0px;
+    border: 1.5px solid black;
+    margin: 23px 0px;
+}
+section {
+    display: inline-block;
+    padding: 35px 0px;
+    text-align: center;
+}
+img {
+    vertical-align: middle;
+    background-color: white;
+}
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
+.tableElementoText {
+    border: 2px solid black;
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+}
+td{
+    height: 33px;
+}
+input{
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0px;
+}
+button{
+    font-size: 18px;
+    border: 0px;
+    font-family: myFont, "Arial Black";
+    background-color: #00B4DF;
+    padding: 10px 25px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover{
+    background-color: #1681B4;
+}
+
+#celdaBotonGuardar{
+    text-align: right;
+}
+#contenedorFormulario{
+    text-align: center;
+}
+#errores{
+    color: red;
+    font-weight: bold;
+}
+h2{
+    color: #00B4DF;
+}

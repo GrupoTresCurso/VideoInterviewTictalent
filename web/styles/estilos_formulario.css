@@ -1,0 +1,726 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
+
+.colorTictum{
+    color:#00B4DF;
+}
+
+body {
+    min-height: 100% !important;
+    /*background-color: #D1F6FF;*/
+    background-color: #F2F2F2;
+}
+
+main {
+    padding: 0px;
+    margin: 0px;
+    font-family: myFont, "Verdana";
+    min-height: 100% !important;
+}
+
+nav {
+    height: 70px;
+    width: 90%;
+    background: black;
+    list-style-type: none;
+    padding: 0px 30px;
+    padding-right: 0px !important;
+    padding-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    /*box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);*/
+}
+
+#tableMenu td {
+    padding: 10px 0px;
+    padding-right: 70px;
+    vertical-align: middle;
+}
+
+#logoTictum {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+.linkMenu {
+    text-decoration: none;
+    color: white;
+}
+
+.linkActual {
+    color: #00B4DF;
+}
+
+#tableMenu td a:hover {
+    transform: scale(1.4);
+    color: #00B4DF;
+}
+
+section {
+    font-size: 20px;
+    display: inline-block;
+}
+
+section>table{
+    padding: 0px;
+    margin: 0px;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+#izquierda, #medio, #derecha {
+    vertical-align: top;
+    height: 200% !important;
+}
+
+#izquierda {
+    background-color: #F2F2F2;
+    height: 200% !important;
+
+}
+
+#medio {
+    background-color: white;
+}
+
+#derecha {
+    background-color: #F2F2F2;
+    padding: 30px 20px;
+    padding-bottom: 0px;
+    padding-right: 22px;
+    height: 200% !important;
+}
+
+.elemento {
+    width: 100%;
+    height: 46px;
+    padding: 1px;
+    position: absolute;
+    border: 1px solid #C8C6C6;
+}
+
+.elementoGrande {
+    height: 90px;
+}
+
+.elementoPequenio {
+    height: 33px;
+}
+
+.elementoLabel {
+    text-align: center;
+}
+
+.tableElementoText {
+    border: 2px solid black;
+    width: 120px;
+}
+
+.celda {
+    background-color: white;
+    height: 33px;
+    padding: 0px 1px;
+}
+
+input, button {
+    font-size: 15px;
+    border: 0px;
+    font-family: myFont, "Arial Black";
+}
+
+label {
+    font-size: 13px;
+    border: 0px;
+    font-family: myFont, "Arial Black";
+}
+
+#panelElementosPrincipal {
+    position: relative;
+    width: 305px;
+    padding-left: 5px;
+}
+
+#panelElementos, #panelElementosBloqueo {
+    position: absolute;
+    top: 0px;
+    width: 85%;
+    height: 293%;
+    text-align: left;
+    padding: 30px 20px;
+    overflow-y: scroll;
+}
+
+#panelElementosBloqueo {
+    background-color: white;
+    opacity: 0.5;
+}
+
+#panelElementos table {
+    border-collapse: separate;
+    border-spacing: 5px 5px;;
+}
+
+#contenedor {
+    padding: 15px 50px;
+    width: 590px;
+    border: 2px solid transparent;
+    font-size: 14px;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#contenedor.over {
+    border: 2px dashed black;
+}
+
+#eliminar {
+    padding: 10px 0px;
+    width: 300px;
+    height: 150px;
+    margin-left: 10px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 12px;
+}
+
+#papelera {
+    margin-top: -20px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+input[type="number"] {
+    width: 80px;
+    height: 20px;
+    border: 2px solid black;
+    text-align: right;
+    padding: 2px;
+}
+
+input[type="radio"] {
+    border: 0px;
+    width: 15px;
+    height: 2em;
+    vertical-align: middle;
+}
+
+input[type='radio']:before {
+    width: 13px;
+    height: 13px;
+    border-radius: 15px;
+    top: 5px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #E0E0E0;
+}
+
+input[type='radio']:hover:after {
+    width: 13px;
+    height: 13px;
+    border-radius: 15px;
+    top: -16px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #00B4DF;
+}
+
+input[type='radio']:checked:after {
+    width: 16px;
+    height: 16px;
+    top: -15px;
+    left: 0px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 0px;
+    background-image: url("../images/radio.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+input[type="checkbox"] {
+    border: 0px;
+    width: 15px;
+    height: 2em;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+
+input[type='checkbox']:before {
+    width: 13px;
+    height: 13px;
+    top: 5px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #E0E0E0;
+}
+
+input[type='checkbox']:hover:after {
+    width: 13px;
+    height: 13px;
+    top: -16px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #00B4DF;
+}
+
+input[type='checkbox']:checked:after {
+    width: 16px;
+    height: 16px;
+    top: -15px;
+    left: 0px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 0px;
+    background-image: url("../images/checkbox.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.number-wrapper {
+    position: relative;
+}
+
+.number-wrapper:after,
+.number-wrapper:before {
+    position: absolute;
+    right: 1px;
+    width: 1.4em;
+    height: 8px;
+    font-size: 10px;
+    pointer-events: none;
+    background: white;
+}
+
+.number-wrapper:after {
+    content: url("../images/arrow_up.png");
+    top: -0.3em;
+}
+
+.number-wrapper:before {
+    content: url("../images/arrow_down.png");
+    margin-bottom: 13px;
+    bottom: -1.5em;
+}
+
+#propiedades {
+    padding: 10px 20px;
+    width: 260px;
+    height: 280px;
+    margin-left: 10px;
+    line-height: 5px;
+    text-align: left;
+    border: 2px solid grey;
+    font-size: 15px;
+    overflow-y: scroll;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+#propiedades label {
+    text-align: center;
+}
+
+#propiedades input {
+    font-size: 14px;
+
+    border: 1px solid black;
+}
+
+#opcionesPropiedades {
+    height: 20px;
+    width: 50px;
+}
+
+#tableOpciones tr td {
+    height: 20px;
+
+}
+
+#spanOpciones:after {
+    margin-top: 4px;
+}
+
+.texto {
+    position: absolute;
+    top: 0px;
+}
+
+.contenedorElemento {
+    position: relative;
+    cursor: move;
+    width: 90px;
+    height: 90px;
+}
+
+.contenedorIcono {
+    text-align: center;
+    border: 2px solid grey;
+    width: 90px;
+    height: 90px;
+    top: 0px;
+    position: absolute;
+    font-size: 13px;
+    background-color: white;
+}
+
+.capaSuperior {
+    border: 2px solid black;
+    width: 90px;
+    height: 90px;
+    top: 0px;
+    position: absolute;
+}
+
+.elemento label {
+    margin-right: 15px;
+}
+
+summary {
+    font-size: 18px;
+    outline: none;
+}
+
+details summary::-webkit-details-marker {
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.opcionesR label {
+    clear: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.opcionesR table {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.opcionesCB table {
+    vertical-align: middle;
+}
+
+.opcion {
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+
+.opcionesCB table {
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.celdaOpcion {
+    height: 1px;
+    background: transparent;
+}
+
+textarea {
+    resize: none;
+    border: 0px;
+    font-size: 13px;
+    text-align: justify;
+}
+
+select {
+    height: 33px;
+    width: 230px;
+    border: 2px solid black;
+    font-family: myFont, "Arial Black";
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper:after {
+    position: absolute;
+    right: 6px;
+    width: 1.4em;
+    height: 1em;
+    font-size: 10px;
+    pointer-events: none;
+    background: white;
+    content: url("../images/arrow_down2.png");
+    margin-top: 1.5px;
+    padding-left: 5px;
+    padding-top: 7px;
+    padding-bottom: 12.5px;
+    border-left: 2px solid black;
+}
+
+input[type="date"] {
+    height: 29px;
+    width: 180px;
+    border: 2px solid black;
+    font-family: myFont, "Arial Black";
+}
+
+.date-wrapper {
+    position: relative;
+}
+
+.date-wrapper:after {
+    position: absolute;
+    right: 6px;
+    width: 1.4em;
+    height: 1em;
+    font-size: 10px;
+    pointer-events: none;
+    background: white;
+    content: url("../images/arrow_down2.png");
+    margin-top: 1.5px;
+    padding-left: 14px;
+    padding-top: 7px;
+    padding-bottom: 12.5px;
+    border-left: 2px solid black;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#labelAddFile {
+    clear: left;
+    display: inline-block;
+    border: 2px solid black;
+    height: 25px;
+    width: 250px;
+    margin-left: 10px;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+#labelAddFile table tr td {
+    height: 10px;
+}
+
+.celdaArchivo {
+    width: 210px;
+}
+
+details > table {
+    margin-left: 20px;
+}
+
+/*#celdaBotones{
+    text-align: right;
+}
+
+#celdaBotones input[type="button"]{
+    cursor: pointer;
+}*/
+
+span {
+    margin-left: 10px;
+}
+
+.labelLinea {
+    word-wrap: break-word;
+    max-width: 150px;
+    float: left;
+    margin-top: 7px;
+}
+
+.nombreFormulario {
+    border: 2px solid black;
+    padding: 5px 10px;
+    width: 440px;
+}
+
+.botonGuardar {
+    background-color: #00B4DF;
+    padding: 7px 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botonGuardar:hover{
+    background-color: #1681B4;
+}
+
+#estadoContenedor {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+#mensajeDefecto {
+    top: 0px;
+    font-size: 18px;
+    position: absolute;
+}
+
+#nuevoForm {
+    top: 0px;
+    position: absolute;
+}
+
+#nuevoFormulario {
+    padding-bottom: 20px;
+}
+
+.btnForm {
+    cursor: default;
+}
+
+#btnLimpiar {
+    margin-left: 390px;
+}
+
+h5{
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+hr {
+    margin-left: -60px;
+    margin-right: -50px;
+    border: 1px dashed black;
+}
+
+b > label {
+    font-size: 15px;
+    border: 0px;
+    font-family: myFont, "Arial Black";
+}
+
+#contenedor {
+    font-family: myFont, "Arial Black";
+}
+
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 6px;
+}
+
+#contenedorNumber {
+    position: relative;
+}
+
+#cubiertaEntradaNumero {
+    position: absolute;
+    top: 0.5px;
+    left: 10.5px;
+    width: 40px;
+    height: 20px;
+    background-color: transparent;
+}
+
+/******SCROLLBAR*****/
+#contenedor::-webkit-scrollbar {
+    width: 1.2em;
+}
+
+#contenedor::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#contenedor::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+
+#propiedades::-webkit-scrollbar {
+    width: 1em;
+}
+
+#propiedades::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#propiedades::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+
+#panelElementos::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+#panelElementos::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#panelElementos::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+
+#tableMenu tr td {
+    background-color: transparent;
+}
+
+#logoUser{
+    text-align: right;
+    padding-left: 20px !important;
+    padding-right:20px !important;
+    padding-top: 5px !important;
+    margin-top: -100px;
+}
+
+#logoUser img{
+    cursor: pointer;
+}
+
+#userInfo{
+    text-align: left;
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    background-color: white;
+    top:70px;
+    padding: 10px;
+    font-size: 13px;
+    border-left:2px solid #00B4DF;
+    border-bottom:2px solid #00B4DF;
+}
+
+#userInfo h3{
+    color: #00B4DF;
+}
+#userInfo a{
+    padding-left: 70px;
+    color: red;
+    font-weight: bold;
+}
+
+
