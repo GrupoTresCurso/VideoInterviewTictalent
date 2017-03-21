@@ -16,18 +16,7 @@
 </head>
 <body>
 <main>
-    <nav>
-        <table id="tableMenu">
-            <tr>
-                <td><a href="panel_administrador.jsp" class="linkMenu linkActual"><sptag:message code="label_panel_admin"/></a></td>
-                <td id="logoTictum"><img src="images/logo1Negro.png" width="173px" height="60px"/></td>
-                <td id="logoUser"><img src="images/usuario.png" width="35px" height="35px"
-                                       onclick="mostrarOcultarInfoUsuario()"/></td>
-            </tr>
-
-        </table>
-    </nav>
-
+    <%@include file="menu.jsp"%>
     <section onclick="ocultarInfoUsuario()">
         <div id="contenedorPrincipal">
             <form action="crearUsuario.do" method="POST">
