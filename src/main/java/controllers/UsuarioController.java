@@ -42,7 +42,7 @@ public class UsuarioController implements BaseController {
     }
 
     @RequestMapping(value = "logoutUsuario.do", method = RequestMethod.GET)
-    public String loginUsuario(HttpSession session){
+    public String logoutUsuario(HttpSession session){
         session.invalidate();
         return INDEX;
     }

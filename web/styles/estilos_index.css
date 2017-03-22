@@ -5,42 +5,66 @@
 }
 body {
     background: #F2F2F2;
+    min-width: 100%!important;
 }
+
 main {
     margin: 76px auto;
     text-align: center;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
     background-color: white;
+    width: 720px;
+    height: 480px;
+    box-sizing: border-box;
 }
+
 header {
     background-color: black;
     padding: 2px 0px;
+    width: 100%;
+    height: 22%;
+    box-sizing: border-box;
 }
+
 aside {
     display: inline-block;
     float: left;
     padding: 40px 0px;
+    width: 45%;
+    height: 80%;
+    box-sizing: border-box;
 }
+
 #separador{
     display: inline-block;
     float: left;
     margin: 0px 0px;
-    border: 1.5px solid black;
-    margin: 23px 0px;
+    border: 1px solid black;
+    margin: 20px 0px;
+    width: 0px;
+    height: 68%;
+    box-sizing: border-box;
 }
+
 section {
     display: inline-block;
     padding: 35px 0px;
     text-align: center;
+    width: 54%;
+    height: 80%;
+    box-sizing: border-box;
 }
+
 img {
     vertical-align: middle;
     background-color: white;
 }
+
 @font-face {
     font-family: myFont;
     src: url(../font/Arvo-Regular.ttf);
 }
+
 .tableElementoText {
     border: 2px solid black;
     width: 120px;
@@ -48,24 +72,28 @@ img {
     padding: 5px;
     background-color: white;
 }
+
 td{
     height: 33px;
 }
+
 input{
     padding-left: 10px;
     font-size: 18px;
     border: 0px;
 }
+
 button{
     font-size: 18px;
     border: 0px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Arial";
     background-color: #00B4DF;
     padding: 10px 25px;
     color: white;
     cursor: pointer;
     font-weight: bold;
 }
+
 button:hover{
     background-color: #1681B4;
 }
@@ -73,9 +101,15 @@ button:hover{
 #celdaBotonGuardar{
     text-align: right;
 }
+
 #contenedorFormulario{
     text-align: center;
 }
+
+#tableFormulario{
+    margin: 1px auto;
+}
+
 #errores{
     color: red;
     font-weight: bold;
@@ -83,3 +117,8 @@ button:hover{
 h2{
     color: #00B4DF;
 }
+
+div{
+    box-sizing: border-box;
+}
+

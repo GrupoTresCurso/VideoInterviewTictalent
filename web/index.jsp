@@ -9,7 +9,8 @@
     </title>
     <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_index"/>>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
     <section>
         <form action="${pageContext.request.contextPath}/loginUsuario.do" method="post">
             <h2>
-                <sptag:message code="label_video_intewview"/>
+                <sptag:message code="login_title"/>
             </h2>
             <br/>
             <div id="contenedorFormulario">
@@ -40,7 +41,7 @@
                                     </td>
                                     <td>
                                         <input type="text" name="nombreUsuario" id="nombreUsuario"
-                                               placeholder='<sptag:message code="placeholder_nombre"/>' size="19"
+                                               placeholder=<sptag:message code="placeholder_nombre"/> size="19"
                                                tabindex="1"/>
                                     </td>
                                 </tr>
@@ -58,7 +59,7 @@
                                     </td>
                                     <td>
                                         <input type="password" name="passwordUsuario" id="passwordUsuario"
-                                               placeholder='<sptag:message code="placeholder_password"/>' size="19"
+                                               placeholder=<sptag:message code="placeholder_password"/> size="19"
                                                tabindex="2"/>
                                     </td>
                                 </tr>
@@ -79,8 +80,6 @@
         </form>
     </section>
 </main>
-
-<script type='text/javascript' src="js/index.js"></script>
 
 </body>
 </html>

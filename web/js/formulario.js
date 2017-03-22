@@ -604,15 +604,41 @@ function drop(e) {
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
         document.getElementById("contenedorElementosFormulario").appendChild(elementoCopiado);
         $("#" + elementoCopiado.id).fadeOut(0);
+        agregarCampos(elementoCopiado);
         contador++;
     }
     e.target.classList.remove('over');
     document.getElementById("mensajeDefecto").style.display = 'none';
     document.getElementById("nuevoForm").style.display = 'block';
     $("#" + elementoCopiado.id).fadeIn(1000);
+
     seleccionar(elementoCopiado.id);
+
 }
 
+function agregarCampos(elementoCopiado){
+    campo = '<form:input type="hidden" name="pregunta[].labelPregunta" value="asd"/>';
+    campo2 = '<form:input type="hidden" name="pregunta[].tipoPregunta" value="asd"/>';
+    campo3 = '<form:input type="hidden" name="pregunta[].opciones" value="asd"/>';
+    $("#nuevoFormulario").append(campo);
+    campo = '';
+}
+
+/*
+function agregarCampos(elementoCopiado){
+    var aux=elementoCopiado.id.split("_");
+    var tipo=aux[0];
+    var id=aux[1];
+    if(tipo==="video"){
+        campo = '<input type="hidden" size="20" name="videos[]" value="'+id+'"/>';
+    }else if(tipo==="formulario"){
+        campo = '<input type="hidden" size="20" name="formularios[]" value="'+id+'"/>';
+    }else {
+        campo = '<input type="hidden" size="20" name="candidatos[]" value="'+id+'"/>';
+    }
+    $("#contenedorEntrevista").append(campo);
+    campo = '';
+}*/
 
 //Funcionamiento del drag and drop de la papelera
 

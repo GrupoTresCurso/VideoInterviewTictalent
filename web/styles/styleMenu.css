@@ -1,3 +1,7 @@
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
 body {
     text-align: center;
     margin: 0px;
@@ -19,7 +23,18 @@ header{
     margin: 0px;
 
 }
-nav{
+
+nav {
+    height: 70px;
+    width: 90%;
+    background: black;
+    list-style-type: none;
+    padding: 0px 30px;
+    padding-right: 0px !important;
+    padding-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    /*box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);*/
     text-align: center;
     padding-right: 30px;
 }
@@ -54,4 +69,64 @@ nav > ul > li {
     padding: 5px;
     font: bold 14px verdana, sans-serif;
 
+}
+#tableMenu td {
+    padding: 10px 0px;
+    padding-right: 70px;
+    vertical-align: middle;
+}
+
+#logoTictum {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+.linkMenu {
+    text-decoration: none;
+    color: white;
+}
+
+.linkActual {
+    color: #00B4DF;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#logoUser{
+    text-align: right;
+    padding-left: 20px !important;
+    padding-right:20px !important;
+    padding-top: 5px !important;
+    margin-top: -100px;
+}
+
+#logoUser img{
+    cursor: pointer;
+}
+
+#userInfo{
+    text-align: left;
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    background-color: white;
+    top:70px;
+    padding: 10px;
+    font-size: 13px;
+    border-left:2px solid #00B4DF;
+    border-bottom:2px solid #00B4DF;
+}
+
+#userInfo h3{
+    color: #00B4DF;
+}
+#userInfo a{
+    padding-left: 70px;
+    color: red;
+    font-weight: bold;
 }
