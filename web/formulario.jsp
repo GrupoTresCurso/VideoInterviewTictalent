@@ -195,7 +195,7 @@
                                             <c:if test = "${pregunta.tipoPregunta == 'text'}">
 
                                             <td>
-                                                    <div class="texto contenedorElemento pertenecePanel" id="${pregunta.idPregunta}"
+                                                    <div class="texto contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
                                                          draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                          onclick="seleccionar(this.id)">
                                                         <div class="contenedorIcono">
@@ -222,7 +222,7 @@
                                                 <c:set var="opcionesComas" value="${pregunta.opciones}"/>
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}" />
                                                 <td>
-                                                <div class="radio contenedorElemento pertenecePanel" id="${pregunta.idPregunta}"
+                                                <div class="radio contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -245,7 +245,7 @@
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}" />
 
                                             <td>
-                                                <div class="checkbox contenedorElemento pertenecePanel" id="${pregunta.idPregunta}"
+                                                <div class="checkbox contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -284,7 +284,7 @@
                                             </c:if>
                                             <c:if test = "${pregunta.tipoPregunta == 'area'}">
                                             <td>
-                                                <div class="area contenedorElemento pertenecePanel" id="${pregunta.idPregunta}"
+                                                <div class="area contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -310,7 +310,7 @@
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}" />
 
                                             <td>
-                                                <div class="select contenedorElemento pertenecePanel" id="${pregunta.idPregunta}"
+                                                <div class="select contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -345,7 +345,6 @@
                             </details>
                         </div>
                         <div id="panelElementosBloqueo">
-
                         </div>
                     </div>
 

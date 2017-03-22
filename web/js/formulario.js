@@ -586,7 +586,10 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        elementoCopiado.id = "elemento" + contador;
+        alert(elementoCopiado.id);
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"){
+            elementoCopiado.id = "elemento" + contador;
+        }
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '550px';
         elementoCopiado.style.height = '50px';
@@ -617,11 +620,24 @@ function drop(e) {
 }
 
 function agregarCampos(elementoCopiado){
-    campo = '<form:input type="hidden" name="pregunta[].labelPregunta" value="asd"/>';
-    campo2 = '<form:input type="hidden" name="pregunta[].tipoPregunta" value="asd"/>';
-    campo3 = '<form:input type="hidden" name="pregunta[].opciones" value="asd"/>';
-    $("#nuevoFormulario").append(campo);
+    alert(elementoCopiado.id);
+    var aux=elementoCopiado.id.split("_");
+    var tipo=aux[0];
+    var id=aux[1];
+    if(tipo==="p"){
+        campo = '<form:input type="hidden" size="20" name="id[].id" value="'+id+'"/>';
+        $("#nuevoFormulario").append(campo);
+    }else{
+        campo = '<form:input type="hidden" name="pregunta[].labelPregunta" value="asd"/>';
+        campo2 = '<form:input type="hidden" name="pregunta[].tipoPregunta" value="asd"/>';
+        campo3 = '<form:input type="hidden" name="pregunta[].opciones" value="asd"/>';
+        $("#nuevoFormulario").append(campo);
+        $("#nuevoFormulario").append(campo2);
+        $("#nuevoFormulario").append(campo3);
+    }
     campo = '';
+    campo2 = '';
+    campo3 = '';
 }
 
 /*
