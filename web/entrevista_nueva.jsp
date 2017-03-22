@@ -30,24 +30,17 @@
 <aside>
     <details>
         <summary>Videos introductorios</summary>
-        <table>
-            <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
-                <tr>
-                    <td>
-                        <div draggable="true" id="video_${videoIntroductorio.idVideo}" ondragstart="start(event)"
-                             ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                            <div class="contenedorIcono">
-                                <img src="images/movie.png" width="45px" height="45px"/>
-                                <p>${videoIntroductorio.nombreVideo}</p>
-                            </div>
-                            <div id="elementoVideoIntro" class="elemento">
-                                <img src="images/movie.png" width="45px" height="45px"/>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+        <c:set var="count" value="0"/>
+        <c:forEach var="videoIntroductorio" items="${videosIntroductorios}" step="1" begin="0">
+            <c:if test="${count==4}">
+                <c:set var="count" value="0"/>
+            </c:if>
+            <div class="col${count}">
+                <a href="#">${videoIntroductorio.nombreVideo}</a>
+            </div>
+            <c:set var="count" value="${count+1}"/>
+        </c:forEach>
+
     </details>
     <details>
         <summary>Formularios</summary>
@@ -143,12 +136,100 @@
                     <div id="guia">
                     </div>
                 </div>
-                <form id="crearEntrevista" action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET">
-                    <div id="contenedorEntrevista" ondragenter="return enter(event)" ondragover="return over(event)"
-                         ondragleave="return leave(event)" ondrop="return drop(event)">
-                    </div>
-                    <input type="submit" value="Crear Entrevista" class="botonGuardar"/>
-                </form>
+                <div id="contenedorEntrevista" ondragenter="return enter(event)" ondragover="return over(event)"
+                     ondragleave="return leave(event)" ondrop="return drop(event)">
+                    <form id="crearEntrevista" action="${pageContext.request.contextPath}/crearEntrevista.do"
+                          method="GET">
+                        <table>
+                            <tr>
+                                <td id="celdaFormulario">
+                                    <table id="tableNuevoCandidato">
+                                        <tr>
+                                            <td>
+                                                <div class="elemento">
+                                                    <table class="tableElementoText">
+                                                        <tr>
+                                                            <td class="celda">
+                                                                <img width="30px" height="30px" src=<sptag:message
+                                                                        code="src_img_user"/>>
+                                                            </td>
+                                                            <td class="celda">
+                                                                <input type="text" id="nombreEntrevista"
+                                                                       placeholder="Nombre de la entrevista"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="elemento">
+                                                    <table class="tableElementoText">
+                                                        <tr>
+                                                            <td class="celda">
+                                                                <img width="30px" height="30px" src=<sptag:message
+                                                                        code="src_img_user"/>>
+                                                            </td>
+                                                            <td class="celda">
+                                                                <input type="text" id="nombrePuesto"
+                                                                       placeholder="Nombre del puesto"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="elemento">
+                                                    <table class="tableElementoText">
+                                                        <tr>
+                                                            <td class="celda">
+                                                                <img width="30px" height="30px" src=<sptag:message
+                                                                        code="src_img_user"/>>
+                                                            </td>
+                                                            <td class="celda">
+                                                                <input type="text" id="mensajeFinal"
+                                                                       placeholder="Mensaje final"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="elemento">
+                                                    <table class="tableElementoText">
+                                                        <tr>
+                                                            <td class="celda">
+                                                                <img width="30px" height="30px" src=<sptag:message
+                                                                        code="src_img_dni"/>>
+                                                            </td>
+                                                            <td class="celda">
+                                                                <input type="checkbox" name="videoIntroBoolean"
+                                                                       value="Video Introductorio"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="celdaBotonGuardar">
+                                    <button type="submit" form="crearEntrevista" value="Crear Entrevista"
+                                            class="botonGuardar">Crear Entrevista
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </div>
             </section>
         </td>
         <td>
@@ -239,8 +320,8 @@
             elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
             elementoCopiado = elementoArrastrado.cloneNode(true);
             elementoCopiado.style.transform = 'scale(1.0)';
-            elementoCopiado.style.width = '420px';
-            elementoCopiado.style.height = '51px';
+            elementoCopiado.style.width = '50px';
+            elementoCopiado.style.height = '50px';
             if (devolverTipoElemento(elementoMovido) == "number" || devolverTipoElemento(elementoMovido) == "select" ||
                 devolverTipoElemento(elementoMovido) == "date") {
                 elementoCopiado.style.height = '36px';
@@ -254,9 +335,9 @@
             //e.target.appendChild(elementoCopiado);
 
             elementoGuia = elementoCopiado.cloneNode(true);
+            elementoGuia.style.float = 'left';
             var tr = document.getElementById("guia");
             tr.appendChild(elementoGuia);
-
 
             //e.target.appendChild();
             /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +
@@ -269,16 +350,16 @@
 
     }
 
-    function agregarCampos(elementoCopiado){
-        var aux=elementoCopiado.id.split("_");
-        var tipo=aux[0];
-        var id=aux[1];
-        if(tipo==="video"){
-            campo = '<input type="hidden" size="20" name="videos[]" value="'+id+'"/>';
-        }else if(tipo==="formulario"){
-            campo = '<input type="hidden" size="20" name="formularios[]" value="'+id+'"/>';
-        }else {
-            campo = '<input type="hidden" size="20" name="candidatos[]" value="'+id+'"/>';
+    function agregarCampos(elementoCopiado) {
+        var aux = elementoCopiado.id.split("_");
+        var tipo = aux[0];
+        var id = aux[1];
+        if (tipo === "video") {
+            campo = '<input type="hidden" size="20" name="videos[]" value="' + id + '"/>';
+        } else if (tipo === "formulario") {
+            campo = '<input type="hidden" size="20" name="formularios[]" value="' + id + '"/>';
+        } else {
+            campo = '<input type="hidden" size="20" name="candidatos[]" value="' + id + '"/>';
         }
         $("#contenedorEntrevista").append(campo);
         campo = '';

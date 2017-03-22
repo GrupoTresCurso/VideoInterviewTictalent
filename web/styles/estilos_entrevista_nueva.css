@@ -229,6 +229,7 @@ input[type='radio']:checked:after {
     padding-top: 20px;
     font-size: 15px;
     word-wrap: break-word;
+    top: 200px;
 }
 
 #contenedorEntrevista.over {
@@ -307,4 +308,32 @@ p{
     font-size: 15px;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
     cursor: pointer;
+    margin-top: 250px;
+}
+#superior{
+    top: 200px;
+}
+#guia{
+    height:100px;
+    width: 450px;
+}
+.col1 {
+    position: absolute;
+    left: 20px;
+    padding: 0px;
+}
+.col2 {
+    position: absolute;
+    margin-left: 50px;
+    padding: 0px;
+}
+
+.col3 {
+    position: absolute;
+    margin-left: 100px;
+    padding: 0px;
+}
+.col4 {
+    margin-left: 150px;
+    padding: 0px;
 }
