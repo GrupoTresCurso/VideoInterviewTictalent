@@ -37,7 +37,7 @@ public class PreguntaController implements BaseController {
     public String recuperarPreguntas(HttpSession session){
         ArrayList<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
         session.setAttribute("listaPreguntas",listaPreguntas);
-        return "pregunta";
+        return FORMULARIO;
     }
 
 

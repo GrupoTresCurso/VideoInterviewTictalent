@@ -1,6 +1,8 @@
 package controllers;
 
 import beans.entities.Formulario;
+import beans.entities.Pregunta;
+import beans.helpers.PreguntaForm;
 import model.business.BaseBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller("FormularioController")
 public class FormularioController implements BaseController {
@@ -22,6 +25,7 @@ public class FormularioController implements BaseController {
     @Qualifier("FormularioBusiness")
     private BaseBusiness<Formulario> formularioBusiness;
 
+    /*
 
     @RequestMapping(value = "/guardarFormulario.do", method = RequestMethod.GET)
     public void guardarFormulario(@ModelAttribute("formulario") Formulario formulario, HttpServletResponse response) {
@@ -46,6 +50,14 @@ public class FormularioController implements BaseController {
         Formulario formulario=formularioBusiness.recuperarPorId(id);
         session.setAttribute("formulario",formulario);
         return "formulario";
+    }*/
+
+    @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
+    public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm) {
+        List <Pregunta> listaPreguntas=preguntaForm.getPreguntasSinDDBB();
+        Formulario formulario=new Formulario("ASD",listaPreguntas,0);
+        formularioBusiness.crearNuevo(formulario);
+        return FORMULARIO;
     }
 
 
