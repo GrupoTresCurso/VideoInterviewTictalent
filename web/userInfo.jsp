@@ -22,3 +22,4 @@
     <br/>
     <a href="${pageContext.request.contextPath}/logoutUsuario.do"><sptag:message code="label_logout"/></a>
 </div>
+<script type='text/javascript' src="js/userInfo.js"></script>
