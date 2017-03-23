@@ -1,86 +1,56 @@
 *{
     padding: 0px;
     margin: 0px;
-    font-family: myFont, "Verdana";
-}
-
-@font-face {
-    font-family: myFont;
-    src: url(../font/Arvo-Regular.ttf);
-}
-
-body{
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
 }
 
 main{
+    margin:0px;
+    padding:0px;
     width:100%;
-    font-family: myFont, "Verdana";
-    box-sizing: border-box;
+    height:600px;
+    font-family: 'Arvo', Arial;
 }
 
 aside{
-    /*margin-top: 100px;*/
+    margin-top: 100px;
     float: left;
     display:inline-block;
-    width:30%;
-    height:90%;
-    min-height:90% !important;
+    width:250px;
+    height:100%;
     font-size: 20px;
     padding: 40px 25px;
-    background-color: #F2F2F2;
-    box-sizing: border-box;
+    background-color: #D1F6FF;
+    position:fixed;
 }
 
-#tableCandidatos{
+#tableOpcionesVideo{
     margin-top: 20px;
     font-size: 18px;
 }
 
 section{
-    /*margin-top: 100px;*/
-    float: left;
+    margin-top: 100px;
     display:inline-block;
-    width:70%;
-    height:90%;
+    margin-left:350px;
+    width:500px;
+    height:500px;
     font-size: 20px;
     padding: 35px 50px;
-    box-sizing: border-box;
+}
+#seleccionArchivo{
+    display: block;
+    border: 3px dashed black;
+    border-radius: 20px;
+    height: 300px;
 }
 
-#formNuevoCandidato {
-    width: 700px;
-}
-
-#tableNuevoCandidato{
-    line-height:  40px;
-}
-
-#imagenCandidato{
-    text-align: center;
-    border:2px dashed grey;
-    color: grey;
-    width: 130px;
-    height: 160px;
-}
-
-#celdaImagen, #celdaFormulario{
-    vertical-align: top;
-}
-
-#celdaBotonGuardar{
-    text-align: right;
-    padding-top: 40px;
-    padding-right: 10px;
-}
-
-.botonGuardar{
+button{
     padding: 20px 30px;
     color:white;
-    background-color: #00B4E0;
+    text-transform: uppercase;
+    background-color: #D1F6FF;
     border:0px;
+    font-family: 'Arvo', "Arial Black";
     font-weight: bold;
     font-size: 15px;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
@@ -107,21 +77,25 @@ section{
 input{
     font-size: 18px;
     border: 0px;
+    font-family: 'Arvo', "Arial Black";
 }
 
 label{
     font-size: 18px;
 }
-
 img{
     vertical-align: middle;
 }
+.imagenP{
+    vertical-align: middle;
+    padding: 40px;
+}
 
 input[type="number"]{
-     width: 80px;
-     height: 40px;
-     border: 2px solid #E0E0E0;
-     text-align: right;
+    width: 80px;
+    height: 40px;
+    border: 2px solid #E0E0E0;
+    text-align: right;
     padding: 2px;
 }
 
@@ -216,11 +190,11 @@ input[type='radio']:checked:after {
     height: 170px;
 }
 
-#contenedorImagen{
+#contenedorEntrevista{
     border: 2px solid #94B2B6;
-    width: 155px;
-    height: 150px;
-    background-image: url("../images/profile.jpg");
+    width: 500px;
+    height: 250px;
+    background-color: #d1f6ff;
     background-size: 100%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -228,9 +202,10 @@ input[type='radio']:checked:after {
     padding-top: 20px;
     font-size: 15px;
     word-wrap: break-word;
+    top: 200px;
 }
 
-#contenedorImagen.over {
+#contenedorEntrevista.over {
     border: 2px dashed #94B2B6;
 }
 
@@ -241,10 +216,97 @@ input[type="file"]{
 #nombreArchivo{
     line-height: 15px;
 }
-
-#contenedorFormulario{
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+#drop_zone {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    color: #bbb;
+}
+#subirArchivo{
     padding: 50px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+#nombreArchivo{
+    line-height: 15px;
+}
+td a{
+    text-decoration: none;
+    color: black;
+}
+#divArrastrar{
+    color: #BABABA;
+}
+
+p{
+    font-size: 12px;
+}
+
+#contenedorEntrevista{
+    border: 2px solid #94B2B6;
+    width: 500px;
+    height: 250px;
+    background-color: #d1f6ff;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+#medio, #derecha{
+    vertical-align: top;
+}
+#flotante{
+    overflow: hidden;
+    width: 100%; /*TamaÃ±o definido */
+}
+
+#flotante .A, #flotante .B{
+    float: left;
+}
+.botonGuardar{
+    padding: 20px 30px;
+    color:white;
+    text-transform: uppercase;
+    background-color: #00B4E0;
+    border:0px;
+    font-family: 'Arvo', "Arial Black";
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    cursor: pointer;
+    margin-top: 250px;
+}
+#superior{
+    top: 200px;
+}
+#guia{
+    height:100px;
+    width: 450px;
+}
+.col1 {
+    position: absolute;
+    left: 20px;
+    padding: 0px;
+}
+.col2 {
+    position: absolute;
+    margin-left: 50px;
+    padding: 0px;
+}
+
+.col3 {
+    position: absolute;
+    margin-left: 100px;
+    padding: 0px;
+}
+.col4 {
+    margin-left: 150px;
+    padding: 0px;
 }

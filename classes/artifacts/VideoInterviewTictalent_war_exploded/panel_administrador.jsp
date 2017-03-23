@@ -8,19 +8,18 @@
     <title>
         <sptag:message code="app_title"/>
     </title>
-    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_panel_administrador.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 
 </head>
 <body>
 <main>
     <%@include file="menu.jsp"%>
-    <section>
-        <div id="contenedorPrincipal" onclick="ocultarInfoUsuario()">
-            <form action="crearUsuario.do" method="POST" onSubmit="return validarRegistro()">
+    <section onclick="ocultarInfoUsuario()">
+        <div id="contenedorPrincipal">
+            <form action="crearUsuario.do" method="POST">
                 <h2>
                     <sptag:message code="panel_admin_title"/>
                 </h2>
@@ -37,11 +36,11 @@
                                         </td>
                                         <td>
                                             <input type="text" name="nombreUsuario" id="nombreUsuario"
-                                                   placeholder=<sptag:message code="placeholder_nombre"/> size="19" tabindex="1"/>
+                                                   placeholder='<sptag:message code="placeholder_nombre"/>' size="19" tabindex="1"/>
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="errores" id="errorNombre"></p>
+                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
                                 <br/>
                             </td>
                             <td id="columna2">
@@ -67,11 +66,11 @@
                                         </td>
                                         <td>
                                             <input type="password" name="password" id="passwordUsuario"
-                                                   placeholder=<sptag:message code="placeholder_password"/> size="19" tabindex="2"/>
+                                                   placeholder='<sptag:message code="placeholder_password"/>' size="19" tabindex="2"/>
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="errores" id="errorPassword"></p>
+                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
                             </td>
                         </tr>
                         <tr>
