@@ -16,11 +16,11 @@ public class UtilMultipart implements BaseUtil {
         return new Archivo(nombreOriginalArchivo, rutaEnFicheros);
     }
 
-    public Video obtenerVideo(MultipartFile multipartFile, String nombreAleatorio, int posicionEnEntrevista, String tipoVideo) {
+    public Video obtenerVideo(MultipartFile multipartFile, String nombreAleatorio, String tipoVideo) {
         String nombreOriginalArchivo = multipartFile.getOriginalFilename();
         String extension = FilenameUtils.getExtension(nombreOriginalArchivo);
         String rutaEnFicheros = SERVLET_EXTENSION + nombreAleatorio + "." + extension;
-        return new Video(nombreOriginalArchivo, rutaEnFicheros, posicionEnEntrevista, tipoVideo);
+        return new Video(nombreOriginalArchivo, rutaEnFicheros,  tipoVideo);
     }
 
 }

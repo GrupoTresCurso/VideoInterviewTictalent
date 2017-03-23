@@ -17,25 +17,18 @@ public class Pregunta {
     private String opciones;
     @Transient
     private String[] arrayOpciones;
-    private int posicionEnFormulario;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean favorito;
 
     public Pregunta() {
     }
 
-    public Pregunta(String labelPregunta, String tipoPregunta, String[] arrayOpciones, int posicionEnFormulario) {
+    public Pregunta(String labelPregunta, String tipoPregunta, String opciones, boolean favorito) {
         this.labelPregunta = labelPregunta;
         this.tipoPregunta = tipoPregunta;
-        this.arrayOpciones = arrayOpciones;
-        this.opciones = HelperBeans.getStringFromArray(arrayOpciones);
-        this.posicionEnFormulario = posicionEnFormulario;
-    }
-
-    public Pregunta(String labelPregunta, String tipoPregunta, String opciones, int posicionEnFormulario) {
-        this.labelPregunta = labelPregunta;
-        this.tipoPregunta = tipoPregunta;
-        this.arrayOpciones = HelperBeans.getArrayFromString(opciones);
         this.opciones = opciones;
-        this.posicionEnFormulario = posicionEnFormulario;
+        this.arrayOpciones = arrayOpciones;
+        this.favorito = favorito;
     }
 
     public int getIdPregunta() {
@@ -78,11 +71,11 @@ public class Pregunta {
         this.arrayOpciones = arrayOpciones;
     }
 
-    public int getPosicionEnFormulario() {
-        return posicionEnFormulario;
+    public boolean isFavorito() {
+        return favorito;
     }
 
-    public void setPosicionEnFormulario(int posicionEnFormulario) {
-        this.posicionEnFormulario = posicionEnFormulario;
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 }

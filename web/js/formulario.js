@@ -1,4 +1,5 @@
 var contador = 0;
+var contador2=0;
 var elementoMovido = null;
 var contenedorActual = null;
 var elementoArrastrado = null;
@@ -332,23 +333,34 @@ function actualizarEtiqueta() {
         case "texto":
             celdaElemento = tablaElemento.querySelectorAll('tr')[0].querySelectorAll('td')[1];
             var input = celdaElemento.querySelectorAll('input')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             input.placeholder = nuevo;
             break;
         case "area":
             celdaElemento = tablaElemento.querySelectorAll('tr')[0].querySelectorAll('td')[0];
             var textarea = celdaElemento.querySelectorAll('textarea')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             textarea.placeholder = nuevo;
             break;
         case "radio":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
+
             break;
         case "checkbox":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
             break;
         case "select":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
             break;
     }
@@ -586,9 +598,12 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        alert(elementoCopiado.id);
         if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"){
-            elementoCopiado.id = "elemento" + contador;
+            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
+        }else {
+            var aux=elementoCopiado.id.split("_");
+            var id=aux[1];
+            elementoCopiado.id="p"+"_"+contador+"_"+id;
         }
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '550px';
@@ -620,41 +635,28 @@ function drop(e) {
 }
 
 function agregarCampos(elementoCopiado){
-    alert(elementoCopiado.id);
     var aux=elementoCopiado.id.split("_");
     var tipo=aux[0];
-    var id=aux[1];
+    var id=aux[2];
     if(tipo==="p"){
-        campo = '<form:input type="hidden" size="20" name="id[].id" value="'+id+'"/>';
-        $("#nuevoFormulario").append(campo);
+        campo = '<input type="hidden" size="20" name="identificadoresDDBB['+contador2+'].id" value="'+id+'"/>';
+        $("#"+elementoCopiado.id+"").append(campo);
     }else{
-        campo = '<form:input type="hidden" name="pregunta[].labelPregunta" value="asd"/>';
-        campo2 = '<form:input type="hidden" name="pregunta[].tipoPregunta" value="asd"/>';
-        campo3 = '<form:input type="hidden" name="pregunta[].opciones" value="asd"/>';
-        $("#nuevoFormulario").append(campo);
-        $("#nuevoFormulario").append(campo2);
-        $("#nuevoFormulario").append(campo3);
+        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="A"/>';
+        campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
+        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="A"/>';
+        campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
+        $("#"+elementoCopiado.id+"").append(campo);
+        $("#"+elementoCopiado.id+"").append(campo2);
+        $("#"+elementoCopiado.id+"").append(campo3);
+        $("#"+elementoCopiado.id+"").append(campo4);
     }
     campo = '';
     campo2 = '';
     campo3 = '';
+    campo4 = '';
+    contador2++;
 }
-
-/*
-function agregarCampos(elementoCopiado){
-    var aux=elementoCopiado.id.split("_");
-    var tipo=aux[0];
-    var id=aux[1];
-    if(tipo==="video"){
-        campo = '<input type="hidden" size="20" name="videos[]" value="'+id+'"/>';
-    }else if(tipo==="formulario"){
-        campo = '<input type="hidden" size="20" name="formularios[]" value="'+id+'"/>';
-    }else {
-        campo = '<input type="hidden" size="20" name="candidatos[]" value="'+id+'"/>';
-    }
-    $("#contenedorEntrevista").append(campo);
-    campo = '';
-}*/
 
 //Funcionamiento del drag and drop de la papelera
 

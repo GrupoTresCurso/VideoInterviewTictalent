@@ -17,26 +17,12 @@ public class Formulario {
     @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Pregunta> preguntas;
-    private int posicionEnEntrevista;
 
     public Formulario() {
     }
 
-    public Formulario(String nombreFormulario, List<Pregunta> preguntas, int posicionEnEntrevista) {
+    public Formulario(String nombreFormulario, List<Pregunta> preguntas) {
         this.nombreFormulario = nombreFormulario;
-        this.preguntas = preguntas;
-        this.posicionEnEntrevista = posicionEnEntrevista;
-    }
-
-    public void setIdFormulario(int idFormulario) {
-        this.idFormulario = idFormulario;
-    }
-
-    public void setNombreFormulario(String nombreFormulario) {
-        this.nombreFormulario = nombreFormulario;
-    }
-
-    public void setPreguntas(ArrayList<Pregunta> preguntas) {
         this.preguntas = preguntas;
     }
 
@@ -44,8 +30,16 @@ public class Formulario {
         return idFormulario;
     }
 
+    public void setIdFormulario(int idFormulario) {
+        this.idFormulario = idFormulario;
+    }
+
     public String getNombreFormulario() {
         return nombreFormulario;
+    }
+
+    public void setNombreFormulario(String nombreFormulario) {
+        this.nombreFormulario = nombreFormulario;
     }
 
     public List<Pregunta> getPreguntas() {
@@ -54,13 +48,5 @@ public class Formulario {
 
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
-    }
-
-    public int getPosicionEnEntrevista() {
-        return posicionEnEntrevista;
-    }
-
-    public void setPosicionEnEntrevista(int posicionEnEntrevista) {
-        this.posicionEnEntrevista = posicionEnEntrevista;
     }
 }

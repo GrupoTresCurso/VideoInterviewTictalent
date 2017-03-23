@@ -2,6 +2,7 @@ package controllers;
 
 import beans.entities.Formulario;
 import beans.entities.Pregunta;
+import beans.helpers.ID;
 import beans.helpers.PreguntaForm;
 import model.business.BaseBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class FormularioController implements BaseController {
     @Autowired
     @Qualifier("FormularioBusiness")
     private BaseBusiness<Formulario> formularioBusiness;
+
+    @Autowired
+    @Qualifier("PreguntaBusiness")
+    private BaseBusiness<Pregunta> preguntaBusiness;
 
     /*
 
@@ -54,8 +59,22 @@ public class FormularioController implements BaseController {
 
     @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
     public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm) {
-        List <Pregunta> listaPreguntas=preguntaForm.getPreguntasSinDDBB();
-        Formulario formulario=new Formulario("ASD",listaPreguntas,0);
+        List <Pregunta> listaPreguntas=new ArrayList<>();
+        List <Pregunta> listaPreguntasSinDDBB=preguntaForm.getPreguntasSinDDBB();
+        List <ID> listIdentificadores=preguntaForm.getIdentificadoresDDBB();
+        if(listaPreguntasSinDDBB!=null){
+            for (Pregunta pregunta : listaPreguntasSinDDBB) {
+                preguntaBusiness.crearNuevo(pregunta);
+                listaPreguntas.add(pregunta);
+            }
+        }
+        if(listIdentificadores!=null){
+            for (ID id : listIdentificadores) {
+                Pregunta pregunta=preguntaBusiness.recuperarPorId(id.getId());
+                listaPreguntas.add(pregunta);
+            }
+        }
+        Formulario formulario=new Formulario("ASD",listaPreguntas);
         formularioBusiness.crearNuevo(formulario);
         return FORMULARIO;
     }

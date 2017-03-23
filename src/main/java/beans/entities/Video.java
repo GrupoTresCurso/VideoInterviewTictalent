@@ -15,16 +15,14 @@ public class Video {
 
     private String nombreVideo;
     private String linkVideo;
-    private int posicionEnEntrevista;
     private String tipoVideo;
 
     public Video() {
     }
 
-    public Video(String nombreVideo, String linkVideo, int posicionEnEntrevista, String tipoVideo) {
+    public Video(String nombreVideo, String linkVideo, String tipoVideo) {
         this.nombreVideo = nombreVideo;
         this.linkVideo = linkVideo;
-        this.posicionEnEntrevista = posicionEnEntrevista;
         this.tipoVideo = tipoVideo;
     }
 
@@ -50,14 +48,6 @@ public class Video {
 
     public void setLinkVideo(String linkVideo) {
         this.linkVideo = linkVideo;
-    }
-
-    public int getPosicionEnEntrevista() {
-        return posicionEnEntrevista;
-    }
-
-    public void setPosicionEnEntrevista(int posicionEnEntrevista) {
-        this.posicionEnEntrevista = posicionEnEntrevista;
     }
 
     public String getTipoVideo() {
