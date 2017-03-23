@@ -1,0 +1,109 @@
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-strecht: condensed;
+}
+
+*{
+	font-family: myFont, "Verdana";
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+nav {
+    height: 10%;
+    width: 100%;
+    background: black;
+    padding: 0px 30px;
+    padding-right: 0px !important;
+    padding-top: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color:white;
+    box-sizing: border-box;
+}
+
+a:hover{
+    color: #00B4DF;
+}
+a:active{
+    color: #00B4DF;
+}
+
+#tableMenu{
+	width: 100%;
+}
+
+#tableMenu td {
+    padding: 10px 0px;
+    padding-right: 70px;
+    vertical-align: middle;
+}
+
+#logoTictum {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    width:40%;
+    text-align: right;
+}
+
+
+.linkMenu {
+    text-decoration: none;
+    color: white;
+}
+
+.linkActual {
+    color: #00B4DF;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#logoUser{
+    text-align: right;
+    padding-left: 20px !important;
+    padding-right:20px !important;
+    padding-top: 5px !important;
+    margin-top: -100px;
+
+}
+
+#logoUser img{
+    cursor: pointer;
+}
+
+#userInfo{	
+    text-align: left;
+    position: absolute;
+    width: 120px;
+    height: 110px;
+    background-color: white;
+    top:10.1%;
+    left: 91.2%;
+    padding: 10px;
+    font-size: 13px;
+    border-left:2px solid #00B4DF;
+    border-bottom:2px solid #00B4DF;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+#userInfo h3{
+    color: #00B4DF;
+}
+
+#userInfo a{
+    padding-left: 70px;
+    color: red;
+    font-weight: bold;
+}
