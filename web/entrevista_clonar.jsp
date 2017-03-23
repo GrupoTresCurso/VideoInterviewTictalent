@@ -8,15 +8,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoInterview</title>
+    <meta charset="UTF-8">
+    <title><sptag:message code="app_title"/></title>
+    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
     <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista"/>>
-    <link rel="stylesheet" href=<sptag:message code="fonts_route"/>>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
     <%@include file="menu.jsp"%>
-    <div id="cuerpo">
+    <section>
+    <div id="cuerpo" onclick="ocultarInfoUsuario()">
         <h3><sptag:message code="label_clonar_entrevista"/></h3><br/>
         <table id="tableEntrevista">
             <tr>
@@ -46,7 +49,7 @@
             </tr>
         </table>
         <div class="elementoText" id="save">
-            <form action="${pageContext.request.contextPath}/clonarEntrevista.do" method="GET">
+            <form id="clonarEntrevista" action="${pageContext.request.contextPath}/clonarEntrevista.do" method="GET">
                 <input type="hidden" value="" name="idEntrevista" id="valorId">
                 <table class="tableElementoText">
                     <tr>
@@ -54,37 +57,18 @@
                             <input type="text" name="nombre" size="35" placeholder=<sptag:message code="placeholder_nombre_entrevista"/>/>
                         </td>
                         <td id="celdaBotonGuardar">
-                            <input type="submit" value=<sptag:message code="button_guardar"/> class="botonGuardar" id="botonGuardar"/>
+                            <button type="submit" form="clonarEntrevista" value="Crear Entrevista"
+                                    class="botonGuardar"><sptag:message code="button_guardar"/>
+                            </button>
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
-
-
     </div>
-
+        <%@include file="userInfo.jsp"%>
+    </section>
 </main>
-
-<script>
-    function seleccionar(clase, id) {
-        cambiarFondo(clase, id);
-    }
-
-    function cambiarFondo(clase, id) {
-        var entrevistas = document.getElementsByClassName(clase);
-        for (var i = 0; i < entrevistas.length; i++) {
-            entrevistas[i].style.backgroundColor = "white";
-        }
-        document.getElementById(id).style.backgroundColor = "#C0C0C0";
-        cambiarOnClickClonar(id);
-    }
-
-    function cambiarOnClickClonar(id) {
-        document.getElementById("valorId").value = id;
-    }
-
-</script>
-
-</body>
+<script type='text/javascript' src="js/entrevista_clonar.js"></script>
+ </body>
 </html>

@@ -20,19 +20,19 @@
     <%@include file="menu.jsp" %>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
-            <h3><sptag:message code="label_generar_entrevista"/></h3><br/>
-            <a href="entrevista_clonar.jsp">
-                <div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/><sptag:message
-                        code="label_clonar_entrevista"/></div>
+            <h3><sptag:message code="label_generar_video"/></h3><br/>
+            <a href="cargar_video.jsp">
+                <div class="botonIndex"><img width="40px" height="40px" src=<sptag:message code="src_file"/>/><sptag:message
+                        code="label_cargar_video"/></div>
             </a><br/>
-            <a href="recuperarVideosFormularios.do">
-                <div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message
-                        code="label_nueva_entrvista"/></div>
+            <a href="grabar_video.html">
+                <div class="botonIndex"><img width="40px" height="40px" src=<sptag:message code="src_webcam"/> /><sptag:message
+                        code="label_nuevo_video"/></div>
             </a><br/>
 
         </div>
         <%@include file="userInfo.jsp"%>
-</section>
+    </section>
 </main>
 </body>
 </html>

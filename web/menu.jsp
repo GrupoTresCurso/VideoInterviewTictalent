@@ -14,7 +14,7 @@
             <td onclick="ocultarInfoUsuario()"><a href="entrevista_index.jsp" class="linkMenu">
                 <sptag:message code="menu_opc4"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="video.html" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a href="video_index.jsp" class="linkMenu">
                 <sptag:message code="menu_opc5"/>
             </a></td>
             <td id="logoTictum" onclick="ocultarInfoUsuario()"><img src=<sptag:message code="src_img_logo"/> width="173px" height="60px"/></td>
