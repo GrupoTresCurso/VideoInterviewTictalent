@@ -28,8 +28,15 @@
                              height="50px"/>
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/recuperarCandidato.do?idCandidato=${candidato.idCandidato}"><c:out
-                                value="${candidato.nombre}"/></a></td>
+                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarCandidato.do"><c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">
+                            <c:out value="${candidato.nombre}"/>
+                        </a>
+                    </td>
+                    <%-- http://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link--%>
+                    <td>
+                        <a href="<c:url value="${pageContext.request.contextPath}/eliminarCandidato.do">
+                              <c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">X</a></td>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

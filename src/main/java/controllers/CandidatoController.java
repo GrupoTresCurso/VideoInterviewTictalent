@@ -33,6 +33,16 @@ public class CandidatoController implements BaseController {
         }
     }
 
+    @RequestMapping(value = "/eliminarCandidato.do",method = RequestMethod.GET)
+    public void eliminarCandidato(@RequestParam(value="idCandidato",required=true) int id, HttpServletResponse response){
+        candidatoBusiness.borrarPorId(id);
+        try {
+            response.sendRedirect("/recuperarCandidatos.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @RequestMapping(value = "/recuperarCandidatos.do",method = RequestMethod.GET)
     public String recuperarCandidatos(HttpSession session){
         ArrayList<Candidato> listaCandidatos= (ArrayList<Candidato>) candidatoBusiness.recuperarTodos();
