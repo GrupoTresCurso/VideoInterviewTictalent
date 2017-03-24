@@ -8,80 +8,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoInterview</title>
+    <meta charset="UTF-8">
+    <title><sptag:message code="app_title"/></title>
+    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
     <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista"/>>
-    <link rel="stylesheet" href=<sptag:message code="fonts_route"/>>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
-    <%@include file="menu.jsp"%>
-    <div id="cuerpo">
-        <h3><sptag:message code="label_clonar_entrevista"/></h3><br/>
-        <table id="tableEntrevista">
-            <tr>
-                <c:forEach var="entrevista" items="${listaEntrevistas}">
-                    <td>
-                        <div class="entrevista" id="${entrevista.idEntrevista}"
-                             onclick="seleccionar(this.className, this.id)"><img
-                                width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>${entrevista.nombreEntrevista}
-                        </div>
-                    </td>
-                </c:forEach>
-            </tr>
-        </table>
-        <div class="elementoText" id="save">
-            <form action="${pageContext.request.contextPath}/clonarEntrevista.do" method="GET">
-                <input type="hidden" value="" name="idEntrevista" id="valorId">
-                <table class="tableElementoText">
-                    <tr>
-                        <td class="celda">
-                            <input type="text" name="nombre" size="35" required placeholder=<sptag:message code="placeholder_nombre_entrevista"/>/>
+    <%@include file="menu.jsp" %>
+    <section>
+        <div id="cuerpo" onclick="ocultarInfoUsuario()">
+            <h3><sptag:message code="label_clonar_entrevista"/></h3><br/>
+            <table id="tableEntrevista">
+                <tr>
+                    <c:forEach var="entrevista" items="${listaEntrevistas}">
+                        <td>
+                            <div class="entrevista" id="${entrevista.idEntrevista}"
+                                 onclick="seleccionar(this.className, this.id)"><img
+                                    width="45px" height="45px" src=<sptag:message
+                                    code="src_fileE"/>/>${entrevista.nombreEntrevista}
+                            </div>
                         </td>
-                        <td id="celdaBotonGuardar">
-                            <input type="submit" value=<sptag:message code="button_guardar"/> class="botonGuardar" id="botonGuardar" disabled="true" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                    </c:forEach>
+                </tr>
+            </table>
+            <div class="elementoText" id="save">
+                <form id="clonarEntrevista" action="${pageContext.request.contextPath}/clonarEntrevista.do"
+                      method="GET">
+                    <input type="hidden" value="" name="idEntrevista" id="valorId">
+                    <table class="tableElementoText">
+                        <tr>
+                            <td class="celda">
+                                <input type="text" name="nombre" size="35" required placeholder=<sptag:message
+                                        code="placeholder_nombre_entrevista"/>/>
+                            </td>
+                            <td id="celdaBotonGuardar">
+                                <button type="submit" form="clonarEntrevista" value="Crear Entrevista"
+                                        id="botonGuardar" disabled="true" class="botonGuardar"><sptag:message
+                                        code="button_guardar"/>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
-
-
-    </div>
-
+        <%@include file="userInfo.jsp" %>
+    </section>
 </main>
-
-<script>
-
-    var activo=false;
-    var seleccionado=false;
-    var escrito=false;
-
-    function seleccionar(clase, id) {
-        cambiarFondo(clase, id);
-        habilitarBotonGuardado();
-
-    }
-
-    function cambiarFondo(clase, id) {
-        var entrevistas = document.getElementsByClassName(clase);
-        for (var i = 0; i < entrevistas.length; i++) {
-            entrevistas[i].style.backgroundColor = "white";
-        }
-        document.getElementById(id).style.backgroundColor = "#C0C0C0";
-        cambiarOnClickClonar(id);
-    }
-
-
-    function cambiarOnClickClonar(id) {
-        document.getElementById("valorId").value = id;
-    }
-
-    function habilitarBotonGuardado() {
-        document.getElementById("botonGuardar").disabled=false;
-    }
-
-</script>
-
+</body>
+<script type='text/javascript' src="js/entrevista_clonar.js"></script>
 </body>
 </html>
