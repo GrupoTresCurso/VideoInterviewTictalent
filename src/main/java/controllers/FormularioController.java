@@ -47,14 +47,14 @@ public class FormularioController implements BaseController {
         session.setAttribute("listaFormulario",listaFormularios);
         session.setAttribute("formulario",null);
         return "formulario";
-    }
+    }*/
 
     @RequestMapping(value = "/recuperarFormulario.do",method = RequestMethod.GET)
-    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session, HttpServletResponse response){
+    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session){
         Formulario formulario=formularioBusiness.recuperarPorId(id);
         session.setAttribute("formulario",formulario);
-        return "formulario";
-    }*/
+        return FORMULARIO;
+    }
 
     @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
     public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm,@RequestParam(value="idFormulario",required=false) Integer idFormulario,@RequestParam(value="nombreFormulario",required=false) String nombreFormulario) {
