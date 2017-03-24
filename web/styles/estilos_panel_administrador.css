@@ -16,8 +16,7 @@
 body {
     background-color: #F2F2F2;
     box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
+    min-width: 100%!important;
 }
 
 main {
@@ -28,11 +27,35 @@ main {
 
 section{
     padding: 10px auto;
-    width:100%;
+    width: 100%;
     height: 90%;
+    margin: 0px !important;
     box-sizing: border-box;
 }
 
+#tableMenu td {
+    padding: 10px 0px;
+    padding-right: 70px;
+    vertical-align: middle;
+}
+
+.tableElementoText {
+    border: 2px solid black;
+    width: 120px;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+}
+
+td{
+    text-align: left;
+}
+
+input{
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0px;
+}
 
 button{
     font-size: 18px;
@@ -69,7 +92,7 @@ select {
     width: 280px;
     border: 2px solid black;
     font-size: 18px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 option{
@@ -112,11 +135,20 @@ option{
 }
 
 #contenedorPrincipal{
-    margin: 76px auto;
+    height: 100%;
+    width: 100%;
     text-align: center;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
-    background-color: white;
-    padding: 40px 0px;
+
+
+}
+
+#contenedorCentrado{
+    width: 650px;
+    height: 400px;
+    margin: 76px auto;
+    padding: 50px;
+    background-color: red;
 }
 
 #tableFormulario{
@@ -126,7 +158,6 @@ option{
 label{
     font-size: 18px;
 }
-
 
 #columna2{
     vertical-align: top;

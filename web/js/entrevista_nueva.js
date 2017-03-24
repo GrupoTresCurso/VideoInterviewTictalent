@@ -11,31 +11,6 @@ for (var i = 0; i < elementos.length; i++) {
     elementos[i].style.display = 'none';
 }
 
-inicializarGenerador();
-
-function inicializarGenerador() {
-    $("#perteneceFormulario").fadeOut(1000);
-    ajustarTamanioPagina();
-    bloquearSeleccionPorDefecto();
-    ocultarElementosPanel();
-    ocultarPropiedades();
-    document.getElementById("nuevoForm").style.display = 'none';
-
-}
-
-function ajustarTamanioPagina() {
-    //$('main').css('width', ($(window).width()) + 'px');
-    $('nav').css('width', ($(window).width() - 30) + 'px');
-    $('section').css('height', ($(window).height() - 650) + 'px');
-    $('#panelElementosPrincipal').css('height', ($(window).height() - 491) + 'px');
-    $('#contenedor').css('height', ($(window).height() - 92) + 'px');
-    $('#contenedor').css('width', ($(window).width() - 764) + 'px');
-    //$('#logoTictum').css('paddingLeft', ($(window).width() - 1085) + 'px');
-    $('#userInfo').css('display','none');
-    $('#logoTictum').css('paddingLeft', ($(window).width() - 1105) + 'px');
-    $('#userInfo').css('left', ($(window).width() - 142) + 'px');
-}
-
 var elementoSeleccionado = null;
 var etiquetaElementoSeleccionado = null;
 var opcionesElementoSeleccionado = null;
@@ -200,20 +175,4 @@ function seleccionarTipoElementos(id) {
         document.getElementById("detailsVI").open = false;
     }
 
-}
-
-var informacionUsuarioMostrada = false;
-function mostrarOcultarInfoUsuario() {
-    if(!informacionUsuarioMostrada){
-        $('#userInfo').css('display','block');
-        informacionUsuarioMostrada = true;
-    }else{
-        $('#userInfo').css('display','none');
-        informacionUsuarioMostrada = false;
-    }
-}
-
-function ocultarInfoUsuario() {
-    $('#userInfo').css('display','none');
-    informacionUsuarioMostrada = false;
 }

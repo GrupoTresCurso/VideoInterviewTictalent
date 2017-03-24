@@ -376,6 +376,11 @@ function cantidadOpciones(min, max) {
 function actualizarOpciones() {
     tipo = devolverTipoElemento(elementoSeleccionado);
     numOpcionesElementoSeleccinado = document.getElementById("opcionesPropiedades").value;
+    var copiaArrayOpciones = opcionesElementoSeleccionado;
+    opcionesElementoSeleccionado = [];
+    for(var i=0; i<numOpcionesElementoSeleccinado; i++){
+        opcionesElementoSeleccionado[i] = copiaArrayOpciones[i];
+    }
     var elemento = elementoSeleccionado.querySelectorAll('.elemento')[0];
     var table = null;
     var select = null;
@@ -458,12 +463,15 @@ function actualizarOpciones() {
             }
             break;
     }
+    var inputOpciones = elementoSeleccionado.querySelectorAll('.inputOpciones')[0];
+    inputOpciones.value = opcionesElementoSeleccionado.toString();
 }
 
 //Actualizar el valor de una opcion de algún elemento del formulario con un posicion determinada
 function actualizarOpcionValor(position) {
     var nuevo = document.getElementById("inputOpcion" + (position + 1)).value;
     opcionesElementoSeleccionado[position] = nuevo;
+    //alert(opcionesElementoSeleccionado.toString());
     tipo = devolverTipoElemento(elementoSeleccionado);
     switch (tipo) {
         case "radio":
@@ -481,7 +489,8 @@ function actualizarOpcionValor(position) {
             }
             break;
     }
-
+    var inputOpciones = elementoSeleccionado.querySelectorAll('.inputOpciones')[0];
+    inputOpciones.value = opcionesElementoSeleccionado.toString();
 }
 
 //Crear el número de opciones (label e input) de acuerdo al numOpcionesElementoSeleccinado en propiedades
@@ -534,6 +543,8 @@ function agregarAPredefinidos() {
     }
     asignarEtiquetaElementoPred();
     ocultarPropiedades();
+    var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
+    inputFavorito.value = '1';
 }
 
 

@@ -6,20 +6,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
-    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista_nueva.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista_nueva.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
 <main>
     <%@include file="menu.jsp" %>
-
-    <section onclick="ocultarInfoUsuario()">
+    <section>
         <table>
             <tr>
                 <td id="izquierda">
