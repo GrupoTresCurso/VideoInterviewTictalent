@@ -5,10 +5,10 @@
             <td onclick="ocultarInfoUsuario()"><a href="principal.jsp" class="linkMenu">
                 <sptag:message code="menu_opc1"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="candidato.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarCandidatos.do" class="linkMenu">
                 <sptag:message code="menu_opc2"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="formulario.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarPreguntas.do" class="linkMenu">
                 <sptag:message code="menu_opc3"/>
             </a></td>
             <td onclick="ocultarInfoUsuario()"><a href="entrevista_index.jsp" class="linkMenu">
