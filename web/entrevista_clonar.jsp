@@ -28,21 +28,6 @@
                         </div>
                     </td>
                 </c:forEach>
-                <td>
-                    <div class="entrevista" id="entrevista1" onclick="seleccionar(this.className, this.id)"><img
-                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 1
-                    </div>
-                </td>
-                <td>
-                    <div class="entrevista" id="entrevista2" onclick="seleccionar(this.className, this.id)"><img
-                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 2
-                    </div>
-                </td>
-                <td>
-                    <div class="entrevista" id="entrevista3" onclick="seleccionar(this.className, this.id)"><img
-                            src=<sptag:message code="src_fileE"/> width="45px" height="45px"/>Entrevista 3
-                    </div>
-                </td>
             </tr>
         </table>
         <div class="elementoText" id="save">
@@ -51,10 +36,10 @@
                 <table class="tableElementoText">
                     <tr>
                         <td class="celda">
-                            <input type="text" name="nombre" size="35" placeholder=<sptag:message code="placeholder_nombre_entrevista"/>/>
+                            <input type="text" name="nombre" size="35" required placeholder=<sptag:message code="placeholder_nombre_entrevista"/>/>
                         </td>
                         <td id="celdaBotonGuardar">
-                            <input type="submit" value=<sptag:message code="button_guardar"/> class="botonGuardar" id="botonGuardar"/>
+                            <input type="submit" value=<sptag:message code="button_guardar"/> class="botonGuardar" id="botonGuardar" disabled="true" />
                         </td>
                     </tr>
                 </table>
@@ -67,8 +52,15 @@
 </main>
 
 <script>
+
+    var activo=false;
+    var seleccionado=false;
+    var escrito=false;
+
     function seleccionar(clase, id) {
         cambiarFondo(clase, id);
+        habilitarBotonGuardado();
+
     }
 
     function cambiarFondo(clase, id) {
@@ -80,8 +72,13 @@
         cambiarOnClickClonar(id);
     }
 
+
     function cambiarOnClickClonar(id) {
         document.getElementById("valorId").value = id;
+    }
+
+    function habilitarBotonGuardado() {
+        document.getElementById("botonGuardar").disabled=false;
     }
 
 </script>

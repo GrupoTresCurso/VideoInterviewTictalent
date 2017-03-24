@@ -24,10 +24,10 @@ public class CandidatoController implements BaseController {
 
 
     @RequestMapping(value = "/guardarCandidato.do", method = RequestMethod.GET)
-    public void guardarCandidato(@ModelAttribute("candidato") Candidato candidato,HttpServletResponse response) {
+    public void guardarCandidato(@ModelAttribute("candidato") Candidato candidato,HttpServletResponse response,HttpSession session) {
         candidatoBusiness.actualizar(candidato);
         try {
-            response.sendRedirect( "recuperarCandidatos.do");
+            response.sendRedirect("/recuperarCandidatos.do");
         } catch (IOException e) {
             e.printStackTrace();
         }

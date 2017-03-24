@@ -31,7 +31,6 @@ public class FormularioController implements BaseController {
     private BaseBusiness<Pregunta> preguntaBusiness;
 
     /*
-
     @RequestMapping(value = "/guardarFormulario.do", method = RequestMethod.GET)
     public void guardarFormulario(@ModelAttribute("formulario") Formulario formulario, HttpServletResponse response) {
         formularioBusiness.actualizar(formulario);
@@ -74,7 +73,7 @@ public class FormularioController implements BaseController {
                 listaPreguntas.add(pregunta);
             }
         }
-        Formulario formulario=new Formulario("ASD",listaPreguntas);
+        Formulario formulario=new Formulario("Formulario",listaPreguntas);
         formularioBusiness.crearNuevo(formulario);
         return FORMULARIO;
     }
