@@ -6,15 +6,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title><sptag:message code="app_title"/></title>
-    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_formulario"/>/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_formulario"/>/>
 </head>
 <body>
 <main>
@@ -65,7 +65,7 @@
                                                     <table class="tableElementoText">
                                                         <tr>
                                                             <td>
-                                                                <textarea rows="5" cols="50"
+                                                                <textarea rows="3" cols="50"
                                                                           placeholder=<sptag:message code="placeholder_label_elemento"/>> </textarea>
                                                             </td>
                                                         </tr>
@@ -169,6 +169,28 @@
                                                             <option value="opcion3" class="opcionSelect3"><sptag:message code="label_opcion_3"/></option>
                                                         </select>
                                                     </span>
+                                                </div>
+                                                <div class="capaSuperior"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="file contenedorElemento pertenecePanel" id="file"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                 onclick="seleccionar(this.id)">
+                                                <div class="contenedorIcono" >
+                                                    <img src="images/icon_upload.png" width="55px" height="55px"><br/>
+                                                    Adjuntar archivo
+                                                </div>
+                                                <div class="elemento elementoMuyGrande">
+                                                    <b><label class="labelLinea"><sptag:message code="label_elemento"/></label>:</b><br/><br/>
+                                                    <input type="file" name="etiqueta" id="addfile"/>
+                                                    <label for="addfile" id="labelAddFile">
+                                                        <div id="contenedorAdjuntos">
+                                                            <img src = "images/icon_upload.png" width="60px" height="60px"><br/>
+                                                            <label>Arrastrar y soltar archivo</label><br/>
+                                                            <label>o seleccionar archivo</label>
+                                                        </div>
+                                                    </label>
                                                 </div>
                                                 <div class="capaSuperior"></div>
                                             </div>
@@ -344,8 +366,8 @@
                                 </table>
                             </details>
                         </div>
-                        <div id="panelElementosBloqueo">
-                        </div>
+                        <!--  <div id="panelElementosBloqueo">
+                        </div>-->
                     </div>
 
                 </td>
@@ -359,13 +381,14 @@
                                 <p><sptag:message code="label_contenedor_defecto_message"/></p>
                             </div>
                             <div id="nuevoForm">
-                                <input type="text" name="nombreFormulario" class="nombreFormulario"
-                                       placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
-                                <%-- asd--%>
-                                <br/><br/>
-                                <hr/>
-                                <br/>
                                 <form:form id="nuevoFormulario" action="${pageContext.request.contextPath}/crearFormulario.do" method="GET" modelAttribute="preguntaForm">
+                                    <input type="text" name="nombreFormulario" class="nombreFormulario"
+                                           placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    <button type="submit" class="botonGuardar"><sptag:message code="button_guardar"/></button>
+                                    <%-- asd--%>
+                                    <br/><br/>
+                                    <hr/>
+                                    <br/>
                                     <div class="label contenedorElemento" id="etiqueta1" draggable="true"
                                          ondragstart="start(event)" ondragend="end(event)"
                                          onclick="seleccionar(this.id)">
@@ -383,7 +406,7 @@
                                     <button id="btnLimpiar" class="botonGuardar btnForm" disabled>Limpiar</button>
                                     <button class="botonGuardar btnForm" disabled>Guardar</button>
                                     -->
-                                    <button type="submit" class="botonGuardar"><sptag:message code="button_guardar"/></button>
+
                                 </form:form>
                             </div>
                         </div>

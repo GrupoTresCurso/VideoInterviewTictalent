@@ -1,6 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    font-family: myFont, "Verdana";
 }
 
 @font-face {
@@ -13,60 +14,23 @@
 }
 
 body {
-    min-height: 100% !important;
-    /*background-color: #D1F6FF;*/
-    background-color: #F2F2F2;
+     background-color: #F2F2F2;
 }
 
 main {
     padding: 0px;
     margin: 0px;
     font-family: myFont, "Verdana";
-    min-height: 100% !important;
-}
-
-nav {
-    height: 70px;
-    width: 90%;
-    background: black;
-    list-style-type: none;
-    padding: 0px 30px;
-    padding-right: 0px !important;
-    padding-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
-    /*box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);*/
-}
-
-#tableMenu td {
-    padding: 10px 0px;
-    padding-right: 70px;
-    vertical-align: middle;
-}
-
-#logoTictum {
-    padding-top: 0px !important;
-    padding-right: 0px !important;
-}
-
-
-.linkMenu {
-    text-decoration: none;
-    color: white;
-}
-
-.linkActual {
-    color: #00B4DF;
-}
-
-#tableMenu td a:hover {
-    transform: scale(1.4);
-    color: #00B4DF;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 section {
+	width: 100%;
+    height:90%;
+    box-sizing: border-box;
     font-size: 20px;
-    display: inline-block;
 }
 
 section>table{
@@ -85,25 +49,27 @@ section>table{
 
 #izquierda, #medio, #derecha {
     vertical-align: top;
-    height: 200% !important;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-#izquierda {
-    background-color: #F2F2F2;
-    height: 200% !important;
 
+#izquierda {
+	width: 310px;
+	background-color: #F2F2F2;
 }
 
 #medio {
+	width:auto;
     background-color: white;
 }
 
 #derecha {
+	width:260px;
     background-color: #F2F2F2;
     padding: 30px 20px;
     padding-bottom: 0px;
     padding-right: 22px;
-    height: 200% !important;
 }
 
 .elemento {
@@ -140,35 +106,32 @@ section>table{
 input, button {
     font-size: 15px;
     border: 0px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 label {
     font-size: 13px;
     border: 0px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 #panelElementosPrincipal {
-    position: relative;
     width: 305px;
     padding-left: 5px;
+    height: 100%;
+    min-height:100% !important;
+    box-sizing: border-box;
 }
 
-#panelElementos, #panelElementosBloqueo {
-    position: absolute;
-    top: 0px;
-    width: 85%;
-    height: 293%;
+#panelElementos{
+   	width: 305px;
+    height: 100%;
     text-align: left;
     padding: 30px 20px;
     overflow-y: scroll;
+    box-sizing: border-box;
 }
 
-#panelElementosBloqueo {
-    background-color: white;
-    opacity: 0.5;
-}
 
 #panelElementos table {
     border-collapse: separate;
@@ -177,11 +140,14 @@ label {
 
 #contenedor {
     padding: 15px 50px;
-    width: 590px;
+    width: 100%;
     border: 2px solid transparent;
     font-size: 14px;
     overflow-y: scroll;
     background-color: white;
+    box-sizing: border-box;
+    height: 100%;
+    min-height:100% !important;
 }
 
 #contenedor.over {
@@ -191,11 +157,12 @@ label {
 #eliminar {
     padding: 10px 0px;
     width: 300px;
-    height: 150px;
+    height: 300px;
     margin-left: 10px;
     font-size: 15px;
     text-align: center;
     line-height: 12px;
+    box-sizing: border-box;
 }
 
 #papelera {
@@ -465,7 +432,7 @@ select {
     height: 33px;
     width: 230px;
     border: 2px solid black;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 .select-wrapper {
@@ -492,7 +459,7 @@ input[type="date"] {
     height: 29px;
     width: 180px;
     border: 2px solid black;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 .date-wrapper {
@@ -621,11 +588,11 @@ hr {
 b > label {
     font-size: 15px;
     border: 0px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 #contenedor {
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -717,10 +684,30 @@ input[type="checkbox"], input[type="radio"] {
 #userInfo h3{
     color: #00B4DF;
 }
+
 #userInfo a{
     padding-left: 70px;
     color: red;
     font-weight: bold;
+}
+
+#labelAddFile{
+    text-align: center;
+    height: 120px;
+    width: 350px;
+}
+
+#contenedorAdjuntos{
+    text-align: center;
+    padding: 5px 5px;
+}
+
+.elementoMuyGrande {
+    height: 175px !important;
+}
+
+#addfile{
+    display: none;
 }
 
 
