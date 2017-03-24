@@ -57,7 +57,7 @@ public class FormularioController implements BaseController {
     }*/
 
     @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
-    public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm) {
+    public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm,@RequestParam(value="idFormulario",required=false) Integer idFormulario,@RequestParam(value="nombreFormulario",required=false) String nombreFormulario) {
         List <Pregunta> listaPreguntas=new ArrayList<>();
         List <Pregunta> listaPreguntasSinDDBB=preguntaForm.getPreguntasSinDDBB();
         List <ID> listIdentificadores=preguntaForm.getIdentificadoresDDBB();
@@ -73,8 +73,15 @@ public class FormularioController implements BaseController {
                 listaPreguntas.add(pregunta);
             }
         }
-        Formulario formulario=new Formulario("Formulario",listaPreguntas);
-        formularioBusiness.crearNuevo(formulario);
+        if(idFormulario!=null){
+            Formulario formularioDDBB=formularioBusiness.recuperarPorId(idFormulario);
+            formularioDDBB.setPreguntas(listaPreguntas);
+            formularioDDBB.setNombreFormulario(nombreFormulario);
+            formularioBusiness.actualizar(formularioDDBB);
+        }else {
+            Formulario formulario=new Formulario(nombreFormulario,listaPreguntas);
+            formularioBusiness.crearNuevo(formulario);
+        }
         return FORMULARIO;
     }
 
