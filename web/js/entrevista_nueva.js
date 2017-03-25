@@ -6,25 +6,27 @@ var elementoCopiado = null;
 var elementoGuia = null;
 var nextinput = 0;
 
-var elementos = document.getElementsByClassName("elemento");
-for (var i = 0; i < elementos.length; i++) {
-    elementos[i].style.display = 'none';
-}
-
 inicializarGenerador();
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
     ajustarTamanioPagina();
     bloquearSeleccionPorDefecto();
-    //document.getElementById("nuevoForm").style.display = 'none';
+    ocultarElementosPanel();
 
 }
 
 function ajustarTamanioPagina() {
     $('#medio').css('width', ($(window).width()-$('#izquierda').width()-$('#derecha').width()) + 'px');
-    //$('#contenedorEntrevista').css('height', ($(window).height()*0.895) + 'px');
+    $('#contenedorEntrevista').css('height', ($(window).height()*0.795) + 'px');
 
+}
+
+function ocultarElementosPanel() {
+    var elementos = document.getElementsByClassName("elemento");
+    for (var i = 0; i < elementos.length; i++) {
+        elementos[i].style.display = 'none';
+    }
 }
 
 var elementoSeleccionado = null;
@@ -169,25 +171,21 @@ function seleccionarTipoElementos(id) {
         document.getElementById("detailsF").open = false;
         document.getElementById("detailsVP").open = false;
         document.getElementById("detailsVT").open = false;
-        document.getElementById("detailsC").open = false;
     }
     if (id == "detailsF") {
         document.getElementById("detailsVI").open = false;
         document.getElementById("detailsVP").open = false;
         document.getElementById("detailsVT").open = false;
-        document.getElementById("detailsC").open = false;
     }
     if (id == "detailsVP") {
         document.getElementById("detailsVI").open = false;
         document.getElementById("detailsF").open = false;
         document.getElementById("detailsVT").open = false;
-        document.getElementById("detailsC").open = false;
     }
     if (id == "detailsVT") {
         document.getElementById("detailsVI").open = false;
         document.getElementById("detailsF").open = false;
         document.getElementById("detailsVP").open = false;
-        document.getElementById("detailsC").open = false;
     }
     if (id == "detailsC") {
         document.getElementById("detailsF").open = false;

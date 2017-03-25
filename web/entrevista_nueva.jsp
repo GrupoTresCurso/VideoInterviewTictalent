@@ -58,30 +58,22 @@
                                 <summary id="summaryF">
                                     <b class="colorTictum"><sptag:message code="label_formulario"/></b>
                                 </summary>
-                                <table>
-                                    <c:set var="contadorFormularios" value="0" scope="page"/>
-                                    <tr>
-                                        <c:forEach var="formulario" items="${formularios}">
-                                            <c:set var="contadorFormularios" value="${contadorFormularios+1}" scope="page"/>
-                                            <td>
-                                                <div class="formulario contenedorElemento pertenecePanel" id="formulario_${formulario.idFormulario}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                                    <div class="contenedorIcono">
-                                                        <img src="images/icon_formulario.png" width="55px" height="55px"/>
-                                                        <label>${formulario.nombreFormulario}</label>
-                                                    </div>
-                                                    <div class="elemento">
-                                                        <!--   -->
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <c:if test="${contadorFormularios%2 == 0}">
-                                                </tr>
-                                                <tr>
-                                            </c:if>
-                                        </c:forEach>
-                                    </tr>
-                                </table>
+                                    <c:forEach var="formulario" items="${formularios}">
+                                        <div class="formulario contenedorElemento pertenecePanel" id="formulario_${formulario.idFormulario}"
+                                             draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                            <div class="contenedorIcono">
+                                                <table>
+                                                    <tr>
+                                                        <td><img src="images/icon_formulario.png" width="55px" height="55px"/></td>
+                                                        <td class="labelIcono"><label>${formulario.nombreFormulario}</label></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="elemento">
+                                                <!--   -->
+                                            </div>
+                                        </div>
+                                    </c:forEach>
                             </details>
                             <details id="detailsVP" onclick="seleccionarTipoElementos(this.id)">
                                 <summary id="summaryVP">

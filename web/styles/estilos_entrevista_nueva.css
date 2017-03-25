@@ -148,7 +148,7 @@ label {
 #contenedorEntrevista {
     padding: 15px 50px;
     width: 100%;
-    height: 90%;
+    height: 80%;
     border: 2px solid transparent;
     font-size: 14px;
     background-color: white;
@@ -360,17 +360,40 @@ input[type='checkbox']:checked:after {
 .contenedorElemento {
     position: relative;
     cursor: move;
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 70px;
 }
 
-/*.capaSuperior {
-    border: 2px solid black;
-    width: 90px;
-    height: 90px;
+.contenedorIcono {
+    text-align: center;
+    border: 2px solid grey;
+    width: 120px;
+    height: 70px;
     top: 0px;
     position: absolute;
-}*/
+    font-size: 13px;
+    background-color: white;
+}
+
+.contenedorIcono table{
+    border-collapse: collapse;
+    width: 120px;
+    height: 70px;
+}
+
+.labelIcono{
+    word-wrap: break-word;
+    padding-left: 5px;
+}
+
+
+.capaSuperior {
+    border: 2px solid black;
+    width: 120px;
+    height: 70px;
+    top: 0px;
+    position: absolute;
+}
 
 .elemento label {
     margin-right: 15px;
@@ -665,13 +688,13 @@ input[type="checkbox"], input[type="radio"] {
     overflow-y: scroll;
     background-color: white;
     box-sizing: border-box;
-    height: 10%;
+    height: 20%;
 }
 
 #guia{
     height: 100%;
     width: 100%;
-    background-color: #00B4E0;
+    background-color: darkred;
 }
 /*
 .col1 {
