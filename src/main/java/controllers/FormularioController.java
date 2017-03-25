@@ -49,6 +49,16 @@ public class FormularioController implements BaseController {
         return "formulario";
     }*/
 
+    @RequestMapping(value = "/nuevoFormulario.do", method = RequestMethod.GET)
+    public void nuevoFormulario(HttpSession session,HttpServletResponse response) {
+        session.setAttribute("formulario",null);
+        try {
+            response.sendRedirect("/recuperarPreguntas.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @RequestMapping(value = "/recuperarFormularios.do", method = RequestMethod.GET)
     public String recuperarFormularios(HttpSession session) {
         ArrayList<Formulario> listaFormularios = (ArrayList<Formulario>) formularioBusiness.recuperarTodos();

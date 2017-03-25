@@ -341,6 +341,7 @@
                                                                     <c:set var="countCierre2" value="1" scope="page"/>
                                                                     <tr>
                                                                 </c:if>
+                                                                <c:set var="count2" value="${count2 + 1}" scope="page"/>
                                                                 <td class="celdaOpcion">
                                                                     <input type="checkbox">
                                                                     <label class="labelOpcionCB1 opcion">${opcion}"</label>
@@ -557,29 +558,6 @@
                                                         <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                     </div>
                                                 </c:if>
-                                                <c:if test="${pregunta.tipoPregunta == 'radio'}">
-                                                    <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                    <div class="radio contenedorElemento pertenecePanel"
-                                                         id="p_${countPredef}_${pregunta.idPregunta}"
-                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                         onclick="seleccionar(this.id)">
-                                                        <div class="contenedorIcono">
-                                                            <img src="images/icon_radio.png" width="55px"
-                                                                 height="55px"><br/>
-                                                            <label>${pregunta.labelPregunta}</label>
-                                                        </div>
-                                                        <div class="elemento elementoPredefinido">
-                                                            <b><label>${pregunta.labelPregunta}</label>:</b><br/>
-                                                            <c:forEach var="opcion" items="${opciones}">
-                                                                <input type="radio">
-                                                                <label class="opcion">${opcion}</label>
-                                                            </c:forEach>
-                                                        </div>
-                                                        <div class="capaSuperior"></div>
-                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
-                                                    </div>
-                                                </c:if>
                                                 <c:if test="${pregunta.tipoPregunta == 'checkbox'}">
                                                     <c:set var="opcionesComas" value="${pregunta.opciones}"/>
                                                     <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
@@ -604,6 +582,7 @@
                                                                         <c:set var="countCierre3" value="1" scope="page"/>
                                                                         <tr>
                                                                     </c:if>
+                                                                    <c:set var="count3" value="${count3 + 1}" scope="page"/>
                                                                     <td class="celdaOpcion">
                                                                         <input type="checkbox">
                                                                         <label class="labelOpcionCB1 opcion">${opcion}"</label>

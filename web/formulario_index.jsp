@@ -47,7 +47,7 @@
                 </tr>
             </table>
 
-            <a href="${pageContext.request.contextPath}/recuperarPreguntas.do">
+            <a href="${pageContext.request.contextPath}/nuevoFormulario.do">
                 <div class="botonIndex" id="botonNuevo">
                     <img src="images/new.png" width="40px" height="40px"/>
                     <label><sptag:message code="label_nuevo_formulario"/></label>
