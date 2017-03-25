@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista"/>>
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista_index"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
@@ -20,14 +20,18 @@
     <%@include file="menu.jsp" %>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
-            <h3><sptag:message code="label_generar_entrevista"/></h3><br/>
+            <h3><sptag:message code="label_generar_entrevista"/></h3><br/><br/>
             <a href="${pageContext.request.contextPath}/recuperarEntrevistas.do">
-                <div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/><sptag:message
-                        code="label_clonar_entrevista"/></div>
+                <div class="botonIndex">
+                    <img src="images/clone.png" width="40px" height="40px"/>
+                    <label><sptag:message code="label_clonar_entrevista"/></label>
+                </div>
             </a><br/>
             <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
-                <div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message
-                        code="label_nueva_entrvista"/></div>
+                <div class="botonIndex">
+                    <img src="images/new.png" width="40px" height="40px"/>
+                    <label><sptag:message code="label_nueva_entrvista"/></label>
+                </div>
             </a><br/>
 
         </div>

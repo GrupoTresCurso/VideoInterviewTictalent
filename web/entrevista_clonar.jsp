@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista"/>>
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista_clonar"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
@@ -20,17 +20,22 @@
     <%@include file="menu.jsp" %>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
-            <h3><sptag:message code="label_clonar_entrevista"/></h3><br/>
-            <table id="tableEntrevista">
+            <h3><sptag:message code="label_clonar_entrevista"/></h3>
+            <table id="tableEntrevistas">
+                <c:set var="contadorEntrevistas" value="0" scope="page"/>
                 <tr>
                     <c:forEach var="entrevista" items="${listaEntrevistas}">
-                        <td>
-                            <div class="entrevista" id="${entrevista.idEntrevista}"
-                                 onclick="seleccionar(this.className, this.id)"><img
-                                    width="45px" height="45px" src=<sptag:message
-                                    code="src_fileE"/>/>${entrevista.nombreEntrevista}
-                            </div>
-                        </td>
+                    <td>
+                        <div class="entrevista" id="${entrevista.idEntrevista}"
+                             onclick="seleccionar(this.className, this.id)">
+                            <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
+                            <label>${entrevista.nombreEntrevista}</label>
+                        </div>
+                    </td>
+                    <c:if test="${contadorFormularios%3 == 0}">
+                        </tr>
+                        <tr>
+                    </c:if>
                     </c:forEach>
                 </tr>
             </table>
