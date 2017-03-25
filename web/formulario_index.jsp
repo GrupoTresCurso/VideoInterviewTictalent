@@ -16,6 +16,7 @@
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
 <body>
+
 <main>
     <%@include file="menu.jsp" %>
     <section>
@@ -30,9 +31,10 @@
                             <div class="formulario" id="${formulario.idFormulario}"
                                  onclick="seleccionar(this.className, this.id)" class="botonIndex">
                                 <img width="45px" height="45px" src=<sptag:message code="src_fileF"/>/>
-                                <label>${formulario.nombreFormulario}</label>
+                                <label><a href="<c:url value="${pageContext.request.contextPath}/recuperarFormulario.do">
+                                        <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">${formulario.nombreFormulario}</a></label>
                                 <a href="<c:url value="${pageContext.request.contextPath}/eliminarFormulario.do">
-                                  <c:param name="idCandidato" value="${formulario.idFormulario}"/></c:url>">
+                                  <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">
                                     <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
                                 </a>
                             </div>

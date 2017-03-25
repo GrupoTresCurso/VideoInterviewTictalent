@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page buffer="8192kb" %>
 
 <!DOCTYPE html>
 <html>
@@ -246,11 +247,19 @@
                                         code="label_elemetos_predefinidos_title"/></b></summary>
                                 <table id="tableElementosPredefinidos">
 
+
+
+
+
+
+
+
+
                                     <c:set var="count" value="0" scope="page"/>
                                     <c:set var="countCierre" value="0" scope="page"/>
                                     <c:if test="${count == 0}">
                                     </c:if>
-                                    <c:forEach var="pregunta" items="${listaPreguntas}">
+                                    <c:forEach var="pregunta" items="${listaPreguntasPredefinidas}">
                                         <c:if test="${count == 0}">
                                             <c:set var="countCierre" value="1" scope="page"/>
                                             <tr>
@@ -332,7 +341,7 @@
                                                             <c:set var="count2" value="0" scope="page"/>
                                                             <c:set var="countCierre2" value="0" scope="page"/>
                                                             <c:forEach var="opcion" items="${opciones}">
-                                                                <c:if test="${count == 0}">
+                                                                <c:if test="${count2 == 0}">
                                                                     <c:set var="countCierre2" value="1" scope="page"/>
                                                                     <tr>
                                                                 </c:if>
@@ -340,15 +349,15 @@
                                                                     <input type="checkbox">
                                                                     <label class="labelOpcionCB1 opcion">${opcion}"</label>
                                                                 </td>
-                                                                <c:if test="${count == 3}">
+                                                                <c:if test="${count2 == 3}">
                                                                     </tr>
                                                                     <c:set var="count2" value="0" scope="page"/>
                                                                     <c:set var="countCierre2" value="0" scope="page"/>
                                                                 </c:if>
                                                             </c:forEach>
-                                                            <c:if test="${countCierre == 1}">
+                                                            <c:if test="${countCierre2 == 1}">
                                                                 </tr>
-                                                                <c:set var="countCierre" value="0" scope="page"/>
+                                                                <c:set var="countCierre2" value="0" scope="page"/>
                                                             </c:if>
                                                         </table>
                                                     </div>
@@ -413,6 +422,32 @@
                                                 </div>
                                             </td>
                                         </c:if>
+                                        <c:if test="${pregunta.tipoPregunta == 'file'}">
+                                            <td>
+                                                <div class="file contenedorElemento pertenecePanel" id="p_${pregunta.idPregunta}"
+                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                     onclick="seleccionar(this.id)">
+                                                    <div class="contenedorIcono">
+                                                        <img src="images/icon_upload.png" width="55px" height="55px"><br/>
+                                                        Adjuntar archivo
+                                                    </div>
+                                                    <div class="elemento elementoMuyGrande elementoPredefinido">
+                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/><br/>
+                                                        <input type="file" name="etiqueta" />
+                                                        <label for="addfile" >
+                                                            <div >
+                                                                <img src="images/icon_upload.png" width="60px"
+                                                                     height="60px"><br/>
+                                                                <label>Arrastrar y soltar archivo</label><br/>
+                                                                <label>o seleccionar archivo</label>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                    <div class="capaSuperior"></div>
+                                                </div>
+                                            </td>
+                                        </c:if>
+
                                         <c:if test="${count == 2}">
                                             </tr>
                                             <c:set var="count" value="0" scope="page"/>
@@ -444,8 +479,13 @@
                                 <form:form id="nuevoFormulario"
                                            action="${pageContext.request.contextPath}/crearFormulario.do" method="GET"
                                            modelAttribute="preguntaForm">
-                                    <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=
-                                        <sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    <c:if test="${formulario.nombreFormulario == null}">
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    </c:if>
+                                    <c:if test="${formulario.nombreFormulario != null}">
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" value="${formulario.nombreFormulario}" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    </c:if>
+
                                     <button type="submit" class="botonGuardar"><sptag:message
                                             code="button_guardar"/></button>
                                     <br/><br/>
@@ -461,13 +501,23 @@
                                     </div>
                                     <br/>
                                     <div id="contenedorElementosFormulario">
-                                        <c:forEach var="pregunta" items="${listaPreguntas}">
-                                            <c:set var="count" value="${count + 1}" scope="page"/>
+                                        <c:set var="countPredef" value="0" scope="page"/>
+
+
+
+
+
+
+                                        <c:if test="${formulario != null}">
+                                            <input type="hidden" size="20" name="idFormulario" value="${formulario.idFormulario}"/>
+
+                                        <c:forEach var="pregunta" items="${formulario.preguntas}">
+                                            <c:set var="countPredef" value="${countPredef + 1}" scope="page"/>
                                             <c:if test="${pregunta.tipoPregunta == 'text'}">
 
 
                                                 <div class="texto contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -490,6 +540,7 @@
                                                         </table>
                                                     </div>
                                                     <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                 </div>
 
                                             </c:if>
@@ -498,7 +549,7 @@
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
 
                                                 <div class="radio contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -514,6 +565,32 @@
                                                         </c:forEach>
                                                     </div>
                                                     <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                </div>
+
+                                            </c:if>
+                                            <c:if test="${pregunta.tipoPregunta == 'radio'}">
+                                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
+                                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+
+                                                <div class="radio contenedorElemento pertenecePanel"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
+                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                     onclick="seleccionar(this.id)">
+                                                    <div class="contenedorIcono">
+                                                        <img src="images/icon_radio.png" width="55px"
+                                                             height="55px"><br/>
+                                                        <label>${pregunta.labelPregunta}</label>
+                                                    </div>
+                                                    <div class="elemento elementoPredefinido">
+                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/>
+                                                        <c:forEach var="opcion" items="${opciones}">
+                                                            <input type="radio">
+                                                            <label class="opcion">${opcion}</label>
+                                                        </c:forEach>
+                                                    </div>
+                                                    <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                 </div>
 
                                             </c:if>
@@ -521,9 +598,8 @@
                                                 <c:set var="opcionesComas" value="${pregunta.opciones}"/>
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
 
-
                                                 <div class="checkbox contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -536,37 +612,38 @@
                                                     <div class="elemento elementoGrande elementoPredefinido">
                                                         <b><label>${pregunta.labelPregunta}</label>:</b><br/>
                                                         <table>
-                                                            <c:set var="count2" value="0" scope="page"/>
-                                                            <c:set var="countCierre2" value="0" scope="page"/>
+                                                            <c:set var="count3" value="0" scope="page"/>
+                                                            <c:set var="countCierre3" value="0" scope="page"/>
                                                             <c:forEach var="opcion" items="${opciones}">
-                                                                <c:if test="${count == 0}">
-                                                                    <c:set var="countCierre2" value="1" scope="page"/>
+                                                                <c:if test="${count3 == 0}">
+                                                                    <c:set var="countCierre3" value="1" scope="page"/>
                                                                     <tr>
                                                                 </c:if>
                                                                 <td class="celdaOpcion">
                                                                     <input type="checkbox">
                                                                     <label class="labelOpcionCB1 opcion">${opcion}"</label>
                                                                 </td>
-                                                                <c:if test="${count == 3}">
+                                                                <c:if test="${count3 == 3}">
                                                                     </tr>
-                                                                    <c:set var="count2" value="0" scope="page"/>
-                                                                    <c:set var="countCierre2" value="0" scope="page"/>
+                                                                    <c:set var="count3" value="0" scope="page"/>
+                                                                    <c:set var="countCierre3" value="0" scope="page"/>
                                                                 </c:if>
                                                             </c:forEach>
-                                                            <c:if test="${countCierre == 1}">
+                                                            <c:if test="${countCierre3 == 1}">
                                                                 </tr>
-                                                                <c:set var="countCierre" value="0" scope="page"/>
+                                                                <c:set var="countCierre3" value="0" scope="page"/>
                                                             </c:if>
                                                         </table>
                                                     </div>
                                                     <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                 </div>
 
                                             </c:if>
                                             <c:if test="${pregunta.tipoPregunta == 'area'}">
 
                                                 <div class="area contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -580,21 +657,23 @@
                                                         <table class="tableElementoText">
                                                             <tr>
                                                                 <td>
-                                                                <textarea rows="5" cols="50"
-                                                                          placeholder=${pregunta.labelPregunta}> </textarea>
+                                                                    <textarea rows="5" cols="50" placeholder=${pregunta.labelPregunta}> </textarea>
                                                                 </td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                     <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                 </div>
 
                                             </c:if>
                                             <c:if test="${pregunta.tipoPregunta == 'select'}">
                                                 <c:set var="opcionesComas" value="${pregunta.opciones}"/>
                                                 <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+
+
                                                 <div class="select contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
+                                                     id="p_${countPredef}_${pregunta.idPregunta}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                      onclick="seleccionar(this.id)">
                                                     <div class="contenedorIcono">
@@ -607,17 +686,56 @@
                                                     <div class="elemento elementoPequenio elementoPredefinido">
                                                         <b><label class="labelLinea">${pregunta.labelPregunta}</label>:</b>
                                                         <span class="select-wrapper">
-                                                        <select>
-                                                            <c:forEach var="opcion" items="${opciones}">
-                                                                <option>${opcion}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </span>
+                                                            <select>
+                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                    <option>${opcion}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </span>
                                                     </div>
                                                     <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                 </div>
+
                                             </c:if>
+                                            <c:if test="${pregunta.tipoPregunta == 'file'}">
+
+                                                <div class="file contenedorElemento pertenecePanel" id="p_${countPredef}_${pregunta.idPregunta}"
+                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                     onclick="seleccionar(this.id)">
+                                                    <div class="contenedorIcono">
+                                                        <img src="images/icon_upload.png" width="55px" height="55px"><br/>
+                                                        Adjuntar archivo
+                                                    </div>
+                                                    <div class="elemento elementoMuyGrande elementoPredefinido">
+                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/><br/>
+                                                        <input type="file" name="etiqueta" />
+                                                        <label for="addfile" >
+                                                            <div >
+                                                                <img src="images/icon_upload.png" width="60px"
+                                                                     height="60px"><br/>
+                                                                <label>Arrastrar y soltar archivo</label><br/>
+                                                                <label>o seleccionar archivo</label>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                    <div class="capaSuperior"></div>
+                                                    <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                </div>
+
+                                            </c:if>
+
                                         </c:forEach>
+
+                                        </c:if>
+                                        <input type="hidden" size="20" id="valorCountPredef" value="${countPredef}"/>
+
+
+
+
+
+
+
 
 
                                     </div>

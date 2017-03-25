@@ -16,6 +16,11 @@ var elementoPredefinido = null;
 var numElementosPredefinidos;
 
 inicializarGenerador();
+inicializarContador2();
+
+function inicializarContador2() {
+    contador2 = document.getElementById("valorCountPredef").value;
+}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
