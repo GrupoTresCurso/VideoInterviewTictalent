@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista_nueva.css">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista_nueva"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
@@ -167,6 +167,7 @@
                 </td>
             </tr>
         </table>
+        </section>
         <%@include file="userInfo.jsp" %>
     </section>
 </main>

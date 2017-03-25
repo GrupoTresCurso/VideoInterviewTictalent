@@ -22,10 +22,8 @@ function inicializarGenerador() {
 }
 
 function ajustarTamanioPagina() {
-    //$('main').css('width', ($(window).width()) + 'px');
-    $('#medio').css('width', ($(window).width() - $('#izquierda').width() - $('#derecha').width()) + 'px');
-    $('#medio').css('height', ($(window).height() - $('#superior').height()) + 'px');
-    $('#contenedor').css('height', (($(window).height() * 0.895)- $('#superior').height()) + 'px');
+    $('#medio').css('width', ($(window).width()-$('#izquierda').width()-$('#derecha').width()) + 'px');
+    //$('#contenedorEntrevista').css('height', ($(window).height()*0.895) + 'px');
 
 }
 
