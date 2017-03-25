@@ -16,9 +16,9 @@ var filaNuevoElementoPred;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
+comprobarCargado();
 inicializarGenerador();
 inicializarContador2();
-comprobarCargado();
 
 function inicializarContador2() {
     contador2 = document.getElementById("valorCountPredef").value;
@@ -34,8 +34,42 @@ function inicializarGenerador() {
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
     ocultarPropiedades();
-    document.getElementById("nuevoForm").style.display = 'none';
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    alert("formularioCargado="+formularioCargado);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(formularioCargado==1){
+        document.getElementById("nuevoForm").style.display = 'block';
+        document.getElementById("mensajeDefecto").style.display = 'none';
+        mostrarElementosFormularioCargado();
+    }else{
+        document.getElementById("mensajeDefecto").style.display = 'block';
+        document.getElementById("nuevoForm").style.display = 'none';
+    }
+}
 
+function mostrarElementosFormularioCargado(){
+    var elementosCargados = document.querySelectorAll('div[id^="p_"]');
+    [].forEach.call(elementosCargados, function(elem) {
+        elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
+        elem.querySelectorAll('.elemento')[0].style.display ='block';
+        elem.querySelectorAll('.capaSuperior')[0].style.display = 'none';
+        elem.style.width = '550px';
+        elem.style.height = '50px';
+        elem.style.marginBottom = '10px';
+        elem.classList.remove("pertenecePanel");
+        elem.classList.add("perteneceFormulario");
+        if (devolverTipoElemento(elem) == "select") {
+            elem.style.height = '37px';
+        }
+        if (devolverTipoElemento(elem) == "area" || devolverTipoElemento(elem) == "checkbox") {
+            elem.style.height = '94px';
+        }
+        if (devolverTipoElemento(elem) == "file") {
+            elem.style.height = '180px';
+        }
+    });
 }
 
 function ajustarTamanioPagina() {
