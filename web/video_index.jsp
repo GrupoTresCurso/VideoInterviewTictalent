@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +26,10 @@
                 <div class="botonIndex"><img width="40px" height="40px" src=<sptag:message code="src_file"/>/><sptag:message
                         code="label_cargar_video"/></div>
             </a><br/>
-            <a href="grabar_video.html">
+            <a href="grabar_video.jsp">
                 <div class="botonIndex"><img width="40px" height="40px" src=<sptag:message code="src_webcam"/> /><sptag:message
                         code="label_nuevo_video"/></div>
             </a><br/>
-
         </div>
         <%@include file="userInfo.jsp"%>
     </section>

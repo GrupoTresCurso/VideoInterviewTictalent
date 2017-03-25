@@ -11,6 +11,24 @@ for (var i = 0; i < elementos.length; i++) {
     elementos[i].style.display = 'none';
 }
 
+inicializarGenerador();
+
+function inicializarGenerador() {
+    $("#perteneceFormulario").fadeOut(1000);
+    ajustarTamanioPagina();
+    bloquearSeleccionPorDefecto();
+    //document.getElementById("nuevoForm").style.display = 'none';
+
+}
+
+function ajustarTamanioPagina() {
+    //$('main').css('width', ($(window).width()) + 'px');
+    $('#medio').css('width', ($(window).width() - $('#izquierda').width() - $('#derecha').width()) + 'px');
+    $('#medio').css('height', ($(window).height() - $('#superior').height()) + 'px');
+    $('#contenedor').css('height', (($(window).height() * 0.895)- $('#superior').height()) + 'px');
+
+}
+
 var elementoSeleccionado = null;
 var etiquetaElementoSeleccionado = null;
 var opcionesElementoSeleccionado = null;
@@ -88,6 +106,11 @@ function drop(e) {
         var tr = document.getElementById("guia");
         tr.appendChild(elementoGuia);
 
+        elementoContenedor = elementoCopiado.cloneNode(true);
+        elementoContenedor.style.float = 'left';
+        var contenedor = document.getElementById("contenedorEntrevista");
+        contenedor.appendChild(elementoContenedor);
+
         //e.target.appendChild();
         /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +
          "<p>Video Intro 1</p>";*/
@@ -110,7 +133,7 @@ function agregarCampos(elementoCopiado) {
     } else {
         campo = '<input type="hidden" size="20" name="candidatos[]" value="' + id + '"/>';
     }
-    $("#contenedorEntrevista").append(campo);
+    $(".elementoForm").append(campo);
     campo = '';
 }
 
@@ -175,4 +198,40 @@ function seleccionarTipoElementos(id) {
         document.getElementById("detailsVI").open = false;
     }
 
+}
+function bloquearSeleccionPorDefecto() {
+    /*var elementosNoSeleccionables = document.querySelectorAll('label, h1, h3, b, p');
+     for(var i=0; i<elementosNoSeleccionables.length; i++){
+     elementosNoSeleccionables[i].onselectstart = function() {return false;};
+     }*/
+    $('img').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('label').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('h1').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('h2').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('h3').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('h4').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('h5').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('a').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('b').on('dragstart', function (event) {
+        event.preventDefault();
+    });
+    $('p').on('dragstart', function (event) {
+        event.preventDefault();
+    });
 }

@@ -23,11 +23,11 @@
         <h4><sptag:message code="label_opc_video"/></h4>
         <table id="tableOpcionesVideo">
             <tr>
-                <a href="grabar_video.html">
+                <a href="grabar_video.jsp">
                     <td>
                         <img class="imagenP" width="50px" height="50px" src=<sptag:message code="src_webcam"/>/>
                     </td>
-                    <td><a href="grabar_video.html"><sptag:message code="label_crear_video"/></a></td>
+                    <td><a href="grabar_video.jsp"><sptag:message code="label_nuevo_video"/></a></td>
                 </a>
             </tr>
             <tr>
@@ -41,22 +41,40 @@
         </table>
     </aside>
     <section onclick="ocultarInfoUsuario()">
-        <h4><sptag:message code="label_arrastrar_video"/></h4><br/>
-        <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST"
-              enctype="multipart/form-data" modelAttribute="listaVideos">
-            <td rowspan="3" id="celdaImagen" class="celdaColumna2">
-                <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
-                <label for="file">
-                    <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)"
-                         ondragleave="return leave(event)" ondrop="return drop(event)">
-                        <h1 id="divArrastrar"><sptag:message code="label_arrastrar_video"/></h1>
-                        <img class="imagenP" width="100px" height="100px" src=<sptag:message code="src_img_upload"/>>
-                    </div>
-                </label>
-                <button type="submit" form="formSubirVideo" value="Crear Entrevista"
-                        class="botonGuardar"><sptag:message code="button_guardar"/>
-                </button>
-        </form>
+        <div id="contenedorFormulario"  onclick="ocultarInfoUsuario()">
+            <h4><sptag:message code="label_arrastrar_video"/></h4><br/>
+            <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST"
+                  enctype="multipart/form-data" modelAttribute="listaVideos">
+                <td rowspan="3" id="celdaImagen" class="celdaColumna2">
+                    <input type="file" id="file" name="archivos[0]" onchange="processFiles(this.files)"/>
+                    <label for="file">
+                        <div id="contenedorVideo" ondragenter="return enter(event)" ondragover="return over(event)"
+                             ondragleave="return leave(event)" ondrop="return drop(event)">
+                            <h1 id="divArrastrar"><sptag:message code="label_arrastrar_video"/></h1>
+                            <img class="imagenP" width="100px" height="100px" src=<sptag:message code="src_img_upload"/>>
+                        </div>
+                    </label>
+                    <table>
+                        <tr>
+                            <td class="celdaOpcion">
+                                <input type="radio" name="opcion" id="opcionR1">
+                                <label for="opcionR1" class="labelOpcionR1 opcion">Introducción</label>
+                            </td>
+                            <td class="celdaOpcion">
+                                <input type="radio" name="opcion" id="opcionR2">
+                                <label for="opcionR2" class="labelOpcionR2 opcion">Pregunta</label>
+                            </td>
+                            <td class="celdaOpcion">
+                                <input type="radio" name="opcion" id="opcionR3">
+                                <label for="opcionR3" class="labelOpcionR3 opcion">Transición</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit" form="formSubirVideo" value="Crear Entrevista"
+                            class="botonGuardar"><sptag:message code="button_guardar"/>
+                    </button>
+            </form>
+        </div>
     </section>
 
 </main>
