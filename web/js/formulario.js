@@ -1,5 +1,6 @@
 var contador = 0;
 var contador2=0;
+var formularioCargado=0;
 var elementoMovido = null;
 var contenedorActual = null;
 var elementoArrastrado = null;
@@ -17,9 +18,14 @@ var numElementosPredefinidos;
 
 inicializarGenerador();
 inicializarContador2();
+comprobarCargado();
 
 function inicializarContador2() {
     contador2 = document.getElementById("valorCountPredef").value;
+}
+
+function comprobarCargado(){
+    formularioCargado=document.getElementById("formularioCargado").value;
 }
 
 function inicializarGenerador() {

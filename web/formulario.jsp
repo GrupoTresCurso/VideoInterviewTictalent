@@ -502,13 +502,14 @@
                                     <br/>
                                     <div id="contenedorElementosFormulario">
                                         <c:set var="countPredef" value="0" scope="page"/>
-
+                                        <c:set var="formularioCargado" value="0" scope="page"/>
 
 
 
 
 
                                         <c:if test="${formulario != null}">
+                                            <c:set var="formularioCargado" value="1" scope="page"/>
                                             <input type="hidden" size="20" name="idFormulario" value="${formulario.idFormulario}"/>
 
                                         <c:forEach var="pregunta" items="${formulario.preguntas}">
@@ -729,6 +730,7 @@
 
                                         </c:if>
                                         <input type="hidden" size="20" id="valorCountPredef" value="${countPredef}"/>
+                                        <input type="hidden" size="20" id="formularioCargado" value="${formularioCargado}"/>
 
 
 
