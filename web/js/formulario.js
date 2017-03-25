@@ -430,7 +430,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -442,7 +442,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -660,9 +660,9 @@ function agregarCampos(elementoCopiado){
         campo = '<input type="hidden" size="20" name="identificadoresDDBB['+contador2+'].id" value="'+id+'"/>';
         $("#"+elementoCopiado.id+"").append(campo);
     }else{
-        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="A"/>';
+        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
         campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
-        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="A"/>';
+        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
         campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
         $("#"+elementoCopiado.id+"").append(campo);
         $("#"+elementoCopiado.id+"").append(campo2);

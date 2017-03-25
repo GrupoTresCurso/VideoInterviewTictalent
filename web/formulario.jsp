@@ -75,8 +75,8 @@
                                                         <tr>
                                                             <td>
                                                                 <textarea rows="3" cols="50"
-                                                                          placeholder=<sptag:message
-                                                                        code="placeholder_label_elemento"/>> </textarea>
+                                                                          placeholder="<sptag:message
+                                                                        code="placeholder_label_elemento"/>"></textarea>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -221,7 +221,7 @@
                                                     Adjuntar archivo
                                                 </div>
                                                 <div class="elemento elementoMuyGrande">
-                                                    <b><label class="labelLinea"><sptag:message
+                                                    <b><label><sptag:message
                                                             code="label_elemento"/></label>:</b><br/><br/>
                                                     <input type="file" name="etiqueta" id="addfile"/>
                                                     <label for="addfile" id="labelAddFile">
@@ -276,7 +276,7 @@
                                                                 </td>
                                                                 <td class="celda">
                                                                     <input type="text"
-                                                                           placeholder="Introduzca ${pregunta.labelPregunta}"
+                                                                           placeholder="${pregunta.labelPregunta}"
                                                                            size="22"/>
                                                                 </td>
                                                             </tr>
@@ -483,7 +483,7 @@
                                                                 </td>
                                                                 <td class="celda">
                                                                     <input type="text"
-                                                                           placeholder="Introduzca ${pregunta.labelPregunta}"
+                                                                           placeholder="${pregunta.labelPregunta}"
                                                                            size="22"/>
                                                                 </td>
                                                             </tr>

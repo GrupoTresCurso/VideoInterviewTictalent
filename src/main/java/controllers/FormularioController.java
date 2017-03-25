@@ -49,11 +49,28 @@ public class FormularioController implements BaseController {
         return "formulario";
     }*/
 
+    @RequestMapping(value = "/recuperarFormularios.do", method = RequestMethod.GET)
+    public String recuperarFormularios(HttpSession session) {
+        ArrayList<Formulario> listaFormularios = (ArrayList<Formulario>) formularioBusiness.recuperarTodos();
+        session.setAttribute("listaFormularios", listaFormularios);
+        return FORMULARIO_INDEX;
+    }
+
     @RequestMapping(value = "/recuperarFormulario.do",method = RequestMethod.GET)
     public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session){
         Formulario formulario=formularioBusiness.recuperarPorId(id);
         session.setAttribute("formulario",formulario);
         return FORMULARIO;
+    }
+
+    @RequestMapping(value = "/eliminarFormulario.do",method = RequestMethod.GET)
+    public void eliminarCandidato(@RequestParam(value="idFormulario",required=true) int id, HttpServletResponse response){
+        formularioBusiness.borrarPorId(id);
+        try {
+            response.sendRedirect("/recuperarFormularios.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
@@ -82,7 +99,7 @@ public class FormularioController implements BaseController {
             Formulario formulario=new Formulario(nombreFormulario,listaPreguntas);
             formularioBusiness.crearNuevo(formulario);
         }
-        return FORMULARIO;
+        return FORMULARIO_INDEX;
     }
 
 
