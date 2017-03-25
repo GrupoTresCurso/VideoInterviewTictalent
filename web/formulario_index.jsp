@@ -24,24 +24,24 @@
             <table id="tableFormularios">
                 <c:set var="contadorFormularios" value="0" scope="page"/>
                 <tr>
-                <c:forEach var="formulario" items="${listaFormularios}">
-                    <c:set var="contadorFormularios" value="${contadorFormularios+1}" scope="page"/>
-                    <td>
-                        <div class="formulario" id="${formulario.idFormulario}"
-                             onclick="seleccionar(this.className, this.id)" class="botonIndex">
-                            <img width="45px" height="45px" src=<sptag:message code="src_fileF"/>/>
-                            <label>${formulario.nombreFormulario}</label>
-                            <a href="<c:url value="${pageContext.request.contextPath}/eliminarFormulario.do">
-                              <c:param name="idCandidato" value="${formulario.idFormulario}"/></c:url>">
-                                <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
-                            </a>
-                        </div>
-                    </td>
-                    <c:if test="${contadorFormularios%3 == 0}">
-                        </tr>
-                        <tr>
-                    </c:if>
-                </c:forEach>
+                    <c:forEach var="formulario" items="${listaFormularios}">
+                        <c:set var="contadorFormularios" value="${contadorFormularios+1}" scope="page"/>
+                        <td>
+                            <div class="formulario" id="${formulario.idFormulario}"
+                                 onclick="seleccionar(this.className, this.id)" class="botonIndex">
+                                <img width="45px" height="45px" src=<sptag:message code="src_fileF"/>/>
+                                <label>${formulario.nombreFormulario}</label>
+                                <a href="<c:url value="${pageContext.request.contextPath}/eliminarFormulario.do">
+                                  <c:param name="idCandidato" value="${formulario.idFormulario}"/></c:url>">
+                                    <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
+                                </a>
+                            </div>
+                        </td>
+                        <c:if test="${contadorFormularios%3 == 0}">
+                            </tr>
+                            <tr>
+                        </c:if>
+                    </c:forEach>
                 </tr>
             </table>
 
