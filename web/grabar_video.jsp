@@ -22,7 +22,7 @@
 <main>
     <%@include file="menu.jsp" %>
 
-    <aside>
+    <aside onclick="ocultarInfoUsuario()">
         <h4><sptag:message code="label_opciones_video"/></h4>
         <table id="tableOpcionesVideo">
             <tr>

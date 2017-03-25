@@ -41,7 +41,7 @@
         </table>
     </aside>
     <section onclick="ocultarInfoUsuario()">
-        <div id="contenedorFormulario"  onclick="ocultarInfoUsuario()">
+        <div id="medio"  onclick="ocultarInfoUsuario()">
             <h4><sptag:message code="label_arrastrar_video"/></h4><br/>
             <form id="formSubirVideo" action="${pageContext.request.contextPath}/subirVideo.do" method="POST"
                   enctype="multipart/form-data" modelAttribute="listaVideos">

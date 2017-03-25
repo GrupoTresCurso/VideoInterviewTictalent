@@ -29,7 +29,6 @@
                 <div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message
                         code="label_nueva_entrvista"/></div>
             </a><br/>
-
         </div>
         <%@include file="userInfo.jsp"%>
 </section>
