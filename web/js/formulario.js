@@ -28,16 +28,8 @@ function inicializarGenerador() {
 }
 
 function ajustarTamanioPagina() {
-    //$('main').css('width', ($(window).width()) + 'px');
-    $('nav').css('width', ($(window).width() - 30) + 'px');
-    $('section').css('height', ($(window).height() - 650) + 'px');
-    $('#panelElementosPrincipal').css('height', ($(window).height() - 491) + 'px');
-    $('#contenedor').css('height', ($(window).height() - 92) + 'px');
-    $('#contenedor').css('width', ($(window).width() - 764) + 'px');
-    //$('#logoTictum').css('paddingLeft', ($(window).width() - 1085) + 'px');
-    $('#userInfo').css('display','none');
-    $('#logoTictum').css('paddingLeft', ($(window).width() - 1105) + 'px');
-    $('#userInfo').css('left', ($(window).width() - 142) + 'px');
+    $('#medio').css('width', ($(window).width()-$('#izquierda').width()-$('#derecha').width()) + 'px');
+    $('#contenedor').css('height', ($(window).height()*0.895) + 'px');
 }
 
 function elementoEsPredefinido(elemento) {
@@ -113,7 +105,7 @@ function ocultarElementosPanel() {
             elementos[i].style.display = 'none';
         }
     }
-    document.getElementById("panelElementosBloqueo").style.display = 'none';
+    //document.getElementById("panelElementosBloqueo").style.display = 'none';
 }
 
 //Ocultar propiedades de elementos
@@ -256,6 +248,12 @@ function seleccionar(id) {
                     opcionesElementoSeleccionado = listaOpciones;
                     etiquetaElementoSeleccionado = elementoLabel.innerHTML;
                     break;
+                case "file":
+                    mostrarPropiedadesNoOpciones();
+                    elementoLabel = elemento.querySelectorAll('label')[0];
+                    etiquetaElementoSeleccionado = elementoLabel.innerHTML;
+                    numOpcionesElementoSeleccinado = 0;
+                    break;
             }
             document.getElementById("etiquetaPropiedades").value = etiquetaElementoSeleccionado;
             document.getElementById("opcionesPropiedades").value = numOpcionesElementoSeleccinado;
@@ -363,6 +361,10 @@ function actualizarEtiqueta() {
             inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
             break;
+        case "file":
+            elementoLabel = elemento.querySelectorAll('label')[0];
+            elementoLabel.innerHTML = nuevo;
+            break;
     }
 }
 
@@ -428,7 +430,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -440,7 +442,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -547,7 +549,7 @@ function agregarAPredefinidos() {
     inputFavorito.value = '1';
 }
 
-
+/*
 var informacionUsuarioMostrada = false;
 function mostrarOcultarInfoUsuario() {
     if(!informacionUsuarioMostrada){
@@ -562,7 +564,7 @@ function mostrarOcultarInfoUsuario() {
 function ocultarInfoUsuario() {
     $('#userInfo').css('display','none');
     informacionUsuarioMostrada = false;
-}
+}*/
 
 /****************************DRAG AND DROP***************************/
 
@@ -609,7 +611,8 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"){
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
+            || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }else {
             var aux=elementoCopiado.id.split("_");
@@ -628,6 +631,10 @@ function drop(e) {
         if (devolverTipoElemento(elementoMovido) == "area" || devolverTipoElemento(elementoMovido) == "checkbox") {
             elementoCopiado.style.height = '94px';
         }
+        if (devolverTipoElemento(elementoMovido) == "file") {
+            elementoCopiado.style.height = '180px';
+        }
+
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.elemento')[0].style.display = 'block';
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
@@ -653,9 +660,9 @@ function agregarCampos(elementoCopiado){
         campo = '<input type="hidden" size="20" name="identificadoresDDBB['+contador2+'].id" value="'+id+'"/>';
         $("#"+elementoCopiado.id+"").append(campo);
     }else{
-        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="A"/>';
+        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
         campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
-        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="A"/>';
+        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
         campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
         $("#"+elementoCopiado.id+"").append(campo);
         $("#"+elementoCopiado.id+"").append(campo2);

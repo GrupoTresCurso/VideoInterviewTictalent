@@ -31,7 +31,6 @@ public class FormularioController implements BaseController {
     private BaseBusiness<Pregunta> preguntaBusiness;
 
     /*
-
     @RequestMapping(value = "/guardarFormulario.do", method = RequestMethod.GET)
     public void guardarFormulario(@ModelAttribute("formulario") Formulario formulario, HttpServletResponse response) {
         formularioBusiness.actualizar(formulario);
@@ -48,17 +47,34 @@ public class FormularioController implements BaseController {
         session.setAttribute("listaFormulario",listaFormularios);
         session.setAttribute("formulario",null);
         return "formulario";
+    }*/
+
+    @RequestMapping(value = "/recuperarFormularios.do", method = RequestMethod.GET)
+    public String recuperarFormularios(HttpSession session) {
+        ArrayList<Formulario> listaFormularios = (ArrayList<Formulario>) formularioBusiness.recuperarTodos();
+        session.setAttribute("listaFormularios", listaFormularios);
+        return FORMULARIO_INDEX;
     }
 
     @RequestMapping(value = "/recuperarFormulario.do",method = RequestMethod.GET)
-    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session, HttpServletResponse response){
+    public String recuperarFormulario(@RequestParam(value="idFormulario",required=true) int id, HttpSession session){
         Formulario formulario=formularioBusiness.recuperarPorId(id);
         session.setAttribute("formulario",formulario);
-        return "formulario";
-    }*/
+        return FORMULARIO;
+    }
+
+    @RequestMapping(value = "/eliminarFormulario.do",method = RequestMethod.GET)
+    public void eliminarCandidato(@RequestParam(value="idFormulario",required=true) int id, HttpServletResponse response){
+        formularioBusiness.borrarPorId(id);
+        try {
+            response.sendRedirect("/recuperarFormularios.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @RequestMapping(value = "/crearFormulario.do", method = RequestMethod.GET)
-    public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm) {
+    public String crearFormulario(@ModelAttribute("preguntaForm") PreguntaForm preguntaForm,@RequestParam(value="idFormulario",required=false) Integer idFormulario,@RequestParam(value="nombreFormulario",required=false) String nombreFormulario) {
         List <Pregunta> listaPreguntas=new ArrayList<>();
         List <Pregunta> listaPreguntasSinDDBB=preguntaForm.getPreguntasSinDDBB();
         List <ID> listIdentificadores=preguntaForm.getIdentificadoresDDBB();
@@ -74,9 +90,16 @@ public class FormularioController implements BaseController {
                 listaPreguntas.add(pregunta);
             }
         }
-        Formulario formulario=new Formulario("ASD",listaPreguntas);
-        formularioBusiness.crearNuevo(formulario);
-        return FORMULARIO;
+        if(idFormulario!=null){
+            Formulario formularioDDBB=formularioBusiness.recuperarPorId(idFormulario);
+            formularioDDBB.setPreguntas(listaPreguntas);
+            formularioDDBB.setNombreFormulario(nombreFormulario);
+            formularioBusiness.actualizar(formularioDDBB);
+        }else {
+            Formulario formulario=new Formulario(nombreFormulario,listaPreguntas);
+            formularioBusiness.crearNuevo(formulario);
+        }
+        return FORMULARIO_INDEX;
     }
 
 

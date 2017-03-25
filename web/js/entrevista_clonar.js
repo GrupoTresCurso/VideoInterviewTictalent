@@ -1,5 +1,6 @@
 function seleccionar(clase, id) {
     cambiarFondo(clase, id);
+    habilitarBotonGuardado();
 }
 
 function cambiarFondo(clase, id) {
@@ -13,4 +14,8 @@ function cambiarFondo(clase, id) {
 
 function cambiarOnClickClonar(id) {
     document.getElementById("valorId").value = id;
+}
+
+function habilitarBotonGuardado() {
+    document.getElementById("botonGuardar").disabled=false;
 }

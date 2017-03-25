@@ -21,11 +21,11 @@
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_generar_entrevista"/></h3><br/>
-            <a href="entrevista_clonar.jsp">
+            <a href="${pageContext.request.contextPath}/recuperarEntrevistas.do">
                 <div class="botonIndex"><img src="images/clone.png" width="40px" height="40px"/><sptag:message
                         code="label_clonar_entrevista"/></div>
             </a><br/>
-            <a href="recuperarVideosFormularios.do">
+            <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
                 <div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message
                         code="label_nueva_entrvista"/></div>
             </a><br/>

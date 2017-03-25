@@ -50,13 +50,25 @@ public class EntrevistaController implements BaseController {
         return ENTREVISTA_CLONAR;
     }
 
+    @RequestMapping(value = "/recuperarEntrevista.do", method = RequestMethod.GET)
+    public void recuperarEntrevista(Integer id, HttpSession session, HttpServletResponse response) {
+        Entrevista entrevista=entrevistaBusiness.recuperarPorId(id);
+        session.setAttribute("Entrevista", entrevista);
+        try {
+            response.sendRedirect("/recuperarVideosFormularios.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @RequestMapping(value = "/clonarEntrevista.do", method = RequestMethod.GET)
     public void clonarEntrevista(@RequestParam(value = "idEntrevista", required = true) int idEntrevista, @RequestParam(value = "nombre") String nombre, HttpServletResponse response) {
         Entrevista entrevistaDDBB = entrevistaBusiness.recuperarPorId(idEntrevista);
         Entrevista entrevistaCopia = new Entrevista(nombre, entrevistaDDBB.getNombrePuesto(), entrevistaDDBB.getMensaje(), entrevistaDDBB.getFormularios(), entrevistaDDBB.getCuestionarioSatisfaccion(), entrevistaDDBB.isTieneVideoIntro(), entrevistaDDBB.getListaVideos(), entrevistaDDBB.getListaCandidatos());
         entrevistaBusiness.crearNuevo(entrevistaCopia);
         try {
-            response.sendRedirect("recuperarEntrevistas.do");
+            response.sendRedirect("/recuperarEntrevistas.do");
         } catch (IOException e) {
             e.printStackTrace();
         }
