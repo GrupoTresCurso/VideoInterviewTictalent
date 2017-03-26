@@ -89,7 +89,9 @@ public class EntrevistaController implements BaseController {
     }
 
     @RequestMapping(value = "/crearEntrevista.do", method = RequestMethod.GET)
-    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,@RequestParam("formularios[]")List<Integer> intFormularios,@RequestParam("candidatos[]")List<Integer> intCandidatos) {
+    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,
+                                  @RequestParam("formularios[]")List<Integer> intFormularios,
+                                  @RequestParam("candidatos[]")List<Integer> intCandidatos) {
         List<Video> listaVideos=new ArrayList();
         List<Formulario> listaFormularios=new ArrayList();
         List<Candidato> listaCandidatos=new ArrayList();
@@ -107,7 +109,7 @@ public class EntrevistaController implements BaseController {
         }
         Entrevista entrevista=new Entrevista("ASD","ASD","ASD",listaFormularios,listaFormularios.get(0),false,listaVideos,listaCandidatos);
         entrevistaBusiness.crearNuevo(entrevista);
-        return ENTREVISTA_NUEVA;
+        return ENTREVISTA_INDEX;
     }
 
 

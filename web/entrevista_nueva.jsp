@@ -25,7 +25,7 @@
                 <td id="izquierda">
                     <div id="panelElementosPrincipal">
                         <div id="panelElementos">
-                            <details id="detailsVI" onclick="seleccionarTipoElementos(this.id)">
+                            <details id="detailsVI">
                                 <summary id="summaryVI">
                                     <b class="colorTictum"><sptag:message code="label_videos_intro"/></b>
                                 </summary>
@@ -54,7 +54,7 @@
                                     </tr>
                                 </table>
                             </details>
-                            <details id="detailsF" onclick="seleccionarTipoElementos(this.id)">
+                            <details id="detailsF">
                                 <summary id="summaryF">
                                     <b class="colorTictum"><sptag:message code="label_formulario"/></b>
                                 </summary>
@@ -197,7 +197,7 @@
                                     </c:forEach>
                                  </table>
                             </details>
-                            <details id="detailsVP" onclick="seleccionarTipoElementos(this.id)">
+                            <details id="detailsVP">
                                 <summary id="summaryVP">
                                     <b class="colorTictum"><sptag:message code="label_pregunta_video"/></b>
                                 </summary>
@@ -226,7 +226,7 @@
                                     </tr>
                                 </table>
                             </details>
-                            <details id="detailsVT" onclick="seleccionarTipoElementos(this.id)">
+                            <details id="detailsVT">
                                 <summary id="summaryVT">
                                     <b class="colorTictum"><sptag:message code="label_video_transicion"/></b>
                                 </summary>
@@ -262,19 +262,109 @@
                 <td id="medio">
                     <div id="superior">
                         <div id="guia">
+                            <table id="tableGuia">
+                                <tr>
+                                    <td class="seccionEntrevista" id="guiaVI" onclick="mostrarSeccion(this.id)">
+                                       <img src="images/icon_video_introductorio.png" height="45px" width="45px" title="Video introductorio"/>
+                                    </td>
+                                    <td class="seccionEntrevista" id="guiaFP" onclick="mostrarSeccion(this.id)">
+                                        <img src="images/icon_formulario.png" height="45px" width="45px" title="Preguntas entrevista"/>
+                                    </td>
+                                    <td class="seccionEntrevista" id="guiaVT" onclick="mostrarSeccion(this.id)">
+                                        <img src="images/icon_video_transicion.png" height="45px" width="45px" title="Video transicion"/>
+                                    </td>
+                                    <td class="seccionEntrevista" id="guiaVP" onclick="mostrarSeccion(this.id)">
+                                        <img src="images/icon_video_pregunta.png" height="45px" width="45px" title="Video preguntas"/>
+                                    </td>
+                                    <td class="seccionEntrevista" id="guiaFS" onclick="mostrarSeccion(this.id)">
+                                        <img src="images/icon_formulario_satisfaccion.png" height="45px" width="45px" title="Cuestionario satisfacción"/>
+                                    </td>
+                                    <td class="seccionEntrevista" id="guiaFA" onclick="mostrarSeccion(this.id)">
+                                        <img src="images/icon_formulario_adjunto.png" height="45px" width="45px" title="Adjuntos"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div id="contenedorEntrevista" ondragenter="return enter(event)" ondragover="return over(event)"
                          ondragleave="return leave(event)" ondrop="return drop(event)">
-                        <div id="estadoContenedor">
-                            <div id="mensajeDefecto">
-                                <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
-                                <p id="mensajeNoHayElementos">No hay elementos</p>
-                            </div>
-                            <div id="contenedorElementosEntrevista">
+            <!-------------------------------------------------------------------------------------------------->
+            <!-------------------------------------------------------------------------------------------------->
+            <form:form id="nuevaEntrevista"
+            action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET"
+            modelAttribute="preguntaForm">
+                            <div id="estadoContenedorVI" class="estadoContenedor">
+                                <div id="mensajeDefectoVI" class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar video introductorio.<br/>
+                                        (Máximo 1)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaVI" class="contenedorElementosEntrevista">
 
+                                </div>
                             </div>
-                        </div>
+                            <div id="estadoContenedorFP" class="estadoContenedor">
+                                <div id="mensajeDefectoFP" class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar formulario de preguntas.<br/>
+                                        (Máximo 1)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaFP" class="contenedorElementosEntrevista">
+
+                                </div>
+                            </div>
+                            <div id="estadoContenedorVT" class="estadoContenedor">
+                                <div id="mensajeDefectoVT"  class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar video de transición.<br/>
+                                        (Máximo 1)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaVT" class="contenedorElementosEntrevista">
+
+                                </div>
+                            </div>
+                            <div id="estadoContenedorVP" class="estadoContenedor">
+                                <div id="mensajeDefectoVP" class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar videos de preguntas.<br/>
+                                        (Máximo 5)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaVP" class="contenedorElementosEntrevista">
+
+                                </div>
+                            </div>
+                            <div id="estadoContenedorFS" class="estadoContenedor">
+                                <div id="mensajeDefectoFS" class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar formulario de satisfacción.<br/>
+                                        (Máximo 1)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaFS" class="contenedorElementosEntrevista">
+
+                                </div>
+                            </div>
+                            <div id="estadoContenedorFA" class="estadoContenedor">
+                                <div id="mensajeDefectoFA" class="mensajeDefecto">
+                                    <h4 class="colorTictum"><sptag:message code="label_contenedor_entrevista_title"/></h4><br/><br/>
+                                    <p class="mensajeNoHayElementos">
+                                        Arrastrar y soltar formulario de adjuntos.<br/>
+                                        (Máximo 1)
+                                    </p>
+                                </div>
+                                <div id="contenedorElementosEntrevistaFA" class="contenedorElementosEntrevista">
+
+                                </div>
+                            </div>
                     </div>
                 </td>
                 <td id="derecha">
@@ -282,24 +372,27 @@
                     <div id="propiedades">
                         <br/>
                         <div id="contenedorOpciones">
-                            <div class="elementoForm elementoPequenio elementoLabel">
+                            <div class="elementoForm">
                                 <input type="text" id="nombreEntrevista" placeholder="Nombre de la entrevista"/></br>
                             </div>
-                            <div class="elementoForm elementoPequenio elementoLabel">
+                            <div class="elementoForm">
                                 <input type="text" id="nombrePuesto" placeholder="Nombre del puesto"/></br>
                             </div>
-                            <div class="elementoForm elementoPequenio elementoLabel">
+                            <div class="elementoForm">
                                 <input type="text" id="mensajeFinal" placeholder="Mensaje final"/></br>
                             </div>
-                            <div class="elementoForm elementoPequenio elementoLabel">
-                                <input type="checkbox" name="videoIntroBoolean" value="Video Introductorio"/>¿Tiene Vídeo introductorio?</br>
+                            <div class="elementoForm">
+                                <input type="checkbox" name="videoIntroBoolean" id="videoIntroBoolean" value="Video Introductorio" onchange="activarVideoIntroductorio()"/>¿Tiene Vídeo introductorio?</br>
                             </div>
                         </div>
                         <br/>
                         <button type="submit" class="botonGuardar"><sptag:message code="button_guardar"/></button>
                     </div>
+            </form:form>
+            <!-------------------------------------------------------------------------------------------------->
+            <!-------------------------------------------------------------------------------------------------->
                     <div id="eliminar">
-                        <p><sptag:message code="label_papelera_message"/></p><br/>
+                        <p><sptag:message code="label_papelera_message2"/></p><br/>
                         <div id="papelera" ondragenter="return enter(event)" ondragover="return overPapelera(event)"
                              ondragleave="return leavePapelera(event)" ondrop="return dropPapelera(event)">
                             <img id="imagenPapelera" src=
