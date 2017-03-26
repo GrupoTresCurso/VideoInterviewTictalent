@@ -11,4 +11,6 @@ public interface BaseController {
     String FORMULARIO_INDEX="formulario_index";
     String FORMULARIO="formulario";
 
+    String UNA_VISTA_CUALQUIERA="index";
+    String UNA_VISTA_CUALQUIERA2="index";
 }

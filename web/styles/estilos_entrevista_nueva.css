@@ -76,24 +76,21 @@ section>table{
 }
 
 .elemento {
-    width: 100%;
-    height: 46px;
-    padding: 1px;
-    position: absolute;
+    width: 400px;
+    padding: 3px;
+    display: inline-block;
     border: 1px solid #C8C6C6;
+    margin-bottom: 5px;
 }
 .elementoForm {
     height: 46px;
-    padding: 1px;
+    padding: 3px;
     border: 1px solid #C8C6C6;
 }
 
-.elementoGrande {
-    height: 90px;
-}
-
-.elementoPequenio {
-    height: 33px;
+.elementoForm>input{
+    height: 40px;
+    width: 200px;
 }
 
 .elementoLabel {
@@ -146,15 +143,14 @@ label {
 }
 
 #contenedorEntrevista {
-    padding: 15px 50px;
+    padding: 0px 50px;
     width: 100%;
-    height: 80%;
+    height: 85%;
     border: 2px solid transparent;
     font-size: 14px;
     background-color: white;
     overflow-y: scroll;
     box-sizing: border-box;
-    min-height:100% !important;
 }
 
 #contenedorEntrevista.over {
@@ -361,36 +357,35 @@ input[type='checkbox']:checked:after {
     position: relative;
     cursor: move;
     width: 240px;
-    height: 60px;
+    height: 50px;
+    box-sizing: border-box;
 }
 
 .contenedorIcono {
-    text-align: center;
     border: 2px solid grey;
     width: 240px;
-    height: 60px;
+    height: 50px;
     top: 0px;
     position: absolute;
     font-size: 13px;
     background-color: white;
 }
 
-.contenedorIcono table{
-    border-collapse: collapse;
-    width: 240px;
-    height: 60px;
+#detailsF>table{
+    border-spacing: 0px 5px;
+    margin: 5px 0px;
 }
 
 .labelIcono{
     word-wrap: break-word;
-    padding-left: 5px;
+    padding-left: 3px;
 }
 
 
 .capaSuperior {
     border: 2px solid black;
-    width: 120px;
-    height: 70px;
+    width: 240px;
+    height: 50px;
     top: 0px;
     position: absolute;
 }
@@ -574,6 +569,7 @@ span {
 #estadoContenedor {
     position: relative;
     margin-bottom: 60px;
+    box-sizing: border-box;
 }
 
 #mensajeDefecto {
@@ -582,13 +578,10 @@ span {
     position: absolute;
 }
 
-#nuevoForm {
+#contenedorElementosEntrevista {
     top: 0px;
     position: absolute;
-}
-
-#nuevoFormulario {
-    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .btnForm {
@@ -685,10 +678,9 @@ input[type="checkbox"], input[type="radio"] {
     padding: 15px 50px;
     width: 100%;
     font-size: 14px;
-    overflow-y: scroll;
     background-color: white;
     box-sizing: border-box;
-    height: 20%;
+    height: 15%;
 }
 
 #guia{
@@ -717,3 +709,14 @@ input[type="checkbox"], input[type="radio"] {
     margin-left: 150px;
     padding: 0px;
 }*/
+
+
+.delimitadorElementoEntrevista{
+    width: 540px;
+    border:1px solid grey;
+    display: inline-block;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
