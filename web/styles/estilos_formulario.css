@@ -57,7 +57,6 @@ section>table{
     box-sizing: border-box;
 }
 
-
 #izquierda {
 	width: 310px;
 	background-color: #F2F2F2;
@@ -663,40 +662,6 @@ input[type="checkbox"], input[type="radio"] {
     background-color: transparent;
 }
 
-#logoUser{
-    text-align: right;
-    padding-left: 20px !important;
-    padding-right:20px !important;
-    padding-top: 5px !important;
-    margin-top: -100px;
-}
-
-#logoUser img{
-    cursor: pointer;
-}
-
-#userInfo{
-    text-align: left;
-    position: absolute;
-    width: 120px;
-    height: 100px;
-    background-color: white;
-    top:70px;
-    padding: 10px;
-    font-size: 13px;
-    border-left:2px solid #00B4DF;
-    border-bottom:2px solid #00B4DF;
-}
-
-#userInfo h3{
-    color: #00B4DF;
-}
-
-#userInfo a{
-    padding-left: 70px;
-    color: red;
-    font-weight: bold;
-}
 
 #labelAddFile{
     text-align: center;

@@ -42,7 +42,7 @@ public class PreguntaController implements BaseController {
                 listaPreguntasPredefinidas.add(pregunta);
             }
         }
-        session.setAttribute("listaPreguntas",listaPreguntasPredefinidas);
+        session.setAttribute("listaPreguntasPredefinidas",listaPreguntasPredefinidas);
         return FORMULARIO;
     }
 

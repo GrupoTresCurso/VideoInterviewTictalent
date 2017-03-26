@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_entrevista_nueva.css">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_entrevista_nueva"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
@@ -26,84 +26,112 @@
                     <div id="panelElementosPrincipal">
                         <div id="panelElementos">
                             <details id="detailsVI" onclick="seleccionarTipoElementos(this.id)">
-                                <summary id="summaryVI"><b class="colorTictum"><sptag:message
-                                        code="label_videos_intro"/></b></summary>
-                                <c:forEach var="videoIntroductorio" items="${videosIntroductorios}" step="1" begin="0">
-                                    <c:if test="${count==4}">
-                                        <c:set var="count" value="0"/>
-                                    </c:if>
-                                    <div draggable="true" id="videoIntro_${videosIntroductorios.idVideo}" ondragstart="start(event)"
-                                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                                        <div class="col${count} contenedorIcono">
-                                            <img src="images/movie.png" width="45px" height="45px"/>
-                                            <p>${videoIntroductorio.nombreVideo}</p>
-                                        </div>
-                                        <div class="elemento">
-                                            <img src="images/movie.png" width="45px" height="45px"/>
-                                        </div>
-                                    </div>
-                                    <c:set var="count" value="${count+1}"/>
-                                </c:forEach>
+                                <summary id="summaryVI">
+                                    <b class="colorTictum"><sptag:message code="label_videos_intro"/></b>
+                                </summary>
+                                <table>
+                                    <c:set var="contadorVideosIntroductorio" value="0" scope="page"/>
+                                    <tr>
+                                        <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
+                                            <c:set var="contadorVideosIntroductorio" value="${contadorVideosIntroductorio+1}" scope="page"/>
+                                            <td>
+                                                <div class="videoIntro contenedorElemento pertenecePanel" id="videoIntro_${videosIntroductorios.idVideo}"
+                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                    <div class="contenedorIcono">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <label>${videoIntroductorio.nombreVideo}</label>
+                                                    </div>
+                                                    <div class="elemento">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <c:if test="${contadorVideosIntroductorio%2 == 0}">
+                                                </tr>
+                                                <tr>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                </table>
                             </details>
                             <details id="detailsF" onclick="seleccionarTipoElementos(this.id)">
-                                <summary id="summaryF"><b class="colorTictum"><sptag:message
-                                        code="label_formulario"/></b></summary>
-                                <c:forEach var="formulario" items="${formularios}" step="1" begin="0">
-                                    <c:if test="${count==4}">
-                                        <c:set var="count" value="0"/>
-                                    </c:if>
-                                    <div draggable="true" id="formulario_${formulario.idFormulario}" ondragstart="start(event)"
-                                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                                        <div class="col${count} contenedorIcono">
-                                            <img src="images/form.png" width="45px" height="45px"/>
-                                            <p>${formulario.nombreFormulario}</p>
+                                <summary id="summaryF">
+                                    <b class="colorTictum"><sptag:message code="label_formulario"/></b>
+                                </summary>
+                                    <c:forEach var="formulario" items="${formularios}">
+                                        <div class="formulario contenedorElemento pertenecePanel" id="formulario_${formulario.idFormulario}"
+                                             draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                            <div class="contenedorIcono">
+                                                <table>
+                                                    <tr>
+                                                        <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
+                                                        <td class="labelIcono"><label>${formulario.nombreFormulario}</label></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="elemento">
+                                                <!--   -->
+                                            </div>
                                         </div>
-                                        <div class="elemento">
-                                            <img src="images/form.png" width="45px" height="45px"/>
-                                        </div>
-                                    </div>
-                                    <c:set var="count" value="${count+1}"/>
-                                </c:forEach>
+                                    </c:forEach>
                             </details>
                             <details id="detailsVP" onclick="seleccionarTipoElementos(this.id)">
-                                <summary id="summaryVP"><b class="colorTictum"><sptag:message
-                                        code="label_pregunta_video"/></b></summary>
-                                <c:forEach var="videoPregunta" items="${videosPreguntas}" step="1" begin="0">
-                                    <c:if test="${count==4}">
-                                        <c:set var="count" value="0"/>
-                                    </c:if>
-                                    <div draggable="true" id="video_${videoPregunta.idVideo}" ondragstart="start(event)"
-                                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                                        <div class="col${count} contenedorIcono">
-                                            <img src="images/webcam.png" width="45px" height="45px"/>
-                                            <p>${videoPregunta.nombreVideo}</p>
-                                        </div>
-                                        <div class="elemento">
-                                            <img src="images/webcam.png" width="45px" height="45px"/>
-                                        </div>
-                                    </div>
-                                    <c:set var="count" value="${count+1}"/>
-                                </c:forEach>
+                                <summary id="summaryVP">
+                                    <b class="colorTictum"><sptag:message code="label_pregunta_video"/></b>
+                                </summary>
+                                <table>
+                                    <c:set var="contadorVideosPregunta" value="0" scope="page"/>
+                                    <tr>
+                                        <c:forEach var="videoPregunta" items="${videosPreguntas}">
+                                            <c:set var="contadorVideosPregunta" value="${contadorVideosPregunta+1}" scope="page"/>
+                                            <td>
+                                                <div class="videoPregunta contenedorElemento pertenecePanel" id="video_${videoPregunta.idVideo}"
+                                                     draggable="true"ondragstart="start(event)" ondragend="end(event)">
+                                                    <div class="contenedorIcono">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <label>${videoPregunta.nombreVideo}</label>
+                                                    </div>
+                                                    <div class="elemento">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <c:if test="${contadorVideosPregunta%2 == 0}">
+                                                </tr>
+                                                <tr>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                </table>
                             </details>
                             <details id="detailsVT" onclick="seleccionarTipoElementos(this.id)">
-                                <summary id="summaryVT"><b class="colorTictum"><sptag:message
-                                        code="label_video_transicion"/></b></summary>
-                                <c:forEach var="videoTransicion" items="${videosTransiciones}" step="1" begin="0">
-                                    <c:if test="${count==4}">
-                                        <c:set var="count" value="0"/>
-                                    </c:if>
-                                    <div draggable="true" id="video_${videoTransicion.idVideo}" ondragstart="start(event)"
-                                         ondragend="end(event)" onclick="seleccionar(this.className, this.id)">
-                                        <div class="col${count} contenedorIcono">
-                                            <img src="images/movie.png" width="45px" height="45px"/>
-                                            <p>${videoTransicion.nombreVideo}</p>
-                                        </div>
-                                        <div class="elemento">
-                                            <img src="images/movie.png" width="45px" height="45px"/>
-                                        </div>
-                                    </div>
-                                    <c:set var="count" value="${count+1}"/>
-                                </c:forEach>
+                                <summary id="summaryVT">
+                                    <b class="colorTictum"><sptag:message code="label_video_transicion"/></b>
+                                </summary>
+                                <table>
+                                    <c:set var="contadorVideosTransicion" value="0" scope="page"/>
+                                    <tr>
+                                        <c:forEach var="videoTransicion" items="${videosTransiciones}">
+                                            <c:set var="contadorVideosTransicion" value="${contadorVideosTransicion+1}" scope="page"/>
+                                            <td>
+                                                <div class="videoTransicion contenedorElemento pertenecePanel"  id="video_${videoTransicion.idVideo}"
+                                                      draggable="true"ondragstart="start(event)" ondragend="end(event)">
+                                                    <div class="col${count} contenedorIcono">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <label>${videoTransicion.nombreVideo}</label>
+                                                    </div>
+                                                    <div class="elemento">
+                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <c:if test="${contadorVideosPregunta%2 == 0}">
+                                                </tr>
+                                                <tr>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tr>
+                                </table>
                             </details>
                         </div>
                     </div>
@@ -167,6 +195,7 @@
                 </td>
             </tr>
         </table>
+        </section>
         <%@include file="userInfo.jsp" %>
     </section>
 </main>

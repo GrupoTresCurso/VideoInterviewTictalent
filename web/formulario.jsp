@@ -7,6 +7,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,410 +27,11 @@
                 <td id="izquierda">
                     <div id="panelElementosPrincipal">
                         <div id="panelElementos" onclick="deseleccionar()">
-                            <details id="detailsE" onclick="seleccionarTipoElementos(this.id)" open>
-                                <summary id="summaryE"><b class="colorTictum"><sptag:message
-                                        code="label_elemetos_title"/></b></summary>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div class="texto contenedorElemento pertenecePanel" id="texto"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src=
-                                                         <sptag:message code="src_img_icon_text"/> width="55px"
-                                                         height="55px"><br/>
-                                                    <label><sptag:message code="label_icon_campo_texto"/></label>
-                                                </div>
-                                                <div class="elemento">
-                                                    <table class="tableElementoText">
-                                                        <tr>
-                                                            <td class="celda">
-                                                                <img src=
-                                                                     <sptag:message code="src_img_user"/> width="30px"
-                                                                     height="30px">
-                                                            </td>
-                                                            <td class="celda">
-                                                                <input type="text" placeholder=
-                                                                <sptag:message
-                                                                        code="placeholder_label_elemento"/> size="25"/>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="area contenedorElemento pertenecePanel" id="area"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src=
-                                                         <sptag:message code="src_img_icon_textarea"/> width="55px"
-                                                         height="55px"><br/>
-                                                    <label><sptag:message code="label_icon_area_texto"/></label>
-                                                </div>
-                                                <div class="elemento elementoGrande">
-                                                    <table class="tableElementoText">
-                                                        <tr>
-                                                            <td>
-                                                                <textarea rows="3" cols="50"
-                                                                          placeholder="<sptag:message
-                                                                        code="placeholder_label_elemento"/>"></textarea>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="radio contenedorElemento pertenecePanel" id="radio"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src=
-                                                         <sptag:message code="src_img_icon_radio"/> width="55px"
-                                                         height="55px"><br/>
-                                                    <label><sptag:message code="label_icon_boton_opcion"/></label>
-                                                </div>
-                                                <div class="elemento">
-                                                    <b><label><sptag:message code="label_elemento"/></label>:</b><br/>
-                                                    <table>
-                                                        <tr>
-                                                            <td class="celdaOpcion">
-                                                                <input type="radio" name="opcion" id="opcionR1">
-                                                                <label for="opcionR1"
-                                                                       class="labelOpcionR1 opcion"><sptag:message
-                                                                        code="label_opcion_1"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="radio" name="opcion" id="opcionR2">
-                                                                <label for="opcionR2"
-                                                                       class="labelOpcionR2 opcion"><sptag:message
-                                                                        code="label_opcion_2"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="radio" name="opcion" id="opcionR3">
-                                                                <label for="opcionR3"
-                                                                       class="labelOpcionR3 opcion"><sptag:message
-                                                                        code="label_opcion_3"/></label>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="checkbox contenedorElemento pertenecePanel" id="check"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src=
-                                                         <sptag:message code="src_img_icon_checkbox"/> width="55px"
-                                                         height="55px"><br/>
-                                                    <label><sptag:message
-                                                            code="label_icon_casilla_verificacion"/></label>
-                                                </div>
-                                                <div class="elemento elementoGrande">
-                                                    <b><label><sptag:message code="label_elemento"/></label>:</b><br/>
-                                                    <table>
-                                                        <tr>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB1">
-                                                                <label for="opcionCB1"
-                                                                       class="labelOpcionCB1 opcion"><sptag:message
-                                                                        code="label_opcion_1"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB2">
-                                                                <label for="opcionCB2"
-                                                                       class="labelOpcionCB2 opcion"><sptag:message
-                                                                        code="label_opcion_2"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB3">
-                                                                <label for="opcionCB3"
-                                                                       class="labelOpcionCB3 opcion"><sptag:message
-                                                                        code="label_opcion_3"/></label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB4">
-                                                                <label for="opcionCB4"
-                                                                       class="labelOpcionCB4 opcion"><sptag:message
-                                                                        code="label_opcion_4"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB5">
-                                                                <label for="opcionCB5"
-                                                                       class="labelOpcionCB5 opcion"><sptag:message
-                                                                        code="label_opcion_5"/></label>
-                                                            </td>
-                                                            <td class="celdaOpcion">
-                                                                <input type="checkbox" name="opcion" id="opcionCB6">
-                                                                <label for="opcionCB6"
-                                                                       class="labelOpcionCB6 opcion"><sptag:message
-                                                                        code="label_opcion_6"/></label>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="select contenedorElemento pertenecePanel" id="select"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src=
-                                                         <sptag:message code="src_img_icon_select"/> width="55px"
-                                                         height="55px"><br/>
-                                                    <label><sptag:message code="label_icon_lista_desplegable"/></label>
-                                                </div>
-                                                <div class="elemento elementoPequenio">
-                                                    <b><label class="labelLinea"><sptag:message
-                                                            code="label_elemento"/></label>:</b>
-                                                    <span class="select-wrapper">
-                                                        <select>
-                                                            <option value="opcion1" class="opcionSelect1"><sptag:message
-                                                                    code="label_opcion_1"/></option>
-                                                            <option value="opcion2" class="opcionSelect2"><sptag:message
-                                                                    code="label_opcion_2"/></option>
-                                                            <option value="opcion3" class="opcionSelect3"><sptag:message
-                                                                    code="label_opcion_3"/></option>
-                                                        </select>
-                                                    </span>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="file contenedorElemento pertenecePanel" id="file"
-                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                 onclick="seleccionar(this.id)">
-                                                <div class="contenedorIcono">
-                                                    <img src="images/icon_upload.png" width="55px" height="55px"><br/>
-                                                    Adjuntar archivo
-                                                </div>
-                                                <div class="elemento elementoMuyGrande">
-                                                    <b><label><sptag:message
-                                                            code="label_elemento"/></label>:</b><br/><br/>
-                                                    <input type="file" name="etiqueta" id="addfile"/>
-                                                    <label for="addfile" id="labelAddFile">
-                                                        <div id="contenedorAdjuntos">
-                                                            <img src="images/icon_upload.png" width="60px"
-                                                                 height="60px"><br/>
-                                                            <label>Arrastrar y soltar archivo</label><br/>
-                                                            <label>o seleccionar archivo</label>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="capaSuperior"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                            </details>
+                            <%@include file="details_elementos.jsp" %>
                             <br/>
-                            <details id="detailsEP" onclick="seleccionarTipoElementos(this.id)">
-                                <summary><b class="colorTictum"><sptag:message
-                                        code="label_elemetos_predefinidos_title"/></b></summary>
-                                <table id="tableElementosPredefinidos">
-
-                                    <c:set var="count" value="0" scope="page"/>
-                                    <c:set var="countCierre" value="0" scope="page"/>
-                                    <c:if test="${count == 0}">
-                                    </c:if>
-                                    <c:forEach var="pregunta" items="${listaPreguntas}">
-                                        <c:if test="${count == 0}">
-                                            <c:set var="countCierre" value="1" scope="page"/>
-                                            <tr>
-                                        </c:if>
-                                        <c:set var="count" value="${count + 1}" scope="page"/>
-                                        <c:if test="${pregunta.tipoPregunta == 'text'}">
-
-                                            <td>
-                                                <div class="texto contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src="images/icon_text.png" width="55px" height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPredefinido">
-                                                        <table class="tableElementoText">
-                                                            <tr>
-                                                                <td class="celda">
-                                                                    <img src="images/user.png" width="30px"
-                                                                         height="30px">
-                                                                </td>
-                                                                <td class="celda">
-                                                                    <input type="text"
-                                                                           placeholder="${pregunta.labelPregunta}"
-                                                                           size="22"/>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${pregunta.tipoPregunta == 'radio'}">
-                                            <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                            <td>
-                                                <div class="radio contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src="images/icon_radio.png" width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPredefinido">
-                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/>
-                                                        <c:forEach var="opcion" items="${opciones}">
-                                                            <input type="radio">
-                                                            <label class="opcion">${opcion}</label>
-                                                        </c:forEach>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${pregunta.tipoPregunta == 'checkbox'}">
-                                            <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-
-                                            <td>
-                                                <div class="checkbox contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_checkbox"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoGrande elementoPredefinido">
-                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/>
-                                                        <table>
-                                                            <c:set var="count2" value="0" scope="page"/>
-                                                            <c:set var="countCierre2" value="0" scope="page"/>
-                                                            <c:forEach var="opcion" items="${opciones}">
-                                                                <c:if test="${count == 0}">
-                                                                    <c:set var="countCierre2" value="1" scope="page"/>
-                                                                    <tr>
-                                                                </c:if>
-                                                                <td class="celdaOpcion">
-                                                                    <input type="checkbox">
-                                                                    <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                </td>
-                                                                <c:if test="${count == 3}">
-                                                                    </tr>
-                                                                    <c:set var="count2" value="0" scope="page"/>
-                                                                    <c:set var="countCierre2" value="0" scope="page"/>
-                                                                </c:if>
-                                                            </c:forEach>
-                                                            <c:if test="${countCierre == 1}">
-                                                                </tr>
-                                                                <c:set var="countCierre" value="0" scope="page"/>
-                                                            </c:if>
-                                                        </table>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${pregunta.tipoPregunta == 'area'}">
-                                            <td>
-                                                <div class="area contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_textarea"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoGrande elementoPredefinido">
-                                                        <table class="tableElementoText">
-                                                            <tr>
-                                                                <td>
-                                                                <textarea rows="5" cols="50"
-                                                                          placeholder=${pregunta.labelPregunta}> </textarea>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${pregunta.tipoPregunta == 'select'}">
-                                            <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-
-                                            <td>
-                                                <div class="select contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_select"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPequenio elementoPredefinido">
-                                                        <b><label class="labelLinea">${pregunta.labelPregunta}</label>:</b>
-                                                        <span class="select-wrapper">
-                                                        <select>
-                                                            <c:forEach var="opcion" items="${opciones}">
-                                                                <option>${opcion}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </span>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${count == 2}">
-                                            </tr>
-                                            <c:set var="count" value="0" scope="page"/>
-                                            <c:set var="countCierre" value="0" scope="page"/>
-                                        </c:if>
-                                    </c:forEach>
-                                    <c:if test="${countCierre == 1}">
-                                        </tr>
-                                        <c:set var="countCierre" value="0" scope="page"/>
-                                    </c:if>
-                                </table>
-                            </details>
+                            <%@include file="details_elementos_predefinidos.jsp" %>
                         </div>
-                        <!--  <div id="panelElementosBloqueo">
-                        </div>-->
                     </div>
-
                 </td>
                 <td id="medio">
                     <div id="contenedor" ondragenter="return enter(event)" ondragover="return over(event)"
@@ -444,8 +46,13 @@
                                 <form:form id="nuevoFormulario"
                                            action="${pageContext.request.contextPath}/crearFormulario.do" method="GET"
                                            modelAttribute="preguntaForm">
-                                    <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=
-                                        <sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    <c:if test="${formulario.nombreFormulario == null}">
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    </c:if>
+                                    <c:if test="${formulario.nombreFormulario != null}">
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" value="${formulario.nombreFormulario}" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                    </c:if>
+
                                     <button type="submit" class="botonGuardar"><sptag:message
                                             code="button_guardar"/></button>
                                     <br/><br/>
@@ -461,172 +68,199 @@
                                     </div>
                                     <br/>
                                     <div id="contenedorElementosFormulario">
-                                        <c:forEach var="pregunta" items="${listaPreguntas}">
-                                            <c:set var="count" value="${count + 1}" scope="page"/>
-                                            <c:if test="${pregunta.tipoPregunta == 'text'}">
+                                        <c:set var="countPredef" value="0" scope="page"/>
+                                        <c:set var="formularioCargado" value="0" scope="page"/>
 
 
-                                                <div class="texto contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src="images/icon_text.png" width="55px" height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPredefinido">
-                                                        <table class="tableElementoText">
-                                                            <tr>
-                                                                <td class="celda">
-                                                                    <img src="images/user.png" width="30px"
-                                                                         height="30px">
-                                                                </td>
-                                                                <td class="celda">
-                                                                    <input type="text"
-                                                                           placeholder="${pregunta.labelPregunta}"
-                                                                           size="22"/>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
+                                        <c:if test="${formulario != null}">
+                                            <c:set var="formularioCargado" value="1" scope="page"/>
+                                            <input type="hidden" size="20" name="idFormulario" value="${formulario.idFormulario}"/>
 
-                                            </c:if>
-                                            <c:if test="${pregunta.tipoPregunta == 'radio'}">
-                                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-
-                                                <div class="radio contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src="images/icon_radio.png" width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPredefinido">
-                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/>
-                                                        <c:forEach var="opcion" items="${opciones}">
-                                                            <input type="radio">
-                                                            <label class="opcion">${opcion}</label>
-                                                        </c:forEach>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-
-                                            </c:if>
-                                            <c:if test="${pregunta.tipoPregunta == 'checkbox'}">
-                                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-
-
-                                                <div class="checkbox contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_checkbox"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoGrande elementoPredefinido">
-                                                        <b><label>${pregunta.labelPregunta}</label>:</b><br/>
-                                                        <table>
-                                                            <c:set var="count2" value="0" scope="page"/>
-                                                            <c:set var="countCierre2" value="0" scope="page"/>
-                                                            <c:forEach var="opcion" items="${opciones}">
-                                                                <c:if test="${count == 0}">
-                                                                    <c:set var="countCierre2" value="1" scope="page"/>
-                                                                    <tr>
-                                                                </c:if>
-                                                                <td class="celdaOpcion">
-                                                                    <input type="checkbox">
-                                                                    <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                </td>
-                                                                <c:if test="${count == 3}">
-                                                                    </tr>
-                                                                    <c:set var="count2" value="0" scope="page"/>
-                                                                    <c:set var="countCierre2" value="0" scope="page"/>
-                                                                </c:if>
-                                                            </c:forEach>
-                                                            <c:if test="${countCierre == 1}">
+                                            <c:forEach var="pregunta" items="${formulario.preguntas}">
+                                                <c:set var="countPredef" value="${countPredef + 1}" scope="page"/>
+                                                <c:if test="${pregunta.tipoPregunta == 'text'}">
+                                                    <div class="texto contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src="images/icon_text.png" width="55px" height="55px"><br/>
+                                                            <label>${pregunta.labelPregunta}</label>
+                                                        </div>
+                                                        <div class="elemento elementoPredefinido">
+                                                            <table class="tableElementoText">
+                                                                <tr>
+                                                                    <td class="celda">
+                                                                        <img src="images/user.png" width="30px"
+                                                                             height="30px">
+                                                                    </td>
+                                                                    <td class="celda">
+                                                                        <input type="text"
+                                                                               placeholder="${pregunta.labelPregunta}"
+                                                                               size="22"/>
+                                                                    </td>
                                                                 </tr>
-                                                                <c:set var="countCierre" value="0" scope="page"/>
-                                                            </c:if>
-                                                        </table>
+                                                            </table>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                     </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-
-                                            </c:if>
-                                            <c:if test="${pregunta.tipoPregunta == 'area'}">
-
-                                                <div class="area contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_textarea"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoGrande elementoPredefinido">
-                                                        <table class="tableElementoText">
-                                                            <tr>
-                                                                <td>
-                                                                <textarea rows="5" cols="50"
-                                                                          placeholder=${pregunta.labelPregunta}> </textarea>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-
-                                            </c:if>
-                                            <c:if test="${pregunta.tipoPregunta == 'select'}">
-                                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                <div class="select contenedorElemento pertenecePanel"
-                                                     id="p_${pregunta.idPregunta}"
-                                                     draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                                                     onclick="seleccionar(this.id)">
-                                                    <div class="contenedorIcono">
-                                                        <img src=
-                                                                 <sptag:message
-                                                                         code="src_img_icon_select"/> width="55px"
-                                                             height="55px"><br/>
-                                                        <label>${pregunta.labelPregunta}</label>
-                                                    </div>
-                                                    <div class="elemento elementoPequenio elementoPredefinido">
-                                                        <b><label class="labelLinea">${pregunta.labelPregunta}</label>:</b>
-                                                        <span class="select-wrapper">
-                                                        <select>
+                                                </c:if>
+                                                <c:if test="${pregunta.tipoPregunta == 'radio'}">
+                                                    <c:set var="opcionesComas" value="${pregunta.opciones}"/>
+                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                    <div class="radio contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src="images/icon_radio.png" width="55px"
+                                                                 height="55px"><br/>
+                                                            <label>${pregunta.labelPregunta}</label>
+                                                        </div>
+                                                        <div class="elemento elementoPredefinido">
+                                                            <b><label>${pregunta.labelPregunta}</label></b><br/>
                                                             <c:forEach var="opcion" items="${opciones}">
-                                                                <option>${opcion}</option>
+                                                                <input type="radio">
+                                                                <label class="opcion">${opcion}</label>
                                                             </c:forEach>
-                                                        </select>
-                                                    </span>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
                                                     </div>
-                                                    <div class="capaSuperior"></div>
-                                                </div>
-                                            </c:if>
-                                        </c:forEach>
+                                                </c:if>
+                                                <c:if test="${pregunta.tipoPregunta == 'checkbox'}">
+                                                    <c:set var="opcionesComas" value="${pregunta.opciones}"/>
+                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                    <div class="checkbox contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src=
+                                                                     <sptag:message
+                                                                             code="src_img_icon_checkbox"/> width="55px"
+                                                                 height="55px"><br/>
+                                                            <label>${pregunta.labelPregunta}</label>
+                                                        </div>
+                                                        <div class="elemento elementoGrande elementoPredefinido">
+                                                            <b><label>${pregunta.labelPregunta}</label></b><br/>
+                                                            <table>
+                                                                <c:set var="count3" value="0" scope="page"/>
+                                                                <c:set var="countCierre3" value="0" scope="page"/>
+                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                    <c:if test="${count3 == 0}">
+                                                                        <c:set var="countCierre3" value="1" scope="page"/>
+                                                                        <tr>
+                                                                    </c:if>
+                                                                    <c:set var="count3" value="${count3 + 1}" scope="page"/>
+                                                                    <td class="celdaOpcion">
+                                                                        <input type="checkbox">
+                                                                        <label class="labelOpcionCB1 opcion">${opcion}"</label>
+                                                                    </td>
+                                                                    <c:if test="${count3 == 3}">
+                                                                        </tr>
+                                                                        <c:set var="count3" value="0" scope="page"/>
+                                                                        <c:set var="countCierre3" value="0" scope="page"/>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:if test="${countCierre3 == 1}">
+                                                                    </tr>
+                                                                    <c:set var="countCierre3" value="0" scope="page"/>
+                                                                </c:if>
+                                                            </table>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${pregunta.tipoPregunta == 'area'}">
+                                                    <div class="area contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src=
+                                                                     <sptag:message
+                                                                             code="src_img_icon_textarea"/> width="55px"
+                                                                 height="55px"><br/>
+                                                            <label>${pregunta.labelPregunta}</label>
+                                                        </div>
+                                                        <div class="elemento elementoGrande elementoPredefinido">
+                                                            <table class="tableElementoText">
+                                                                <tr>
+                                                                    <td>
+                                                                        <textarea rows="5" cols="50" placeholder="${pregunta.labelPregunta}"> </textarea>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${pregunta.tipoPregunta == 'select'}">
+                                                    <c:set var="opcionesComas" value="${pregunta.opciones}"/>
+                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                    <div class="select contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src=
+                                                                     <sptag:message
+                                                                             code="src_img_icon_select"/> width="55px"
+                                                                 height="55px"><br/>
+                                                            <label>${pregunta.labelPregunta}</label>
+                                                        </div>
+                                                        <div class="elemento elementoPequenio elementoPredefinido">
+                                                            <b><label class="labelLinea">${pregunta.labelPregunta}</label></b>
+                                                            <span class="select-wrapper">
+                                                                <select>
+                                                                    <c:forEach var="opcion" items="${opciones}">
+                                                                        <option>${opcion}</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </span>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${pregunta.tipoPregunta == 'file'}">
+                                                    <div class="file contenedorElemento pertenecePanel elementoCargado"
+                                                         id="p_${countPredef}_${pregunta.idPregunta}"
+                                                         draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                                                         onclick="seleccionar(this.id)">
+                                                        <div class="contenedorIcono">
+                                                            <img src="images/icon_upload.png" width="55px" height="55px"><br/>
+                                                            Adjuntar archivo
+                                                        </div>
+                                                        <div class="elemento elementoMuyGrande elementoPredefinido">
+                                                            <b><label>${pregunta.labelPregunta}</label></b><br/>
+                                                            <input type="file" name="etiqueta" id="addfile"/>
+                                                            <label for="addfile" >
+                                                                <div >
+                                                                    <img src="images/icon_upload.png" width="60px"
+                                                                         height="60px"><br/>
+                                                                    <label>Arrastrar y soltar archivo</label><br/>
+                                                                    <label>o seleccionar archivo</label>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div class="capaSuperior"></div>
+                                                        <input type="hidden" size="20" name="identificadoresDDBB[${countPredef}].id" value="${pregunta.idPregunta}"/>
+                                                    </div>
+                                                </c:if>
+                                            </c:forEach>
 
+                                        </c:if>
+                                        <input type="hidden" size="20" id="valorCountPredef" value="${countPredef}"/>
+                                        <input type="hidden" size="20" id="formularioCargado" value="${formularioCargado}"/>
 
                                     </div>
 
                                     <br/>
-                                    <!--
-                                    <button id="btnLimpiar" class="botonGuardar btnForm" disabled>Limpiar</button>
-                                    <button class="botonGuardar btnForm" disabled>Guardar</button>
-                                    -->
                                 </form:form>
                             </div>
                         </div>

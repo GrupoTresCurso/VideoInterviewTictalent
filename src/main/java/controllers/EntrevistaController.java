@@ -85,7 +85,6 @@ public class EntrevistaController implements BaseController {
         session.setAttribute("videosPreguntas", videosPreguntas);
         session.setAttribute("videosTransiciones", videosTransiciones);
         session.setAttribute("formularios", formularios);
-        session.setAttribute("candidatos",candidatos);
         return ENTREVISTA_NUEVA;
     }
 
