@@ -33,9 +33,9 @@
                     <label><sptag:message code="label_nueva_entrvista"/></label>
                 </div>
             </a><br/>
-            <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
-                <div class="botonIndex"><img src="images/new.png" width="40px" height="40px"/><sptag:message
-                        code="label_nueva_entrvista"/></div>
+            <a href="${pageContext.request.contextPath}/entrevista_enviar.jsp">
+                <div class="botonIndex"><img src="images/icon_send.png" width="40px" height="40px"/><sptag:message
+                        code="label_enviar_entrevista"/></div>
             </a><br/>
         </div>
         <%@include file="userInfo.jsp"%>
