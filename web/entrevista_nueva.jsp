@@ -64,7 +64,7 @@
                                             <div class="contenedorIcono">
                                                 <table>
                                                     <tr>
-                                                        <td><img src="images/icon_formulario.png" width="55px" height="55px"/></td>
+                                                        <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
                                                         <td class="labelIcono"><label>${formulario.nombreFormulario}</label></td>
                                                     </tr>
                                                 </table>

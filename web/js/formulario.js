@@ -34,11 +34,7 @@ function inicializarGenerador() {
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
     ocultarPropiedades();
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    alert("formularioCargado="+formularioCargado);
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     if(formularioCargado==1){
         document.getElementById("nuevoForm").style.display = 'block';
         document.getElementById("mensajeDefecto").style.display = 'none';
@@ -50,7 +46,7 @@ function inicializarGenerador() {
 }
 
 function mostrarElementosFormularioCargado(){
-    var elementosCargados = document.querySelectorAll('div[id^="p_"]');
+    var elementosCargados = document.querySelectorAll('.elementoCargado');
     [].forEach.call(elementosCargados, function(elem) {
         elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
         elem.querySelectorAll('.elemento')[0].style.display ='block';
@@ -205,6 +201,14 @@ function seleccionarTipoElementos(id) {
 //Verifica si un elemento pertenece al formulario (ya ha sido soltado)
 function elementoPerteneceAFormulario(elemento) {
     if (elemento.className.indexOf("perteneceFormulario") != -1) {
+        return true;
+    }
+    return false;
+}
+
+//Verifica si un elemento pertenece al panel de elementos predefinidos
+function elementoPerteneceAPanelPredefinido(elemento) {
+    if (elemento.className.indexOf("pertenecePanelPredefinido") != -1) {
         return true;
     }
     return false;
@@ -571,6 +575,7 @@ function agregarAPredefinidos() {
     elementoPredefinido.style.marginBottom = '0px';
     elementoPredefinido.style.boxShadow = '';
     elementoPredefinido.classList.add("pertenecePanel");
+    elementoPredefinido.classList.add("pertenecePanelPredefinido");
     elementoPredefinido.classList.remove("perteneceFormulario");
     elementoPredefinido.querySelectorAll('.contenedorIcono')[0].style.display = 'block';
     elementoPredefinido.querySelectorAll('.elemento')[0].style.display = 'none';
@@ -739,6 +744,15 @@ function overPapelera(e) {
             return false;
         }
     }
+
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        document.getElementById("imagenPapelera").src = "images/papelera_open.png";
+        e.dataTransfer.dropEffect = 'move';
+        var id = e.target.id;
+        if (id == elementoMovido.parentNode.id) {
+            return false;
+        }
+    }
 }
 
 function dropPapelera(e) {
@@ -755,6 +769,14 @@ function dropPapelera(e) {
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
         ocultarPropiedades();
         deseleccionar();
+    }
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        $("#" + elementoMovido.id).fadeOut(600);
+        setTimeout(function () {
+                elementoMovido.parentNode.removeChild(elementoMovido); // Elimina el elemento
+            },
+            600);
+        document.getElementById("imagenPapelera").src = "images/papelera_close.png";
     }
 
 }
