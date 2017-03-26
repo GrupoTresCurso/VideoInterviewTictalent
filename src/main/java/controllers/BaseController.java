@@ -10,5 +10,6 @@ public interface BaseController {
     String INDEX="index";
     String FORMULARIO_INDEX="formulario_index";
     String FORMULARIO="formulario";
+    String ENTREVISTA_ENVIAR="entrevista_enviar";
 
 }
