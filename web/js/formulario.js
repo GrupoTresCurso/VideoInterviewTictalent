@@ -153,7 +153,7 @@ function ocultarElementosPanel() {
 function ocultarPropiedades() {
     document.getElementById("contenedorPropiedadesDefecto").style.display = "block";
     document.getElementById("contenedorEtiqueta").style.display = "none";
-    document.getElementById("contenedorOpciones").style.display = "none";
+    document.getElementById("contenedorOpciones").style.visibility = "hidden";
     document.getElementById("contenedorActivarPredefinido").style.display = "none";
 }
 
@@ -174,7 +174,7 @@ function mostrarPropiedadesNoOpciones() {
 function mostrarPropiedadesOpciones() {
     document.getElementById("contenedorPropiedadesDefecto").style.display = "none";
     document.getElementById("contenedorEtiqueta").style.display = "block";
-    document.getElementById("contenedorOpciones").style.display = "block";
+    document.getElementById("contenedorOpciones").style.visibility = "visible";
     document.getElementById("contenedorActivarPredefinido").style.display = "block";
     var inputs = document.getElementById("contenedorOpciones").querySelectorAll("input");
     [].forEach.call(inputs, function (inp) {
@@ -567,8 +567,10 @@ function crearOpciones() {
 
 //Agrega un elemento del formulario al panel de elementos como predefinido
 function agregarAPredefinidos() {
+
     numElementosPredefinidos = cantidadElementosPredefinidos();
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
+
     /*
     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
     elementoPredefinido.style.width = '90px';
@@ -598,7 +600,10 @@ function agregarAPredefinidos() {
     ocultarPropiedades();*/
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
-
+    alert("AGREGANDO A PREDEFINIDOS");
+    $('a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
+    $('b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
+    $('c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
 }
 
 /*
@@ -713,7 +718,7 @@ function agregarCampos(elementoCopiado){
         $("#"+elementoCopiado.id+"").append(campo);
     }else{
         campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
-        campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
+        campo2 = '<input class="inputTipoPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
         campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
         campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
         $("#"+elementoCopiado.id+"").append(campo);
