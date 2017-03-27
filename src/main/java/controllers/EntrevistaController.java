@@ -58,8 +58,9 @@ public class EntrevistaController implements BaseController {
     }
 
     @RequestMapping(value = "/recuperarEntrevista.do", method = RequestMethod.GET)
-    public void recuperarEntrevista(Integer id, HttpSession session, HttpServletResponse response) {
+    public void recuperarEntrevista(@RequestParam(value="idEntrevista",required=true) int id, HttpSession session, HttpServletResponse response) {
         Entrevista entrevista=entrevistaBusiness.recuperarPorId(id);
+        System.out.println(entrevista.getNombreEntrevista()+"-"+entrevista.getNombrePuesto());
         session.setAttribute("Entrevista", entrevista);
         try {
             response.sendRedirect("/recuperarVideosFormularios.do");

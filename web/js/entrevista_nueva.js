@@ -277,25 +277,31 @@ function drop(e) {
         elementoCopiado.id=elementoMovido.id+"_"+contador;
 
         elementoCopiado.style.transform = 'scale(1.0)';
-        elementoCopiado.style.width = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.width;
-        elementoCopiado.style.height = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.height;
+        if(devolverTipoElemento(elementoCopiado) == 'video'){
+            elementoCopiado.querySelectorAll('.elementoEntrevista')[0].querySelectorAll('.delimitadorElementoEntrevista')[0].style.width = '200px';
+            elementoCopiado.style.height = '200px';
+            elementoCopiado.style.width = '200px';
+
+        }
+
         elementoCopiado.classList.remove("pertenecePanel");
         elementoCopiado.classList.add("perteneceEntrevista");
-        /*if (devolverTipoElemento(elementoMovido) == "formulario" ) {
-            //    elementoCopiado.style.height = '600px';
-        }
-        if (devolverTipoElemento(elementoMovido) == "video") {
-            //elementoCopiado.style.height = '400px';
-        }*/
 
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.elementoEntrevista')[0].style.display = 'block';
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
 
+        if(devolverTipoElemento(elementoCopiado) == 'video'){
+            elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'block';
+            elementoCopiado.querySelectorAll('.capaSuperior')[0].style.width ='200px';
+            elementoCopiado.querySelectorAll('.capaSuperior')[0].style.height ='200px';
+        }
+
         //elementoContenedor = elementoCopiado.cloneNode(true);
         //elementoContenedor.style.float = 'left';
         var contenedor = document.getElementById("contenedorElementosEntrevista"+elementoGuia);
         contenedor.appendChild(elementoCopiado);
+
         $("#" + elementoCopiado.id).fadeOut(0);
         //e.target.appendChild();
         /*contenedorGuia.innerHTML = "<img src='images/movie.png' width='40px' height='40px'/> " +

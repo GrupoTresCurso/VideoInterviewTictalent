@@ -745,11 +745,10 @@ hr {
     padding: 15px 20px;
     box-sizing: border-box;
     margin-bottom: 40px;
+
 }
 
 .elementoVideo{
-    border: 2px solid black;
-    padding-bottom: 20px;
-    width: 200px;
+    padding: 0px;
     text-align: center;
 }

@@ -289,13 +289,16 @@
             <!-------------------------------------------------------------------------------------------------->
             <!-------------------------------------------------------------------------------------------------->
             <form:form id="nuevaEntrevista"
-            action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET"
-            modelAttribute="preguntaForm">
+            action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET">
 						<c:set var="entrevistaCargada" value="0" scope="page"/>
                         <c:set var="countElements" value="0" scope="page"/>
                         <c:if test="${entrevista != null}">
+                            <h2>HOLA ${entrevista.nombreEntrevista}</h2>
                             <c:set var="entrevistaCargada" value="1" scope="page"/>
                             <input type="hidden" size="20" name="idEntrevista" value="${entrevista.idEntrevista}"/>
+                        </c:if>
+                        <c:if test="${entrevista == null}">
+                            <h2>HOLA NUEVO</h2>
                         </c:if>
                         <!-------------------------------SECCION VIDEO INTRODUCTORIO--------------------------------------------------->
                         <div id="estadoContenedorVI" class="estadoContenedor">

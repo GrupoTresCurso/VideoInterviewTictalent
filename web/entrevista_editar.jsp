@@ -35,7 +35,11 @@
                                 <div class="entrevista" id="${entrevista.idEntrevista}"
                                      onclick="seleccionar(this.className, this.id)">
                                     <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
-                                    <label>${entrevista.nombreEntrevista}</label>
+                                    <label class="labelDatosEntrevista">
+                                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarEntrevista.do"><c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>"
+                                        title="Mostrar datos">${entrevista.nombreEntrevista}</a>
+                                    </label>
+
                                     <a href="<c:url value="${pageContext.request.contextPath}/eliminarEntrevista.do">
                                       <c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>">
                                         <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>

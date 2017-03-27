@@ -116,3 +116,8 @@ input[type="text"]{
     padding: 0px 5px;
     font-size: 17px;
 }
+
+.labelDatosEntrevista{
+    word-wrap: break-word;
+    cursor: pointer;
+}

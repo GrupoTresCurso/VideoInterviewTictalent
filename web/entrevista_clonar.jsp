@@ -36,7 +36,7 @@
                                 <div class="entrevista" id="${entrevista.idEntrevista}"
                                      onclick="seleccionar(this.className, this.id)">
                                     <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
-                                    <label>${entrevista.nombreEntrevista}</label>
+                                    <label class="labelDatosEntrevista">${entrevista.nombreEntrevista}</label>
                                 </div>
                             </td>
                             <c:if test="${contadorEntrevistas%3 == 0}">
