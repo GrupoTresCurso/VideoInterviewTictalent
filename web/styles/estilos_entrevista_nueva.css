@@ -372,7 +372,7 @@ input[type='checkbox']:checked:after {
     background-color: white;
 }
 
-#detailsF>table{
+#detailsF>table,#detailsVI>table,#detailsVP>table{
     border-spacing: 0px 5px;
     margin: 5px 0px;
 }

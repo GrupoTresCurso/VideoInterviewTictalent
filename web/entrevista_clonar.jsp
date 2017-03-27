@@ -49,7 +49,7 @@
                                 <input type="text" name="nombre" size="35" required placeholder=<sptag:message
                                         code="placeholder_nombre_entrevista"/>/>
                             </td>
-                            <td id="celdaBotonGuardar">
+                            <td class="celda">
                                 <button type="submit" form="clonarEntrevista" value="Crear Entrevista"
                                         id="botonGuardar" disabled="true" class="botonGuardar"><sptag:message
                                         code="button_guardar"/>

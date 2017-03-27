@@ -3,13 +3,18 @@ var elementoMovido = null;
 var elementoPanelMovido = [];
 var contenedorActual = null;
 var elementoCopiado = null;
-var contadorElementos = [];
+//var contadorElementos = [];
 var maxNumElementos = 0;
 var elementoGuia = null;
 var posicionGuia = 0;
-var nextinput = 0;
+var entrevistaCargada=0;
 
+comprobarCargado();
 inicializarGenerador();
+
+function comprobarCargado(){
+    entrevistaCargada=document.getElementById("entrevistaCargada").value;
+}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
@@ -19,10 +24,40 @@ function inicializarGenerador() {
     mostrarSeccion('guiaVI');
     document.getElementById('videoIntroBoolean').checked = true;
     for(var i=0; i<6; i++){
-        contadorElementos[i] = 0;
+        //contadorElementos[i] = 0;
         elementoPanelMovido[i] = null;
     }
+    if(entrevistaCargada==1){
+        var contenedoresElementos = document.getElementsByClassName("contenedorElementosEntrevista");
+        for(var i=0;i<contenedoresElementos.length; i++){
+            contenedoresElementos[i].style.display = 'block';
+        }
+        var contenedoresMensajes = document.getElementsByClassName("mensajeDefecto");
+        for(var i=0;i<contenedoresMensajes.length; i++){
+            contenedoresMensajes[i].style.display = 'none';
+        }
+        mostrarElementosEntrevistaCargada();
+    }else{
+        var contenedoresMensajes = document.getElementsByClassName("mensajeDefecto");
+        for(var i=0;i<contenedoresMensajes.length; i++){
+            contenedoresMensajes[i].style.display = 'block';
+        }
+        var contenedoresElementos = document.getElementsByClassName("contenedorElementosEntrevista");
+        for(var i=0;i<contenedoresElementos.length; i++){
+            contenedoresElementos[i].style.display = 'none';
+        }
+    }
+}
 
+function mostrarElementosEntrevistaCargada(){
+    var elementosCargados = document.querySelectorAll('.elementoCargado');
+    [].forEach.call(elementosCargados, function(elem) {
+        elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
+        elem.querySelectorAll('.elementoEntrevista')[0].style.display ='block';
+        elem.querySelectorAll('.capaSuperior')[0].style.display = 'none';
+        //elem.classList.remove("pertenecePanel");
+        //elem.classList.add("perteneceEntrevista");
+    });
 }
 
 function ajustarTamanioPagina() {
@@ -58,6 +93,12 @@ function hayElementosEnEntrevista() {
     }
     return false;
 }
+
+function numeroElementosEnEntrevista() {
+    var numElementos = document.getElementById("contenedorElementosEntrevista"+elementoGuia).querySelectorAll(".perteneceEntrevista");
+    return numElementos.length;
+}
+
 
 function bloquearSeleccionPorDefecto() {
     /*var elementosNoSeleccionables = document.querySelectorAll('label, h1, h3, b, p');
@@ -226,10 +267,11 @@ function over(e) {
 
 function drop(e) {
     contenedorActual = e.target;
+    var numElementoEnContenedorActual = numeroElementosEnEntrevista();
     if (elementoMovido.parentNode.parentNode.parentNode != contenedorActual
-        && contadorElementos[posicionGuia]<maxNumElementos) {
+        && numElementoEnContenedorActual<maxNumElementos) {
        elementoCopiado = elementoMovido.cloneNode(true);
-        contadorElementos[posicionGuia]++;
+        //contadorElementos[posicionGuia]++;
         if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
             || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
@@ -243,12 +285,12 @@ function drop(e) {
         elementoCopiado.style.height = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.height;
         elementoCopiado.classList.remove("pertenecePanel");
         elementoCopiado.classList.add("perteneceEntrevista");
-        if (devolverTipoElemento(elementoMovido) == "formulario" ) {
+        /*if (devolverTipoElemento(elementoMovido) == "formulario" ) {
             //    elementoCopiado.style.height = '600px';
         }
         if (devolverTipoElemento(elementoMovido) == "video") {
             //elementoCopiado.style.height = '400px';
-        }
+        }*/
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.elementoEntrevista')[0].style.display = 'block';
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
@@ -312,7 +354,7 @@ function dropPapelera(e) {
         $("#" + elementoMovido.id).fadeOut(600);
         setTimeout(function () {
                 document.getElementById("contenedorElementosEntrevista"+elementoGuia).removeChild(elementoMovido); // Elimina el elemento
-                contadorElementos[posicionGuia]--;
+                //contadorElementos[posicionGuia]--;
                 if (!hayElementosEnEntrevista()) {
                     document.getElementById("mensajeDefecto"+elementoGuia).style.display = 'block';
                     document.getElementById("contenedorElementosEntrevista"+elementoGuia).style.display = 'none';
