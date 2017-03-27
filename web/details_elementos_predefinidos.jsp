@@ -7,8 +7,7 @@
     <table id="tableElementosPredefinidos">
         <c:set var="count" value="0" scope="page"/>
         <c:set var="countCierre" value="0" scope="page"/>
-        <c:if test="${count == 0}">
-        </c:if>
+
         <c:forEach var="pregunta" items="${listaPreguntasPredefinidas}">
             <c:if test="${count == 0}">
                 <c:set var="countCierre" value="1" scope="page"/>
