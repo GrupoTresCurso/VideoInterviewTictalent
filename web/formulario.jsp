@@ -57,16 +57,7 @@
                                     <button type="submit" class="botonGuardar"><sptag:message
                                             code="button_guardar"/></button>
                                     <br/><br/>
-                                    <hr/>
                                     <br/>
-                                    <div class="label contenedorElemento" id="etiqueta1" draggable="true"
-                                         ondragstart="start(event)" ondragend="end(event)"
-                                         onclick="seleccionar(this.id)">
-                                        <div class="elemento elementoPequenio elementoLabel">
-                                            <b><label id="etiquetaLabel"><sptag:message
-                                                    code="label_formulario_title"/></label></b>
-                                        </div>
-                                    </div>
                                     <br/>
                                     <div id="contenedorElementosFormulario">
                                         <c:set var="countPredef" value="0" scope="page"/>
@@ -255,7 +246,6 @@
                                         </c:if>
                                         <input type="hidden" size="20" id="valorCountPredef" value="${countPredef}"/>
                                         <input type="hidden" size="20" id="formularioCargado" value="${formularioCargado}"/>
-
                                     </div>
 
                                     <br/>
@@ -266,7 +256,7 @@
                 </td>
                 <td id="derecha">
                     <h5 class="colorTictum"><sptag:message code="label_propiedades_title"/></h5>
-                    <form id="agregarFavorita" action="${pageContext.request.contextPath}/guardarPreguntaFavorita.do" method="post">
+                    <form id="agregarFavorita" novalidate action="${pageContext.request.contextPath}/guardarPreguntaFavorita.do" method="post">
                         <div id="propiedades">
                             <div id="contenedorPropiedadesDefecto"><br/><br/>
                                 <p id="mensajePropiedadesDefecto"><sptag:message
@@ -288,8 +278,7 @@
                                         <td>
                                             <div id="contenedorNumber">
                                                 <span class='number-wrapper' id="spanOpciones">
-                                                    <input type="number" id="opcionesPropiedades" min="1"
-                                                           onchange="crearOpciones();actualizarOpciones();"/>
+                                                    <input type="number" name="asd" id="opcionesPropiedades" min="1" onchange="crearOpciones();actualizarOpciones();"/>
                                                 </span>
                                                 <div id="cubiertaEntradaNumero">
                                                 </div>
@@ -329,10 +318,15 @@
         <%@include file="userInfo.jsp" %>
     </section>
 </main>
+<script type='text/javascript' src="js/formulario.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
+                $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
+                $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
+                $('#c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
+                alert(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value+"-"+elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
                 var labelPregunta = $('#a').val();
                 var tipoPregunta = $('#b').val();
                 var opciones = $('#c').val();
@@ -365,7 +359,7 @@
             });
     });
 </script>
-<script type='text/javascript' src="js/formulario.js"></script>
+
 </body>
 </html>
 
