@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_formulario"/>/>
 </head>
 <body>
@@ -207,10 +208,7 @@
                                                          draggable="true" ondragstart="start(event)" ondragend="end(event)"
                                                          onclick="seleccionar(this.id)">
                                                         <div class="contenedorIcono">
-                                                            <img src=
-                                                                     <sptag:message
-                                                                             code="src_img_icon_select"/> width="55px"
-                                                                 height="55px"><br/>
+                                                            <img src=<sptag:message code="src_img_icon_select"/> width="55px" height="55px"><br/>
                                                             <label>${pregunta.labelPregunta}</label>
                                                         </div>
                                                         <div class="elemento elementoPequenio elementoPredefinido">
@@ -268,49 +266,54 @@
                 </td>
                 <td id="derecha">
                     <h5 class="colorTictum"><sptag:message code="label_propiedades_title"/></h5>
-                    <div id="propiedades">
-                        <div id="contenedorPropiedadesDefecto"><br/><br/>
-                            <p id="mensajePropiedadesDefecto"><sptag:message
-                                    code="label_propiedades_defecto_message"/></p></div>
-                        <div id="contenedorEtiqueta">
-                            <table>
-                                <tr>
-                                    <td><p><sptag:message code="label_propiedades_etiqueta"/></p></td>
-                                    <td><input type="text" name="etiqueta" id="etiquetaPropiedades" size="25"
-                                               onblur="actualizarEtiqueta()"/></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <br/>
-                        <div id="contenedorOpciones">
-                            <table>
-                                <tr>
-                                    <td><p><sptag:message code="label_propiedades_num_opciones"/></p></td>
-                                    <td>
-                                        <div id="contenedorNumber">
-                                            <span class='number-wrapper' id="spanOpciones">
-                                                <input type="number" name="opciones" id="opcionesPropiedades" min="1"
-                                                       onchange="crearOpciones();actualizarOpciones();"/>
-                                            </span>
-                                            <div id="cubiertaEntradaNumero">
+                    <form id="agregarFavorita" action="${pageContext.request.contextPath}/guardarPreguntaFavorita.do" method="GET">
+                        <div id="propiedades">
+                            <div id="contenedorPropiedadesDefecto"><br/><br/>
+                                <p id="mensajePropiedadesDefecto"><sptag:message
+                                        code="label_propiedades_defecto_message"/></p></div>
+                            <div id="contenedorEtiqueta">
+                                <table>
+                                    <tr>
+                                        <td><p><sptag:message code="label_propiedades_etiqueta"/></p></td>
+                                        <td><input type="text" name="etiqueta" id="etiquetaPropiedades" size="25"
+                                                   onblur="actualizarEtiqueta()"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div id="contenedorOpciones">
+                                <table>
+                                    <tr>
+                                        <td><p><sptag:message code="label_propiedades_num_opciones"/></p></td>
+                                        <td>
+                                            <div id="contenedorNumber">
+                                                <span class='number-wrapper' id="spanOpciones">
+                                                    <input type="number" name="opciones" id="opcionesPropiedades" min="1"
+                                                           onchange="crearOpciones();actualizarOpciones();"/>
+                                                </span>
+                                                <div id="cubiertaEntradaNumero">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <table id="tableOpciones">
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <table id="tableOpciones">
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div id="contenedorActivarPredefinido">
+                                <label><sptag:message code="label_propiedades_predefinido"/></label>
+                                <button type="submit" id="checkPredefinido" onchange="agregarAPredefinidos()">Predefinido</button>
+                            </div>
                         </div>
-                        <br/>
-                        <div id="contenedorActivarPredefinido">
-                            <label><sptag:message code="label_propiedades_predefinido"/></label>
-                            <input type="checkbox" id="checkPredefinido" onchange="agregarAPredefinidos()">
-                        </div>
-                    </div>
+                        <input id="a" type="hidden" name="labelPregunta" value="PruebaAjax"/>
+                        <input id="b" type="hidden" name="tipoPregunta" value="text"/>
+                        <input id="c" type="hidden" name="opcioness" value="asd"/>
+                    </form>
                     <div id="eliminar" onclick="deseleccionar()">
                         <p><sptag:message code="label_papelera_message"/></p><br/>
                         <div id="papelera" ondragenter="return enter(event)" ondragover="return overPapelera(event)"
@@ -326,6 +329,42 @@
         <%@include file="userInfo.jsp" %>
     </section>
 </main>
+<script>
+    $(document).ready(function() {
+        $('#agregarFavorita').submit(
+            function(event) {
+                var labelPregunta = $('#a').val();
+                var tipoPregunta = $('#b').val();
+                var opciones = $('#c').val();
+                alert(opciones)
+                var data = 'labelPregunta='
+                    + encodeURIComponent(labelPregunta)
+                    + '&tipoPregunta='
+                    + encodeURIComponent(tipoPregunta)
+                    + '&opcioness='
+                    + encodeURIComponent(opciones);
+                $.ajax({
+                    url : $("#agregarFavorita").attr("action"),
+                    data : data,
+                    type : "GET",
+
+                    success : function(response) {
+                        var lista=JSON.parse(response);
+
+                        for(i=0;i<lista.length;i++){
+                            alert("aaaaaaaaaaaaa");
+                            alert(lista[i].labelPregunta);
+                        }
+                        alert( "funciona" );
+                    },
+                    error : function(xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+                });
+                return false;
+            });
+    });
+</script>
 <script type='text/javascript' src="js/formulario.js"></script>
 </body>
 </html>

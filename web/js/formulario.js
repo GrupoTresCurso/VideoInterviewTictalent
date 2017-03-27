@@ -569,6 +569,7 @@ function crearOpciones() {
 function agregarAPredefinidos() {
     numElementosPredefinidos = cantidadElementosPredefinidos();
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
+    /*
     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
     elementoPredefinido.style.width = '90px';
     elementoPredefinido.style.height = '90px';
@@ -594,9 +595,10 @@ function agregarAPredefinidos() {
         celda.innerHTML = elementoPredefinido.outerHTML;
     }
     asignarEtiquetaElementoPred();
-    ocultarPropiedades();
+    ocultarPropiedades();*/
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
+
 }
 
 /*
@@ -661,7 +663,7 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
             || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }else {

@@ -12,7 +12,7 @@
         <!--172.16.112.41 -->
         <property name="url" value="jdbc:mysql://localhost:3306/tictalent?serverTimezone=UTC" />
         <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="password" value="tictum" />
     </bean>
     <bean id="factory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
