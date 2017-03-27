@@ -44,11 +44,11 @@ public class VideoController implements BaseController {
     }
 
     @RequestMapping(value="/subirVideo.do",method= RequestMethod.POST)
-    public String subirVideo(@ModelAttribute("listaVideos")ListaArchivos listaVideos) {
+    public String subirVideo(@ModelAttribute("listaVideos")ListaArchivos listaVideos,@RequestParam("tipo") String tipo) {
         MultipartFile multipartFile = listaVideos.getArchivos().get(0);
         String nombreAleatorio = utilServer.crearNombreAleatorio();
         utilServer.subirMultipart(multipartFile, nombreAleatorio);
-        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,"Aun no seleccionado");
+        Video video = utilMultipart.obtenerVideo(multipartFile, nombreAleatorio,tipo);
         videoBusiness.crearNuevo(video);
         return CARGAR_VIDEO;
     }

@@ -89,25 +89,40 @@ public class EntrevistaController implements BaseController {
     }
 
     @RequestMapping(value = "/crearEntrevista.do", method = RequestMethod.GET)
-    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,
-                                  @RequestParam("formularios[]")List<Integer> intFormularios,
-                                  @RequestParam("candidatos[]")List<Integer> intCandidatos) {
+    public String crearEntrevista(@RequestParam(value = "videos[]",required=false)List<Integer> intVideos,
+                                  @RequestParam(value = "formularios[]",required=false)List<Integer> intFormularios,
+                                  @RequestParam(value = "nombreEntrevista",required=false) String nombreEntrevista,
+                                  @RequestParam(value = "mensaje",required=false) String mensaje,
+                                  @RequestParam(value = "nombrePuesto",required=false) String nombrePuesto,
+                                  @RequestParam(value = "tieneVideoIntro",required=false) Boolean tieneVideoIntro) {
         List<Video> listaVideos=new ArrayList();
         List<Formulario> listaFormularios=new ArrayList();
         List<Candidato> listaCandidatos=new ArrayList();
-        for (Integer intVideo : intVideos) {
-            Video video=videoBusiness.recuperarPorId(intVideo);
-            listaVideos.add(video);
-        };
-        for (Integer intFormulario : intFormularios) {
-            Formulario formulario=formularioBusiness.recuperarPorId(intFormulario);
-            listaFormularios.add(formulario);
+        if(intVideos!=null){
+            for (Integer intVideo : intVideos) {
+                Video video=videoBusiness.recuperarPorId(intVideo);
+                listaVideos.add(video);
+            };
         }
-        for (Integer intCandidato : intCandidatos) {
-            Candidato candidato=candidatoBusiness.recuperarPorId(intCandidato);
-            listaCandidatos.add(candidato);
+        if (intFormularios!=null){
+            for (Integer intFormulario : intFormularios) {
+                Formulario formulario=formularioBusiness.recuperarPorId(intFormulario);
+                listaFormularios.add(formulario);
+            }
         }
-        Entrevista entrevista=new Entrevista("ASD","ASD","ASD",listaFormularios,listaFormularios.get(0),false,listaVideos,listaCandidatos);
+        if(nombreEntrevista==null){
+            nombreEntrevista="Nombre";
+        }
+        if(mensaje==null){
+            mensaje="Mensaje";
+        }
+        if (nombrePuesto==null){
+            nombrePuesto="Puesto";
+        }
+        if (tieneVideoIntro==null){
+            tieneVideoIntro=false;
+        }
+        Entrevista entrevista=new Entrevista(nombreEntrevista,nombrePuesto,mensaje,listaFormularios,listaFormularios.get(0),tieneVideoIntro,listaVideos,listaCandidatos);
         entrevistaBusiness.crearNuevo(entrevista);
         return ENTREVISTA_INDEX;
     }

@@ -272,14 +272,9 @@ function drop(e) {
         && numElementoEnContenedorActual<maxNumElementos) {
        elementoCopiado = elementoMovido.cloneNode(true);
         //contadorElementos[posicionGuia]++;
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
-            || elementoCopiado.id=="file"){
-            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
-        }else {
-            var aux=elementoCopiado.id.split("_");
-            var id=aux[1];
-            elementoCopiado.id="p"+"_"+contador+"_"+id;
-        }
+
+        elementoCopiado.id=elementoCopiado.id+"_"+contador;
+
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.width;
         elementoCopiado.style.height = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.height;
@@ -319,12 +314,12 @@ function agregarCampos(elementoCopiado) {
     var id = aux[1];
     if (tipo === "video") {
         campo = '<input type="hidden" size="20" name="videos[]" value="' + id + '"/>';
-    } else if (tipo === "formulario") {
+    } else if (tipo === "form") {
         campo = '<input type="hidden" size="20" name="formularios[]" value="' + id + '"/>';
     } else {
         campo = '<input type="hidden" size="20" name="candidatos[]" value="' + id + '"/>';
     }
-    $(".elementoForm").append(campo);
+    $("#"+elementoCopiado.id+"").append(campo);
     campo = '';
 }
 

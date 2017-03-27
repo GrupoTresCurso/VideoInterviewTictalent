@@ -57,15 +57,15 @@
                     <table>
                         <tr>
                             <td class="celdaOpcion">
-                                <input type="radio" name="opcion" id="opcionR1">
+                                <input type="radio" name="tipo" id="opcionR1" value="videoIntroductorio" checked="checked">
                                 <label for="opcionR1" class="labelOpcionR1 opcion">Introducción</label>
                             </td>
                             <td class="celdaOpcion">
-                                <input type="radio" name="opcion" id="opcionR2">
+                                <input type="radio" name="tipo" id="opcionR2" value="videoPregunta">
                                 <label for="opcionR2" class="labelOpcionR2 opcion">Pregunta</label>
                             </td>
                             <td class="celdaOpcion">
-                                <input type="radio" name="opcion" id="opcionR3">
+                                <input type="radio" name="tipo" id="opcionR3" value="videoTransicion">
                                 <label for="opcionR3" class="labelOpcionR3 opcion">Transición</label>
                             </td>
                         </tr>
