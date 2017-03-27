@@ -348,6 +348,7 @@
                         /*var lista=JSON.parse(response);*/
                         var tablePreguntasPredef=document.getElementById("tableElementosPredefinidos");
                         tablePreguntasPredef.innerHTML="";
+                        var contenido="";
 
                         var kount=0;
                         var kountCierre=0;
@@ -355,12 +356,12 @@
                         for(var i=0;i<lista.length;i++){
                             if(kount==0){
                                 kountCierre=1;
-                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+"<tr>";
+                                contenido=contenido+"<tr>";
                             }
                             kount++;
 
                             if(lista[i].tipoPregunta=='text'){
-                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                contenido=contenido+
                                     "<td>"+
                                         "<div class='texto contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
                                             "<div class='contenedorIcono'>"+
@@ -391,10 +392,10 @@
                                 for(var opcion in opciones){
                                     prepInerOpciones=prepInerOpciones+
                                             "<input type='radio'>"+
-                                            "<label class='opcion'>"+opcion+"</label>"
+                                            "<label class='opcion'>"+opcion+"</label>";
                                 }
 
-                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                contenido=contenido+
                                     "<td>"+
                                         "<div class='radio contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
                                             "<div class='contenedorIcono'>"+
@@ -418,34 +419,34 @@
                                 var opcionesComas=lista[i].opciones;
                                 var opciones=opcionesComas.split(",");
                                 var prepInerOpciones="";
-                                var Kount2=0;
-                                var KountCierre2=0;
+                                var kount2=0;
+                                var kountCierre2=0;
 
                                 for(var opcion in opciones){
-                                    if(Kount2==0){
-                                        KountCierre2=1;
+                                    if(kount2==0){
+                                        kountCierre2=1;
                                         prepInerOpciones=prepInerOpciones+"<tr>";
                                     }
-                                    Kount2++;
+                                    kount2++;
                                     prepInerOpciones=prepInerOpciones+"<td class='celdaOpcion'>"+
                                             "<input type='checkbox'>"+
                                             "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
-                                    if(Kount2==3){
+                                    if(kount2==3){
                                         prepInerOpciones=prepInerOpciones+"</tr>";
-                                        Kount2=0;
-                                        KountCierre2=0;
+                                        kount2=0;
+                                        kountCierre2=0;
                                     }
 
                                 }
-                                if(KountCierre2==1){
+                                if(kountCierre2==1){
                                     prepInerOpciones=prepInerOpciones+"</tr>";
                                 }
 
-                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                contenido=contenido+
                                     "<td>"+
                                         "<div class='checkbox contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
                                             "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_checkbox.png'/> width='55px' height='55px'><br/>"+
+                                                "<img src='images/icon_checkbox.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
                                             "<div class='elemento elementoGrande elementoPredefinido'>"+
@@ -454,102 +455,89 @@
                                                     prepInerOpciones+
                                                 "</table>"+
                                             "</div>"+
-                                            "<div class="capaSuperior"></div>"+
+                                            "<div class='capaSuperior'></div>"+
+                                        "</div>"+
+                                    "</td>";
+                            }
+                            if(lista[i].tipoPregunta=='area'){
+                                contenido=contenido+
+                                    "<td>"+
+                                        "<div class='area contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_textarea.png' width='55px' height='55px'><br/>"+
+                                                "<label>"+lista[i].labelPregunta+"</label>"+
+                                            "</div>"+
+                                            "<div class='elemento elementoGrande elementoPredefinido'>"+
+                                                "<table class='tableElementoText'>"+
+                                                    "<tr><td><textarea rows='5' cols='50' placeholder='"+lista[i].labelPregunta+"'></textarea></td></tr>"+
+                                                "</table>"+
+                                            "</div>"+
+                                            "<div class='capaSuperior'></div>"+
+                                        "</div>"+
+                                    "</td>";
+                            }
+                            if(lista[i].tipoPregunta=='select'){
+                                var opcionesComas=lista[i].opciones;
+                                var opciones=opcionesComas.split(",");
+                                var prepInerOpciones="";
+
+                                for(var opcion in opciones){
+                                    prepInerOpciones=prepInerOpciones+"<option>"+opcion+"</option>"
+                                }
+                                contenido=contenido+
+                                    "<td>"+
+                                        "<div class='select contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_select.png' width='55px' height='55px'><br/>"+
+                                                "<label>"+lista[i].labelPregunta+"</label>"+
+                                            "</div>"+
+                                            "<div class='elemento elementoPequenio elementoPredefinido'>"+
+                                                "<b><label class='labelLinea'>"+lista[i].labelPregunta+"</label></b>"+
+                                                "<span class='select-wrapper'>"+
+                                                    "<select>"+
+                                                        prepInerOpciones+
+                                                    "</select>"+
+                                                "</span>"+
+                                            "</div>"+
+                                            "<div class='capaSuperior'></div>"+
                                         "</div>"+
                                     "</td>";
                             }
 
-
-
-                                <c:if test="${pregunta.tipoPregunta == 'area'}">
-                                <td>
-                                <div class="area contenedorElemento pertenecePanel pertenecePanelPredefinido"
-                            id="p_${pregunta.idPregunta}"
-                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                            onclick="seleccionar(this.id)">
-                                <div class="contenedorIcono">
-                                <img src=<sptag:message code="src_img_icon_textarea"/> width="55px" height="55px"><br/>
-                                <label>${pregunta.labelPregunta}</label>
-                                </div>
-                                <div class="elemento elementoGrande elementoPredefinido">
-                                <table class="tableElementoText">
-                                <tr>
-                                <td>
-                                <textarea rows="5" cols="50"
-                            placeholder="${pregunta.labelPregunta}"> </textarea>
-                                </td>
-                                </tr>
-                                </table>
-                                </div>
-                                <div class="capaSuperior"></div>
-                                </div>
-                                </td>
-                                </c:if>
-                                <c:if test="${pregunta.tipoPregunta == 'select'}">
-                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
-                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-
-                                <td>
-                                <div class="select contenedorElemento pertenecePanel pertenecePanelPredefinido"
-                            id="p_${pregunta.idPregunta}"
-                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                            onclick="seleccionar(this.id)">
-                                <div class="contenedorIcono">
-                                <img src=<sptag:message code="src_img_icon_select"/> width="55px" height="55px"><br/>
-                                <label>${pregunta.labelPregunta}</label>
-                                </div>
-                                <div class="elemento elementoPequenio elementoPredefinido">
-                                <b><label class="labelLinea">${pregunta.labelPregunta}</label></b>
-                                <span class="select-wrapper">
-                                <select>
-                                <c:forEach var="opcion" items="${opciones}">
-                                <option>${opcion}</option>
-                                </c:forEach>
-                                </select>
-                                </span>
-                                </div>
-                                <div class="capaSuperior"></div>
-                                </div>
-                                </td>
-                                </c:if>
-                                <c:if test="${pregunta.tipoPregunta == 'file'}">
-                                <td>
-                                <div class="file contenedorElemento pertenecePanel pertenecePanelPredefinido"
-                            id="p_${pregunta.idPregunta}"
-                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
-                            onclick="seleccionar(this.id)">
-                                <div class="contenedorIcono">
-                                <img src="images/icon_upload.png" width="55px" height="55px"><br/>
-                                Adjuntar archivo
-                            </div>
-                            <div class="elemento elementoMuyGrande elementoPredefinido">
-                                <b><label>${pregunta.labelPregunta}</label></b><br/><br/>
-                                <input type="file" name="etiqueta" id="addfile"/>
-                                <label for="addfile">
-                                <div >
-                                <img src="images/icon_upload.png" width="60px" height="60px"><br/>
-                                <label>Arrastrar y soltar archivo</label><br/>
-                            <label>o seleccionar archivo</label>
-                            </div>
-                            </label>
-                            </div>
-                            <div class="capaSuperior"></div>
-                                </div>
-                                </td>
-                                </c:if>
-
-                                <c:if test="${count == 2}">
-                                </tr>
-                                <c:set var="count" value="0" scope="page"/>
-                                <c:set var="countCierre" value="0" scope="page"/>
-                                </c:if>
-                                </c:forEach>
-                                <c:if test="${countCierre == 1}">
-                                </tr>
-                            <c:set var="countCierre" value="0" scope="page"/>
-                            </c:if>
+                            if(lista[i].tipoPregunta=='select'){
+                                contenido=contenido+
+                                    "<td>"+
+                                        "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
+                                                "Adjuntar archivo"+
+                                            "</div>"+
+                                            "<div class='elemento elementoMuyGrande elementoPredefinido'>"+
+                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
+                                                "<input type='file' name='etiqueta' id='addfile'/>"+
+                                                "<label for='addfile'>"+
+                                                    "<div >"+
+                                                        "<img src='images/icon_upload.png' width='60px' height='60px'><br/>"+
+                                                        "<label>Arrastrar y soltar archivo</label><br/>"+
+                                                        "<label>o seleccionar archivo</label>"+
+                                                    "</div>"+
+                                                "</label>"+
+                                            "</div>"+
+                                            "<div class='capaSuperior'></div>"+
+                                        "</div>"+
+                                    "</td>";
+                            }
+                            if(kount==1){
+                                contenido=contenido+"</tr>";
+                                kount=0;
+                                kountCierre=0;
+                            }
+                        }
+                        if(kountCierre==1){
+                            contenido=contenido+"</tr>";
 
                         }
+                        tablePreguntasPredef.innerHTML=contenido;
                     },
                     error : function(xhr, status, error) {
                         alert(xhr.responseText);
