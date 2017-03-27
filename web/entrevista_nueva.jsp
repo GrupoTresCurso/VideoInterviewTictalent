@@ -19,6 +19,7 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section onclick="ocultarInfoUsuario()">
         <table>
             <tr>

@@ -18,6 +18,7 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_generar_entrevista"/></h3><br/><br/>

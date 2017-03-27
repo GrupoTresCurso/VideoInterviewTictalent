@@ -18,6 +18,7 @@
 <body>
     <main>
         <%@include file="menu.jsp"%>
+        <input type="hidden" value="Principal" id="enlaceActivo"/>
         <section>
             <div id="mensaje"  onclick="ocultarInfoUsuario()">
 				<h1><sptag:message code="label_video_intewview"/></h1><br/>

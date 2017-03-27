@@ -19,6 +19,7 @@
 
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Formulario" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_formulario"/></h3>
