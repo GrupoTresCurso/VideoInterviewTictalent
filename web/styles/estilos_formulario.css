@@ -545,6 +545,7 @@ span {
     color: white;
     cursor: pointer;
     font-weight: bold;
+    cursor:pointer;
 }
 
 .botonGuardar:hover{
