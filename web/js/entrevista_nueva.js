@@ -274,7 +274,7 @@ function drop(e) {
         //contadorElementos[posicionGuia]++;
         //tipo_id_contador;
         //video_id=video_id_contador
-        elementoCopiado.id=elementoCopiado.id+"_"+contador;
+        elementoCopiado.id=elementoMovido.id+"_"+contador;
 
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = document.getElementsByClassName('delimitadorElementoEntrevista')[0].style.width;
@@ -287,6 +287,7 @@ function drop(e) {
         if (devolverTipoElemento(elementoMovido) == "video") {
             //elementoCopiado.style.height = '400px';
         }*/
+
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.elementoEntrevista')[0].style.display = 'block';
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';

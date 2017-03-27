@@ -47,7 +47,14 @@ public class EntrevistaController implements BaseController {
     public String recuperarEntrevistas(HttpSession session) {
         ArrayList<Entrevista> listaEntrevistas = (ArrayList<Entrevista>) entrevistaBusiness.recuperarTodos();
         session.setAttribute("listaEntrevistas", listaEntrevistas);
-        return ENTREVISTA_INDEX;
+        return ENTREVISTA_CLONAR;
+    }
+
+    @RequestMapping(value = "/recuperarEntrevistasGestion.do", method = RequestMethod.GET)
+    public String recuperarEntrevistasGestion(HttpSession session) {
+        ArrayList<Entrevista> listaEntrevistas = (ArrayList<Entrevista>) entrevistaBusiness.recuperarTodos();
+        session.setAttribute("listaEntrevistas", listaEntrevistas);
+        return ENTREVISTA_GESTION;
     }
 
     @RequestMapping(value = "/recuperarEntrevista.do", method = RequestMethod.GET)
