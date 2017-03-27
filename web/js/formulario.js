@@ -1,5 +1,6 @@
 var contador = 0;
 var contador2=0;
+var formularioCargado=0;
 var elementoMovido = null;
 var contenedorActual = null;
 var elementoArrastrado = null;
@@ -15,7 +16,17 @@ var filaNuevoElementoPred;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
+comprobarCargado();
 inicializarGenerador();
+inicializarContador2();
+
+function inicializarContador2() {
+    contador2 = document.getElementById("valorCountPredef").value;
+}
+
+function comprobarCargado(){
+    formularioCargado=document.getElementById("formularioCargado").value;
+}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
@@ -23,8 +34,38 @@ function inicializarGenerador() {
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
     ocultarPropiedades();
-    document.getElementById("nuevoForm").style.display = 'none';
 
+    if(formularioCargado==1){
+        document.getElementById("nuevoForm").style.display = 'block';
+        document.getElementById("mensajeDefecto").style.display = 'none';
+        mostrarElementosFormularioCargado();
+    }else{
+        document.getElementById("mensajeDefecto").style.display = 'block';
+        document.getElementById("nuevoForm").style.display = 'none';
+    }
+}
+
+function mostrarElementosFormularioCargado(){
+    var elementosCargados = document.querySelectorAll('.elementoCargado');
+    [].forEach.call(elementosCargados, function(elem) {
+        elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
+        elem.querySelectorAll('.elemento')[0].style.display ='block';
+        elem.querySelectorAll('.capaSuperior')[0].style.display = 'none';
+        elem.style.width = '550px';
+        elem.style.height = '50px';
+        elem.style.marginBottom = '10px';
+        elem.classList.remove("pertenecePanel");
+        elem.classList.add("perteneceFormulario");
+        if (devolverTipoElemento(elem) == "select") {
+            elem.style.height = '37px';
+        }
+        if (devolverTipoElemento(elem) == "area" || devolverTipoElemento(elem) == "checkbox") {
+            elem.style.height = '94px';
+        }
+        if (devolverTipoElemento(elem) == "file") {
+            elem.style.height = '180px';
+        }
+    });
 }
 
 function ajustarTamanioPagina() {
@@ -160,6 +201,14 @@ function seleccionarTipoElementos(id) {
 //Verifica si un elemento pertenece al formulario (ya ha sido soltado)
 function elementoPerteneceAFormulario(elemento) {
     if (elemento.className.indexOf("perteneceFormulario") != -1) {
+        return true;
+    }
+    return false;
+}
+
+//Verifica si un elemento pertenece al panel de elementos predefinidos
+function elementoPerteneceAPanelPredefinido(elemento) {
+    if (elemento.className.indexOf("pertenecePanelPredefinido") != -1) {
         return true;
     }
     return false;
@@ -430,7 +479,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -442,7 +491,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -520,12 +569,14 @@ function crearOpciones() {
 function agregarAPredefinidos() {
     numElementosPredefinidos = cantidadElementosPredefinidos();
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
+    /*
     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
     elementoPredefinido.style.width = '90px';
     elementoPredefinido.style.height = '90px';
     elementoPredefinido.style.marginBottom = '0px';
     elementoPredefinido.style.boxShadow = '';
     elementoPredefinido.classList.add("pertenecePanel");
+    elementoPredefinido.classList.add("pertenecePanelPredefinido");
     elementoPredefinido.classList.remove("perteneceFormulario");
     elementoPredefinido.querySelectorAll('.contenedorIcono')[0].style.display = 'block';
     elementoPredefinido.querySelectorAll('.elemento')[0].style.display = 'none';
@@ -544,9 +595,10 @@ function agregarAPredefinidos() {
         celda.innerHTML = elementoPredefinido.outerHTML;
     }
     asignarEtiquetaElementoPred();
-    ocultarPropiedades();
+    ocultarPropiedades();*/
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
+
 }
 
 /*
@@ -611,7 +663,7 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
             || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }else {
@@ -660,9 +712,9 @@ function agregarCampos(elementoCopiado){
         campo = '<input type="hidden" size="20" name="identificadoresDDBB['+contador2+'].id" value="'+id+'"/>';
         $("#"+elementoCopiado.id+"").append(campo);
     }else{
-        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="A"/>';
+        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
         campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
-        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="A"/>';
+        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
         campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
         $("#"+elementoCopiado.id+"").append(campo);
         $("#"+elementoCopiado.id+"").append(campo2);
@@ -694,6 +746,15 @@ function overPapelera(e) {
             return false;
         }
     }
+
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        document.getElementById("imagenPapelera").src = "images/papelera_open.png";
+        e.dataTransfer.dropEffect = 'move';
+        var id = e.target.id;
+        if (id == elementoMovido.parentNode.id) {
+            return false;
+        }
+    }
 }
 
 function dropPapelera(e) {
@@ -710,6 +771,14 @@ function dropPapelera(e) {
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
         ocultarPropiedades();
         deseleccionar();
+    }
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        $("#" + elementoMovido.id).fadeOut(600);
+        setTimeout(function () {
+                elementoMovido.parentNode.removeChild(elementoMovido); // Elimina el elemento
+            },
+            600);
+        document.getElementById("imagenPapelera").src = "images/papelera_close.png";
     }
 
 }
