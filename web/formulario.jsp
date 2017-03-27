@@ -326,11 +326,11 @@
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
                 $('#c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
-                alert(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value+"-"+elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
+
                 var labelPregunta = $('#a').val();
                 var tipoPregunta = $('#b').val();
                 var opciones = $('#c').val();
-                alert(opciones)
+
                 var data = 'labelPregunta='
                     + encodeURIComponent(labelPregunta)
                     + '&tipoPregunta='
@@ -346,9 +346,209 @@
                     success : function(response) {
                         lista=response;
                         /*var lista=JSON.parse(response);*/
+                        var tablePreguntasPredef=document.getElementById("tableElementosPredefinidos");
+                        tablePreguntasPredef.innerHTML="";
 
-                        for(i=0;i<lista.length;i++){
-                            alert(lista[i].labelPregunta);
+                        var kount=0;
+                        var kountCierre=0;
+
+                        for(var i=0;i<lista.length;i++){
+                            if(kount==0){
+                                kountCierre=1;
+                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+"<tr>";
+                            }
+                            kount++;
+
+                            if(lista[i].tipoPregunta=='text'){
+                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                    "<td>"+
+                                        "<div class='texto contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_text.png' width='55px' height='55px'><br/>"+
+                                                "<label>"+lista[i].labelPregunta+"</label>"+
+                                            "</div>"+
+                                            "<div class='elemento elementoPredefinido'>"+
+                                                "<table class='tableElementoText'>"+
+                                                    "<tr>"+
+                                                        "<td class='celda'>"+
+                                                            "<img src='images/user.png' width='30px' height='30px'>"+
+                                                        "</td>"+
+                                                        "<td class='celda'>"+
+                                                            "<input type='text' placeholder='"+lista[i].labelPregunta+"' size='22'/>"+
+                                                        "</td>"+
+                                                    "</tr>"+
+                                                "</table>"+
+                                            "</div>"+
+                                            "<div class='capaSuperior'></div>"+
+                                        "</div>"+
+                                    "</td>";
+                            }
+                            if(lista[i].tipoPregunta=='radio'){
+                                var opcionesComas=lista[i].opciones;
+                                var opciones=opcionesComas.split(",");
+                                var prepInerOpciones="";
+
+                                for(var opcion in opciones){
+                                    prepInerOpciones=prepInerOpciones+
+                                            "<input type='radio'>"+
+                                            "<label class='opcion'>"+opcion+"</label>"
+                                }
+
+                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                    "<td>"+
+                                        "<div class='radio contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_radio.png' width='55px' height='55px'><br/>"+
+                                                "<label>"+lista[i].labelPregunta+"</label>"+
+                                            "</div>"+
+                                            "<div class='elemento elementoPredefinido'>"+
+                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
+                                                prepInerOpciones+
+                                            "</div>"+
+                                            "<div class='capaSuperior'></div>"+
+                                        "</div>"+
+                                    "</td>";
+
+
+
+
+
+                            }
+                            if(lista[i].tipoPregunta=='checkbox'){
+                                var opcionesComas=lista[i].opciones;
+                                var opciones=opcionesComas.split(",");
+                                var prepInerOpciones="";
+                                var Kount2=0;
+                                var KountCierre2=0;
+
+                                for(var opcion in opciones){
+                                    if(Kount2==0){
+                                        KountCierre2=1;
+                                        prepInerOpciones=prepInerOpciones+"<tr>";
+                                    }
+                                    Kount2++;
+                                    prepInerOpciones=prepInerOpciones+"<td class='celdaOpcion'>"+
+                                            "<input type='checkbox'>"+
+                                            "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
+                                    if(Kount2==3){
+                                        prepInerOpciones=prepInerOpciones+"</tr>";
+                                        Kount2=0;
+                                        KountCierre2=0;
+                                    }
+
+                                }
+                                if(KountCierre2==1){
+                                    prepInerOpciones=prepInerOpciones+"</tr>";
+                                }
+
+                                tablePreguntasPredef.innerHTML=tablePreguntasPredef.innerHTML+
+                                    "<td>"+
+                                        "<div class='checkbox contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                            "<div class='contenedorIcono'>"+
+                                                "<img src='images/icon_checkbox.png'/> width='55px' height='55px'><br/>"+
+                                                "<label>"+lista[i].labelPregunta+"</label>"+
+                                            "</div>"+
+                                            "<div class='elemento elementoGrande elementoPredefinido'>"+
+                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
+                                                "<table>"+
+                                                    prepInerOpciones+
+                                                "</table>"+
+                                            "</div>"+
+                                            "<div class="capaSuperior"></div>"+
+                                        "</div>"+
+                                    "</td>";
+                            }
+
+
+
+                                <c:if test="${pregunta.tipoPregunta == 'area'}">
+                                <td>
+                                <div class="area contenedorElemento pertenecePanel pertenecePanelPredefinido"
+                            id="p_${pregunta.idPregunta}"
+                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                            onclick="seleccionar(this.id)">
+                                <div class="contenedorIcono">
+                                <img src=<sptag:message code="src_img_icon_textarea"/> width="55px" height="55px"><br/>
+                                <label>${pregunta.labelPregunta}</label>
+                                </div>
+                                <div class="elemento elementoGrande elementoPredefinido">
+                                <table class="tableElementoText">
+                                <tr>
+                                <td>
+                                <textarea rows="5" cols="50"
+                            placeholder="${pregunta.labelPregunta}"> </textarea>
+                                </td>
+                                </tr>
+                                </table>
+                                </div>
+                                <div class="capaSuperior"></div>
+                                </div>
+                                </td>
+                                </c:if>
+                                <c:if test="${pregunta.tipoPregunta == 'select'}">
+                                <c:set var="opcionesComas" value="${pregunta.opciones}"/>
+                                <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+
+                                <td>
+                                <div class="select contenedorElemento pertenecePanel pertenecePanelPredefinido"
+                            id="p_${pregunta.idPregunta}"
+                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                            onclick="seleccionar(this.id)">
+                                <div class="contenedorIcono">
+                                <img src=<sptag:message code="src_img_icon_select"/> width="55px" height="55px"><br/>
+                                <label>${pregunta.labelPregunta}</label>
+                                </div>
+                                <div class="elemento elementoPequenio elementoPredefinido">
+                                <b><label class="labelLinea">${pregunta.labelPregunta}</label></b>
+                                <span class="select-wrapper">
+                                <select>
+                                <c:forEach var="opcion" items="${opciones}">
+                                <option>${opcion}</option>
+                                </c:forEach>
+                                </select>
+                                </span>
+                                </div>
+                                <div class="capaSuperior"></div>
+                                </div>
+                                </td>
+                                </c:if>
+                                <c:if test="${pregunta.tipoPregunta == 'file'}">
+                                <td>
+                                <div class="file contenedorElemento pertenecePanel pertenecePanelPredefinido"
+                            id="p_${pregunta.idPregunta}"
+                            draggable="true" ondragstart="start(event)" ondragend="end(event)"
+                            onclick="seleccionar(this.id)">
+                                <div class="contenedorIcono">
+                                <img src="images/icon_upload.png" width="55px" height="55px"><br/>
+                                Adjuntar archivo
+                            </div>
+                            <div class="elemento elementoMuyGrande elementoPredefinido">
+                                <b><label>${pregunta.labelPregunta}</label></b><br/><br/>
+                                <input type="file" name="etiqueta" id="addfile"/>
+                                <label for="addfile">
+                                <div >
+                                <img src="images/icon_upload.png" width="60px" height="60px"><br/>
+                                <label>Arrastrar y soltar archivo</label><br/>
+                            <label>o seleccionar archivo</label>
+                            </div>
+                            </label>
+                            </div>
+                            <div class="capaSuperior"></div>
+                                </div>
+                                </td>
+                                </c:if>
+
+                                <c:if test="${count == 2}">
+                                </tr>
+                                <c:set var="count" value="0" scope="page"/>
+                                <c:set var="countCierre" value="0" scope="page"/>
+                                </c:if>
+                                </c:forEach>
+                                <c:if test="${countCierre == 1}">
+                                </tr>
+                            <c:set var="countCierre" value="0" scope="page"/>
+                            </c:if>
+
                         }
                     },
                     error : function(xhr, status, error) {

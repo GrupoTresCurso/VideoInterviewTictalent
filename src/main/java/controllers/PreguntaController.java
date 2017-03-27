@@ -28,7 +28,7 @@ public class PreguntaController implements BaseController {
 
         Pregunta pregunta=new Pregunta(labelPregunta,tipoPregunta,opcioness,true);
         preguntaBusiness.crearNuevo(pregunta);
-        List<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
+        List<Pregunta> listaPreguntas= preguntaBusiness.recuperarTodos();
         List<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
         for (Pregunta pregunta2:listaPreguntas) {
             if(pregunta2.isFavorito()){
@@ -53,8 +53,8 @@ public class PreguntaController implements BaseController {
 
     @RequestMapping(value = "/recuperarPreguntas.do",method = RequestMethod.GET)
     public String recuperarPreguntas(HttpSession session){
-        ArrayList<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
-        ArrayList<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
+        List<Pregunta> listaPreguntas=  preguntaBusiness.recuperarTodos();
+        List<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
         for (Pregunta pregunta:listaPreguntas) {
             if(pregunta.isFavorito()){
                 listaPreguntasPredefinidas.add(pregunta);
