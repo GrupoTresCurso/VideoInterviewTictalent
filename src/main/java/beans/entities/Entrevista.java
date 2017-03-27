@@ -15,7 +15,7 @@ public class Entrevista {
     private String nombreEntrevista;
     private String nombrePuesto;
     @Column(columnDefinition = "TINYINT(1)")
-    private boolean tieneVideoIntro = false;
+    private boolean tieneVideoIntro = true;
     @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Formulario> formularios;

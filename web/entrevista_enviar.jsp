@@ -25,10 +25,12 @@
         </div>
 
         <table id="tableCandidatos">
+            <a href="javascript:seleccionar_todo()">Marcar todos</a> |
+            <a href="javascript:deseleccionar_todo()">Marcar ninguno</a>
             <tr>
                 <c:forEach var="candidato" items="${listaCandidatos}" varStatus="loop">
                 <td>
-                    <div class="videoIntro contenedorElemento pertenecePanel" id="videoIntro_${videosIntroductorios.idVideo}"
+                    <div class="videoIntro contenedorElemento pertenecePanel" id="videoIntro_${candidato.idCandidato}"
                          draggable="true" ondragstart="start(event)" ondragend="end(event)">
                         <div class="contenedorIcono">
                             <c:if test="${candidato.sexo=='hombre'}">
@@ -44,6 +46,9 @@
                             <a href="<c:url value="${pageContext.request.contextPath}/eliminarCandidato.do">
                               <c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">
                                 <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
+                                <form name="f1">
+                                    <input type="checkbox" name="ch_${candidato.idCandidato}">
+                                </form>
                             </a>
                         </div>
                         <div class="elemento">
@@ -127,8 +132,19 @@
 
 </main>
 <script type='text/javascript' src="js/entrevista_enviar.js"></script>
+<script type='text/javascript'>
+    function seleccionar_todo(){
+        for (i=0;i<document.f1.length;i++)
+            if(document.f1[i].children[0].type == "checkbox")
+                document.f1[i].children[0].checked=1
+    }
 
-<script>
+    function deseleccionar_todo(){
+        for (i=0;i<document.f1.length;i++)
+            if(document.f1[i].children[0].type == "checkbox")
+                document.f1[i].children[0].checked=0
+    }
+
     function buscarCandidato() {
         var valor = document.getElementById("inputBuscar").value;
         $('.filaCandidato').css('display','block');

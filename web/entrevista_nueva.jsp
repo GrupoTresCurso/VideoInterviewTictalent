@@ -33,7 +33,7 @@
                                     <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
                                         <tr>
                                             <td>
-                                                <div class="videoIntro contenedorElemento pertenecePanel" id="video_${videosIntroductorios.idVideo}"
+                                                <div class="videoIntro contenedorElemento pertenecePanel" id="video_${videoIntroductorio.idVideo}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                                     <div class="contenedorIcono">
                                                         <img src="images/icon_video.png" width="55px" height="55px"/>
