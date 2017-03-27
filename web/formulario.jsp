@@ -266,7 +266,7 @@
                 </td>
                 <td id="derecha">
                     <h5 class="colorTictum"><sptag:message code="label_propiedades_title"/></h5>
-                    <form id="agregarFavorita" action="${pageContext.request.contextPath}/guardarPreguntaFavorita.do" method="GET">
+                    <form id="agregarFavorita" action="${pageContext.request.contextPath}/guardarPreguntaFavorita.do" method="post">
                         <div id="propiedades">
                             <div id="contenedorPropiedadesDefecto"><br/><br/>
                                 <p id="mensajePropiedadesDefecto"><sptag:message
@@ -288,7 +288,7 @@
                                         <td>
                                             <div id="contenedorNumber">
                                                 <span class='number-wrapper' id="spanOpciones">
-                                                    <input type="number" name="opciones" id="opcionesPropiedades" min="1"
+                                                    <input type="number" id="opcionesPropiedades" min="1"
                                                            onchange="crearOpciones();actualizarOpciones();"/>
                                                 </span>
                                                 <div id="cubiertaEntradaNumero">
@@ -312,7 +312,7 @@
                         </div>
                         <input id="a" type="hidden" name="labelPregunta" value="PruebaAjax"/>
                         <input id="b" type="hidden" name="tipoPregunta" value="text"/>
-                        <input id="c" type="hidden" name="opcioness" value="asd"/>
+                        <input id="c" type="hidden" name="opciones" value="asd"/>
                     </form>
                     <div id="eliminar" onclick="deseleccionar()">
                         <p><sptag:message code="label_papelera_message"/></p><br/>
@@ -329,7 +329,7 @@
         <%@include file="userInfo.jsp" %>
     </section>
 </main>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
@@ -341,21 +341,21 @@
                     + encodeURIComponent(labelPregunta)
                     + '&tipoPregunta='
                     + encodeURIComponent(tipoPregunta)
-                    + '&opcioness='
+                    + '&opciones='
                     + encodeURIComponent(opciones);
                 $.ajax({
                     url : $("#agregarFavorita").attr("action"),
                     data : data,
-                    type : "GET",
+                    cache: false,
+                    type : "POST",
 
                     success : function(response) {
-                        var lista=JSON.parse(response);
+                        lista=response;
+                        /*var lista=JSON.parse(response);*/
 
                         for(i=0;i<lista.length;i++){
-                            alert("aaaaaaaaaaaaa");
                             alert(lista[i].labelPregunta);
                         }
-                        alert( "funciona" );
                     },
                     error : function(xhr, status, error) {
                         alert(xhr.responseText);
@@ -368,3 +368,5 @@
 <script type='text/javascript' src="js/formulario.js"></script>
 </body>
 </html>
+
+

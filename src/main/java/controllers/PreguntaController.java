@@ -22,15 +22,14 @@ public class PreguntaController implements BaseController {
     private BaseBusiness<Pregunta> preguntaBusiness;
 
 
-    @RequestMapping(value = "guardarPreguntaFavorita.do", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Pregunta> add(@RequestParam(value="labelPregunta") String labelPregunta,@RequestParam(value="tipoPregunta") String tipoPregunta,@RequestParam(value="opcioness") String opcioness,HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "guardarPreguntaFavorita.do", method = RequestMethod.POST)
+    public @ResponseBody List<Pregunta> guardarPreguntaFavorita(@RequestParam(value="labelPregunta") String labelPregunta,@RequestParam(value="tipoPregunta") String tipoPregunta,@RequestParam(value="opciones") String opcioness,HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         Pregunta pregunta=new Pregunta(labelPregunta,tipoPregunta,opcioness,true);
         preguntaBusiness.crearNuevo(pregunta);
-        ArrayList<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
-        ArrayList<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
+        List<Pregunta> listaPreguntas= (ArrayList<Pregunta>) preguntaBusiness.recuperarTodos();
+        List<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
         for (Pregunta pregunta2:listaPreguntas) {
             if(pregunta2.isFavorito()){
                 listaPreguntasPredefinidas.add(pregunta2);
