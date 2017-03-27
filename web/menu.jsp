@@ -8,7 +8,7 @@
             <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarCandidatos.do" class="linkMenu">
                 <sptag:message code="menu_opc2"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarPreguntas.do" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarFormularios.do" class="linkMenu">
                 <sptag:message code="menu_opc3"/>
             </a></td>
             <td onclick="ocultarInfoUsuario()"><a href="entrevista_index.jsp" class="linkMenu">

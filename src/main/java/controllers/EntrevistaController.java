@@ -85,12 +85,13 @@ public class EntrevistaController implements BaseController {
         session.setAttribute("videosPreguntas", videosPreguntas);
         session.setAttribute("videosTransiciones", videosTransiciones);
         session.setAttribute("formularios", formularios);
-        session.setAttribute("candidatos",candidatos);
         return ENTREVISTA_NUEVA;
     }
 
     @RequestMapping(value = "/crearEntrevista.do", method = RequestMethod.GET)
-    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,@RequestParam("formularios[]")List<Integer> intFormularios,@RequestParam("candidatos[]")List<Integer> intCandidatos) {
+    public String crearEntrevista(@RequestParam("videos[]")List<Integer> intVideos,
+                                  @RequestParam("formularios[]")List<Integer> intFormularios,
+                                  @RequestParam("candidatos[]")List<Integer> intCandidatos) {
         List<Video> listaVideos=new ArrayList();
         List<Formulario> listaFormularios=new ArrayList();
         List<Candidato> listaCandidatos=new ArrayList();
@@ -108,10 +109,28 @@ public class EntrevistaController implements BaseController {
         }
         Entrevista entrevista=new Entrevista("ASD","ASD","ASD",listaFormularios,listaFormularios.get(0),false,listaVideos,listaCandidatos);
         entrevistaBusiness.crearNuevo(entrevista);
-        return ENTREVISTA_NUEVA;
+        return ENTREVISTA_INDEX;
     }
 
+    @RequestMapping(value = "/eliminarEntrevista.do",method = RequestMethod.GET)
+    public void eliminarEntrevista(@RequestParam(value="idEntrevista",required=true) int id, HttpServletResponse response){
+        entrevistaBusiness.borrarPorId(id);
+        try {
+            response.sendRedirect("/recuperarEntrevistaCandidato.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @RequestMapping(value = "/recuperarEntrevistaCandidato.do", method = RequestMethod.GET)
+    public String recuperarEC(HttpSession session) {
+        List<Entrevista> entrevistas = entrevistaBusiness.recuperarTodos();
+        ArrayList<Candidato> listaCandidatos= (ArrayList<Candidato>) candidatoBusiness.recuperarTodos();
+        session.setAttribute("listaCandidatos",listaCandidatos);
+        session.setAttribute("candidato",null);
+        session.setAttribute("entrevistas", entrevistas);
+        return ENTREVISTA_ENVIAR;
+    }
 
 
 }

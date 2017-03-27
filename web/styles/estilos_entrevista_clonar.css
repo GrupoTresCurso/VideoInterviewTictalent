@@ -1,0 +1,101 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../font/Arvo-Regular.ttf);
+}
+
+body{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+main{
+    width: 100%;
+    box-sizing: border-box;
+    font-family: myFont, "Verdana";
+}
+
+section{
+    font-family: myFont, "Arial Black";
+    width:100%;
+    height: 90%;
+    font-size: 18px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #F2F2F2;
+}
+
+#cuerpo{
+    height: 100%;
+    width:100%;
+    box-sizing: border-box;
+    padding-top: 50px;
+    text-align: center;
+}
+
+
+#cuerpo a{
+    text-decoration: none;
+    color:black;
+}
+
+
+.botonGuardar{
+    background-color: #00B4DF;
+    padding: 7px 15px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    cursor:pointer;
+    border:0px;
+    height: 45px;
+    font-size: 17px;
+}
+.botonGuardar:hover{
+    background-color: #1681B4;
+}
+
+#tableEntrevistas{
+    margin: 20px auto;
+    border-spacing: 40px 5px;
+}
+
+.entrevista{
+    border:2px solid black;
+    width:300px;
+    height:50px;
+    padding: 10px;
+}
+
+.entrevista label{
+    word-wrap: break-word;
+}
+
+.tableElementoText {
+    width: 120px;
+    margin: 3px auto;
+    border-collapse: collapse;
+}
+
+
+
+.celda {
+    background-color: white;
+    border: 2px solid black;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 3px 1px;
+    font-size: 17px;
+}
+
+input[type="text"]{
+    height: 33px;
+    width: 300px;
+    border: 0px;
+    padding: 0px 5px;
+    font-size: 17px;
+}

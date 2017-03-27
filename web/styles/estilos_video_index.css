@@ -25,23 +25,28 @@ section{
     height: 90%;
     font-size: 18px;
     box-sizing: border-box;
+    text-align: center;
+    background-color: #F2F2F2;
 }
 
 #cuerpo{
     height: 100%;
     width:100%;
     box-sizing: border-box;
-    margin-left: 150px;
-    margin-top: 100px;
+    padding-top: 50px;
+    text-align: center;
 }
 
 .botonIndex{
     padding: 20px 0px;
-    width: 450px;
+    width: 300px;
     background: white;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    margin-top: 15px;
+    margin: 5px auto;
+}
 
+.botonIndex label{
+    word-wrap: break-word;
 }
 
 .botonIndex:hover{
@@ -56,23 +61,4 @@ section{
 
 .botonIndex img{
     margin-right: 10px;
-}
-#celdaBotonGuardar{
-    text-align: right;
-    padding-top: 40px;
-    padding-right: 10px;
-}
-
-.botonGuardar{
-    padding: 20px 30px;
-    color: white;
-    background-color: #00B4E0;
-    border: 0px;
-    font-weight: bold;
-    font-size: 15px;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    cursor: pointer;
-}
-.botonGuardar:hover{
-    transform: scale(1.05);
 }
