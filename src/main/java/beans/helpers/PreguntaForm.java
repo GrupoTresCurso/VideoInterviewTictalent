@@ -8,13 +8,9 @@ import java.util.List;
 public class PreguntaForm {
     List<Pregunta> preguntasSinDDBB;
     List<ID> identificadoresDDBB;
+    Integer identificadorFormulario;
 
     public PreguntaForm() {
-    }
-
-    public PreguntaForm(List<Pregunta> preguntasSinDDBB, List<ID> identificadoresDDBB) {
-        this.preguntasSinDDBB = preguntasSinDDBB;
-        this.identificadoresDDBB = identificadoresDDBB;
     }
 
     public List<Pregunta> getPreguntasSinDDBB() {
@@ -31,5 +27,13 @@ public class PreguntaForm {
 
     public void setIdentificadoresDDBB(List<ID> identificadoresDDBB) {
         this.identificadoresDDBB = identificadoresDDBB;
+    }
+
+    public Integer getIdentificadorFormulario() {
+        return identificadorFormulario;
+    }
+
+    public void setIdentificadorFormulario(Integer identificadorFormulario) {
+        this.identificadorFormulario = identificadorFormulario;
     }
 }

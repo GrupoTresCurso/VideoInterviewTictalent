@@ -19,23 +19,34 @@
 <main>
     <%@include file="menu.jsp"%>
     <aside  onclick="ocultarInfoUsuario()">
-        <h4><sptag:message code="label_candidatos"/></h4>
+        <h4><sptag:message code="label_candidatos"/></h4><br/>
+        <div id="buscarCandidato">
+            <input type="text" id="inputBuscar" size="20" placeholder=<sptag:message code="placeholder_buscar_candidatos"/> onchange="buscarCandidato()" onkeyup="this.onchange();" oninput="this.onchange();"/>
+        </div>
+
         <table id="tableCandidatos">
-            <c:forEach var="candidato" items="${listaCandidatos}">
-                <tr>
+            <c:forEach var="candidato" items="${listaCandidatos}" varStatus="loop">
+                <tr id="${loop.index}" class="filaCandidato">
                     <td>
-                        <img src="https://pbs.twimg.com/profile_images/822817456880230400/p7lqbBot.jpg" width="50px"
-                             height="50px"/>
+                        <c:if test="${candidato.sexo=='hombre'}">
+                            <img src=<sptag:message code="src_img_user_man"/> class='userIcon' width="40px" height="40px"/>
+                        </c:if>
+                        <c:if test="${candidato.sexo=='mujer'}">
+                            <img src=<sptag:message code="src_img_user_womman"/> class='userIcon' width="40px" height="40px"/>
+                        </c:if>
                     </td>
                     <td>
-                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarCandidato.do"><c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">
-                            <c:out value="${candidato.nombre}"/>
+                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarCandidato.do"><c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>"
+                        title="Mostrar datos">
+                            <label id="labelDatosCandidato"><c:out value="${candidato.nombre}"/> <c:out value="${candidato.apellidos}"/></label>
                         </a>
                     </td>
                     <%-- http://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link--%>
                     <td>
                         <a href="<c:url value="${pageContext.request.contextPath}/eliminarCandidato.do">
-                              <c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">X</a></td>
+                              <c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">
+                            <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>
@@ -43,7 +54,7 @@
     </aside>
     <section>
         <div id="contenedorFormulario"  onclick="ocultarInfoUsuario()">
-            <h4><sptag:message code="label_agregar_candidato"/></h4><br/>
+            <h4 class="colorTictum"><sptag:message code="label_agregar_candidato"/></h4><br/>
             <form id="formNuevoCandidato" action="${pageContext.request.contextPath}/guardarCandidato.do" method="GET">
                 <c:if test="${candidato.idCandidato!=null}">
                     <input type="hidden" value="${candidato.idCandidato}" name="idCandidato">
@@ -70,13 +81,9 @@
                                         </div>
                                     </td>
                                     <td rowspan="3" id="celdaImagen" class="celdaColumna2">
-                                        <input type="file" id="file" onchange="processFiles(this.files)"/>
-                                        <label for="file">
-                                            <div id="contenedorImagen" ondragenter="return enter(event)"
-                                                 ondragover="return over(event)" ondragleave="return leave(event)"
-                                                 ondrop="return drop(event)">
-                                            </div>
-                                        </label>
+                                        <div id="contenedorImagen">
+                                            <img src="images/user_man.png" id="imagenCandidato" width="130px" height="130px"/>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,27 +126,26 @@
                                         <div class="elemento">
                                             <label><sptag:message code="label_sexo"/></label>
                                             <c:if test="${candidato.sexo==null}">
-                                                <input type="radio" name="sexo" value="hombre" id="hombre"
+                                                <input type="radio" name="sexo" value="hombre" id="hombre" onchange="cambiarFoto()"
                                                        checked="checked"/>
                                                 <label for="hombre"><sptag:message code="label_hombre"/></label>
 
-
-                                                <input type="radio" name="sexo" value="mujer" id="mujer"/>
+                                                <input type="radio" name="sexo" value="mujer" id="mujer"  onchange="cambiarFoto()"/>
                                                 <label for="mujer"><sptag:message code="label_mujer"/></label>
                                             </c:if>
                                             <c:if test="${candidato.sexo.equals('hombre')}">
-                                                <input type="radio" name="sexo" value="hombre" id="hombre"
+                                                <input type="radio" name="sexo" value="hombre" id="hombre" onchange="cambiarFoto()"
                                                        checked="checked"/>
                                                 <label for="hombre"><sptag:message code="label_hombre"/></label>
 
-                                                <input type="radio" name="sexo" value="mujer" id="mujer"/>
+                                                <input type="radio" name="sexo" value="mujer" id="mujer" onchange="cambiarFoto()"/>
                                                 <label for="mujer"><sptag:message code="label_mujer"/></label>
                                             </c:if>
                                             <c:if test="${candidato.sexo.equals('mujer')}">
-                                                <input type="radio" name="sexo" value="hombre" id="hombre"/>
+                                                <input type="radio" name="sexo" value="hombre" id="hombre" onchange="cambiarFoto()"/>
                                                 <label for="hombre"><sptag:message code="label_hombre"/></label>
 
-                                                <input type="radio" name="sexo" value="mujer" id="mujer" checked="checked"/>
+                                                <input type="radio" name="sexo" value="mujer" id="mujer" checked="checked" onchange="cambiarFoto()"/>
                                                 <label for="mujer"><sptag:message code="label_mujer"/></label>
                                             </c:if>
 
@@ -216,57 +222,25 @@
     </section>
 
 </main>
+<script type='text/javascript' src="js/candidato.js"></script>
 
 <script>
-    function processFiles(files) {
-        var file = files[0];
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var output = document.getElementById("contenedorImagen");
-            //output.style.backgroundImage = "url('" + e.target.result + "')";
-            output.style.backgroundImage = "url('')";   //resetea fondo
-            if (file.type == "application/pdf") {
-                output.innerHTML = "<img src='images/pdf.png' width='80px' height='80px'/> " +
-                    "<p id='nombreArchivo'>" + file.name + "</p>";
-            } else {
-                output.innerHTML = "<img src='images/doc.png' width='80px' height='80px'/> " +
-                    "<p id='nombreArchivo'>" + file.name + "</p>";
-            }
-        };
-        reader.readAsDataURL(file);
-    }
+    function buscarCandidato() {
+        var valor = document.getElementById("inputBuscar").value;
+        $('.filaCandidato').css('display','block');
+        if(valor.trim().length>0){
+            <c:forEach var="candidato" items="${listaCandidatos}" varStatus="loop">
+                if("<c:out value="${candidato.nombre}"/>".toLowerCase().indexOf(valor.toLowerCase())!=-1 ||
+                    "<c:out value="${candidato.apellidos}"/>".toLowerCase().indexOf(valor.toLowerCase())!=-1 ){
+                    document.getElementById("${loop.index}").style.display = 'block';
+                }else{
+                    document.getElementById("${loop.index}").style.display = 'none';
+                }
+            </c:forEach>
+        }else{
 
-    function ignoreDrag(e) {
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
-    function enter(e) {
-        ignoreDrag(e);
-        e.target.classList.add('over');
-    }
-
-    function leave(e) {
-        e.target.classList.remove('over');
-    }
-
-    function over(e) {
-        ignoreDrag(e);
-        var id = e.target.id;
-        if (id == 'contenedorImagen') {
-            return false;
         }
     }
-
-    function drop(e) {
-        ignoreDrag(e);
-        var data = e.dataTransfer;
-        var files = data.files;
-
-        processFiles(files);
-        e.target.classList.remove('over');
-    }
-
 </script>
 
 </body>

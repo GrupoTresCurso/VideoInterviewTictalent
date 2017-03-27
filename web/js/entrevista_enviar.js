@@ -16,7 +16,6 @@ var filaNuevoElementoPred;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
-comprobarCargado();
 inicializarGenerador();
 inicializarContador2();
 
@@ -24,16 +23,12 @@ function inicializarContador2() {
     contador2 = document.getElementById("valorCountPredef").value;
 }
 
-function comprobarCargado(){
-    formularioCargado=document.getElementById("formularioCargado").value;
-}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
     ajustarTamanioPagina();
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
-    ocultarPropiedades();
 
     if(formularioCargado==1){
         document.getElementById("nuevoForm").style.display = 'block';
@@ -149,13 +144,6 @@ function ocultarElementosPanel() {
     //document.getElementById("panelElementosBloqueo").style.display = 'none';
 }
 
-//Ocultar propiedades de elementos
-function ocultarPropiedades() {
-    document.getElementById("contenedorPropiedadesDefecto").style.display = "block";
-    document.getElementById("contenedorEtiqueta").style.display = "none";
-    document.getElementById("contenedorOpciones").style.display = "none";
-    document.getElementById("contenedorActivarPredefinido").style.display = "none";
-}
 
 //Mostrar propiedades del label (Edición del título)
 function mostrarPropiedadesLabel() {
@@ -223,7 +211,6 @@ function seleccionar(id) {
         deseleccionar();
         elementoSeleccionado.style.boxShadow = "0px 0px 2px 2px rgba(0,180,223,1)";
         tipo = devolverTipoElemento(elementoSeleccionado);
-        ocultarPropiedades();
         var elemento = elementoSeleccionado.querySelectorAll('.elemento')[0];
         if (!elementoEsPredefinido(elemento)) {
             var tablaElemento = elemento.querySelectorAll('table')[0];
@@ -318,7 +305,6 @@ function seleccionar(id) {
 
 //Funcion a relizar cuando se deselecciona un elemento del formulario
 function deseleccionar() {
-    ocultarPropiedades();
     document.getElementById("opcionesPropiedades").value = "";
     document.getElementById("etiquetaPropiedades").value = "";
     var elementos = document.getElementsByClassName('contenedorElemento');
@@ -594,27 +580,26 @@ function agregarAPredefinidos() {
         celda.innerHTML = elementoPredefinido.outerHTML;
     }
     asignarEtiquetaElementoPred();
-    ocultarPropiedades();
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
 }
 
 /*
-var informacionUsuarioMostrada = false;
-function mostrarOcultarInfoUsuario() {
-    if(!informacionUsuarioMostrada){
-        $('#userInfo').css('display','block');
-        informacionUsuarioMostrada = true;
-    }else{
-        $('#userInfo').css('display','none');
-        informacionUsuarioMostrada = false;
-    }
-}
+ var informacionUsuarioMostrada = false;
+ function mostrarOcultarInfoUsuario() {
+ if(!informacionUsuarioMostrada){
+ $('#userInfo').css('display','block');
+ informacionUsuarioMostrada = true;
+ }else{
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }
+ }
 
-function ocultarInfoUsuario() {
-    $('#userInfo').css('display','none');
-    informacionUsuarioMostrada = false;
-}*/
+ function ocultarInfoUsuario() {
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }*/
 
 /****************************DRAG AND DROP***************************/
 
@@ -767,7 +752,6 @@ function dropPapelera(e) {
             },
             600);
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
-        ocultarPropiedades();
         deseleccionar();
     }
     if (elementoPerteneceAPanelPredefinido(elementoMovido)) {

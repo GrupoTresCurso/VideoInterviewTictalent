@@ -22,29 +22,28 @@
 <main>
     <%@include file="menu.jsp" %>
 
-    <aside>
-        <h4>Opciones de vídeo</h4>
+    <aside onclick="ocultarInfoUsuario()">
+        <h4><sptag:message code="label_opciones_video"/></h4>
         <table id="tableOpcionesVideo">
             <tr>
                 <td>
-                    <a href="grabar_video.html">
-                        <img class="imagenP" src="icons/webcam.png" width="50px" height="50px"/>
+                    <a href="grabar_video.jsp">
+                        <img class="imagenP" width="50px" height="50px" src=<sptag:message code="src_webcam"/>/>
                     </a>
                 </td>
-                <td><a href="grabar_video.jsp">Crear vídeo</a></td>
+                <td><a href="grabar_video.jsp"><sptag:message code="label_nuevo_video"/></a></td>
             </tr>
             <tr>
                 <td>
                     <a href="cargar_video.jsp">
-                        <img src="icons/file.png" width="50px" height="50px"/>
+                        <img width="50px" height="50px" src=<sptag:message code="src_file"/>/>
                     </a>
                 </td>
-                <td><a href="cargar_video.jsp">Cargar vídeo</a></td>
+                <td><a href="cargar_video.jsp"><sptag:message code="label_cargar_video"/></a></td>
                 </tr>
         </table>
     </aside>
     <article>
-
         <section class="experiment recordrtc">
             <h2 class="header">
 
@@ -63,13 +62,9 @@
                 </div>
 
                 <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
-
             </h2>
-
             <%@include file="userInfo.jsp" %>
         </section>
-
-
     </article>
 </main>
 <script type='text/javascript' src="js/grabar_video.js"></script>

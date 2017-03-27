@@ -20,26 +20,16 @@
     <%@include file="menu.jsp" %>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
-            <h3><sptag:message code="label_generar_entrevista"/></h3><br/><br/>
-            <a href="${pageContext.request.contextPath}/recuperarEntrevistas.do">
+            <h3><img src="images/checked.png" width="80px" height="80px"/>Se ha enviado correctamente</h3><br/><br/>
+            <a href="${pageContext.request.contextPath}/principal.jsp">
                 <div class="botonIndex">
-                    <img src="images/clone.png" width="40px" height="40px"/>
-                    <label><sptag:message code="label_clonar_entrevista"/></label>
+                    <img src="images/back.png" width="60px" height="60px"/>
+                    <label>Volver</label>
                 </div>
-            </a><br/>
-            <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
-                <div class="botonIndex">
-                    <img src="images/new.png" width="40px" height="40px"/>
-                    <label><sptag:message code="label_nueva_entrvista"/></label>
-                </div>
-            </a><br/>
-            <a href="${pageContext.request.contextPath}/recuperarEntrevistaCandidato.do">
-                <div class="botonIndex"><img src="images/icon_send.png" width="40px" height="40px"/><sptag:message
-                        code="label_enviar_entrevista"/></div>
             </a><br/>
         </div>
         <%@include file="userInfo.jsp"%>
-</section>
+    </section>
 </main>
 </body>
 </html>
