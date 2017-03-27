@@ -272,8 +272,7 @@ function drop(e) {
         && numElementoEnContenedorActual<maxNumElementos) {
        elementoCopiado = elementoMovido.cloneNode(true);
         //contadorElementos[posicionGuia]++;
-        //tipo_id_contador;
-        //video_id=video_id_contador
+
         elementoCopiado.id=elementoCopiado.id+"_"+contador;
 
         elementoCopiado.style.transform = 'scale(1.0)';
@@ -317,6 +316,8 @@ function agregarCampos(elementoCopiado) {
         campo = '<input type="hidden" size="20" name="videos[]" value="' + id + '"/>';
     } else if (tipo === "form") {
         campo = '<input type="hidden" size="20" name="formularios[]" value="' + id + '"/>';
+    } else {
+        campo = '<input type="hidden" size="20" name="candidatos[]" value="' + id + '"/>';
     }
     $("#"+elementoCopiado.id+"").append(campo);
     campo = '';

@@ -1,28 +1,28 @@
-var informacionUsuarioMostrada = false;
-ajustarTamanioPagina();
 
-function ajustarTamanioPagina() {
-    $('#userInfo').css('display','none');
-    $('nav').css('width', ($(window).width() - 30) + 'px');
-    $('section').css('width', ($(window).width() - 2) + 'px');
-    $('section').css('height', ($(window).height() - 300) + 'px');
-    $('#contenedorPrincipal').css('width', ($(window).width() - 690) + 'px');
-    $('#logoTictum').css('paddingLeft', ($(window).width() - 595) + 'px');
-    $('#userInfo').css('left', ($(window).width() - 142) + 'px');
-}
+function validarRegistro(){
+    var nombre = document.getElementById("nombreUsuario").value;
+    var password = document.getElementById("passwordUsuario").value;
+    var error1=false, error2=false;
 
-function mostrarOcultarInfoUsuario() {
-    if(!informacionUsuarioMostrada){
-        $('#userInfo').css('display','block');
-        informacionUsuarioMostrada = true;
+    if(nombre.length<=4){
+        error1 = false;
     }else{
-        $('#userInfo').css('display','none');
-        informacionUsuarioMostrada = false;
+        document.getElementById("errorNombre").innerHTML="Deben tener más de 4 caracteres";
+        error1 = true;
     }
-}
 
-function ocultarInfoUsuario() {
-    $('#userInfo').css('display','none');
-    informacionUsuarioMostrada = false;
-}
+    if(password.length<=4){
+        error2 = false;
+    }else{
+        document.getElementById("errorPassword").innerHTML="Deben tener más de 4 caracteres";
+        error1 = true;
+    }
 
+    if(!error1 && !error2){
+        document.getElementById("formRegistro").submit();
+        document.getElementById("errorNombre").innerHTML="";
+        document.getElementById("errorPassword").innerHTML="";
+    }
+
+
+}

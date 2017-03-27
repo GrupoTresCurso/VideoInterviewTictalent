@@ -21,22 +21,42 @@
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_generar_entrevista"/></h3><br/><br/>
-            <a href="${pageContext.request.contextPath}/recuperarEntrevistas.do">
-                <div class="botonIndex">
-                    <img src="images/clone.png" width="40px" height="40px"/>
-                    <label><sptag:message code="label_clonar_entrevista"/></label>
-                </div>
-            </a><br/>
-            <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
-                <div class="botonIndex">
-                    <img src="images/new.png" width="40px" height="40px"/>
-                    <label><sptag:message code="label_nueva_entrvista"/></label>
-                </div>
-            </a><br/>
-            <a href="${pageContext.request.contextPath}/recuperarEntrevistaCandidato.do">
-                <div class="botonIndex"><img src="images/icon_send.png" width="40px" height="40px"/><sptag:message
-                        code="label_enviar_entrevista"/></div>
-            </a><br/>
+            <table>
+                <tr>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/entrevista_clonar.jsp">
+                            <div class="botonIndex">
+                                <img src="images/clone.png" width="40px" height="40px"/>
+                                <label><sptag:message code="label_clonar_entrevista"/></label>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
+                            <div class="botonIndex">
+                                <img src="images/new.png" width="40px" height="40px"/>
+                                <label><sptag:message code="label_nueva_entrvista"/></label>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/entrevista_editar.jsp">
+                            <div class="botonIndex">
+                                <img src="images/icon_edit.png" width="40px" height="40px"/>
+                                <label>Gestionar Entrevista</label>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/recuperarEntrevistaCandidato.do">
+                            <div class="botonIndex"><img src="images/icon_send.png" width="40px" height="40px"/><sptag:message
+                                    code="label_enviar_entrevista"/></div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
         </div>
         <%@include file="userInfo.jsp"%>
 </section>

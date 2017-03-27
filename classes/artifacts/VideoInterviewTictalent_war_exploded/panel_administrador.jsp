@@ -8,45 +8,47 @@
     <title>
         <sptag:message code="app_title"/>
     </title>
+    <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_panel_administrador.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 
 </head>
 <body>
 <main>
     <%@include file="menu.jsp"%>
-    <section onclick="ocultarInfoUsuario()">
-        <div id="contenedorPrincipal">
-            <form action="crearUsuario.do" method="POST">
-                <h2>
-                    <sptag:message code="panel_admin_title"/>
-                </h2>
-                <br/><br/>
-                <div id="contenedorFormulario">
-                    <table id="tableFormulario">
-                        <tr>
-                            <td>
-                                <!--NOMBRE DE USUARIO-->
-                                <table class="tableElementoText">
-                                    <tr>
-                                        <td>
-                                            <img src="images/user.png" width="30px" height="30px">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="nombreUsuario" id="nombreUsuario"
-                                                   placeholder='<sptag:message code="placeholder_nombre"/>' size="19" tabindex="1"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
-                                <br/>
-                            </td>
-                            <td id="columna2">
-                                <!--ROL DE USUARIO-->
-                                <b><label><sptag:message code="title_select_rol"/></label>:</b><br/>
-                                <span class="select-wrapper">
+    <section>
+        <div id="contenedorPrincipal" onclick="ocultarInfoUsuario()">
+            <div id="contenedorCentrado">
+                <form action="crearUsuario.do" method="POST" onSubmit="return validarRegistro()">
+                    <h2>
+                        <sptag:message code="panel_admin_title"/>
+                    </h2>
+                    <br/><br/>
+                    <div id="contenedorFormulario">
+                        <table id="tableFormulario">
+                            <tr>
+                                <td>
+                                    <!--NOMBRE DE USUARIO-->
+                                    <table class="tableElementoText">
+                                        <tr>
+                                            <td>
+                                                <img src="images/user.png" width="30px" height="30px">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="nombreUsuario" id="nombreUsuario"
+                                                       placeholder=<sptag:message code="placeholder_nombre"/> size="22" tabindex="1"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p class="errores" id="errorNombre"></p>
+                                    <br/>
+                                </td>
+                                <td id="columna2">
+                                    <!--ROL DE USUARIO-->
+                                    <b><label><sptag:message code="title_select_rol"/></label>:</b><br/>
+                                    <span class="select-wrapper">
                                      <select name="rol" tabindex="3">
                                         <option value="administrador"><sptag:message code="rol_admin"/></option>
                                         <option value="reclutador"><sptag:message code="rol_reclutador"/></option>
@@ -54,41 +56,41 @@
                                         <option value="candidato"><sptag:message code="rol_candidato"/></option>
                                     </select>
                                 </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <!--CONTRASEÑA DE USUARIO-->
-                                <table class="tableElementoText">
-                                    <tr>
-                                        <td>
-                                            <img src="images/key.png" width="30px" height="30px">
-                                        </td>
-                                        <td>
-                                            <input type="password" name="password" id="passwordUsuario"
-                                                   placeholder='<sptag:message code="placeholder_password"/>' size="19" tabindex="2"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <p class="errores"><sptag:message code="label_dato_no_valido"/></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="celdaBotonGuardar" colspan="2">
-                                <br/>
-                                <button type="submit" tabindex="4"><sptag:message code="button_crear_usuario"/></button><br/><br/>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!--CONTRASEÑA DE USUARIO-->
+                                    <table class="tableElementoText">
+                                        <tr>
+                                            <td>
+                                                <img src="images/key.png" width="30px" height="30px">
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" id="passwordUsuario"
+                                                       placeholder=<sptag:message code="placeholder_password"/> size="22" tabindex="2"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p class="errores" id="errorPassword"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="celdaBotonGuardar" colspan="2">
+                                    <br/>
+                                    <button type="submit" tabindex="4"><sptag:message code="button_crear_usuario"/></button><br/><br/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
         </div>
         <%@include file="userInfo.jsp"%>
     </section>
-
-    <script type='text/javascript' src="js/panel_administrador.js"></script>
 </main>
-
+<script type='text/javascript' src="js/panel_administrador.js"></script>
 </body>
 </html>
 

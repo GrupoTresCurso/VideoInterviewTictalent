@@ -16,7 +16,6 @@ var filaNuevoElementoPred;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
-comprobarCargado();
 inicializarGenerador();
 inicializarContador2();
 
@@ -24,16 +23,12 @@ function inicializarContador2() {
     contador2 = document.getElementById("valorCountPredef").value;
 }
 
-function comprobarCargado(){
-    formularioCargado=document.getElementById("formularioCargado").value;
-}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
     ajustarTamanioPagina();
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
-    ocultarPropiedades();
 
     if(formularioCargado==1){
         document.getElementById("nuevoForm").style.display = 'block';
@@ -149,13 +144,6 @@ function ocultarElementosPanel() {
     //document.getElementById("panelElementosBloqueo").style.display = 'none';
 }
 
-//Ocultar propiedades de elementos
-function ocultarPropiedades() {
-    document.getElementById("contenedorPropiedadesDefecto").style.display = "block";
-    document.getElementById("contenedorEtiqueta").style.display = "none";
-    document.getElementById("contenedorOpciones").style.visibility = "hidden";
-    document.getElementById("contenedorActivarPredefinido").style.display = "none";
-}
 
 //Mostrar propiedades del label (Edición del título)
 function mostrarPropiedadesLabel() {
@@ -174,7 +162,7 @@ function mostrarPropiedadesNoOpciones() {
 function mostrarPropiedadesOpciones() {
     document.getElementById("contenedorPropiedadesDefecto").style.display = "none";
     document.getElementById("contenedorEtiqueta").style.display = "block";
-    document.getElementById("contenedorOpciones").style.visibility = "visible";
+    document.getElementById("contenedorOpciones").style.display = "block";
     document.getElementById("contenedorActivarPredefinido").style.display = "block";
     var inputs = document.getElementById("contenedorOpciones").querySelectorAll("input");
     [].forEach.call(inputs, function (inp) {
@@ -223,7 +211,6 @@ function seleccionar(id) {
         deseleccionar();
         elementoSeleccionado.style.boxShadow = "0px 0px 2px 2px rgba(0,180,223,1)";
         tipo = devolverTipoElemento(elementoSeleccionado);
-        ocultarPropiedades();
         var elemento = elementoSeleccionado.querySelectorAll('.elemento')[0];
         if (!elementoEsPredefinido(elemento)) {
             var tablaElemento = elemento.querySelectorAll('table')[0];
@@ -318,7 +305,6 @@ function seleccionar(id) {
 
 //Funcion a relizar cuando se deselecciona un elemento del formulario
 function deseleccionar() {
-    ocultarPropiedades();
     document.getElementById("opcionesPropiedades").value = "";
     document.getElementById("etiquetaPropiedades").value = "";
     var elementos = document.getElementsByClassName('contenedorElemento');
@@ -567,11 +553,8 @@ function crearOpciones() {
 
 //Agrega un elemento del formulario al panel de elementos como predefinido
 function agregarAPredefinidos() {
-
     numElementosPredefinidos = cantidadElementosPredefinidos();
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
-
-    /*
     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
     elementoPredefinido.style.width = '90px';
     elementoPredefinido.style.height = '90px';
@@ -597,31 +580,26 @@ function agregarAPredefinidos() {
         celda.innerHTML = elementoPredefinido.outerHTML;
     }
     asignarEtiquetaElementoPred();
-    ocultarPropiedades();*/
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
-    alert("AGREGANDO A PREDEFINIDOS");
-    $('a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
-    $('b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
-    $('c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
 }
 
 /*
-var informacionUsuarioMostrada = false;
-function mostrarOcultarInfoUsuario() {
-    if(!informacionUsuarioMostrada){
-        $('#userInfo').css('display','block');
-        informacionUsuarioMostrada = true;
-    }else{
-        $('#userInfo').css('display','none');
-        informacionUsuarioMostrada = false;
-    }
-}
+ var informacionUsuarioMostrada = false;
+ function mostrarOcultarInfoUsuario() {
+ if(!informacionUsuarioMostrada){
+ $('#userInfo').css('display','block');
+ informacionUsuarioMostrada = true;
+ }else{
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }
+ }
 
-function ocultarInfoUsuario() {
-    $('#userInfo').css('display','none');
-    informacionUsuarioMostrada = false;
-}*/
+ function ocultarInfoUsuario() {
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }*/
 
 /****************************DRAG AND DROP***************************/
 
@@ -668,7 +646,7 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"
             || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }else {
@@ -718,7 +696,7 @@ function agregarCampos(elementoCopiado){
         $("#"+elementoCopiado.id+"").append(campo);
     }else{
         campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
-        campo2 = '<input class="inputTipoPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
+        campo2 = '<input type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
         campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
         campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
         $("#"+elementoCopiado.id+"").append(campo);
@@ -774,7 +752,6 @@ function dropPapelera(e) {
             },
             600);
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
-        ocultarPropiedades();
         deseleccionar();
     }
     if (elementoPerteneceAPanelPredefinido(elementoMovido)) {

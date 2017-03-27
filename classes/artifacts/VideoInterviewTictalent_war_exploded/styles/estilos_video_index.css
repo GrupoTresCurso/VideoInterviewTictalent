@@ -37,11 +37,6 @@ section{
     text-align: center;
 }
 
-#cuerpo table{
-    border-spacing: 30px 0px;
-    margin:15px auto;
-}
-
 .botonIndex{
     padding: 20px 0px;
     width: 300px;
@@ -66,23 +61,4 @@ section{
 
 .botonIndex img{
     margin-right: 10px;
-}
-#celdaBotonGuardar{
-    text-align: right;
-    padding-top: 40px;
-    padding-right: 10px;
-}
-
-.botonGuardar{
-    padding: 20px 30px;
-    color: white;
-    background-color: #00B4E0;
-    border: 0px;
-    font-weight: bold;
-    font-size: 15px;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    cursor: pointer;
-}
-.botonGuardar:hover{
-    transform: scale(1.05);
 }
