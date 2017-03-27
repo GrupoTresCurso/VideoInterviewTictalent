@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_video.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_video_grabar.css">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
     <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
@@ -44,7 +44,7 @@
         </table>
     </aside>
     <article>
-        <section class="experiment recordrtc">
+        <section class="experiment recordrtc" id="medio">
             <h2 class="header">
 
                 <select class="media-container-format" hidden>
@@ -68,5 +68,6 @@
     </article>
 </main>
 <script type='text/javascript' src="js/grabar_video.js"></script>
+<script type='text/javascript' src="js/formulario.js"></script>
 </body>
 </html>
