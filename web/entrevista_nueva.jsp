@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page buffer="8000kb" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,6 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -294,12 +296,8 @@
 						<c:set var="entrevistaCargada" value="0" scope="page"/>
                         <c:set var="countElements" value="0" scope="page"/>
                         <c:if test="${entrevista != null}">
-                            <h2>HOLA ${entrevista.nombreEntrevista}</h2>
                             <c:set var="entrevistaCargada" value="1" scope="page"/>
                             <input type="hidden" size="20" name="idEntrevista" value="${entrevista.idEntrevista}"/>
-                        </c:if>
-                        <c:if test="${entrevista == null}">
-                            <h2>HOLA NUEVO</h2>
                         </c:if>
                         <!-------------------------------SECCION VIDEO INTRODUCTORIO--------------------------------------------------->
                         <div id="estadoContenedorVI" class="estadoContenedor">
@@ -312,29 +310,29 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVI" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                    <div class="video contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="video_${countElements}__${entrevista.videos[0].idVideo}"
-                                         draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                        <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.videos[0].nombreVideo}</label></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="elementoEntrevista">
-                                            <div class="delimitadorElementoEntrevista">
-                                            <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
-                                                <div class="elementoVideo">
-                                                    <img src="images/icon_video.png" width="150px" height="150px"/><br/>
-                                                    <label>${entrevista.videos[0].nombreVideo}</label>
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoIntroductorio'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}__${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
                                                 </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                        </div>
-                                        <div class="capaSuperior"></div>
-                                    </div>
+                                        </c:if>
+                                    </c:forEach>
                                 </c:if>
                             </div>
                         </div>
@@ -355,12 +353,8 @@
                                          id="form_${countElements}_${entrevista.formularios[0].idFormulario}"
                                          draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                         <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.formularios[0].nombreFormulario}</label></td>
-                                                </tr>
-                                            </table>
+                                            <img src="images/icon_formulario.png" width="40px" height="40px"/>
+                                            <label>${entrevista.formularios[0].nombreFormulario}</label>
                                         </div>
                                         <div class="elementoEntrevista">
                                             <div class="delimitadorElementoEntrevista">
@@ -495,29 +489,29 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVT" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                    <div class="video contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="video_${countElements}_${entrevista.videos[1].idVideo}"
-                                         draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                        <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.videos[1].nombreVideo}</label></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="elementoEntrevista">
-                                            <div class="delimitadorElementoEntrevista">
-                                                <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
-                                                <div class="elementoVideo">
-                                                    <img src="images/icon_video.png" width="150px" height="150px"/><br/>
-                                                    <label>${entrevista.videos[1].nombreVideo}</label>
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoTransicion'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
                                                 </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                        </div>
-                                        <div class="capaSuperior"></div>
-                                    </div>
+                                        </c:if>
+                                    </c:forEach>
                                 </c:if>
                             </div>
                         </div>
@@ -533,30 +527,28 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVP" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.videos}" begin="2" end="${fn:length(entrevista.videos)-1}">
-                                        <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                        <div class="video contenedorElemento perteneceEntrevista elementoCargado"
-                                             id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
-                                             draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                            <div class="contenedorIcono">
-                                                <table>
-                                                    <tr>
-                                                        <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                        <td class="labelIcono"><label>${videoPreguntaEntrevista.nombreVideo}</label></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="elementoEntrevista">
-                                                <div class="delimitadorElementoEntrevista">
-                                                    <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
-                                                    <div class="elementoVideo">
-                                                        <img src="images/icon_video.png" width="150px" height="150px"/><br/>
-                                                        <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoPregunta'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                            <div class="capaSuperior"></div>
-                                        </div>
+                                        </c:if>
                                     </c:forEach>
                                 </c:if>
                             </div>
@@ -575,22 +567,22 @@
                                 <c:if test="${entrevista != null}">
                                     <c:set var="countElements" value="${countElements + 1}" scope="page"/>
                                     <div class="formulario contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="form_${countElements}_${entrevista.cuestionarioSatisfaccion.idFormulario}"
+                                         id="form_${countElements}_${entrevista.formularios[1].idFormulario}"
                                          draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                         <div class="contenedorIcono">
                                             <table>
                                                 <tr>
                                                     <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.cuestionarioSatisfaccion.nombreFormulario}</label></td>
+                                                    <td class="labelIcono"><label>${entrevista.formularios[1].nombreFormulario}</label></td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="elementoEntrevista">
                                             <div class="delimitadorElementoEntrevista">
                                                 <c:set var="countPreguntas" value="0" scope="page"/>
-                                                <h3 class="colorTictum">${entrevista.cuestionarioSatisfaccion.nombreFormulario}</h3>
+                                                <h3 class="colorTictum">${entrevista.formularios[1].nombreFormulario}</h3>
                                                 <br/>
-                                                <c:forEach var="preguntaFormulario" items="${entrevista.cuestionarioSatisfaccion.preguntas}">
+                                                <c:forEach var="preguntaFormulario" items="${entrevista.formularios[1].preguntas}">
                                                     <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
                                                     <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
                                                         <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
