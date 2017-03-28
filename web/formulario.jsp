@@ -323,6 +323,7 @@
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
+
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
                 $('#c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
@@ -411,9 +412,6 @@
                                     "</td>";
 
 
-
-
-
                             }
                             if(lista[i].tipoPregunta=='checkbox'){
                                 var opcionesComas=lista[i].opciones;
@@ -428,9 +426,10 @@
                                         prepInerOpciones=prepInerOpciones+"<tr>";
                                     }
                                     kount2++;
-                                    prepInerOpciones=prepInerOpciones+"<td class='celdaOpcion'>"+
-                                        "<input type='checkbox'>"+
-                                        "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
+                                    prepInerOpciones=prepInerOpciones+
+                                        "<td class='celdaOpcion'>"+
+                                            "<input type='checkbox'>"+
+                                            "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
                                     if(kount2==3){
                                         prepInerOpciones=prepInerOpciones+"</tr>";
                                         kount2=0;
@@ -504,13 +503,13 @@
                                     "</td>";
                             }
 
-                            if(lista[i].tipoPregunta=='select'){
+                            if(lista[i].tipoPregunta=='file'){
                                 contenido=contenido+
                                     "<td>"+
                                     "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
                                     "<div class='contenedorIcono'>"+
                                     "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
-                                    "Adjuntar archivo"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
                                     "</div>"+
                                     "<div class='elemento elementoMuyGrande elementoPredefinido elementoAjax'>"+
                                     "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
@@ -527,7 +526,7 @@
                                     "</div>"+
                                     "</td>";
                             }
-                            if(kount==1){
+                            if(kount==2){
                                 contenido=contenido+"</tr>";
                                 kount=0;
                                 kountCierre=0;
@@ -538,6 +537,10 @@
 
                         }
                         tablePreguntasPredef.innerHTML=contenido;
+                        var elementosAjax = document.querySelectorAll('.elementoAjax');
+                        for(var i=0; i<elementosAjax.length; i++){
+                            elementosAjax[i].style.display = 'none';
+                        }
                     },
                     error : function(xhr, status, error) {
                         alert(xhr.responseText);
@@ -546,10 +549,7 @@
                 return false;
             });
     });
-    var elementosAjax = document.querySelectorAll('.elementoAjax');
-    for(var i=0; i<elementosAjax.length; i++){
-        elementosAjax[i].style.display = 'none';
-    }
+
 </script>
 
 </body>

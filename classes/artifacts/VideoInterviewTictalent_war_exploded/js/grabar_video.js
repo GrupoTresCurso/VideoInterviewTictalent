@@ -1,3 +1,50 @@
+var contador = 0;
+var contador2=0;
+var formularioCargado=0;
+var elementoMovido = null;
+var contenedorActual = null;
+
+var idElementoSeleccionado = null;
+var etiquetaElementoSeleccionado = null;
+var opcionesElementoSeleccionado = null;
+var numOpcionesElementoSeleccinado = null;
+var tipo = null;
+var elementoPredefinido = null;
+var numElementosPredefinidos;
+
+comprobarCargado();
+inicializarGenerador();
+inicializarContador2();
+
+function inicializarContador2() {
+    contador2 = document.getElementById("valorCountPredef").value;
+}
+
+function comprobarCargado(){
+    formularioCargado=document.getElementById("formularioCargado").value;
+}
+
+function inicializarGenerador() {
+    $("#perteneceFormulario").fadeOut(1000);
+    ajustarTamanioPagina();
+
+    if(formularioCargado==1){
+        document.getElementById("nuevoForm").style.display = 'block';
+        document.getElementById("mensajeDefecto").style.display = 'none';
+        mostrarElementosFormularioCargado();
+    }else{
+        document.getElementById("mensajeDefecto").style.display = 'block';
+        document.getElementById("nuevoForm").style.display = 'none';
+    }
+}
+
+
+function ajustarTamanioPagina() {
+    $('#medio').css('width', ($(window).width()-$('#izquierda').width()) + 'px');
+    $('#contenedor').css('height', ($(window).height()*0.895) + 'px');
+}
+
+
 (function() {
     var params = {},
         r = /([^&=]+)=?([^&]*)/g;
@@ -132,7 +179,7 @@ btnStartRecording.onclick = function(event) {
             button.disabled = false;
         },
         onMediaStopped: function() {
-            button.innerHTML = '<img src="images/new_record.png" width="40px" height="40px">';
+            button.innerHTML = '<img src="images/record.png" width="40px" height="40px">';
 
             if(!button.disableStateWaiting) {
                 button.disabled = false;

@@ -360,6 +360,10 @@ function asignarEtiquetaElementoPred() {
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
             labelElemento = elementoLabel.innerHTML;
             break;
+        case "file":
+            elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            labelElemento = elementoLabel.innerHTML;
+            break;
     }
     var id = "elementoP" + (numElementosPredefinidos + 1);
     document.getElementById(id).querySelectorAll('.contenedorIcono')[0].querySelectorAll('label')[0].innerHTML = labelElemento;
@@ -411,7 +415,9 @@ function actualizarEtiqueta() {
             elementoLabel.innerHTML = nuevo;
             break;
         case "file":
-            elementoLabel = elemento.querySelectorAll('label')[0];
+            elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
             break;
     }
@@ -556,9 +562,9 @@ function crearOpciones() {
         var celda2 = row.insertCell(1);
         celda1.innerHTML = "Opción " + (i + 1) + ": ";
         if (opcionesElementoSeleccionado[i] != null) {
-            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "' onblur='actualizarOpcionValor(" + i + ")' size='20' value='" + opcionesElementoSeleccionado[i] + "'/>"
+            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='" + opcionesElementoSeleccionado[i] + "'/>"
         } else {
-            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "' onblur='actualizarOpcionValor(" + i + ")' size='20' value='Opcion" + (i + 1) + "'/>"
+            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='Opcion" + (i+1) + "'/>"
         }
     }
     document.getElementById("etiquetaPropiedades").value = etiquetaElementoSeleccionado;
@@ -668,14 +674,17 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
-            || elementoCopiado.id=="file"){
-            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
-        }else {
+        var aux=elementoCopiado.id.split("_");
+        var tipo=aux[0];
+        var id=aux[1];
+        if(tipo=="p"){
             var aux=elementoCopiado.id.split("_");
             var id=aux[1];
             elementoCopiado.id="p"+"_"+contador+"_"+id;
+        }else {
+            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }
+
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '550px';
         elementoCopiado.style.height = '50px';
@@ -725,6 +734,7 @@ function agregarCampos(elementoCopiado){
         $("#"+elementoCopiado.id+"").append(campo2);
         $("#"+elementoCopiado.id+"").append(campo3);
         $("#"+elementoCopiado.id+"").append(campo4);
+
     }
     campo = '';
     campo2 = '';
@@ -751,15 +761,6 @@ function overPapelera(e) {
             return false;
         }
     }
-
-    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
-        document.getElementById("imagenPapelera").src = "images/papelera_open.png";
-        e.dataTransfer.dropEffect = 'move';
-        var id = e.target.id;
-        if (id == elementoMovido.parentNode.id) {
-            return false;
-        }
-    }
 }
 
 function dropPapelera(e) {
@@ -776,14 +777,6 @@ function dropPapelera(e) {
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
         ocultarPropiedades();
         deseleccionar();
-    }
-    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
-        $("#" + elementoMovido.id).fadeOut(600);
-        setTimeout(function () {
-                elementoMovido.parentNode.removeChild(elementoMovido); // Elimina el elemento
-            },
-            600);
-        document.getElementById("imagenPapelera").src = "images/papelera_close.png";
     }
 
 }

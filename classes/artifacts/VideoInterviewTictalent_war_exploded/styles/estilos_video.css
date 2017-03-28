@@ -195,7 +195,6 @@ input[type='radio']:checked:after {
 
 #contenedorVideo{
     padding: 15px 50px;
-    width: 100%;
     border: 2px solid transparent;
     font-size: 14px;
     overflow-y: scroll;

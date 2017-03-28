@@ -9,20 +9,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_video_grabar.css">
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_candidato"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
-    <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
 </head>
-
 <body>
 <main>
-    <%@include file="menu.jsp" %>
-
-    <aside onclick="ocultarInfoUsuario()">
+    <%@include file="menu.jsp"%>
+    <input type="hidden" value="Candidato" id="enlaceActivo"/>
+    <aside  onclick="ocultarInfoUsuario()">
         <h4><sptag:message code="label_opciones_video"/></h4>
         <table id="tableOpcionesVideo">
             <tr>
@@ -40,10 +37,10 @@
                     </a>
                 </td>
                 <td><a href="cargar_video.jsp"><sptag:message code="label_cargar_video"/></a></td>
-                </tr>
+            </tr>
         </table>
     </aside>
-    <article>
+    <section>
         <section class="experiment recordrtc" id="medio">
             <h2 class="header">
 
@@ -65,9 +62,11 @@
             </h2>
             <%@include file="userInfo.jsp" %>
         </section>
-    </article>
+    </section>
+
 </main>
 <script type='text/javascript' src="js/grabar_video.js"></script>
-<script type='text/javascript' src="js/formulario.js"></script>
+
 </body>
 </html>
+

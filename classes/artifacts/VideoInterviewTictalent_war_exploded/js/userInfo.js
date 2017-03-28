@@ -18,3 +18,14 @@ function ocultarInfoUsuario() {
     informacionUsuarioMostrada = false;
 }
 
+activarEnlaceCorrecto();
+
+function activarEnlaceCorrecto(){
+    var enlaces = document.querySelectorAll('.linkMenu');
+    for(var i=0;i<enlaces.length;i++){
+        enlaces[i].style.color = 'white';
+    }
+    var activo = document.getElementById('enlaceActivo').value;
+    document.getElementById(activo).style.color = '#00B4DF';
+}
+

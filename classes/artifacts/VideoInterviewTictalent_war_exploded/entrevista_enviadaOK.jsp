@@ -18,6 +18,7 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><img src="images/checked.png" width="80px" height="80px"/>Se ha enviado correctamente</h3><br/><br/>
