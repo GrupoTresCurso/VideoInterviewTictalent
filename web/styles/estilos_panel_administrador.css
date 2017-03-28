@@ -98,7 +98,7 @@ option{
     font-size: 18px;
 }
 
-.select-wrapper {
+/*.select-wrapper {
     position: relative;
     border: 0px;
 }
@@ -118,7 +118,7 @@ option{
     padding-top: 14px;
     padding-bottom: 20px;
     border-left: 2px solid black;
-}
+}*/
 
 
 .botonGuardar {

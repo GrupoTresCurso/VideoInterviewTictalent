@@ -284,32 +284,6 @@ input[type='checkbox']:checked:after {
     background-size: 100%;
 }
 
-.number-wrapper {
-    position: relative;
-}
-
-.number-wrapper:after,
-.number-wrapper:before {
-    position: absolute;
-    right: 1px;
-    width: 1.4em;
-    height: 8px;
-    font-size: 10px;
-    pointer-events: none;
-    background: white;
-}
-
-.number-wrapper:after {
-    content: url("../images/arrow_up.png");
-    top: -0.3em;
-}
-
-.number-wrapper:before {
-    content: url("../images/arrow_down.png");
-    margin-bottom: 13px;
-    bottom: -1.5em;
-}
-
 #propiedades {
     padding: 10px 20px;
     width: 260px;
@@ -450,51 +424,11 @@ select {
     font-family: myFont, "Verdana";
 }
 
-.select-wrapper {
-    position: relative;
-}
-
-.select-wrapper:after {
-    position: absolute;
-    right: 6px;
-    width: 1.4em;
-    height: 1em;
-    font-size: 10px;
-    pointer-events: none;
-    background: white;
-    content: url("../images/arrow_down2.png");
-    margin-top: 1.5px;
-    padding-left: 5px;
-    padding-top: 7px;
-    padding-bottom: 12.5px;
-    border-left: 2px solid black;
-}
-
 input[type="date"] {
     height: 29px;
     width: 180px;
     border: 2px solid black;
     font-family: myFont, "Verdana";
-}
-
-.date-wrapper {
-    position: relative;
-}
-
-.date-wrapper:after {
-    position: absolute;
-    right: 6px;
-    width: 1.4em;
-    height: 1em;
-    font-size: 10px;
-    pointer-events: none;
-    background: white;
-    content: url("../images/arrow_down2.png");
-    margin-top: 1.5px;
-    padding-left: 14px;
-    padding-top: 7px;
-    padding-bottom: 12.5px;
-    border-left: 2px solid black;
 }
 
 input[type="file"] {

@@ -283,7 +283,7 @@ input[type='checkbox']:checked:after {
     background-size: 100%;
 }
 
-.number-wrapper {
+/*.number-wrapper {
     position: relative;
 }
 
@@ -307,7 +307,7 @@ input[type='checkbox']:checked:after {
     content: url("../images/arrow_down.png");
     margin-bottom: 13px;
     bottom: -1.5em;
-}
+}*/
 
 #propiedades {
     padding: 10px 20px;
@@ -440,7 +440,7 @@ select {
     font-family: myFont, "Verdana";
 }
 
-.select-wrapper {
+/*.select-wrapper {
     position: relative;
 }
 
@@ -458,7 +458,7 @@ select {
     padding-top: 7px;
     padding-bottom: 12.5px;
     border-left: 2px solid black;
-}
+}*/
 
 input[type="date"] {
     height: 29px;
@@ -467,7 +467,7 @@ input[type="date"] {
     font-family: myFont, "Verdana";
 }
 
-.date-wrapper {
+/*.date-wrapper {
     position: relative;
 }
 
@@ -485,7 +485,7 @@ input[type="date"] {
     padding-top: 7px;
     padding-bottom: 12.5px;
     border-left: 2px solid black;
-}
+}*/
 
 input[type="file"] {
     display: none;

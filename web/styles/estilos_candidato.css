@@ -156,9 +156,7 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 
-.number-wrapper {
-    position: relative;
-}
+
 
 input[type="number"]{
     width: 80px;
@@ -169,31 +167,6 @@ input[type="number"]{
     box-sizing: border-box;
 }
 
-.number-wrapper:before {
-    content: url("../images/arrow_up.png");
-    position: absolute;
-    top:7px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
-    pointer-events: none;
-    background: white;
-    padding-left: 5px;
-}
-
-.number-wrapper:after {
-    content: url("../images/arrow_down.png");
-    position: absolute;
-    top:14px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
-    pointer-events: none;
-    background: white;
-    padding-left: 5px;
-}
 
 .celdaColumna2{
     padding-left: 55px;
