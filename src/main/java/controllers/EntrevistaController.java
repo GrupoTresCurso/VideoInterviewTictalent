@@ -132,6 +132,9 @@ public class EntrevistaController implements BaseController {
                 Formulario formulario=formularioBusiness.recuperarPorId(intFormulario);
                 listaFormularios.add(formulario);
             }
+        }else{
+            Formulario formulario=new Formulario();
+            listaFormularios.add(formulario);
         }
         if(nombreEntrevista==null){
             nombreEntrevista="Nombre";

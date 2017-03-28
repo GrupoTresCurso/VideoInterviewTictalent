@@ -1,6 +1,8 @@
 package model.dao;
 
 import beans.entities.Entrevista;
+import beans.entities.Formulario;
+import beans.entities.Video;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -48,6 +50,14 @@ public class EntrevistaDAO implements BaseDAO<Entrevista>{
     @Override
     public void delete(int id) {
         Entrevista entrevistaDDBB= manager.find(Entrevista.class,id);
+        List<Formulario> listaFormularios=entrevistaDDBB.getFormularios();
+        List<Video> listaVideos=entrevistaDDBB.getListaVideos();
+        for (Formulario formulario : listaFormularios) {
+            manager.remove(formulario);
+        }
+        for (Video video : listaVideos) {
+            manager.remove(video);
+        }
         manager.remove(entrevistaDDBB);
     }
 }
