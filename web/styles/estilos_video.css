@@ -18,10 +18,8 @@ main{
 section{
     margin-left: 350px;
     font-family: myFont, "Arial Black";
-    width:70%;
-    height: 85%;
+    height: 90%;
     font-size: 18px;
-    padding: 90px auto;
 }
 
 aside{
@@ -51,13 +49,13 @@ aside{
 }
 
 .botonGuardar{
-    padding: 10px 25px;
-    color:white;
+    padding: 20px 30px;
+    color: white;
     background-color: #00B4E0;
-    border:0px;
+    border: 0px;
     font-weight: bold;
-    font-size: 18px;
-    /*box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75)*/
+    font-size: 15px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
     cursor: pointer;
 }
 .botonGuardar:hover{
@@ -96,10 +94,10 @@ img{
 }
 
 input[type="number"]{
-     width: 80px;
-     height: 40px;
-     border: 2px solid #E0E0E0;
-     text-align: right;
+    width: 80px;
+    height: 40px;
+    border: 2px solid #E0E0E0;
+    text-align: right;
     padding: 2px;
 }
 
@@ -111,7 +109,7 @@ input[type="radio"]{
     vertical-align: middle;
 }
 
-/*
+
 input[type='radio']:before {
     width: 17px;
     height: 17px;
@@ -154,7 +152,7 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 
-/*.number-wrapper {
+.number-wrapper {
     position: relative;
 }
 
@@ -178,8 +176,7 @@ input[type='radio']:checked:after {
     content: url("../images/arrow_down.png");
     margin-bottom: 5px;
     bottom: -.5em;
-<<<<<<< HEAD
-}*/
+}
 
 .celdaColumna2{
     padding-left: 55px;
@@ -197,16 +194,14 @@ input[type='radio']:checked:after {
 
 #contenedorVideo{
     padding: 15px 50px;
-    border: 2px solid black;
+    width: 100%;
+    border: 2px solid transparent;
     font-size: 14px;
     overflow-y: scroll;
     background-color: white;
     box-sizing: border-box;
     height: 100%;
-    width: 500px;
-    text-align: center;
     min-height:100% !important;
-    margin: 20px auto;
 }
 
 #contenedorVideo.over {
@@ -262,9 +257,4 @@ aside::-webkit-scrollbar-track {
 aside::-webkit-scrollbar-thumb {
     background-color: #66748C;
     outline: 1px solid black;
-}
-
-#medio{
-    width: 70%;
-    margin: 20px auto;
 }

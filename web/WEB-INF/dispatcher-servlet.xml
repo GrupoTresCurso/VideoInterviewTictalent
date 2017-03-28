@@ -10,7 +10,7 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
         <!--172.16.112.41 -->
-        <property name="url" value="jdbc:mysql://localhost:3306/tictalent?serverTimezone=UTC" />
+        <property name="url" value="jdbc:mysql://localhost:3308/tictalent?serverTimezone=UTC" />
         <property name="username" value="root" />
         <property name="password" value="tictum" />
     </bean>
