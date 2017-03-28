@@ -42,13 +42,14 @@
                                                                                    <sptag:message
                                                                                            code="src_img_icon_delete"/> width="23px"
                                                                                    height="23px"/></a>
+                                    <form name="f1">
                                     <tr>
                                         <c:forEach var="candidato" items="${listaCandidatos}" varStatus="loop">
                                         <td>
                                             <div class="contenedorElemento"
                                                  id="candidatoID_${candidato.idCandidato}"
                                                  draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                                <div class="contenedorIcono">
+                                                <div class="contenedorIcono" id="${loop.index}">
                                                     <c:if test="${candidato.sexo=='hombre'}">
                                                         <img src=
                                                                  <sptag:message
@@ -101,7 +102,7 @@
                                     </tr>
                                     <tr>
                                         </c:forEach>
-                                            <form name="f1">
+
                                             <p><a href="#" id="enviar" />Añadir candidatos</a></p>
                                             </form>
                                     </tr>
@@ -120,7 +121,7 @@
                                     <c:forEach var="entrevista" items="${entrevistas}">
                                     <c:set var="contadorEntrevistas" value="${contadorEntrevistas+1}" scope="page"/>
                                     <td>
-                                        <div class="entrevista" id="${entrevista.idEntrevista}"
+                                        <div class="entrevista" id="entrevistaID${entrevista.idEntrevista}"
                                              onclick="seleccionar(this.className, this.id)" class="botonIndex">
                                             <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
                                             <label>${entrevista.nombreEntrevista}</label>
@@ -137,7 +138,7 @@
                     </div>
                     <div id="contenedor"  ondragenter="return enter(event)" ondragover="return over(event)"
                          ondragleave="return leave(event)" ondrop="return drop(event)">
-                        <input class="botonGuardar" value="Enviar" name="submit" type="button" onclick="window.location.href = 'entrevista_enviadaOK.jsp';" />
+                        <input class="botonGuardar" value="Enviar" name="submit" type="button" onclick="window.location.href = 'entrevista_enviadaOK.jsp';"/>
                     </div>
                 </td>
             </tr>
@@ -190,7 +191,8 @@
             });
             for (i = 0; i < selected.length; i++){
                 var e = $('#candidatoID_[i]');
-                $('#contenedor').append(e);
+                var clonado = e.cloneNode(true);
+                $('#contenedor').append(clonado);
             }
 
             if (selected != '')
@@ -201,6 +203,20 @@
             return false;
         });
     });
+
+    function seleccionar(clase, id) {
+        cambiarFondo(clase, id);
+    }
+    function cambiarFondo(clase, id) {
+        var entrevistas = document.getElementsByClassName(clase);
+        for (var i = 0; i < entrevistas.length; i++) {
+            entrevistas[i].style.backgroundColor = "white";
+        }
+        document.getElementById(id).style.backgroundColor = "#C0C0C0";
+    }
+
+
+
 </script>
 
 </body>

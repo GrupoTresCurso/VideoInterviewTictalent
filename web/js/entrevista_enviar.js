@@ -121,6 +121,7 @@ function drop(e) {
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '420px';
         elementoCopiado.style.height = '51px';
+        elementoCopiado.style.padding= '15px';
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.contenedorElemento')[0].style.display = 'block';
         e.target.appendChild(elementoCopiado);
