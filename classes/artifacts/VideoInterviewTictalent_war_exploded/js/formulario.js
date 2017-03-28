@@ -1,4 +1,6 @@
 var contador = 0;
+var contador2=0;
+var formularioCargado=0;
 var elementoMovido = null;
 var contenedorActual = null;
 var elementoArrastrado = null;
@@ -14,7 +16,17 @@ var filaNuevoElementoPred;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
+comprobarCargado();
 inicializarGenerador();
+inicializarContador2();
+
+function inicializarContador2() {
+    contador2 = document.getElementById("valorCountPredef").value;
+}
+
+function comprobarCargado(){
+    formularioCargado=document.getElementById("formularioCargado").value;
+}
 
 function inicializarGenerador() {
     $("#perteneceFormulario").fadeOut(1000);
@@ -22,21 +34,43 @@ function inicializarGenerador() {
     bloquearSeleccionPorDefecto();
     ocultarElementosPanel();
     ocultarPropiedades();
-    document.getElementById("nuevoForm").style.display = 'none';
 
+    if(formularioCargado==1){
+        document.getElementById("nuevoForm").style.display = 'block';
+        document.getElementById("mensajeDefecto").style.display = 'none';
+        mostrarElementosFormularioCargado();
+    }else{
+        document.getElementById("mensajeDefecto").style.display = 'block';
+        document.getElementById("nuevoForm").style.display = 'none';
+    }
+}
+
+function mostrarElementosFormularioCargado(){
+    var elementosCargados = document.querySelectorAll('.elementoCargado');
+    [].forEach.call(elementosCargados, function(elem) {
+        elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
+        elem.querySelectorAll('.elemento')[0].style.display ='block';
+        elem.querySelectorAll('.capaSuperior')[0].style.display = 'none';
+        elem.style.width = '550px';
+        elem.style.height = '50px';
+        elem.style.marginBottom = '10px';
+        elem.classList.remove("pertenecePanel");
+        elem.classList.add("perteneceFormulario");
+        if (devolverTipoElemento(elem) == "select") {
+            elem.style.height = '37px';
+        }
+        if (devolverTipoElemento(elem) == "area" || devolverTipoElemento(elem) == "checkbox") {
+            elem.style.height = '94px';
+        }
+        if (devolverTipoElemento(elem) == "file") {
+            elem.style.height = '180px';
+        }
+    });
 }
 
 function ajustarTamanioPagina() {
-    //$('main').css('width', ($(window).width()) + 'px');
-    $('nav').css('width', ($(window).width() - 30) + 'px');
-    $('section').css('height', ($(window).height() - 650) + 'px');
-    $('#panelElementosPrincipal').css('height', ($(window).height() - 491) + 'px');
-    $('#contenedor').css('height', ($(window).height() - 92) + 'px');
-    $('#contenedor').css('width', ($(window).width() - 764) + 'px');
-    //$('#logoTictum').css('paddingLeft', ($(window).width() - 1085) + 'px');
-    $('#userInfo').css('display','none');
-    $('#logoTictum').css('paddingLeft', ($(window).width() - 1105) + 'px');
-    $('#userInfo').css('left', ($(window).width() - 142) + 'px');
+    $('#medio').css('width', ($(window).width()-$('#izquierda').width()-$('#derecha').width()) + 'px');
+    $('#contenedor').css('height', ($(window).height()*0.895) + 'px');
 }
 
 function elementoEsPredefinido(elemento) {
@@ -112,14 +146,14 @@ function ocultarElementosPanel() {
             elementos[i].style.display = 'none';
         }
     }
-    document.getElementById("panelElementosBloqueo").style.display = 'none';
+    //document.getElementById("panelElementosBloqueo").style.display = 'none';
 }
 
 //Ocultar propiedades de elementos
 function ocultarPropiedades() {
     document.getElementById("contenedorPropiedadesDefecto").style.display = "block";
     document.getElementById("contenedorEtiqueta").style.display = "none";
-    document.getElementById("contenedorOpciones").style.display = "none";
+    document.getElementById("contenedorOpciones").style.visibility = "hidden";
     document.getElementById("contenedorActivarPredefinido").style.display = "none";
 }
 
@@ -140,7 +174,7 @@ function mostrarPropiedadesNoOpciones() {
 function mostrarPropiedadesOpciones() {
     document.getElementById("contenedorPropiedadesDefecto").style.display = "none";
     document.getElementById("contenedorEtiqueta").style.display = "block";
-    document.getElementById("contenedorOpciones").style.display = "block";
+    document.getElementById("contenedorOpciones").style.visibility = "visible";
     document.getElementById("contenedorActivarPredefinido").style.display = "block";
     var inputs = document.getElementById("contenedorOpciones").querySelectorAll("input");
     [].forEach.call(inputs, function (inp) {
@@ -167,6 +201,14 @@ function seleccionarTipoElementos(id) {
 //Verifica si un elemento pertenece al formulario (ya ha sido soltado)
 function elementoPerteneceAFormulario(elemento) {
     if (elemento.className.indexOf("perteneceFormulario") != -1) {
+        return true;
+    }
+    return false;
+}
+
+//Verifica si un elemento pertenece al panel de elementos predefinidos
+function elementoPerteneceAPanelPredefinido(elemento) {
+    if (elemento.className.indexOf("pertenecePanelPredefinido") != -1) {
         return true;
     }
     return false;
@@ -255,6 +297,12 @@ function seleccionar(id) {
                     opcionesElementoSeleccionado = listaOpciones;
                     etiquetaElementoSeleccionado = elementoLabel.innerHTML;
                     break;
+                case "file":
+                    mostrarPropiedadesNoOpciones();
+                    elementoLabel = elemento.querySelectorAll('label')[0];
+                    etiquetaElementoSeleccionado = elementoLabel.innerHTML;
+                    numOpcionesElementoSeleccinado = 0;
+                    break;
             }
             document.getElementById("etiquetaPropiedades").value = etiquetaElementoSeleccionado;
             document.getElementById("opcionesPropiedades").value = numOpcionesElementoSeleccinado;
@@ -332,23 +380,38 @@ function actualizarEtiqueta() {
         case "texto":
             celdaElemento = tablaElemento.querySelectorAll('tr')[0].querySelectorAll('td')[1];
             var input = celdaElemento.querySelectorAll('input')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             input.placeholder = nuevo;
             break;
         case "area":
             celdaElemento = tablaElemento.querySelectorAll('tr')[0].querySelectorAll('td')[0];
             var textarea = celdaElemento.querySelectorAll('textarea')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             textarea.placeholder = nuevo;
             break;
         case "radio":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
+
             break;
         case "checkbox":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
             elementoLabel.innerHTML = nuevo;
             break;
         case "select":
             elementoLabel = elemento.querySelectorAll('b')[0].querySelectorAll('label')[0];
+            var inputLabelPregunta = elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0];
+            inputLabelPregunta.value = nuevo;
+            elementoLabel.innerHTML = nuevo;
+            break;
+        case "file":
+            elementoLabel = elemento.querySelectorAll('label')[0];
             elementoLabel.innerHTML = nuevo;
             break;
     }
@@ -364,6 +427,11 @@ function cantidadOpciones(min, max) {
 function actualizarOpciones() {
     tipo = devolverTipoElemento(elementoSeleccionado);
     numOpcionesElementoSeleccinado = document.getElementById("opcionesPropiedades").value;
+    var copiaArrayOpciones = opcionesElementoSeleccionado;
+    opcionesElementoSeleccionado = [];
+    for(var i=0; i<numOpcionesElementoSeleccinado; i++){
+        opcionesElementoSeleccionado[i] = copiaArrayOpciones[i];
+    }
     var elemento = elementoSeleccionado.querySelectorAll('.elemento')[0];
     var table = null;
     var select = null;
@@ -411,7 +479,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -423,7 +491,7 @@ function actualizarOpciones() {
                         celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>" + opcionesElementoSeleccionado[i] + "</label>";
                     } else {
-                        celda.innerHTML = "<input type='radio' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
+                        celda.innerHTML = "<input type='checkbox' name='opcion' id='opcionCB" + (i + 1) + "'/>" +
                             "<label for='opcionCB" + (i + 1) + "' class='labelOpcionCB" + (i + 1) + " opcion'>Opción" + (i + 1) + "</label>";
                     }
                 }
@@ -446,12 +514,15 @@ function actualizarOpciones() {
             }
             break;
     }
+    var inputOpciones = elementoSeleccionado.querySelectorAll('.inputOpciones')[0];
+    inputOpciones.value = opcionesElementoSeleccionado.toString();
 }
 
 //Actualizar el valor de una opcion de algún elemento del formulario con un posicion determinada
 function actualizarOpcionValor(position) {
     var nuevo = document.getElementById("inputOpcion" + (position + 1)).value;
     opcionesElementoSeleccionado[position] = nuevo;
+    //alert(opcionesElementoSeleccionado.toString());
     tipo = devolverTipoElemento(elementoSeleccionado);
     switch (tipo) {
         case "radio":
@@ -469,7 +540,8 @@ function actualizarOpcionValor(position) {
             }
             break;
     }
-
+    var inputOpciones = elementoSeleccionado.querySelectorAll('.inputOpciones')[0];
+    inputOpciones.value = opcionesElementoSeleccionado.toString();
 }
 
 //Crear el número de opciones (label e input) de acuerdo al numOpcionesElementoSeleccinado en propiedades
@@ -495,14 +567,18 @@ function crearOpciones() {
 
 //Agrega un elemento del formulario al panel de elementos como predefinido
 function agregarAPredefinidos() {
+
     numElementosPredefinidos = cantidadElementosPredefinidos();
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
+
+    /*
     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
     elementoPredefinido.style.width = '90px';
     elementoPredefinido.style.height = '90px';
     elementoPredefinido.style.marginBottom = '0px';
     elementoPredefinido.style.boxShadow = '';
     elementoPredefinido.classList.add("pertenecePanel");
+    elementoPredefinido.classList.add("pertenecePanelPredefinido");
     elementoPredefinido.classList.remove("perteneceFormulario");
     elementoPredefinido.querySelectorAll('.contenedorIcono')[0].style.display = 'block';
     elementoPredefinido.querySelectorAll('.elemento')[0].style.display = 'none';
@@ -521,10 +597,16 @@ function agregarAPredefinidos() {
         celda.innerHTML = elementoPredefinido.outerHTML;
     }
     asignarEtiquetaElementoPred();
-    ocultarPropiedades();
+    ocultarPropiedades();*/
+    var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
+    inputFavorito.value = '1';
+    alert("AGREGANDO A PREDEFINIDOS");
+    $('a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
+    $('b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
+    $('c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
 }
 
-
+/*
 var informacionUsuarioMostrada = false;
 function mostrarOcultarInfoUsuario() {
     if(!informacionUsuarioMostrada){
@@ -539,7 +621,7 @@ function mostrarOcultarInfoUsuario() {
 function ocultarInfoUsuario() {
     $('#userInfo').css('display','none');
     informacionUsuarioMostrada = false;
-}
+}*/
 
 /****************************DRAG AND DROP***************************/
 
@@ -586,9 +668,13 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        alert(elementoCopiado.id);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="texto"){
-            elementoCopiado.id = "elemento" + contador;
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
+            || elementoCopiado.id=="file"){
+            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
+        }else {
+            var aux=elementoCopiado.id.split("_");
+            var id=aux[1];
+            elementoCopiado.id="p"+"_"+contador+"_"+id;
         }
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '550px';
@@ -602,6 +688,10 @@ function drop(e) {
         if (devolverTipoElemento(elementoMovido) == "area" || devolverTipoElemento(elementoMovido) == "checkbox") {
             elementoCopiado.style.height = '94px';
         }
+        if (devolverTipoElemento(elementoMovido) == "file") {
+            elementoCopiado.style.height = '180px';
+        }
+
         elementoCopiado.querySelectorAll('.contenedorIcono')[0].style.display = 'none';
         elementoCopiado.querySelectorAll('.elemento')[0].style.display = 'block';
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
@@ -620,41 +710,28 @@ function drop(e) {
 }
 
 function agregarCampos(elementoCopiado){
-    alert(elementoCopiado.id);
     var aux=elementoCopiado.id.split("_");
     var tipo=aux[0];
-    var id=aux[1];
+    var id=aux[2];
     if(tipo==="p"){
-        campo = '<form:input type="hidden" size="20" name="id[].id" value="'+id+'"/>';
-        $("#nuevoFormulario").append(campo);
+        campo = '<input type="hidden" size="20" name="identificadoresDDBB['+contador2+'].id" value="'+id+'"/>';
+        $("#"+elementoCopiado.id+"").append(campo);
     }else{
-        campo = '<form:input type="hidden" name="pregunta[].labelPregunta" value="asd"/>';
-        campo2 = '<form:input type="hidden" name="pregunta[].tipoPregunta" value="asd"/>';
-        campo3 = '<form:input type="hidden" name="pregunta[].opciones" value="asd"/>';
-        $("#nuevoFormulario").append(campo);
-        $("#nuevoFormulario").append(campo2);
-        $("#nuevoFormulario").append(campo3);
+        campo = '<input class="inputLabelPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].labelPregunta" value="X"/>';
+        campo2 = '<input class="inputTipoPregunta" type="hidden" name="preguntasSinDDBB['+contador2+'].tipoPregunta" value="'+tipo+'"/>';
+        campo3 = '<input class="inputOpciones" type="hidden" name="preguntasSinDDBB['+contador2+'].opciones" value="X"/>';
+        campo4 = '<input class="inputFavorito" type="hidden" name="preguntasSinDDBB['+contador2+'].favorito" value="0"/>';
+        $("#"+elementoCopiado.id+"").append(campo);
+        $("#"+elementoCopiado.id+"").append(campo2);
+        $("#"+elementoCopiado.id+"").append(campo3);
+        $("#"+elementoCopiado.id+"").append(campo4);
     }
     campo = '';
     campo2 = '';
     campo3 = '';
+    campo4 = '';
+    contador2++;
 }
-
-/*
-function agregarCampos(elementoCopiado){
-    var aux=elementoCopiado.id.split("_");
-    var tipo=aux[0];
-    var id=aux[1];
-    if(tipo==="video"){
-        campo = '<input type="hidden" size="20" name="videos[]" value="'+id+'"/>';
-    }else if(tipo==="formulario"){
-        campo = '<input type="hidden" size="20" name="formularios[]" value="'+id+'"/>';
-    }else {
-        campo = '<input type="hidden" size="20" name="candidatos[]" value="'+id+'"/>';
-    }
-    $("#contenedorEntrevista").append(campo);
-    campo = '';
-}*/
 
 //Funcionamiento del drag and drop de la papelera
 
@@ -674,6 +751,15 @@ function overPapelera(e) {
             return false;
         }
     }
+
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        document.getElementById("imagenPapelera").src = "images/papelera_open.png";
+        e.dataTransfer.dropEffect = 'move';
+        var id = e.target.id;
+        if (id == elementoMovido.parentNode.id) {
+            return false;
+        }
+    }
 }
 
 function dropPapelera(e) {
@@ -690,6 +776,14 @@ function dropPapelera(e) {
         document.getElementById("imagenPapelera").src = "images/papelera_close.png";
         ocultarPropiedades();
         deseleccionar();
+    }
+    if (elementoPerteneceAPanelPredefinido(elementoMovido)) {
+        $("#" + elementoMovido.id).fadeOut(600);
+        setTimeout(function () {
+                elementoMovido.parentNode.removeChild(elementoMovido); // Elimina el elemento
+            },
+            600);
+        document.getElementById("imagenPapelera").src = "images/papelera_close.png";
     }
 
 }

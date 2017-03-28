@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import utils.UtilHash;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller("UsuarioController")
@@ -23,7 +25,7 @@ public class UsuarioController implements BaseController {
     @RequestMapping(value = "loginUsuario.do", method = RequestMethod.POST)
     public String loginUsuario(@RequestParam("nombreUsuario") String nombreUsuario,
                                @RequestParam("passwordUsuario") String passwordUsuario,
-                                HttpSession session){
+                                HttpSession session, HttpServletResponse response){
         List<Usuario> usuarios = usuarioBusiness.recuperarTodos();
 
         if(usuarios.size()>0){
@@ -33,7 +35,12 @@ public class UsuarioController implements BaseController {
                     if(usuario.isAdministrador()){
                         return PANEL_ADMIN;
                     } else{
-                        return PAGINA_PRINCIPAL;
+                        try {
+                            response.sendRedirect( "recuperarEntrevistasPrincipal.do");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        return "";
                     }
                 }
             }

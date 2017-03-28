@@ -78,7 +78,7 @@ public class FormularioController implements BaseController {
     }
 
     @RequestMapping(value = "/eliminarFormulario.do",method = RequestMethod.GET)
-    public void eliminarCandidato(@RequestParam(value="idFormulario",required=true) int id, HttpServletResponse response){
+    public void eliminarFor(@RequestParam(value="idFormulario",required=true) int id, HttpServletResponse response){
         formularioBusiness.borrarPorId(id);
         try {
             response.sendRedirect("/recuperarFormularios.do");

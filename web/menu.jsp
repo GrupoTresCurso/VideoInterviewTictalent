@@ -2,19 +2,19 @@
 <nav>
     <table id="tableMenu">
         <tr>
-            <td onclick="ocultarInfoUsuario()"><a href="principal.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Principal" href="${pageContext.request.contextPath}/recuperarEntrevistasPrincipal.do" class="linkMenu">
                 <sptag:message code="menu_opc1"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarCandidatos.do" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Candidato" href="${pageContext.request.contextPath}/recuperarCandidatos.do" class="linkMenu">
                 <sptag:message code="menu_opc2"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="${pageContext.request.contextPath}/recuperarFormularios.do" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Formulario" href="${pageContext.request.contextPath}/recuperarFormularios.do" class="linkMenu">
                 <sptag:message code="menu_opc3"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="entrevista_index.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Entrevista" href="entrevista_index.jsp" class="linkMenu">
                 <sptag:message code="menu_opc4"/>
             </a></td>
-            <td onclick="ocultarInfoUsuario()"><a href="video_index.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Video" href="video_index.jsp" class="linkMenu">
                 <sptag:message code="menu_opc5"/>
             </a></td>
             <td id="logoTictum" onclick="ocultarInfoUsuario()"><img src=<sptag:message code="src_img_logo"/> width="173px" height="60px"/></td>

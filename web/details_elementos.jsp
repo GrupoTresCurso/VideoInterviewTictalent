@@ -41,8 +41,7 @@
                             <tr>
                                 <td>
                                     <textarea rows="3" cols="50"
-                                            placeholder="<sptag:message code="placeholder_label_elemento"/>">
-                                    </textarea>
+                                            placeholder="<sptag:message code="placeholder_label_elemento"/>"></textarea>
                                 </td>
                             </tr>
                         </table>

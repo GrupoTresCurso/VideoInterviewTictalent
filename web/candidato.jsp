@@ -18,6 +18,7 @@
 <body>
 <main>
     <%@include file="menu.jsp"%>
+    <input type="hidden" value="Candidato" id="enlaceActivo"/>
     <aside  onclick="ocultarInfoUsuario()">
         <h4><sptag:message code="label_candidatos"/></h4><br/>
         <div id="buscarCandidato">

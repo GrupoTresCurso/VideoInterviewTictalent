@@ -1,7 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 @font-face {
@@ -15,62 +15,27 @@
 
 body {
     background-color: #F2F2F2;
+    box-sizing: border-box;
+    min-width: 100%!important;
 }
 
 main {
-    padding: 0px;
-    margin: 0px;
+    width: 100%;
+    box-sizing: border-box;
     font-family: myFont, "Verdana";
-    min-height: 100% !important;
-}
-
-nav {
-    height: 70px;
-    width: 90%;
-    background: black;
-    list-style-type: none;
-    padding: 0px 30px;
-    padding-right: 0px !important;
-    padding-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
-    /*box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);*/
 }
 
 section{
     padding: 10px auto;
-    width: 99%;
-
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
 }
 
 #tableMenu td {
     padding: 10px 0px;
     padding-right: 70px;
     vertical-align: middle;
-}
-
-#logoTictum {
-    padding-top: 0px !important;
-    padding-right: 0px !important;
-}
-
-
-.linkMenu {
-    text-decoration: none;
-    color: white;
-}
-
-.linkActual {
-    color: #00B4DF;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-
-
-@font-face {
-    font-family: myFont;
-    src: url(../font/Arvo-Regular.ttf);
 }
 
 .tableElementoText {
@@ -126,7 +91,7 @@ select {
     width: 280px;
     border: 2px solid black;
     font-size: 18px;
-    font-family: myFont, "Arial Black";
+    font-family: myFont, "Verdana";
 }
 
 option{
@@ -169,11 +134,18 @@ option{
 }
 
 #contenedorPrincipal{
-    margin: 76px auto;
+    height: 80%;
+    width: 100%;
     text-align: center;
-    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
+}
+
+#contenedorCentrado{
+    width: 640px;
+    height: 350px;
+    margin: 76px auto;
+    padding: 50px;
     background-color: white;
-    padding: 40px 0px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.75);
 }
 
 #tableFormulario{
@@ -183,7 +155,6 @@ option{
 label{
     font-size: 18px;
 }
-
 
 #columna2{
     vertical-align: top;
