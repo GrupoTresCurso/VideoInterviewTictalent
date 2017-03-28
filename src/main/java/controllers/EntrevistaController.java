@@ -43,6 +43,16 @@ public class EntrevistaController implements BaseController {
     private BaseUtilBusiness baseUtilBusiness;
 
 
+    @RequestMapping(value = "/nuevaEntrevista.do", method = RequestMethod.GET)
+    public void nuevaEntrevista(HttpSession session,HttpServletResponse response) {
+        session.setAttribute("entrevista",null);
+        try {
+            response.sendRedirect("/recuperarVideosFormularios.do");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @RequestMapping(value = "/recuperarEntrevistas.do", method = RequestMethod.GET)
     public String recuperarEntrevistas(HttpSession session) {
         ArrayList<Entrevista> listaEntrevistas = (ArrayList<Entrevista>) entrevistaBusiness.recuperarTodos();
@@ -94,7 +104,6 @@ public class EntrevistaController implements BaseController {
         List<Video> videosPreguntas = baseUtilBusiness.recuperarPorTipo("videoPregunta");
         List<Video> videosTransiciones = baseUtilBusiness.recuperarPorTipo("videoTransicion");
         List<Formulario> formularios = formularioBusiness.recuperarTodos();
-        List<Candidato> candidatos=candidatoBusiness.recuperarTodos();
         session.setAttribute("videosIntroductorios", videosIntroductorios);
         session.setAttribute("videosPreguntas", videosPreguntas);
         session.setAttribute("videosTransiciones", videosTransiciones);
@@ -123,6 +132,9 @@ public class EntrevistaController implements BaseController {
                 Formulario formulario=formularioBusiness.recuperarPorId(intFormulario);
                 listaFormularios.add(formulario);
             }
+        }else{
+            Formulario formulario=new Formulario();
+            listaFormularios.add(formulario);
         }
         if(nombreEntrevista==null){
             nombreEntrevista="Nombre";

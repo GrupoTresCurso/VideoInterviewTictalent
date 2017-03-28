@@ -95,14 +95,19 @@ public class FormularioController implements BaseController {
 
         if(listaPreguntasSinDDBB!=null){
             for (Pregunta pregunta : listaPreguntasSinDDBB) {
-                preguntaBusiness.crearNuevo(pregunta);
-                listaPreguntas.add(pregunta);
+                if(pregunta.getLabelPregunta()==null&&pregunta.getOpciones()==null&&pregunta.getTipoPregunta()==null){
+                }else {
+                    preguntaBusiness.crearNuevo(pregunta);
+                    listaPreguntas.add(pregunta);
+                }
             }
         }
         if(listIdentificadores!=null){
             for (ID id : listIdentificadores) {
                 Pregunta pregunta=preguntaBusiness.recuperarPorId(id.getId());
-                listaPreguntas.add(pregunta);
+                Pregunta preguntaCopia=new Pregunta(pregunta.getLabelPregunta(),pregunta.getTipoPregunta(),pregunta.getOpciones(),pregunta.isFavorito());
+                preguntaBusiness.crearNuevo(preguntaCopia);
+                listaPreguntas.add(preguntaCopia);
             }
         }
         if(idFormulario!=null){

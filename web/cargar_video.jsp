@@ -18,7 +18,7 @@
 </head>
 <body>
 <main>
-    <%@include file="menu.jsp" %>
+    <%@include file="menu.jsp"%>
     <input type="hidden" value="Video" id="enlaceActivo"/>
     <aside onclick="ocultarInfoUsuario()">
         <h4><sptag:message code="label_opc_video"/></h4>
@@ -75,6 +75,7 @@
                     </button>
             </form>
         </div>
+        <%@include file="userInfo.jsp"%>
     </section>
 
 </main>

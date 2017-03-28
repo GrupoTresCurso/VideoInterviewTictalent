@@ -578,32 +578,32 @@ function agregarAPredefinidos() {
     elementoPredefinido = elementoSeleccionado.cloneNode(true);
 
     /*
-    elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
-    elementoPredefinido.style.width = '90px';
-    elementoPredefinido.style.height = '90px';
-    elementoPredefinido.style.marginBottom = '0px';
-    elementoPredefinido.style.boxShadow = '';
-    elementoPredefinido.classList.add("pertenecePanel");
-    elementoPredefinido.classList.add("pertenecePanelPredefinido");
-    elementoPredefinido.classList.remove("perteneceFormulario");
-    elementoPredefinido.querySelectorAll('.contenedorIcono')[0].style.display = 'block';
-    elementoPredefinido.querySelectorAll('.elemento')[0].style.display = 'none';
-    elementoPredefinido.querySelectorAll('.elemento')[0].classList.add("nuevoElementoPredefinido");
-    elementoPredefinido.querySelectorAll('.capaSuperior')[0].style.display = 'block';
-    filaNuevoElementoPred = Math.floor(numElementosPredefinidos / 2);
-    var table = document.getElementById("tableElementosPredefinidos");
-    var celda = null;
-    if (numElementosPredefinidos % 2 != 0) {
-        var row = document.getElementById("rowP" + (filaNuevoElementoPred + 1));
-        row.innerHTML += "<td>" + elementoPredefinido.outerHTML + "</td>";
-    } else {
-        var row = table.insertRow(filaNuevoElementoPred);
-        row.id = "rowP" + (filaNuevoElementoPred + 1);
-        celda = row.insertCell(0);
-        celda.innerHTML = elementoPredefinido.outerHTML;
-    }
-    asignarEtiquetaElementoPred();
-    ocultarPropiedades();*/
+     elementoPredefinido.id = "elementoP" + (numElementosPredefinidos + 1);
+     elementoPredefinido.style.width = '90px';
+     elementoPredefinido.style.height = '90px';
+     elementoPredefinido.style.marginBottom = '0px';
+     elementoPredefinido.style.boxShadow = '';
+     elementoPredefinido.classList.add("pertenecePanel");
+     elementoPredefinido.classList.add("pertenecePanelPredefinido");
+     elementoPredefinido.classList.remove("perteneceFormulario");
+     elementoPredefinido.querySelectorAll('.contenedorIcono')[0].style.display = 'block';
+     elementoPredefinido.querySelectorAll('.elemento')[0].style.display = 'none';
+     elementoPredefinido.querySelectorAll('.elemento')[0].classList.add("nuevoElementoPredefinido");
+     elementoPredefinido.querySelectorAll('.capaSuperior')[0].style.display = 'block';
+     filaNuevoElementoPred = Math.floor(numElementosPredefinidos / 2);
+     var table = document.getElementById("tableElementosPredefinidos");
+     var celda = null;
+     if (numElementosPredefinidos % 2 != 0) {
+     var row = document.getElementById("rowP" + (filaNuevoElementoPred + 1));
+     row.innerHTML += "<td>" + elementoPredefinido.outerHTML + "</td>";
+     } else {
+     var row = table.insertRow(filaNuevoElementoPred);
+     row.id = "rowP" + (filaNuevoElementoPred + 1);
+     celda = row.insertCell(0);
+     celda.innerHTML = elementoPredefinido.outerHTML;
+     }
+     asignarEtiquetaElementoPred();
+     ocultarPropiedades();*/
     var inputFavorito = elementoSeleccionado.querySelectorAll('.inputFavorito')[0];
     inputFavorito.value = '1';
     alert("AGREGANDO A PREDEFINIDOS");
@@ -613,21 +613,21 @@ function agregarAPredefinidos() {
 }
 
 /*
-var informacionUsuarioMostrada = false;
-function mostrarOcultarInfoUsuario() {
-    if(!informacionUsuarioMostrada){
-        $('#userInfo').css('display','block');
-        informacionUsuarioMostrada = true;
-    }else{
-        $('#userInfo').css('display','none');
-        informacionUsuarioMostrada = false;
-    }
-}
+ var informacionUsuarioMostrada = false;
+ function mostrarOcultarInfoUsuario() {
+ if(!informacionUsuarioMostrada){
+ $('#userInfo').css('display','block');
+ informacionUsuarioMostrada = true;
+ }else{
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }
+ }
 
-function ocultarInfoUsuario() {
-    $('#userInfo').css('display','none');
-    informacionUsuarioMostrada = false;
-}*/
+ function ocultarInfoUsuario() {
+ $('#userInfo').css('display','none');
+ informacionUsuarioMostrada = false;
+ }*/
 
 /****************************DRAG AND DROP***************************/
 
@@ -674,12 +674,11 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
+
         var aux=elementoCopiado.id.split("_");
         var tipo=aux[0];
         var id=aux[1];
         if(tipo=="p"){
-            var aux=elementoCopiado.id.split("_");
-            var id=aux[1];
             elementoCopiado.id="p"+"_"+contador+"_"+id;
         }else {
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
