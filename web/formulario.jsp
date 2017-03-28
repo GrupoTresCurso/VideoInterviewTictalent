@@ -48,10 +48,10 @@
                                            action="${pageContext.request.contextPath}/crearFormulario.do" method="GET"
                                            modelAttribute="preguntaForm">
                                     <c:if test="${formulario.nombreFormulario == null}">
-                                        <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35" required/>
                                     </c:if>
                                     <c:if test="${formulario.nombreFormulario != null}">
-                                        <input type="text" name="nombreFormulario" class="nombreFormulario" value="${formulario.nombreFormulario}" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35"/>
+                                        <input type="text" name="nombreFormulario" class="nombreFormulario" value="${formulario.nombreFormulario}" placeholder=<sptag:message code="placeholder_nombre_formulario"/> size="35" required/>
                                     </c:if>
 
                                     <button type="submit" class="botonGuardar"><sptag:message

@@ -562,9 +562,9 @@ function crearOpciones() {
         var celda2 = row.insertCell(1);
         celda1.innerHTML = "Opción " + (i + 1) + ": ";
         if (opcionesElementoSeleccionado[i] != null) {
-            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='" + opcionesElementoSeleccionado[i] + "'/>"
+            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='" + opcionesElementoSeleccionado[i] + "'required/>"
         } else {
-            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='Opcion" + (i+1) + "'/>"
+            celda2.innerHTML = "<input type='text' id='inputOpcion" + (i + 1) + "'onblur='actualizarOpcionValor(" + i + ")' size='20' value='Opcion" + (i+1) + "'required/>"
         }
     }
     document.getElementById("etiquetaPropiedades").value = etiquetaElementoSeleccionado;

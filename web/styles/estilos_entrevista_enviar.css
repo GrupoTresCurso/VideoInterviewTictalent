@@ -264,14 +264,14 @@ input[type='checkbox']:checked:after {
 .contenedorElemento {
     position: relative;
     cursor: move;
-    width: 250px;
+    width: 320px;
     height: 90px;
 }
 
 .contenedorIcono {
-    text-align: center;
+    text-align: left;
     border: 2px solid grey;
-    width: 200px;
+    width: 280px;
     top: 0px;
     position: absolute;
     font-size: 13px;

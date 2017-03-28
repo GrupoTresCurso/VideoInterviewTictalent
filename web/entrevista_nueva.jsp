@@ -854,26 +854,26 @@
                         <div id="contenedorOpciones">
                             <div class="elementoForm">
                                 <c:if test="${entrevista.nombreEntrevista == null}">
-                                    <input type="text" name="nombreEntrevista" class="nombreEntrevista" placeholder="Nombre de la entrevista"/></br>
+                                    <input type="text" name="nombreEntrevista" class="nombreEntrevista" placeholder="Nombre de la entrevista" required/></br>
                                 </c:if>
                                 <c:if test="${entrevista.nombreEntrevista != null}">
-                                    <input type="text" name="nombreEntrevista" class="nombreEntrevista" value="${entrevista.nombreEntrevista}" placeholder="Nombre de la entrevista" size="35"/></br>
+                                    <input type="text" name="nombreEntrevista" class="nombreEntrevista" value="${entrevista.nombreEntrevista}" placeholder="Nombre de la entrevista" size="35" required/></br>
                                 </c:if>
                             </div>
                             <div class="elementoForm">
                                 <c:if test="${entrevista.nombrePuesto == null}">
-                                    <input type="text" name="nombrePuesto" class="nombrePuesto" placeholder="Nombre del puesto"/></br>
+                                    <input type="text" name="nombrePuesto" class="nombrePuesto" placeholder="Nombre del puesto" required/></br>
                                 </c:if>
                                 <c:if test="${entrevista.nombrePuesto != null}">
-                                    <input type="text" name="nombrePuesto" class="nombrePuesto" value="${entrevista.nombrePuesto}" placeholder="Nombre del puesto" size="35"/></br>
+                                    <input type="text" name="nombrePuesto" class="nombrePuesto" value="${entrevista.nombrePuesto}" placeholder="Nombre del puesto" size="35" required/></br>
                                 </c:if>
                             </div>
                             <div class="elementoForm">
                                 <c:if test="${entrevista.mensaje == null}">
-                                    <input type="text" name="mensaje" class="mensaje" placeholder="Mensaje final"/></br>
+                                    <input type="text" name="mensaje" class="mensaje" placeholder="Mensaje final" required/></br>
                                 </c:if>
                                 <c:if test="${entrevista.mensaje != null}">
-                                    <input type="text" name="mensaje" class="mensaje" value="${entrevista.mensaje}" placeholder="Mensaje final" size="35"/></br>
+                                    <input type="text" name="mensaje" class="mensaje" value="${entrevista.mensaje}" placeholder="Mensaje final" size="35" required/></br>
                                 </c:if>
                             </div>
                             <div class="elementoForm">

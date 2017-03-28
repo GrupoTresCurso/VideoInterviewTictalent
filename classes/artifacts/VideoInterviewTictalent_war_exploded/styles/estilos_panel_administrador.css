@@ -98,8 +98,11 @@ option{
     font-size: 18px;
 }
 
+/*.select-wrapper {
+=======
 /*
 .select-wrapper {
+>>>>>>> 87b2fef814dd4b26c3b00b15a5c712ab16bd6748
     position: relative;
     border: 0px;
 }
@@ -119,8 +122,8 @@ option{
     padding-top: 14px;
     padding-bottom: 20px;
     border-left: 2px solid black;
-}
-*/
+<<<<<<< HEAD
+}*/
 
 .botonGuardar {
     background-color: #00B4DF;

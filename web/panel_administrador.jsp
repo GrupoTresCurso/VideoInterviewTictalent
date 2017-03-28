@@ -38,7 +38,7 @@
                                             </td>
                                             <td>
                                                 <input type="text" name="nombreUsuario" id="nombreUsuario"
-                                                       placeholder=<sptag:message code="placeholder_nombre"/> size="22" tabindex="1"/>
+                                                       placeholder=<sptag:message code="placeholder_nombre"/> size="22" tabindex="1" required/>
                                             </td>
                                         </tr>
                                     </table>
@@ -68,7 +68,7 @@
                                             </td>
                                             <td>
                                                 <input type="password" name="password" id="passwordUsuario"
-                                                       placeholder=<sptag:message code="placeholder_password"/> size="22" tabindex="2"/>
+                                                       placeholder=<sptag:message code="placeholder_password" /> size="22" tabindex="2" required/>
                                             </td>
                                         </tr>
                                     </table>

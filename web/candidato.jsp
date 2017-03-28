@@ -75,7 +75,7 @@
                                                     <td class="celda">
                                                         <input type="text" name="nombre" id="nombre" size="30"
                                                                placeholder=<sptag:message code="placeholder_nombre"/>
-                                                                       value="${candidato.nombre}"/>
+                                                                       value="${candidato.nombre}" required/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -98,7 +98,7 @@
                                                     <td class="celda">
                                                         <input type="text" name="apellidos" id="apellidos" size="30"
                                                                placeholder=<sptag:message code="placeholder_apellidos"/>
-                                                                       value="${candidato.apellidos}"/>
+                                                                       value="${candidato.apellidos}" required/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -115,7 +115,7 @@
                                                     </td>
                                                     <td class="celda">
                                                         <input type="text" name="dni" id="dni"
-                                                               placeholder=<sptag:message code="placeholder_dni"/> value="${candidato.dni}"/>
+                                                               placeholder=<sptag:message code="placeholder_dni"/> value="${candidato.dni}" required/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -178,7 +178,7 @@
                                                     <td class="celda">
                                                         <input type="text" name="email" id="email"
                                                                placeholder=<sptag:message code="placeholder_email"/> size="30"
-                                                               value="${candidato.email}"/>
+                                                               value="${candidato.email}" required/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -194,7 +194,7 @@
                                                     <td class="celda">
                                                         <input type="text" name="numeroTelefono" id="telefono"
                                                                placeholder=<sptag:message code="placeholder_telefono"/>
-                                                                       value="${candidato.numeroTelefono}"/>
+                                                                       value="${candidato.numeroTelefono}" required/>
                                                     </td>
                                                 </tr>
                                             </table>
