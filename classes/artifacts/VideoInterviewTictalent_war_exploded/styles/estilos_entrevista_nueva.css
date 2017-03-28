@@ -372,7 +372,7 @@ input[type='checkbox']:checked:after {
     background-color: white;
 }
 
-#detailsF>table,#detailsVI>table,#detailsVP>table{
+#detailsF>table,#detailsVI>table,#detailsVT>table,#detailsVP>table{
     border-spacing: 0px 5px;
     margin: 5px 0px;
 }
@@ -501,23 +501,15 @@ input[type="file"] {
     display: none;
 }
 
-#labelAddFile {
-    clear: left;
-    display: inline-block;
-    border: 2px solid black;
-    height: 25px;
-    width: 250px;
-    margin-left: 10px;
-    vertical-align: middle;
-    padding-top: 4px;
+.labelAddFile {
+    text-align: center;
+    height: 120px;
+    width: 450px;
 }
 
-#labelAddFile table tr td {
-    height: 10px;
-}
-
-.celdaArchivo {
-    width: 210px;
+.contenedorAdjuntos{
+    text-align: center;
+    padding: 5px 5px;
 }
 
 details > table {
@@ -745,5 +737,14 @@ hr {
     padding: 15px 20px;
     box-sizing: border-box;
     margin-bottom: 40px;
+
 }
 
+.elementoVideo{
+    padding: 0px;
+    text-align: center;
+}
+
+#addfile{
+    display: none;
+}

@@ -87,9 +87,8 @@ section{
     border-spacing: 40px 5px;
 }
 
-#botonNuevo{
+.botonNuevo{
     width: 230px;
-
 }
 
 .formulario{

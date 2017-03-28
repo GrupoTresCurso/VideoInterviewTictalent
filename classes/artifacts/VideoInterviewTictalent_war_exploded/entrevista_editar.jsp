@@ -18,32 +18,42 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3>Gestionar Entrevista</h3>
-            <table id="tableEntrevistas">
-                <c:set var="contadorEntrevistas" value="0" scope="page"/>
-                <tr>
-                    <c:forEach var="entrevista" items="${listaEntrevistas}">
-                        <c:set var="contadorEntrevistas" value="${contadorEntrevistas+1}" scope="page"/>
-                        <td>
-                            <div class="entrevista" id="${entrevista.idEntrevista}"
-                                 onclick="seleccionar(this.className, this.id)">
-                                <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
-                                <label>${entrevista.nombreEntrevista}</label>
-                                <a href="<c:url value="${pageContext.request.contextPath}/eliminarEntrevista.do">
-                                  <c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>">
-                                    <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
-                                </a>
-                            </div>
-                        </td>
-                        <c:if test="${contadorEntrevistas%3 == 0}">
-                            </tr>
-                            <tr>
-                        </c:if>
-                    </c:forEach>
-                </tr>
-            </table>
+            <c:if test="${fn:length(listaEntrevistas)==0}">
+                <br/><br/>
+                <label>No hay entrevistas creadas.</label>
+            </c:if>
+            <c:if test="${fn:length(listaEntrevistas)>0}">
+                <table id="tableEntrevistas">
+                    <c:set var="contadorEntrevistas" value="0" scope="page"/>
+                    <tr>
+                        <c:forEach var="entrevista" items="${listaEntrevistas}">
+                            <c:set var="contadorEntrevistas" value="${contadorEntrevistas+1}" scope="page"/>
+                            <td>
+                                <div class="entrevista" id="${entrevista.idEntrevista}">
+                                    <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
+                                    <label class="labelDatosEntrevista">
+                                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarEntrevista.do"><c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>"
+                                        title="Mostrar datos">${entrevista.nombreEntrevista}</a>
+                                    </label>
+
+                                    <a href="<c:url value="${pageContext.request.contextPath}/eliminarEntrevista.do">
+                                      <c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>">
+                                        <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
+                                    </a>
+                                </div>
+                            </td>
+                            <c:if test="${contadorEntrevistas%3 == 0}">
+                                </tr>
+                                <tr>
+                            </c:if>
+                        </c:forEach>
+                    </tr>
+                </table>
+            </c:if>
         </div>
         <%@include file="userInfo.jsp" %>
     </section>

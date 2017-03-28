@@ -38,14 +38,16 @@ img{
 }
 
 .entrevista{
-    padding: 20px 20px;
-    width: 200px;
+    padding: 15px;
+    min-width: 250px !important;
+    height: 60px;
     background: white;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
     margin-top: 15px;
     cursor: pointer;
     margin-right: 30px;
     text-align: center;
+    display: inline-block;
 }
 
 .entrevista:hover{
@@ -60,7 +62,7 @@ img{
     position: absolute;
     top: 70%;
     left: 0px;
-    padding: 40px;
+    padding: 25px 40px;
     box-sizing: border-box;
     
 }
@@ -83,5 +85,20 @@ img{
 }
 
 label{
+    color: black;
+    word-wrap: break-word;
+}
+
+#listadoEntrevistas>label{
+    color:#00B4DF;
+}
+
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+a:hover{
     color:#00B4DF;
 }

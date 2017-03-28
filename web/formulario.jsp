@@ -323,6 +323,8 @@
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
+                alert(devolverTipoElemento(elementoSeleccionado));
+
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
                 $('#c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
@@ -363,25 +365,25 @@
                             if(lista[i].tipoPregunta=='text'){
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='texto contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_text.png' width='55px' height='55px'><br/>"+
-                                                "<label>"+lista[i].labelPregunta+"</label>"+
-                                            "</div>"+
-                                            "<div class='elemento elementoPredefinido elementoAjax'>"+
-                                                "<table class='tableElementoText'>"+
-                                                    "<tr>"+
-                                                        "<td class='celda'>"+
-                                                            "<img src='images/user.png' width='30px' height='30px'>"+
-                                                        "</td>"+
-                                                        "<td class='celda'>"+
-                                                            "<input type='text' placeholder='"+lista[i].labelPregunta+"' size='22'/>"+
-                                                        "</td>"+
-                                                    "</tr>"+
-                                                "</table>"+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='texto contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_text.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoPredefinido elementoAjax'>"+
+                                    "<table class='tableElementoText'>"+
+                                    "<tr>"+
+                                    "<td class='celda'>"+
+                                    "<img src='images/user.png' width='30px' height='30px'>"+
+                                    "</td>"+
+                                    "<td class='celda'>"+
+                                    "<input type='text' placeholder='"+lista[i].labelPregunta+"' size='22'/>"+
+                                    "</td>"+
+                                    "</tr>"+
+                                    "</table>"+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
                             }
                             if(lista[i].tipoPregunta=='radio'){
@@ -391,27 +393,24 @@
 
                                 for(var opcion in opciones){
                                     prepInerOpciones=prepInerOpciones+
-                                            "<input type='radio'>"+
-                                            "<label class='opcion'>"+opcion+"</label>";
+                                        "<input type='radio'>"+
+                                        "<label class='opcion'>"+opcion+"</label>";
                                 }
 
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='radio contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_radio.png' width='55px' height='55px'><br/>"+
-                                                "<label>"+lista[i].labelPregunta+"</label>"+
-                                            "</div>"+
-                                            "<div class='elemento elementoPredefinido elementoAjax'>"+
-                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
-                                                prepInerOpciones+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='radio contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_radio.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoPredefinido elementoAjax'>"+
+                                    "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
+                                    prepInerOpciones+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
-
-
-
 
 
                             }
@@ -428,7 +427,8 @@
                                         prepInerOpciones=prepInerOpciones+"<tr>";
                                     }
                                     kount2++;
-                                    prepInerOpciones=prepInerOpciones+"<td class='celdaOpcion'>"+
+                                    prepInerOpciones=prepInerOpciones+
+                                        "<td class='celdaOpcion'>"+
                                             "<input type='checkbox'>"+
                                             "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
                                     if(kount2==3){
@@ -444,36 +444,36 @@
 
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='checkbox contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_checkbox.png' width='55px' height='55px'><br/>"+
-                                                "<label>"+lista[i].labelPregunta+"</label>"+
-                                            "</div>"+
-                                            "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
-                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
-                                                "<table>"+
-                                                    prepInerOpciones+
-                                                "</table>"+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='checkbox contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_checkbox.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
+                                    "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
+                                    "<table>"+
+                                    prepInerOpciones+
+                                    "</table>"+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
                             }
                             if(lista[i].tipoPregunta=='area'){
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='area contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_textarea.png' width='55px' height='55px'><br/>"+
-                                                "<label>"+lista[i].labelPregunta+"</label>"+
-                                            "</div>"+
-                                            "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
-                                                "<table class='tableElementoText'>"+
-                                                    "<tr><td><textarea rows='5' cols='50' placeholder='"+lista[i].labelPregunta+"'></textarea></td></tr>"+
-                                                "</table>"+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='area contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_textarea.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
+                                    "<table class='tableElementoText'>"+
+                                    "<tr><td><textarea rows='5' cols='50' placeholder='"+lista[i].labelPregunta+"'></textarea></td></tr>"+
+                                    "</table>"+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
                             }
                             if(lista[i].tipoPregunta=='select'){
@@ -486,45 +486,45 @@
                                 }
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='select contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_select.png' width='55px' height='55px'><br/>"+
-                                                "<label>"+lista[i].labelPregunta+"</label>"+
-                                            "</div>"+
-                                            "<div class='elemento elementoPequenio elementoPredefinido elementoAjax'>"+
-                                                "<b><label class='labelLinea'>"+lista[i].labelPregunta+"</label></b>"+
-                                                "<span class='select-wrapper'>"+
-                                                    "<select>"+
-                                                        prepInerOpciones+
-                                                    "</select>"+
-                                                "</span>"+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='select contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_select.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoPequenio elementoPredefinido elementoAjax'>"+
+                                    "<b><label class='labelLinea'>"+lista[i].labelPregunta+"</label></b>"+
+                                    "<span class='select-wrapper'>"+
+                                    "<select>"+
+                                    prepInerOpciones+
+                                    "</select>"+
+                                    "</span>"+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
                             }
 
-                            if(lista[i].tipoPregunta=='select'){
+                            if(lista[i].tipoPregunta=='file'){
                                 contenido=contenido+
                                     "<td>"+
-                                        "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
-                                            "<div class='contenedorIcono'>"+
-                                                "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
-                                                "Adjuntar archivo"+
-                                            "</div>"+
-                                            "<div class='elemento elementoMuyGrande elementoPredefinido elementoAjax'>"+
-                                                "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
-                                                "<input type='file' name='etiqueta' id='addfile'/>"+
-                                                "<label for='addfile' class='labelAddFile'>"+
-                                                    "<div class='contenedorAdjuntos'>"+
-                                                        "<img src='images/icon_upload.png' width='60px' height='60px'><br/>"+
-                                                        "<label>Arrastrar y soltar archivo</label><br/>"+
-                                                        "<label>o seleccionar archivo</label>"+
-                                                    "</div>"+
-                                                "</label>"+
-                                            "</div>"+
-                                            "<div class='capaSuperior'></div>"+
-                                        "</div>"+
+                                    "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
+                                    "<div class='contenedorIcono'>"+
+                                    "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
+                                    "</div>"+
+                                    "<div class='elemento elementoMuyGrande elementoPredefinido elementoAjax'>"+
+                                    "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
+                                    "<input type='file' name='etiqueta' id='addfile'/>"+
+                                    "<label for='addfile' class='labelAddFile'>"+
+                                    "<div class='contenedorAdjuntos'>"+
+                                    "<img src='images/icon_upload.png' width='60px' height='60px'><br/>"+
+                                    "<label>Arrastrar y soltar archivo</label><br/>"+
+                                    "<label>o seleccionar archivo</label>"+
+                                    "</div>"+
+                                    "</label>"+
+                                    "</div>"+
+                                    "<div class='capaSuperior'></div>"+
+                                    "</div>"+
                                     "</td>";
                             }
                             if(kount==1){
@@ -538,6 +538,10 @@
 
                         }
                         tablePreguntasPredef.innerHTML=contenido;
+                        var elementosAjax = document.querySelectorAll('.elementoAjax');
+                        for(var i=0; i<elementosAjax.length; i++){
+                            elementosAjax[i].style.display = 'none';
+                        }
                     },
                     error : function(xhr, status, error) {
                         alert(xhr.responseText);
@@ -546,10 +550,7 @@
                 return false;
             });
     });
-    var elementosAjax = document.querySelectorAll('.elementoAjax');
-    for(var i=0; i<elementosAjax.length; i++){
-        elementosAjax[i].style.display = 'none';
-    }
+
 </script>
 
 </body>
