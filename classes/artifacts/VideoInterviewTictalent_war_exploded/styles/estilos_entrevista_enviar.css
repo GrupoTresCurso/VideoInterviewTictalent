@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
     font-family: myFont, "Verdana";
@@ -9,279 +9,168 @@
     src: url(../font/Arvo-Regular.ttf);
 }
 
-body{
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 0px;
-}
-
-main{
-    width:100%;
-    font-family: myFont, "Verdana";
-    box-sizing: border-box;
-}
-
-aside{
-    /*margin-top: 100px;*/
-    float: left;
-    display:inline-block;
-    width:30%;
-    height:90%;
-    min-height:90% !important;
-    font-size: 20px;
-    padding: 40px 50px;
-    background-color: #F2F2F2;
-    box-sizing: border-box;
-    overflow-y: scroll;
-}
-
-#tableCandidatos{
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-section{
-    /*margin-top: 100px;*/
-    float: left;
-    display:inline-block;
-    width:70%;
-    height:90%;
-    font-size: 20px;
-    padding: 35px 50px;
-    box-sizing: border-box;
-}
-
-#formNuevoCandidato {
-    width: 700px;
-}
-
-#celdaImagen, #celdaFormulario{
-    vertical-align: top;
-}
-
-#celdaBotonGuardar{
-    text-align: right;
-    padding-top: 40px;
-    padding-right: 10px;
-}
-
-.botonGuardar{
-    padding: 10px 25px;
-    color:white;
-    background-color: #00B4E0;
-    border:0px;
-    font-weight: bold;
-    font-size: 18px;
-    /*box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75)*/
-    cursor: pointer;
-}
-.botonGuardar:hover{
-    background-color: #1681B4;
-}
-
-.elemento{
-    padding: 5px;
-}
-
-.tableElementoText{
-    border: 2px solid #272C35;
-}
-
-.celda{
-    background-color: white;
-    height: 40px;
-    padding: 0px 5px;
-}
-
-input{
-    font-size: 18px;
-    border: 0px;
-}
-
-label{
-    font-size: 18px;
-}
-
-img{
-    vertical-align: middle;
-}
-
-input[type="radio"]{
-    border: 0px;
-    width: 23px;
-    height: 2em;
-    foreground:green;
-    vertical-align: middle;
-}
-
-input[type='radio']:before {
-    width: 17px;
-    height: 17px;
-    border-radius: 15px;
-    top: 7px;
-    left: 1px;
-    position: relative;
-    background-color: white;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid #E0E0E0;
-}
-
-input[type='radio']:hover:after {
-    width: 17px;
-    height: 17px;
-    border-radius: 15px;
-    top: -18px;
-    left: 0px;
-    position: relative;
-    background-color: white;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid #00B4E0;
-}
-
-input[type='radio']:checked:after {
-    width: 13px;
-    height: 13px;
-    border-radius: 15px;
-    top: -16px;
-    left: 2.5px;
-    position: relative;
-    background-color: #00B4E0;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
-
-.number-wrapper {
-    position: relative;
-}
-
-input[type="number"]{
-    width: 80px;
-    height: 32px;
-    border: 2px solid #E0E0E0;
-    text-align: right;
-    padding: 2px;
-    box-sizing: border-box;
-}
-
-.number-wrapper:before {
-    content: url("../images/arrow_up.png");
-    position: absolute;
-    top:7px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
-    pointer-events: none;
-    background: white;
-    padding-left: 5px;
-}
-
-.number-wrapper:after {
-    content: url("../images/arrow_down.png");
-    position: absolute;
-    top:14px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
-    pointer-events: none;
-    background: white;
-    padding-left: 5px;
-}
-
-.celdaColumna2{
-    padding-left: 55px;
-}
-
-#celdaImagen{
-    padding-left: 60px;
-    padding-right: 120px;
-}
-
-#celdaImagen label{
-    width: 155px;
-    height: 170px;
-}
-
-#contenedorImagen{
-    border: 2px solid #F2F2F2;
-    width: 150px;
-    height: 150px;
-    padding: 10px 0px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    text-align: center;
-}
-
-
-#contenedorFormulario{
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-.userIcon{
-    padding-right: 10px;
-}
-
-#delete{
-    padding-left: 10px;
-}
-
 .colorTictum{
     color:#00B4DF;
 }
 
-#inputBuscar{
-    height: 34px;
-    width: 275px;
-    padding: 5px;
-    border: 1px solid gray;
+body {
+    background-color: #F2F2F2;
 }
 
-#labelDatosCandidato{
-    word-wrap: break-word;
-    cursor: pointer;
-    font-size: 17px;
+main {
+    padding: 0px;
+    margin: 0px;
+    font-family: myFont, "Verdana";
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
 }
 
-aside::-webkit-scrollbar {
-    width: 0.8em;
+section {
+    width: 100%;
+    height:90%;
+    box-sizing: border-box;
+    font-size: 20px;
 }
 
-aside::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+section>table{
+    padding: 0px;
+    margin: 0px;
+    height: 89%;
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box;
 }
 
-aside::-webkit-scrollbar-thumb {
-    background-color: #66748C;
-    outline: 1px solid black;
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
 }
-input[type='radio']:checked:after {
-    width: 16px;
-    height: 16px;
-    top: -15px;
-    left: 0px;
-    position: relative;
-    content: '';
-    display: inline-block;
-    visibility: visible;
+
+#izquierda, #medio, #derecha {
+    vertical-align: top;
+    height: 90%;
+    box-sizing: border-box;
+}
+
+#izquierda {
+    width: 30%;
+    background-color: #F2F2F2;
+}
+
+#medio {
+    width:auto;
+    background-color: white;
+}
+
+#derecha {
+    width:260px;
+    background-color: #F2F2F2;
+    padding: 30px 20px;
+    padding-bottom: 0px;
+    padding-right: 22px;
+}
+
+.elemento {
+    width: 100%;
+    height: 46px;
+    padding: 1px;
+    position: absolute;
+    border: 1px solid #C8C6C6;
+}
+
+.elementoGrande {
+    height: 90px;
+}
+
+.elementoPequenio {
+    height: 33px;
+}
+
+.elementoLabel {
+    text-align: center;
+}
+
+.tableElementoText {
+    border: 2px solid black;
+    width: 120px;
+}
+
+.celda {
+    background-color: white;
+    height: 33px;
+    padding: 0px 1px;
+}
+
+input, button {
+    font-size: 15px;
     border: 0px;
-    background-image: url("../images/radio.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
+    font-family: myFont, "Verdana";
+}
+
+label {
+    font-size: 18px;
+    border: 0px;
+    font-family: myFont, "Verdana";
+}
+
+#panelElementosPrincipal {
+    width: 30%;
+    padding-left: 5px;
+    height: 100%;
+    min-height:100% !important;
+    box-sizing: border-box;
+}
+
+#panelElementos{
+    width: 420px;
+    height: 100%;
+    text-align: left;
+    padding: 30px 20px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+
+#panelElementos table {
+    border-collapse: separate;
+    border-spacing: 5px 5px;;
+}
+
+#contenedor {
+    padding: 15px 50px;
+    width: 100%;
+    border: 2px solid transparent;
+    font-size: 14px;
+    overflow-y: scroll;
+    background-color: white;
+    box-sizing: border-box;
+    height: 100%;
+    min-height:100% !important;
+}
+
+#contenedor.over {
+    border: 2px dashed black;
+}
+
+#eliminar {
+    padding: 10px 0px;
+    width: 300px;
+    height: 200px;
+    margin-left: 10px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 12px;
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
 }
 
 input[type="checkbox"] {
@@ -332,6 +221,347 @@ input[type='checkbox']:checked:after {
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
+.number-wrapper {
+    position: relative;
+}
+
+.number-wrapper:after,
+.number-wrapper:before {
+    position: absolute;
+    right: 1px;
+    width: 1.4em;
+    height: 8px;
+    font-size: 10px;
+    pointer-events: none;
+    background: white;
+}
+
+.number-wrapper:after {
+    content: url("../images/arrow_up.png");
+    top: -0.3em;
+}
+
+.number-wrapper:before {
+    content: url("../images/arrow_down.png");
+    margin-bottom: 13px;
+    bottom: -1.5em;
+}
+
+#propiedades {
+    padding: 10px 20px;
+    width: 260px;
+    height: 280px;
+    margin-left: 10px;
+    line-height: 5px;
+    text-align: left;
+    border: 2px solid grey;
+    font-size: 15px;
+    overflow-y: scroll;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background-color: white;
+
+}
+
+#propiedades label {
+    text-align: center;
+}
+
+#opcionesPropiedades {
+    height: 20px;
+    width: 50px;
+}
+
+#tableOpciones tr td {
+    height: 20px;
+
+}
+
+#spanOpciones:after {
+    margin-top: 4px;
+}
+
+.texto {
+    position: absolute;
+    top: 0px;
+}
+
+.contenedorElemento {
+    position: relative;
+    cursor: move;
+    width: 250px;
+    height: 90px;
+}
+
+.contenedorIcono {
+    text-align: center;
+    border: 2px solid grey;
+    width: 200px;
+    top: 0px;
+    position: absolute;
+    font-size: 13px;
+    background-color: white;
+}
+
+.capaSuperior {
+    border: 2px solid black;
+    width: 90px;
+    height: 90px;
+    top: 0px;
+    position: absolute;
+}
+
+.elemento label {
+    margin-right: 15px;
+}
+
+textarea {
+    resize: none;
+    border: 0px;
+    font-size: 13px;
+    height: 75px;
+    text-align: justify;
+}
+
+.date-wrapper {
+    position: relative;
+}
+
+.date-wrapper:after {
+    position: absolute;
+    right: 6px;
+    width: 1.4em;
+    height: 1em;
+    font-size: 10px;
+    pointer-events: none;
+    background: white;
+    content: url("../images/arrow_down2.png");
+    margin-top: 1.5px;
+    padding-left: 14px;
+    padding-top: 7px;
+    padding-bottom: 12.5px;
+    border-left: 2px solid black;
+}
+
+span {
+    margin-left: 10px;
+}
+
+.labelLinea {
+    word-wrap: break-word;
+    max-width: 150px;
+    float: left;
+    margin-top: 7px;
+}
+
+.botonGuardar {
+    background-color: #00B4DF;
+    padding: 7px 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.botonGuardar:hover{
+    background-color: #1681B4;
+}
+
+#estadoContenedor {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+#mensajeDefecto {
+    top: 0px;
+    font-size: 18px;
+    position: absolute;
+}
+
+#nuevoForm {
+    top: 0px;
+    position: absolute;
+}
+
+#nuevoFormulario {
+    padding-bottom: 20px;
+}
+
+.btnForm {
+    cursor: default;
+}
+
+#btnLimpiar {
+    margin-left: 390px;
+}
+
+h5{
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+hr {
+    margin-left: -60px;
+    margin-right: -50px;
+    border: 1px dashed black;
+}
+
+b > label {
+    font-size: 15px;
+    border: 0px;
+    font-family: myFont, "Verdana";
+}
+
+#contenedor {
+    font-family: myFont, "Verdana";
+}
+
 input[type="checkbox"], input[type="radio"] {
     margin-right: 6px;
+}
+
+#contenedorNumber {
+    position: relative;
+}
+
+#cubiertaEntradaNumero {
+    position: absolute;
+    top: 0.5px;
+    left: 10.5px;
+    width: 40px;
+    height: 20px;
+    background-color: transparent;
+}
+
+/******SCROLLBAR*****/
+#contenedor::-webkit-scrollbar {
+    width: 1.2em;
+}
+
+#contenedor::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#contenedor::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+
+#propiedades::-webkit-scrollbar {
+    width: 1em;
+}
+
+#propiedades::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#propiedades::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+
+#panelElementos::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+#panelElementos::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#panelElementos::-webkit-scrollbar-thumb {
+    background-color: #66748C;
+    outline: 1px solid black;
+}
+/****************************/
+
+#tableMenu tr td {
+    background-color: transparent;
+}
+
+
+#labelAddFile{
+    text-align: center;
+    height: 120px;
+    width: 450px;
+}
+
+#contenedorAdjuntos{
+    text-align: center;
+    padding: 5px 5px;
+}
+
+.elementoMuyGrande {
+    height: 175px !important;
+}
+
+#addfile{
+    display: none;
+}
+input[type="checkbox"] {
+    border: 0px;
+    width: 15px;
+    height: 2em;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+
+input[type='checkbox']:before {
+    width: 13px;
+    height: 13px;
+    top: 5px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #E0E0E0;
+}
+
+input[type='checkbox']:hover:after {
+    width: 13px;
+    height: 13px;
+    top: -16px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #00B4DF;
+}
+
+input[type='checkbox']:checked:after {
+    width: 16px;
+    height: 16px;
+    top: -15px;
+    left: 0px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 0px;
+    background-image: url("../images/checkbox.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 6px;
+}
+#inputBuscar{
+    height: 34px;
+    width: 275px;
+    padding: 5px;
+    border: 1px solid gray;
+}
+.entrevista{
+    border: 2px solid black;
+    width: 300px;
+    height: 50px;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+    color: black;
 }

@@ -11,7 +11,7 @@
 <head>
     <title><sptag:message code="app_title"/></title>
     <link rel="stylesheet" type="text/css" href="./styles/estilos_menu.css">
-    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_candidato"/>>
+    <link rel="stylesheet" type="text/css" href=<sptag:message code="css_route_video_grabar"/>>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script type='text/javascript' src=<sptag:message code="jquery_src"/>></script>
 </head>
@@ -41,7 +41,7 @@
         </table>
     </aside>
     <section>
-        <section class="experiment recordrtc" id="medio">
+        <div class="experiment recordrtc" id="medio">
             <h2 class="header">
 
                 <select class="media-container-format" hidden>
@@ -56,12 +56,13 @@
                 <!--<button id="btn-stop-recording"><img src="images/stop.png" width="40px" height="40px"></button>-->
                 <button id="btn-pause-recording" style="display: none; font-size: 15px;"><img src="images/pause.png" width="40px" height="40px"></button>
                 <button id="save-to-disk" display="none"><img src="images/save.png" width="40px" height="40px"></button>
-                </div>
+
 
                 <hr style="border-top: 0;border-bottom: 1px solid rgb(189, 189, 189);margin: 4px -12px;margin-top: 8px;">
             </h2>
-            <%@include file="userInfo.jsp" %>
-        </section>
+
+        </div>
+        <%@include file="userInfo.jsp" %>
     </section>
 
 </main>
