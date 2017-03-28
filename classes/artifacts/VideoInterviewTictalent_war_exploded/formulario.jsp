@@ -323,6 +323,8 @@
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
+                alert(devolverTipoElemento(elementoSeleccionado));
+
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
                 $('#c').val(elementoSeleccionado.querySelectorAll('.inputOpciones')[0].value);
@@ -411,9 +413,6 @@
                                     "</td>";
 
 
-
-
-
                             }
                             if(lista[i].tipoPregunta=='checkbox'){
                                 var opcionesComas=lista[i].opciones;
@@ -428,9 +427,10 @@
                                         prepInerOpciones=prepInerOpciones+"<tr>";
                                     }
                                     kount2++;
-                                    prepInerOpciones=prepInerOpciones+"<td class='celdaOpcion'>"+
-                                        "<input type='checkbox'>"+
-                                        "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
+                                    prepInerOpciones=prepInerOpciones+
+                                        "<td class='celdaOpcion'>"+
+                                            "<input type='checkbox'>"+
+                                            "<label class='labelOpcionCB1 opcion'>"+opcion+"</label></td>";
                                     if(kount2==3){
                                         prepInerOpciones=prepInerOpciones+"</tr>";
                                         kount2=0;
@@ -504,7 +504,7 @@
                                     "</td>";
                             }
 
-                            if(lista[i].tipoPregunta=='select'){
+                            if(lista[i].tipoPregunta=='file'){
                                 contenido=contenido+
                                     "<td>"+
                                     "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
@@ -547,7 +547,6 @@
                         alert(xhr.responseText);
                     }
                 });
-
                 return false;
             });
     });
