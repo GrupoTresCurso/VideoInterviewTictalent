@@ -18,13 +18,14 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_generar_entrevista"/></h3><br/><br/>
             <table>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/entrevista_clonar.jsp">
+                        <a href="${pageContext.request.contextPath}/recuperarEntrevistas.do">
                             <div class="botonIndex">
                                 <img src="images/clone.png" width="40px" height="40px"/>
                                 <label><sptag:message code="label_clonar_entrevista"/></label>
@@ -42,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/entrevista_editar.jsp">
+                        <a href="${pageContext.request.contextPath}/recuperarEntrevistasGestion.do">
                             <div class="botonIndex">
                                 <img src="images/icon_edit.png" width="40px" height="40px"/>
                                 <label>Gestionar Entrevista</label>

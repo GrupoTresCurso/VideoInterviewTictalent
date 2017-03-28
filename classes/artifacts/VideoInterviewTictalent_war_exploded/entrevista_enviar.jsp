@@ -47,8 +47,9 @@
                               <c:param name="idCandidato" value="${candidato.idCandidato}"/></c:url>">
                                 <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
                                 <form name="f1">
-                                    <input type="checkbox" name="ch_${candidato.idCandidato}">
-                                </form>
+                                    <span class="select-wrapper">
+                                        <input type="checkbox" value="${candidato.idCandidato}" name="ch[]" />
+                                    </span>
                             </a>
                         </div>
                         <div class="elemento">
@@ -70,6 +71,7 @@
                 </c:forEach>
             </tr>
         </table>
+        <p><a href="#" id="enviar" />Añadir candidatos</a></p></form>
     </aside>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
@@ -161,6 +163,25 @@
 
         }
     }
+
+    $(document).ready(function() {
+        $('#enviar').click(function(){
+            var selected = '';
+            var che = jQuery(':checked');
+            $(che).each(function(){
+                if (this.checked) {
+                    selected += $(this).val();
+                }
+            });
+
+            if (selected != '')
+                alert('Has seleccionado: '+selected);
+            else
+                alert('Debes seleccionar al menos una opción.');
+
+            return false;
+        });
+    });
 </script>
 
 </body>

@@ -19,38 +19,54 @@
 
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Formulario" id="enlaceActivo"/>
     <section>
         <div id="cuerpo" onclick="ocultarInfoUsuario()">
             <h3><sptag:message code="label_formulario"/></h3>
-            <table id="tableFormularios">
-                <c:set var="contadorFormularios" value="0" scope="page"/>
-                <tr>
-                    <c:forEach var="formulario" items="${listaFormularios}">
-                        <c:set var="contadorFormularios" value="${contadorFormularios+1}" scope="page"/>
-                        <td>
-                            <div class="formulario" id="${formulario.idFormulario}"
-                                 onclick="seleccionar(this.className, this.id)" class="botonIndex">
-                                <img width="45px" height="45px" src=<sptag:message code="src_fileF"/>/>
-                                <label><a href="<c:url value="${pageContext.request.contextPath}/recuperarFormulario.do">
-                                        <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">${formulario.nombreFormulario}</a></label>
-                                <a href="<c:url value="${pageContext.request.contextPath}/eliminarFormulario.do">
-                                  <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">
-                                    <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
-                                </a>
-                            </div>
-                        </td>
-                        <c:if test="${contadorFormularios%3 == 0}">
-                            </tr>
-                            <tr>
-                        </c:if>
-                    </c:forEach>
-                </tr>
-            </table>
+            <c:if test="${fn:length(listaFormularios)==0}">
+                <br/><br/>
+                <label>No hay formularios creados.</label>
+            </c:if>
+            <c:if test="${fn:length(listaFormularios)>0}">
+                <table id="tableFormularios">
+                    <c:set var="contadorFormularios" value="0" scope="page"/>
+                    <tr>
+                        <c:forEach var="formulario" items="${listaFormularios}">
+                            <c:set var="contadorFormularios" value="${contadorFormularios+1}" scope="page"/>
+                            <td>
+                                <div class="formulario" id="${formulario.idFormulario}"
+                                     onclick="seleccionar(this.className, this.id)" class="botonIndex">
+                                    <img width="45px" height="45px" src=<sptag:message code="src_fileF"/>/>
+                                    <label>
+                                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarFormulario.do">
+                                            <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">${formulario.nombreFormulario}</a>
+                                    </label>
+                                    <a href="<c:url value="${pageContext.request.contextPath}/eliminarFormulario.do">
+                                      <c:param name="idFormulario" value="${formulario.idFormulario}"/></c:url>">
+                                        <img src=<sptag:message code="src_img_icon_delete"/> id='delete' width="23px" height="23px" title="Eliminar"/>
+                                    </a>
+                                </div>
+                            </td>
+                            <c:if test="${contadorFormularios%3 == 0}">
+                                </tr>
+                                <tr>
+                            </c:if>
+                        </c:forEach>
+                    </tr>
+                </table>
+            </c:if>
 
             <a href="${pageContext.request.contextPath}/nuevoFormulario.do">
-                <div class="botonIndex" id="botonNuevo">
+                <div class="botonIndex botonNuevo">
                     <img src="images/new.png" width="40px" height="40px"/>
                     <label><sptag:message code="label_nuevo_formulario"/></label>
+                </div>
+            </a><br/>
+
+            <a href="${pageContext.request.contextPath}/recuperarPreguntasGestion.do">
+                <div class="botonIndex botonNuevo">
+                    <img src="images/icon_edit.png" width="40px" height="40px"/>
+                    <label>Gestionar Preguntas Favoritas</label>
                 </div>
             </a><br/>
 

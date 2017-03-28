@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page buffer="8000kb" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,6 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +21,7 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
+    <input type="hidden" value="Entrevista" id="enlaceActivo"/>
     <section onclick="ocultarInfoUsuario()">
         <table>
             <tr>
@@ -33,15 +36,21 @@
                                     <c:forEach var="videoIntroductorio" items="${videosIntroductorios}">
                                         <tr>
                                             <td>
-                                                <div class="videoIntro contenedorElemento pertenecePanel" id="video_${videoIntroductorio.idVideo}"
+                                                <div class="video contenedorElemento pertenecePanel" id="video_${videoIntroductorio.idVideo}"
                                                      draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                                     <div class="contenedorIcono">
                                                         <img src="images/icon_video.png" width="55px" height="55px"/>
                                                         <label>${videoIntroductorio.nombreVideo}</label>
                                                     </div>
                                                     <div class="elementoEntrevista">
-                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <div class="delimitadorElementoEntrevista">
+                                                            <div class="elementoVideo">
+                                                                <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                                <label>${videoIntroductorio.nombreVideo}</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="capaSuperior"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -71,117 +80,115 @@
                                                             <c:set var="countPreguntas" value="0" scope="page"/>
                                                             <h3 class="colorTictum">${formulario.nombreFormulario}</h3>
                                                             <br/>
-                                                            <form:form class="formulario">
-                                                                <c:forEach var="preguntaFormulario" items="${formulario.preguntas}">
-                                                                    <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <table class="tableElementoText">
-                                                                                    <tr>
-                                                                                        <td class="celda">
-                                                                                            <img src="images/user.png" width="30px" height="30px">
-                                                                                        </td>
-                                                                                        <td class="celda">
-                                                                                            <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </div>
+                                                            <c:forEach var="preguntaFormulario" items="${formulario.preguntas}">
+                                                                <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <table class="tableElementoText">
+                                                                                <tr>
+                                                                                    <td class="celda">
+                                                                                        <img src="images/user.png" width="30px" height="30px">
+                                                                                    </td>
+                                                                                    <td class="celda">
+                                                                                        <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
                                                                         </div>
-                                                                    </c:if>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <table class="tableElementoText">
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"> </textarea>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </div>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <table class="tableElementoText">
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"></textarea>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
                                                                         </div>
-                                                                    </c:if>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
-                                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
+                                                                    <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                            <c:forEach var="opcion" items="${opciones}">
+                                                                                <input type="radio">
+                                                                                <label class="opcion">${opcion}</label>
+                                                                            </c:forEach>
+                                                                        </div>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
+                                                                    <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                            <table>
+                                                                                <c:set var="count3" value="0" scope="page"/>
+                                                                                <c:set var="countCierre3" value="0" scope="page"/>
                                                                                 <c:forEach var="opcion" items="${opciones}">
-                                                                                    <input type="radio">
-                                                                                    <label class="opcion">${opcion}</label>
-                                                                                </c:forEach>
-                                                                            </div>
-                                                                        </div>
-                                                                    </c:if>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
-                                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                                <table>
-                                                                                    <c:set var="count3" value="0" scope="page"/>
-                                                                                    <c:set var="countCierre3" value="0" scope="page"/>
-                                                                                    <c:forEach var="opcion" items="${opciones}">
-                                                                                        <c:if test="${count3 == 0}">
-                                                                                            <c:set var="countCierre3" value="1" scope="page"/>
-                                                                                            <tr>
-                                                                                        </c:if>
-                                                                                        <c:set var="count3" value="${count3 + 1}" scope="page"/>
-                                                                                        <td class="celdaOpcion">
-                                                                                            <input type="checkbox">
-                                                                                            <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                                        </td>
-                                                                                        <c:if test="${count3 == 3}">
-                                                                                            </tr>
-                                                                                            <c:set var="count3" value="0" scope="page"/>
-                                                                                            <c:set var="countCierre3" value="0" scope="page"/>
-                                                                                        </c:if>
-                                                                                    </c:forEach>
-                                                                                    <c:if test="${countCierre3 == 1}">
+                                                                                    <c:if test="${count3 == 0}">
+                                                                                        <c:set var="countCierre3" value="1" scope="page"/>
+                                                                                        <tr>
+                                                                                    </c:if>
+                                                                                    <c:set var="count3" value="${count3 + 1}" scope="page"/>
+                                                                                    <td class="celdaOpcion">
+                                                                                        <input type="checkbox">
+                                                                                        <label class="labelOpcionCB1 opcion">${opcion}"</label>
+                                                                                    </td>
+                                                                                    <c:if test="${count3 == 3}">
                                                                                         </tr>
+                                                                                        <c:set var="count3" value="0" scope="page"/>
                                                                                         <c:set var="countCierre3" value="0" scope="page"/>
                                                                                     </c:if>
-                                                                                </table>
-                                                                            </div>
+                                                                                </c:forEach>
+                                                                                <c:if test="${countCierre3 == 1}">
+                                                                                    </tr>
+                                                                                    <c:set var="countCierre3" value="0" scope="page"/>
+                                                                                </c:if>
+                                                                            </table>
                                                                         </div>
-                                                                    </c:if>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
-                                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
-                                                                                <span class="select-wrapper">
-                                                                                <select>
-                                                                                    <c:forEach var="opcion" items="${opciones}">
-                                                                                        <option>${opcion}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </span>
-                                                                            </div>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
+                                                                    <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                                    <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
+                                                                            <span class="select-wrapper">
+                                                                            <select>
+                                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                                    <option>${opcion}</option>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </span>
                                                                         </div>
-                                                                    </c:if>
-                                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
-                                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                            <div class="elemento">
-                                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                                <input type="file" name="etiqueta" id="addfile"/>
-                                                                                <label for="addfile" >
-                                                                                    <div >
-                                                                                        <img src="images/icon_upload.png" width="60px" height="60px"><br/>
-                                                                                        <label>Arrastrar y soltar archivo</label><br/>
-                                                                                        <label>o seleccionar archivo</label>
-                                                                                    </div>
-                                                                                </label>
-                                                                            </div>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
+                                                                    <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                                        <div class="elemento">
+                                                                            <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                            <input type="file" name="etiqueta" id="addfile"/>
+                                                                            <label for="addfile" class="labelAddFile">
+                                                                                <div class="contenedorAdjuntos">
+                                                                                    <img src="images/icon_upload.png" width="60px" height="60px"><br/>
+                                                                                    <label>Arrastrar y soltar archivo</label><br/>
+                                                                                    <label>o seleccionar archivo</label>
+                                                                                </div>
+                                                                            </label>
                                                                         </div>
-                                                                    </c:if>
-                                                                </c:forEach>
-                                                            </form:form>
+                                                                    </div>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </div>
                                                     </div>
                                                     <div class="capaSuperior"></div>
@@ -199,15 +206,21 @@
                                     <c:forEach var="videoPregunta" items="${videosPreguntas}">
                                         <tr>
                                             <td>
-                                                <div class="videoPregunta contenedorElemento pertenecePanel" id="video_${videoPregunta.idVideo}"
+                                                <div class="video contenedorElemento pertenecePanel" id="video_${videoPregunta.idVideo}"
                                                      draggable="true"ondragstart="start(event)" ondragend="end(event)">
                                                     <div class="contenedorIcono">
                                                         <img src="images/icon_video.png" width="55px" height="55px"/>
                                                         <label>${videoPregunta.nombreVideo}</label>
                                                     </div>
                                                     <div class="elementoEntrevista">
-                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <div class="delimitadorElementoEntrevista">
+                                                            <div class="elementoVideo">
+                                                                <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                                <label>${videoPregunta.nombreVideo}</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="capaSuperior"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -222,15 +235,21 @@
                                     <c:forEach var="videoTransicion" items="${videosTransiciones}">
                                         <tr>
                                             <td>
-                                                <div class="videoTransicion contenedorElemento pertenecePanel"  id="video_${videoTransicion.idVideo}"
+                                                <div class="video contenedorElemento pertenecePanel"  id="video_${videoTransicion.idVideo}"
                                                       draggable="true"ondragstart="start(event)" ondragend="end(event)">
                                                     <div class="contenedorIcono">
                                                         <img src="images/icon_video.png" width="55px" height="55px"/>
                                                         <label>${videoTransicion.nombreVideo}</label>
                                                     </div>
                                                     <div class="elementoEntrevista">
-                                                        <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                        <div class="delimitadorElementoEntrevista">
+                                                            <div class="elementoVideo">
+                                                                <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                                <label>${videoTransicion.nombreVideo}</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="capaSuperior"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -273,10 +292,11 @@
             <!-------------------------------------------------------------------------------------------------->
             <!-------------------------------------------------------------------------------------------------->
             <form:form id="nuevaEntrevista"
-            action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET"
-            modelAttribute="preguntaForm">
+            action="${pageContext.request.contextPath}/crearEntrevista.do" method="GET">
+						<c:set var="entrevistaCargada" value="0" scope="page"/>
                         <c:set var="countElements" value="0" scope="page"/>
                         <c:if test="${entrevista != null}">
+                            <c:set var="entrevistaCargada" value="1" scope="page"/>
                             <input type="hidden" size="20" name="idEntrevista" value="${entrevista.idEntrevista}"/>
                         </c:if>
                         <!-------------------------------SECCION VIDEO INTRODUCTORIO--------------------------------------------------->
@@ -290,25 +310,29 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVI" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                    <div class="videoIntro contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="video_${countElements}__${entrevista.videos[0].idVideo}"
-                                         draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                        <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.videos[0].nombreVideo}</label></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="elementoEntrevista">
-                                            <div class="delimitadorElementoEntrevista">
-                                            <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoIntroductorio'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}__${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                        </div>
-                                        <div class="capaSuperior"></div>
-                                    </div>
+                                        </c:if>
+                                    </c:forEach>
                                 </c:if>
                             </div>
                         </div>
@@ -329,129 +353,123 @@
                                          id="form_${countElements}_${entrevista.formularios[0].idFormulario}"
                                          draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                         <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.formularios[0].nombreFormulario}</label></td>
-                                                </tr>
-                                            </table>
+                                            <img src="images/icon_formulario.png" width="40px" height="40px"/>
+                                            <label>${entrevista.formularios[0].nombreFormulario}</label>
                                         </div>
                                         <div class="elementoEntrevista">
                                             <div class="delimitadorElementoEntrevista">
                                                 <c:set var="countPreguntas" value="0" scope="page"/>
                                                 <h3 class="colorTictum">${entrevista.formularios[0].nombreFormulario}</h3>
                                                 <br/>
-                                                <form:form class="formulario">
-                                                    <c:forEach var="preguntaFormulario" items="${entrevista.formularios[0].preguntas}">
-                                                        <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td class="celda">
-                                                                                <img src="images/user.png" width="30px" height="30px">
-                                                                            </td>
-                                                                            <td class="celda">
-                                                                                <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                <c:forEach var="preguntaFormulario" items="${entrevista.formularios[0].preguntas}">
+                                                    <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td class="celda">
+                                                                            <img src="images/user.png" width="30px" height="30px">
+                                                                        </td>
+                                                                        <td class="celda">
+                                                                            <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td>
-                                                                                <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"> </textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"></textarea>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                    <input type="radio">
+                                                                    <label class="opcion">${opcion}</label>
+                                                                </c:forEach>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <table>
+                                                                    <c:set var="count3" value="0" scope="page"/>
+                                                                    <c:set var="countCierre3" value="0" scope="page"/>
                                                                     <c:forEach var="opcion" items="${opciones}">
-                                                                        <input type="radio">
-                                                                        <label class="opcion">${opcion}</label>
-                                                                    </c:forEach>
-                                                                </div>
-                                                            </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <table>
-                                                                        <c:set var="count3" value="0" scope="page"/>
-                                                                        <c:set var="countCierre3" value="0" scope="page"/>
-                                                                        <c:forEach var="opcion" items="${opciones}">
-                                                                            <c:if test="${count3 == 0}">
-                                                                                <c:set var="countCierre3" value="1" scope="page"/>
-                                                                                <tr>
-                                                                            </c:if>
-                                                                            <c:set var="count3" value="${count3 + 1}" scope="page"/>
-                                                                            <td class="celdaOpcion">
-                                                                                <input type="checkbox">
-                                                                                <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                            </td>
-                                                                            <c:if test="${count3 == 3}">
-                                                                                </tr>
-                                                                                <c:set var="count3" value="0" scope="page"/>
-                                                                                <c:set var="countCierre3" value="0" scope="page"/>
-                                                                            </c:if>
-                                                                        </c:forEach>
-                                                                        <c:if test="${countCierre3 == 1}">
+                                                                        <c:if test="${count3 == 0}">
+                                                                            <c:set var="countCierre3" value="1" scope="page"/>
+                                                                            <tr>
+                                                                        </c:if>
+                                                                        <c:set var="count3" value="${count3 + 1}" scope="page"/>
+                                                                        <td class="celdaOpcion">
+                                                                            <input type="checkbox">
+                                                                            <label class="labelOpcionCB1 opcion">${opcion}"</label>
+                                                                        </td>
+                                                                        <c:if test="${count3 == 3}">
                                                                             </tr>
+                                                                            <c:set var="count3" value="0" scope="page"/>
                                                                             <c:set var="countCierre3" value="0" scope="page"/>
                                                                         </c:if>
-                                                                    </table>
-                                                                </div>
+                                                                    </c:forEach>
+                                                                    <c:if test="${countCierre3 == 1}">
+                                                                        </tr>
+                                                                        <c:set var="countCierre3" value="0" scope="page"/>
+                                                                    </c:if>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
-                                                                    <span class="select-wrapper">
-                                                                                <select>
-                                                                                    <c:forEach var="opcion" items="${opciones}">
-                                                                                        <option>${opcion}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </span>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
+                                                                <span class="select-wrapper">
+                                                                            <select>
+                                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                                    <option>${opcion}</option>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </span>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                    <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                        <div >
-                                                                            <img src="images/icon_upload.png" width="60px" height="60px"><br/>
-                                                                            <label>Arrastrar y soltar archivo</label><br/>
-                                                                            <label>o seleccionar archivo</label>
-                                                                        </div>
-                                                                    </label>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
+                                                                        <img src="images/icon_upload.png" width="60px" height="60px"><br/>
+                                                                        <label>Arrastrar y soltar archivo</label><br/>
+                                                                        <label>o seleccionar archivo</label>
+                                                                    </div>
+                                                                </label>
                                                             </div>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </form:form>
+                                                        </div>
+                                                    </c:if>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                         <div class="capaSuperior"></div>
@@ -471,25 +489,29 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVT" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                    <div class="videoTransicion contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="video_${countElements}_${entrevista.videos[1].idVideo}"
-                                         draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                        <div class="contenedorIcono">
-                                            <table>
-                                                <tr>
-                                                    <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.videos[1].nombreVideo}</label></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="elementoEntrevista">
-                                            <div class="delimitadorElementoEntrevista">
-                                                <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoTransicion'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                        </div>
-                                        <div class="capaSuperior"></div>
-                                    </div>
+                                        </c:if>
+                                    </c:forEach>
                                 </c:if>
                             </div>
                         </div>
@@ -505,26 +527,28 @@
                             </div>
                             <div id="contenedorElementosEntrevistaVP" class="contenedorElementosEntrevista">
                                 <c:if test="${entrevista != null}">
-                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.videos}" begin="2" end="${fn:length(entrevista.videos)-2}">
-                                        <c:set var="countElements" value="${countElements + 1}" scope="page"/>
-                                        <div class="videoPregunta contenedorElemento perteneceEntrevista elementoCargado"
-                                             id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
-                                             draggable="true" ondragstart="start(event)" ondragend="end(event)">
-                                            <div class="contenedorIcono">
-                                                <table>
-                                                    <tr>
-                                                        <td><img src="images/icon_video.png" width="40px" height="40px"/></td>
-                                                        <td class="labelIcono"><label>${videoPreguntaEntrevista.nombreVideo}</label></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="elementoEntrevista">
-                                                <div class="delimitadorElementoEntrevista">
-                                                    <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                    <c:forEach var="videoPreguntaEntrevista" items="${entrevista.listaVideos}">
+                                        <c:if test="${videoPreguntaEntrevista.tipoVideo == 'videoPregunta'}">
+                                            <c:set var="countElements" value="${countElements + 1}" scope="page"/>
+                                            <div class="video contenedorElemento perteneceEntrevista elementoCargado"
+                                                 id="video_${countElements}_${videoPreguntaEntrevista.idVideo}"
+                                                 draggable="true" ondragstart="start(event)" ondragend="end(event)">
+                                                <div class="contenedorIcono">
+                                                    <img src="images/icon_video.png" width="55px" height="55px"/>
+                                                    <label>${videoPreguntaEntrevista.nombreVideo}</label>
                                                 </div>
+                                                <div class="elementoEntrevista">
+                                                    <div class="delimitadorElementoEntrevista">
+                                                        <!-----------CONTENIDO DEL ELEMENTO VIDEO---------------->
+                                                        <div class="elementoVideo">
+                                                            <img src="images/icon_video.png" width="150px" height="150px"/><br/>
+                                                            <label>${videoPreguntaEntrevista.nombreVideo}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="capaSuperior"></div>
                                             </div>
-                                            <div class="capaSuperior"></div>
-                                        </div>
+                                        </c:if>
                                     </c:forEach>
                                 </c:if>
                             </div>
@@ -543,132 +567,130 @@
                                 <c:if test="${entrevista != null}">
                                     <c:set var="countElements" value="${countElements + 1}" scope="page"/>
                                     <div class="formulario contenedorElemento perteneceEntrevista elementoCargado"
-                                         id="form_${countElements}_${entrevista.cuestionarioSatisfaccion.idFormulario}"
+                                         id="form_${countElements}_${entrevista.formularios[1].idFormulario}"
                                          draggable="true" ondragstart="start(event)" ondragend="end(event)">
                                         <div class="contenedorIcono">
                                             <table>
                                                 <tr>
                                                     <td><img src="images/icon_formulario.png" width="40px" height="40px"/></td>
-                                                    <td class="labelIcono"><label>${entrevista.cuestionarioSatisfaccion.nombreFormulario}</label></td>
+                                                    <td class="labelIcono"><label>${entrevista.formularios[1].nombreFormulario}</label></td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="elementoEntrevista">
                                             <div class="delimitadorElementoEntrevista">
                                                 <c:set var="countPreguntas" value="0" scope="page"/>
-                                                <h3 class="colorTictum">${entrevista.cuestionarioSatisfaccion.nombreFormulario}</h3>
+                                                <h3 class="colorTictum">${entrevista.formularios[1].nombreFormulario}</h3>
                                                 <br/>
-                                                <form:form class="formulario">
-                                                    <c:forEach var="preguntaFormulario" items="${entrevista.cuestionarioSatisfaccion.preguntas}">
-                                                        <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td class="celda">
-                                                                                <img src="images/user.png" width="30px" height="30px">
-                                                                            </td>
-                                                                            <td class="celda">
-                                                                                <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                <c:forEach var="preguntaFormulario" items="${entrevista.formularios[1].preguntas}">
+                                                    <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td class="celda">
+                                                                            <img src="images/user.png" width="30px" height="30px">
+                                                                        </td>
+                                                                        <td class="celda">
+                                                                            <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td>
-                                                                                <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"> </textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"></textarea>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                    <input type="radio">
+                                                                    <label class="opcion">${opcion}</label>
+                                                                </c:forEach>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <table>
+                                                                    <c:set var="count3" value="0" scope="page"/>
+                                                                    <c:set var="countCierre3" value="0" scope="page"/>
                                                                     <c:forEach var="opcion" items="${opciones}">
-                                                                        <input type="radio">
-                                                                        <label class="opcion">${opcion}</label>
-                                                                    </c:forEach>
-                                                                </div>
-                                                            </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <table>
-                                                                        <c:set var="count3" value="0" scope="page"/>
-                                                                        <c:set var="countCierre3" value="0" scope="page"/>
-                                                                        <c:forEach var="opcion" items="${opciones}">
-                                                                            <c:if test="${count3 == 0}">
-                                                                                <c:set var="countCierre3" value="1" scope="page"/>
-                                                                                <tr>
-                                                                            </c:if>
-                                                                            <c:set var="count3" value="${count3 + 1}" scope="page"/>
-                                                                            <td class="celdaOpcion">
-                                                                                <input type="checkbox">
-                                                                                <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                            </td>
-                                                                            <c:if test="${count3 == 3}">
-                                                                                </tr>
-                                                                                <c:set var="count3" value="0" scope="page"/>
-                                                                                <c:set var="countCierre3" value="0" scope="page"/>
-                                                                            </c:if>
-                                                                        </c:forEach>
-                                                                        <c:if test="${countCierre3 == 1}">
+                                                                        <c:if test="${count3 == 0}">
+                                                                            <c:set var="countCierre3" value="1" scope="page"/>
+                                                                            <tr>
+                                                                        </c:if>
+                                                                        <c:set var="count3" value="${count3 + 1}" scope="page"/>
+                                                                        <td class="celdaOpcion">
+                                                                            <input type="checkbox">
+                                                                            <label class="labelOpcionCB1 opcion">${opcion}"</label>
+                                                                        </td>
+                                                                        <c:if test="${count3 == 3}">
                                                                             </tr>
+                                                                            <c:set var="count3" value="0" scope="page"/>
                                                                             <c:set var="countCierre3" value="0" scope="page"/>
                                                                         </c:if>
-                                                                    </table>
-                                                                </div>
+                                                                    </c:forEach>
+                                                                    <c:if test="${countCierre3 == 1}">
+                                                                        </tr>
+                                                                        <c:set var="countCierre3" value="0" scope="page"/>
+                                                                    </c:if>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
-                                                                    <span class="select-wrapper">
-                                                                                <select>
-                                                                                    <c:forEach var="opcion" items="${opciones}">
-                                                                                        <option>${opcion}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </span>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
+                                                                <span class="select-wrapper">
+                                                                            <select>
+                                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                                    <option>${opcion}</option>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </span>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                    <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                        <div >
-                                                                            <img src="images/icon_upload.png" width="60px" height="60px"><br/>
-                                                                            <label>Arrastrar y soltar archivo</label><br/>
-                                                                            <label>o seleccionar archivo</label>
-                                                                        </div>
-                                                                    </label>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
+                                                                        <img src="images/icon_upload.png" width="60px" height="60px"><br/>
+                                                                        <label>Arrastrar y soltar archivo</label><br/>
+                                                                        <label>o seleccionar archivo</label>
+                                                                    </div>
+                                                                </label>
                                                             </div>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </form:form>
+                                                        </div>
+                                                    </c:if>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                         <div class="capaSuperior"></div>
@@ -705,117 +727,115 @@
                                                 <c:set var="countPreguntas" value="0" scope="page"/>
                                                 <h3 class="colorTictum">${entrevista.formularios[entrevista.formularios.size()-1].nombreFormulario}</h3>
                                                 <br/>
-                                                <form:form class="formulario">
-                                                    <c:forEach var="preguntaFormulario" items="${entrevista.formularios[entrevista.formularios.size()-1].preguntas}">
-                                                        <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td class="celda">
-                                                                                <img src="images/user.png" width="30px" height="30px">
-                                                                            </td>
-                                                                            <td class="celda">
-                                                                                <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                <c:forEach var="preguntaFormulario" items="${entrevista.formularios[entrevista.formularios.size()-1].preguntas}">
+                                                    <c:set var="countPreguntas" value="${countPreguntas + 1}" scope="page"/>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'text'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td class="celda">
+                                                                            <img src="images/user.png" width="30px" height="30px">
+                                                                        </td>
+                                                                        <td class="celda">
+                                                                            <input type="text" placeholder="${preguntaFormulario.labelPregunta}" size="22"/>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <table class="tableElementoText">
-                                                                        <tr>
-                                                                            <td>
-                                                                                <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"> </textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'area'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <table class="tableElementoText">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <textarea rows="5" cols="50" placeholder="${preguntaFormulario.labelPregunta}"></textarea>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'radio'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                    <input type="radio">
+                                                                    <label class="opcion">${opcion}</label>
+                                                                </c:forEach>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <table>
+                                                                    <c:set var="count3" value="0" scope="page"/>
+                                                                    <c:set var="countCierre3" value="0" scope="page"/>
                                                                     <c:forEach var="opcion" items="${opciones}">
-                                                                        <input type="radio">
-                                                                        <label class="opcion">${opcion}</label>
-                                                                    </c:forEach>
-                                                                </div>
-                                                            </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'checkbox'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <table>
-                                                                        <c:set var="count3" value="0" scope="page"/>
-                                                                        <c:set var="countCierre3" value="0" scope="page"/>
-                                                                        <c:forEach var="opcion" items="${opciones}">
-                                                                            <c:if test="${count3 == 0}">
-                                                                                <c:set var="countCierre3" value="1" scope="page"/>
-                                                                                <tr>
-                                                                            </c:if>
-                                                                            <c:set var="count3" value="${count3 + 1}" scope="page"/>
-                                                                            <td class="celdaOpcion">
-                                                                                <input type="checkbox">
-                                                                                <label class="labelOpcionCB1 opcion">${opcion}"</label>
-                                                                            </td>
-                                                                            <c:if test="${count3 == 3}">
-                                                                                </tr>
-                                                                                <c:set var="count3" value="0" scope="page"/>
-                                                                                <c:set var="countCierre3" value="0" scope="page"/>
-                                                                            </c:if>
-                                                                        </c:forEach>
-                                                                        <c:if test="${countCierre3 == 1}">
+                                                                        <c:if test="${count3 == 0}">
+                                                                            <c:set var="countCierre3" value="1" scope="page"/>
+                                                                            <tr>
+                                                                        </c:if>
+                                                                        <c:set var="count3" value="${count3 + 1}" scope="page"/>
+                                                                        <td class="celdaOpcion">
+                                                                            <input type="checkbox">
+                                                                            <label class="labelOpcionCB1 opcion">${opcion}"</label>
+                                                                        </td>
+                                                                        <c:if test="${count3 == 3}">
                                                                             </tr>
+                                                                            <c:set var="count3" value="0" scope="page"/>
                                                                             <c:set var="countCierre3" value="0" scope="page"/>
                                                                         </c:if>
-                                                                    </table>
-                                                                </div>
+                                                                    </c:forEach>
+                                                                    <c:if test="${countCierre3 == 1}">
+                                                                        </tr>
+                                                                        <c:set var="countCierre3" value="0" scope="page"/>
+                                                                    </c:if>
+                                                                </table>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
-                                                            <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
-                                                            <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
-                                                                    <span class="select-wrapper">
-                                                                                <select>
-                                                                                    <c:forEach var="opcion" items="${opciones}">
-                                                                                        <option>${opcion}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </span>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'select'}">
+                                                        <c:set var="opcionesComas" value="${preguntaFormulario.opciones}"/>
+                                                        <c:set var="opciones" value="${fn:split(opcionesComas,',')}"/>
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label class="labelLinea">${preguntaFormulario.labelPregunta}</label></b>
+                                                                <span class="select-wrapper">
+                                                                            <select>
+                                                                                <c:forEach var="opcion" items="${opciones}">
+                                                                                    <option>${opcion}</option>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </span>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
-                                                            <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
-                                                                <div class="elemento">
-                                                                    <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
-                                                                    <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                    <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                        <div >
-                                                                            <img src="images/icon_upload.png" width="60px" height="60px"><br/>
-                                                                            <label>Arrastrar y soltar archivo</label><br/>
-                                                                            <label>o seleccionar archivo</label>
-                                                                        </div>
-                                                                    </label>
-                                                                </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${preguntaFormulario.tipoPregunta == 'file'}">
+                                                        <div id="p_${countPreguntas}_${preguntaFormulario.idPregunta}">
+                                                            <div class="elemento">
+                                                                <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
+                                                                <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
+                                                                        <img src="images/icon_upload.png" width="60px" height="60px"><br/>
+                                                                        <label>Arrastrar y soltar archivo</label><br/>
+                                                                        <label>o seleccionar archivo</label>
+                                                                    </div>
+                                                                </label>
                                                             </div>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </form:form>
+                                                        </div>
+                                                    </c:if>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                         <div class="capaSuperior"></div>
@@ -824,7 +844,8 @@
                             </div>
                         </div>
                         <!------------------------------------------------------------------------------------------------------------->
-                    </div>
+						<input type="hidden" size="20" id="entrevistaCargada" value="${entrevistaCargada}"/>
+					</div>
                 </td>
                 <td id="derecha">
                     <h5 class="colorTictum"><sptag:message code="label_opciones_entrevista"/></h5>

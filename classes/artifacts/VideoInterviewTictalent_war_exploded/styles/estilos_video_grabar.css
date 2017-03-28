@@ -1,24 +1,26 @@
 *{
     padding: 0px;
     margin: 0px;
-    font-family: myFont, "Verdana";
 }
-
 @font-face {
     font-family: myFont;
     src: url(../font/Arvo-Regular.ttf);
 }
-
 body{
-    box-sizing: border-box;
     padding: 0px;
     margin: 0px;
 }
-
 main{
-    width:100%;
+    width: 100%;
     font-family: myFont, "Verdana";
-    box-sizing: border-box;
+}
+
+section{
+    margin-left: 350px;
+    font-family: myFont, "Arial Black";
+    width:100%;
+    height: 90%;
+    font-size: 18px;
 }
 
 aside{
@@ -35,48 +37,30 @@ aside{
     overflow-y: scroll;
 }
 
-#tableCandidatos{
+#tableOpcionesVideo{
     margin-top: 20px;
     font-size: 18px;
 }
 
-section{
-    /*margin-top: 100px;*/
-    float: left;
-    display:inline-block;
-    width:70%;
-    height:90%;
-    font-size: 20px;
-    padding: 35px 50px;
-    box-sizing: border-box;
-}
-
-#formNuevoCandidato {
-    width: 700px;
-}
-
-#celdaImagen, #celdaFormulario{
-    vertical-align: top;
-}
-
-#celdaBotonGuardar{
-    text-align: right;
-    padding-top: 40px;
-    padding-right: 10px;
+#seleccionArchivo{
+    display: block;
+    border: 3px dashed black;
+    border-radius: 20px;
+    height: 300px;
 }
 
 .botonGuardar{
-    padding: 10px 25px;
-    color:white;
+    padding: 20px 30px;
+    color: white;
     background-color: #00B4E0;
-    border:0px;
+    border: 0px;
     font-weight: bold;
-    font-size: 18px;
-    /*box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75)*/
+    font-size: 15px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
     cursor: pointer;
 }
 .botonGuardar:hover{
-    background-color: #1681B4;
+    transform: scale(1.05);
 }
 
 .elemento{
@@ -96,14 +80,26 @@ section{
 input{
     font-size: 18px;
     border: 0px;
+    font-family: 'Arvo', "Arial Black";
 }
 
 label{
     font-size: 18px;
 }
-
 img{
     vertical-align: middle;
+}
+.imagenP{
+    vertical-align: middle;
+    padding: 40px;
+}
+
+input[type="number"]{
+    width: 80px;
+    height: 40px;
+    border: 2px solid #E0E0E0;
+    text-align: right;
+    padding: 2px;
 }
 
 input[type="radio"]{
@@ -113,6 +109,7 @@ input[type="radio"]{
     foreground:green;
     vertical-align: middle;
 }
+
 
 input[type='radio']:before {
     width: 17px;
@@ -160,39 +157,26 @@ input[type='radio']:checked:after {
     position: relative;
 }
 
-input[type="number"]{
-    width: 80px;
-    height: 32px;
-    border: 2px solid #E0E0E0;
-    text-align: right;
-    padding: 2px;
-    box-sizing: border-box;
-}
-
+.number-wrapper:after,
 .number-wrapper:before {
-    content: url("../images/arrow_up.png");
     position: absolute;
-    top:7px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
+    right: 6px;
+    width: 1.2em;
+    height: 2.3em;
+    font-size: 10px;
     pointer-events: none;
     background: white;
-    padding-left: 5px;
 }
 
 .number-wrapper:after {
+    content: url("../images/arrow_up.png");
+    margin-top: 1px;
+}
+
+.number-wrapper:before {
     content: url("../images/arrow_down.png");
-    position: absolute;
-    top:14px;
-    left: 59px;
-    width: 15px;
-    height: 5px;
-    font-size: 0px;
-    pointer-events: none;
-    background: white;
-    padding-left: 5px;
+    margin-bottom: 5px;
+    bottom: -.5em;
 }
 
 .celdaColumna2{
@@ -209,54 +193,59 @@ input[type="number"]{
     height: 170px;
 }
 
-#contenedorImagen{
-    border: 2px solid #F2F2F2;
-    width: 150px;
-    height: 150px;
-    padding: 10px 0px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    text-align: center;
+#contenedorVideo{
+    padding: 15px 50px;
+    border: 2px solid transparent;
+    font-size: 14px;
+    overflow-y: scroll;
+    background-color: white;
+    box-sizing: border-box;
+    height: 100%;
+    min-height:100% !important;
 }
 
+#contenedorVideo.over {
+    border: 2px dashed #94B2B6;
+}
 
+input[type="file"]{
+    display: none;
+}
+
+#nombreArchivo{
+    line-height: 15px;
+}
+#drop_zone {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    color: #bbb;
+}
+#subirArchivo{
+    padding: 50px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+#nombreArchivo{
+    line-height: 15px;
+}
+td a{
+    text-decoration: none;
+    color: black;
+}
+#divArrastrar{
+    color: #BABABA;
+}
 #contenedorFormulario{
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 50px;
 }
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-.userIcon{
-    padding-right: 10px;
-}
-
-#delete{
-    padding-left: 10px;
-}
-
-.colorTictum{
-    color:#00B4DF;
-}
-
-#inputBuscar{
-    height: 34px;
-    width: 275px;
-    padding: 5px;
-    border: 1px solid gray;
-}
-
-#labelDatosCandidato{
-    word-wrap: break-word;
-    cursor: pointer;
-    font-size: 17px;
-}
-
 aside::-webkit-scrollbar {
     width: 0.8em;
 }
