@@ -120,7 +120,7 @@
                                 <tr>
                                     <td>
                                         <textarea rows="5" cols="50"
-                                                  placeholder="${pregunta.labelPregunta}"> </textarea>
+                                                  placeholder="${pregunta.labelPregunta}"></textarea>
                                     </td>
                                 </tr>
                             </table>
@@ -169,8 +169,8 @@
                         <div class="elemento elementoMuyGrande elementoPredefinido">
                             <b><label>${pregunta.labelPregunta}</label></b><br/><br/>
                             <input type="file" name="etiqueta" id="addfile"/>
-                            <label for="addfile">
-                                <div >
+                            <label for="addfile" class="labelAddFile">
+                                <div class="contenedorAdjuntos">
                                     <img src="images/icon_upload.png" width="60px" height="60px"><br/>
                                     <label>Arrastrar y soltar archivo</label><br/>
                                     <label>o seleccionar archivo</label>

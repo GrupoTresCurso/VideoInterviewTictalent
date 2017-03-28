@@ -178,8 +178,8 @@
                                                                         <div class="elemento">
                                                                             <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
                                                                             <input type="file" name="etiqueta" id="addfile"/>
-                                                                            <label for="addfile" >
-                                                                                <div >
+                                                                            <label for="addfile" class="labelAddFile">
+                                                                                <div class="contenedorAdjuntos">
                                                                                     <img src="images/icon_upload.png" width="60px" height="60px"><br/>
                                                                                     <label>Arrastrar y soltar archivo</label><br/>
                                                                                     <label>o seleccionar archivo</label>
@@ -459,8 +459,8 @@
                                                             <div class="elemento">
                                                                 <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
                                                                 <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                    <div >
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
                                                                         <img src="images/icon_upload.png" width="60px" height="60px"><br/>
                                                                         <label>Arrastrar y soltar archivo</label><br/>
                                                                         <label>o seleccionar archivo</label>
@@ -680,8 +680,8 @@
                                                             <div class="elemento">
                                                                 <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
                                                                 <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                    <div >
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
                                                                         <img src="images/icon_upload.png" width="60px" height="60px"><br/>
                                                                         <label>Arrastrar y soltar archivo</label><br/>
                                                                         <label>o seleccionar archivo</label>
@@ -825,8 +825,8 @@
                                                             <div class="elemento">
                                                                 <b><label>${preguntaFormulario.labelPregunta}</label></b><br/>
                                                                 <input type="file" name="etiqueta" id="addfile_${preguntaFormulario.idPregunta}"/>
-                                                                <label for="addfile_${preguntaFormulario.idPregunta}" >
-                                                                    <div >
+                                                                <label for="addfile_${preguntaFormulario.idPregunta}" class="labelAddFile">
+                                                                    <div class="contenedorAdjuntos">
                                                                         <img src="images/icon_upload.png" width="60px" height="60px"><br/>
                                                                         <label>Arrastrar y soltar archivo</label><br/>
                                                                         <label>o seleccionar archivo</label>

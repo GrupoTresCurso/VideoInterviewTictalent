@@ -21,7 +21,7 @@
 <body>
 <main>
     <%@include file="menu.jsp" %>
-
+    <input type="hidden" value="Formulario" id="enlaceActivo"/>
     <section onclick="ocultarInfoUsuario()">
         <table>
             <tr>
@@ -182,7 +182,7 @@
                                                             <table class="tableElementoText">
                                                                 <tr>
                                                                     <td>
-                                                                        <textarea rows="5" cols="50" placeholder="${pregunta.labelPregunta}"> </textarea>
+                                                                        <textarea rows="5" cols="50" placeholder="${pregunta.labelPregunta}"></textarea>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -228,8 +228,8 @@
                                                         <div class="elemento elementoMuyGrande elementoPredefinido">
                                                             <b><label>${pregunta.labelPregunta}</label></b><br/>
                                                             <input type="file" name="etiqueta" id="addfile"/>
-                                                            <label for="addfile" >
-                                                                <div >
+                                                            <label for="addfile" class="labelAddFile">
+                                                                <div class="contenedorAdjuntos">
                                                                     <img src="images/icon_upload.png" width="60px"
                                                                          height="60px"><br/>
                                                                     <label>Arrastrar y soltar archivo</label><br/>
@@ -296,7 +296,7 @@
                             <br/>
                             <div id="contenedorActivarPredefinido">
                                 <label><sptag:message code="label_propiedades_predefinido"/></label>
-                                <button type="submit" id="checkPredefinido" onchange="agregarAPredefinidos()">Predefinido</button>
+                                <button type="submit" id="checkPredefinido" onchange="agregarAPredefinidos()">Agregar</button>
                             </div>
                         </div>
                         <input id="a" type="hidden" name="labelPregunta" value="PruebaAjax"/>
@@ -368,7 +368,7 @@
                                                 "<img src='images/icon_text.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
-                                            "<div class='elemento elementoPredefinido'>"+
+                                            "<div class='elemento elementoPredefinido elementoAjax'>"+
                                                 "<table class='tableElementoText'>"+
                                                     "<tr>"+
                                                         "<td class='celda'>"+
@@ -402,7 +402,7 @@
                                                 "<img src='images/icon_radio.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
-                                            "<div class='elemento elementoPredefinido'>"+
+                                            "<div class='elemento elementoPredefinido elementoAjax'>"+
                                                 "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
                                                 prepInerOpciones+
                                             "</div>"+
@@ -449,7 +449,7 @@
                                                 "<img src='images/icon_checkbox.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
-                                            "<div class='elemento elementoGrande elementoPredefinido'>"+
+                                            "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
                                                 "<b><label>"+lista[i].labelPregunta+"</label></b><br/>"+
                                                 "<table>"+
                                                     prepInerOpciones+
@@ -467,7 +467,7 @@
                                                 "<img src='images/icon_textarea.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
-                                            "<div class='elemento elementoGrande elementoPredefinido'>"+
+                                            "<div class='elemento elementoGrande elementoPredefinido elementoAjax'>"+
                                                 "<table class='tableElementoText'>"+
                                                     "<tr><td><textarea rows='5' cols='50' placeholder='"+lista[i].labelPregunta+"'></textarea></td></tr>"+
                                                 "</table>"+
@@ -491,7 +491,7 @@
                                                 "<img src='images/icon_select.png' width='55px' height='55px'><br/>"+
                                                 "<label>"+lista[i].labelPregunta+"</label>"+
                                             "</div>"+
-                                            "<div class='elemento elementoPequenio elementoPredefinido'>"+
+                                            "<div class='elemento elementoPequenio elementoPredefinido elementoAjax'>"+
                                                 "<b><label class='labelLinea'>"+lista[i].labelPregunta+"</label></b>"+
                                                 "<span class='select-wrapper'>"+
                                                     "<select>"+
@@ -512,11 +512,11 @@
                                                 "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
                                                 "Adjuntar archivo"+
                                             "</div>"+
-                                            "<div class='elemento elementoMuyGrande elementoPredefinido'>"+
+                                            "<div class='elemento elementoMuyGrande elementoPredefinido elementoAjax'>"+
                                                 "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
                                                 "<input type='file' name='etiqueta' id='addfile'/>"+
-                                                "<label for='addfile'>"+
-                                                    "<div >"+
+                                                "<label for='addfile' class='labelAddFile'>"+
+                                                    "<div class='contenedorAdjuntos'>"+
                                                         "<img src='images/icon_upload.png' width='60px' height='60px'><br/>"+
                                                         "<label>Arrastrar y soltar archivo</label><br/>"+
                                                         "<label>o seleccionar archivo</label>"+
@@ -546,6 +546,10 @@
                 return false;
             });
     });
+    var elementosAjax = document.querySelectorAll('.elementoAjax');
+    for(var i=0; i<elementosAjax.length; i++){
+        elementosAjax[i].style.display = 'none';
+    }
 </script>
 
 </body>

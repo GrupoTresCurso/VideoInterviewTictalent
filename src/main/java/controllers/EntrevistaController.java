@@ -57,6 +57,13 @@ public class EntrevistaController implements BaseController {
         return ENTREVISTA_GESTION;
     }
 
+    @RequestMapping(value = "/recuperarEntrevistasPrincipal.do", method = RequestMethod.GET)
+    public String recuperarEntrevistasPrincipal(HttpSession session) {
+        ArrayList<Entrevista> listaEntrevistas = (ArrayList<Entrevista>) entrevistaBusiness.recuperarTodos();
+        session.setAttribute("listaEntrevistas", listaEntrevistas);
+        return PAGINA_PRINCIPAL;
+    }
+
     @RequestMapping(value = "/recuperarEntrevista.do", method = RequestMethod.GET)
     public void recuperarEntrevista(@RequestParam(value="idEntrevista",required=true) int id, HttpSession session, HttpServletResponse response) {
         Entrevista entrevista=entrevistaBusiness.recuperarPorId(id);
@@ -138,7 +145,7 @@ public class EntrevistaController implements BaseController {
     public void eliminarEntrevista(@RequestParam(value="idEntrevista",required=true) int id, HttpServletResponse response){
         entrevistaBusiness.borrarPorId(id);
         try {
-            response.sendRedirect("/recuperarEntrevistaCandidato.do");
+            response.sendRedirect("/recuperarEntrevistasGestion.do");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -55,6 +55,14 @@ function mostrarElementosEntrevistaCargada(){
         elem.querySelectorAll('.contenedorIcono')[0].style.display ='none';
         elem.querySelectorAll('.elementoEntrevista')[0].style.display ='block';
         elem.querySelectorAll('.capaSuperior')[0].style.display = 'none';
+        if(devolverTipoElemento(elem) == 'video'){
+            elem.querySelectorAll('.elementoEntrevista')[0].querySelectorAll('.delimitadorElementoEntrevista')[0].style.width = '200px';
+            elem.style.height = '200px';
+            elem.style.width = '200px';
+            elem.querySelectorAll('.capaSuperior')[0].style.display = 'block';
+            elem.querySelectorAll('.capaSuperior')[0].style.width ='200px';
+            elem.querySelectorAll('.capaSuperior')[0].style.height ='200px';
+        }
         //elem.classList.remove("pertenecePanel");
         //elem.classList.add("perteneceEntrevista");
     });
@@ -275,14 +283,7 @@ function drop(e) {
         //tipo_id_contador;
         //video_id=video_id_contador
         elementoCopiado.id=elementoMovido.id+"_"+contador;
-
         elementoCopiado.style.transform = 'scale(1.0)';
-        if(devolverTipoElemento(elementoCopiado) == 'video'){
-            elementoCopiado.querySelectorAll('.elementoEntrevista')[0].querySelectorAll('.delimitadorElementoEntrevista')[0].style.width = '200px';
-            elementoCopiado.style.height = '200px';
-            elementoCopiado.style.width = '200px';
-
-        }
 
         elementoCopiado.classList.remove("pertenecePanel");
         elementoCopiado.classList.add("perteneceEntrevista");
@@ -292,6 +293,9 @@ function drop(e) {
         elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'none';
 
         if(devolverTipoElemento(elementoCopiado) == 'video'){
+            elementoCopiado.querySelectorAll('.elementoEntrevista')[0].querySelectorAll('.delimitadorElementoEntrevista')[0].style.width = '200px';
+            elementoCopiado.style.height = '200px';
+            elementoCopiado.style.width = '200px';
             elementoCopiado.querySelectorAll('.capaSuperior')[0].style.display = 'block';
             elementoCopiado.querySelectorAll('.capaSuperior')[0].style.width ='200px';
             elementoCopiado.querySelectorAll('.capaSuperior')[0].style.height ='200px';

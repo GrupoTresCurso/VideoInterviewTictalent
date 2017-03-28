@@ -2,7 +2,7 @@
 <nav>
     <table id="tableMenu">
         <tr>
-            <td onclick="ocultarInfoUsuario()"><a id="Principal" href="principal.jsp" class="linkMenu">
+            <td onclick="ocultarInfoUsuario()"><a id="Principal" href="${pageContext.request.contextPath}/recuperarEntrevistasPrincipal.do" class="linkMenu">
                 <sptag:message code="menu_opc1"/>
             </a></td>
             <td onclick="ocultarInfoUsuario()"><a id="Candidato" href="${pageContext.request.contextPath}/recuperarCandidatos.do" class="linkMenu">

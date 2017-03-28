@@ -11,6 +11,7 @@ public interface BaseController {
     String PANEL_ADMIN="panel_administrador";
     String INDEX="index";
     String FORMULARIO_INDEX="formulario_index";
+    String PREGUNTA_GESTION="pregunta_editar";
     String FORMULARIO="formulario";
     String ENTREVISTA_ENVIAR="entrevista_enviar";
 

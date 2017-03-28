@@ -64,12 +64,25 @@ public class PreguntaController implements BaseController {
         return FORMULARIO;
     }
 
+    @RequestMapping(value = "/recuperarPreguntasGestion.do",method = RequestMethod.GET)
+    public String recuperarPreguntasGestion(HttpSession session){
+        List<Pregunta> listaPreguntas=  preguntaBusiness.recuperarTodos();
+        List<Pregunta> listaPreguntasPredefinidas=new ArrayList<Pregunta>();
+        for (Pregunta pregunta:listaPreguntas) {
+            if(pregunta.isFavorito()){
+                listaPreguntasPredefinidas.add(pregunta);
+            }
+        }
+        session.setAttribute("listaPreguntasPredefinidas",listaPreguntasPredefinidas);
+        return PREGUNTA_GESTION;
+    }
+
 
     @RequestMapping(value = "/eliminarPregunta.do",method = RequestMethod.GET)
     public void eliminarPregunta(@RequestParam(value="idPregunta",required=true) int id, HttpServletResponse response){
         preguntaBusiness.borrarPorId(id);
         try {
-            response.sendRedirect( "recuperarPreguntas.do");
+            response.sendRedirect( "recuperarPreguntasGestion.do");
         } catch (IOException e) {
             e.printStackTrace();
         }

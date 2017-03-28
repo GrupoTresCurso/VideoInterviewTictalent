@@ -501,23 +501,16 @@ input[type="file"] {
     display: none;
 }
 
-#labelAddFile {
-    clear: left;
-    display: inline-block;
+.labelAddFile {
+    text-align: center;
+    height: 120px;
+    width: 450px;
     border: 2px solid black;
-    height: 25px;
-    width: 250px;
-    margin-left: 10px;
-    vertical-align: middle;
-    padding-top: 4px;
 }
 
-#labelAddFile table tr td {
-    height: 10px;
-}
-
-.celdaArchivo {
-    width: 210px;
+.contenedorAdjuntos{
+    text-align: center;
+    padding: 5px 5px;
 }
 
 details > table {
@@ -751,4 +744,8 @@ hr {
 .elementoVideo{
     padding: 0px;
     text-align: center;
+}
+
+#addfile{
+    display: none;
 }

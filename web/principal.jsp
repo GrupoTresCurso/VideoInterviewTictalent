@@ -31,17 +31,30 @@
                     <label>Entrevistas recientes</label>
                     <table id="tableEntrevista">
                         <tr>
-                            <td>
-                                <div class="entrevista" id="entrevista1" onclick="seleccionar(this.className, this.id)"><img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>Entrevista 1</div>
-                            </td>
-                            <td>
-                                <div class="entrevista" id="entrevista2" onclick="seleccionar(this.className, this.id)"><img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>Entrevista 2</div>
-                            </td>
-                            <td>
-                                <div class="entrevista" id="entrevista3" onclick="seleccionar(this.className, this.id)"><img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>Entrevista 3</div>
-                            </td>
+                            <c:forEach var="entrevista" items="${listaEntrevistas}" begin="0" end="2">
+                                <c:if test="${entrevista != null}">
+                                    <td>
+                                        <div class="entrevista">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
+                                                    </td>
+                                                    <td>
+                                                        <a href="<c:url value="${pageContext.request.contextPath}/recuperarEntrevista.do"><c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>"
+                                                           title="Mostrar entrevista">
+                                                            <label>${entrevista.nombreEntrevista}</label>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </c:if>
+                            </c:forEach>
                         </tr>
                     </table>
+
                 </div>
 
             <%@include file="userInfo.jsp"%>

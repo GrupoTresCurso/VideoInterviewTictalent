@@ -33,8 +33,7 @@
                         <c:forEach var="entrevista" items="${listaEntrevistas}">
                             <c:set var="contadorEntrevistas" value="${contadorEntrevistas+1}" scope="page"/>
                             <td>
-                                <div class="entrevista" id="${entrevista.idEntrevista}"
-                                     onclick="seleccionar(this.className, this.id)">
+                                <div class="entrevista" id="${entrevista.idEntrevista}">
                                     <img width="45px" height="45px" src=<sptag:message code="src_fileE"/>/>
                                     <label class="labelDatosEntrevista">
                                         <a href="<c:url value="${pageContext.request.contextPath}/recuperarEntrevista.do"><c:param name="idEntrevista" value="${entrevista.idEntrevista}"/></c:url>"

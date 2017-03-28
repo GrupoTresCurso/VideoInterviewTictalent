@@ -57,9 +57,16 @@
             </c:if>
 
             <a href="${pageContext.request.contextPath}/nuevoFormulario.do">
-                <div class="botonIndex" id="botonNuevo">
+                <div class="botonIndex botonNuevo">
                     <img src="images/new.png" width="40px" height="40px"/>
                     <label><sptag:message code="label_nuevo_formulario"/></label>
+                </div>
+            </a><br/>
+
+            <a href="${pageContext.request.contextPath}/recuperarPreguntasGestion.do">
+                <div class="botonIndex botonNuevo">
+                    <img src="images/icon_edit.png" width="40px" height="40px"/>
+                    <label>Gestionar Preguntas Favoritas</label>
                 </div>
             </a><br/>
 
