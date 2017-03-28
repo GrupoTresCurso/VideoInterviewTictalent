@@ -27,7 +27,7 @@ for(var i = 0; i<elementoNoVisible.length; i++){
 
 function ajustarTamanioPagina() {
     $('#medio').css('width', ($(window).width()-$('#izquierda').width()-$('#derecha').width()) + 'px');
-    $('#contenedor').css('height', ($(window).height()*0.895) + 'px');
+    $('#contenedor').css('height', ($(window).height()-$('#guia').height())+ 'px');
 }
 
 
