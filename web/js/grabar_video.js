@@ -12,32 +12,7 @@ var tipo = null;
 var elementoPredefinido = null;
 var numElementosPredefinidos;
 
-comprobarCargado();
-inicializarGenerador();
-inicializarContador2();
-
-function inicializarContador2() {
-    contador2 = document.getElementById("valorCountPredef").value;
-}
-
-function comprobarCargado(){
-    formularioCargado=document.getElementById("formularioCargado").value;
-}
-
-function inicializarGenerador() {
-    $("#perteneceFormulario").fadeOut(1000);
-    ajustarTamanioPagina();
-
-    if(formularioCargado==1){
-        document.getElementById("nuevoForm").style.display = 'block';
-        document.getElementById("mensajeDefecto").style.display = 'none';
-        mostrarElementosFormularioCargado();
-    }else{
-        document.getElementById("mensajeDefecto").style.display = 'block';
-        document.getElementById("nuevoForm").style.display = 'none';
-    }
-}
-
+ajustarTamanioPagina();
 
 function ajustarTamanioPagina() {
     $('#medio').css('width', ($(window).width()-$('#izquierda').width()) + 'px');
