@@ -33,7 +33,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/recuperarVideosFormularios.do">
+                        <a href="${pageContext.request.contextPath}/nuevaEntrevista.do">
                             <div class="botonIndex">
                                 <img src="images/new.png" width="40px" height="40px"/>
                                 <label><sptag:message code="label_nueva_entrvista"/></label>

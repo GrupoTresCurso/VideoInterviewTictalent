@@ -1,11 +1,13 @@
 package model.dao;
 
 import beans.entities.Formulario;
+import beans.entities.Pregunta;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("FormularioDAO")
@@ -37,6 +39,15 @@ public class FormularioDAO implements BaseDAO<Formulario> {
 
     public void delete(int id) {
         Formulario formulario = manager.find(Formulario.class, id);
+        List<Pregunta> listaPreguntas=formulario.getPreguntas();
+        for (Pregunta pregunta : listaPreguntas) {
+            if(!pregunta.isFavorito()){
+                Pregunta preguntaNoFav=manager.find(Pregunta.class,pregunta.getIdPregunta());
+                manager.remove(preguntaNoFav);
+            }
+        }
+        formulario.setPreguntas(new ArrayList<>());
+        manager.merge(formulario);
         manager.remove(formulario);
     }
 }

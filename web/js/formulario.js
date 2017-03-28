@@ -674,7 +674,7 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
+        if(elementoCopiado.id=="area"||elementoCopiado.id=="checkbox"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
             || elementoCopiado.id=="file"){
             elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }else {
