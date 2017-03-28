@@ -105,7 +105,9 @@ public class FormularioController implements BaseController {
         if(listIdentificadores!=null){
             for (ID id : listIdentificadores) {
                 Pregunta pregunta=preguntaBusiness.recuperarPorId(id.getId());
-                listaPreguntas.add(pregunta);
+                Pregunta preguntaCopia=new Pregunta(pregunta.getLabelPregunta(),pregunta.getTipoPregunta(),pregunta.getOpciones(),pregunta.isFavorito());
+                preguntaBusiness.crearNuevo(preguntaCopia);
+                listaPreguntas.add(preguntaCopia);
             }
         }
         if(idFormulario!=null){

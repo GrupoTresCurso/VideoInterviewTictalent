@@ -41,13 +41,8 @@ public class FormularioDAO implements BaseDAO<Formulario> {
         Formulario formulario = manager.find(Formulario.class, id);
         List<Pregunta> listaPreguntas=formulario.getPreguntas();
         for (Pregunta pregunta : listaPreguntas) {
-            if(!pregunta.isFavorito()){
-                Pregunta preguntaNoFav=manager.find(Pregunta.class,pregunta.getIdPregunta());
-                manager.remove(preguntaNoFav);
-            }
+            manager.remove(pregunta);
         }
-        formulario.setPreguntas(new ArrayList<>());
-        manager.merge(formulario);
         manager.remove(formulario);
     }
 }
