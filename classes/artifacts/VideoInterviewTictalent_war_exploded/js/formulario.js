@@ -674,14 +674,17 @@ function drop(e) {
     if (elementoMovido.parentNode.parentNode.parentNode.parentNode.parentNode != contenedorActual) {
         //elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data"));
         elementoCopiado = elementoMovido.cloneNode(true);
-        if(elementoCopiado.id=="area"||elementoCopiado.id=="check"||elementoCopiado.id=="select"||elementoCopiado.id=="radio"||elementoCopiado.id=="text"
-            || elementoCopiado.id=="file"){
-            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
-        }else {
+        var aux=elementoCopiado.id.split("_");
+        var tipo=aux[0];
+        var id=aux[1];
+        if(tipo=="p"){
             var aux=elementoCopiado.id.split("_");
             var id=aux[1];
             elementoCopiado.id="p"+"_"+contador+"_"+id;
+        }else {
+            elementoCopiado.id = elementoCopiado.id+ "_" + contador;
         }
+
         elementoCopiado.style.transform = 'scale(1.0)';
         elementoCopiado.style.width = '550px';
         elementoCopiado.style.height = '50px';
@@ -731,6 +734,7 @@ function agregarCampos(elementoCopiado){
         $("#"+elementoCopiado.id+"").append(campo2);
         $("#"+elementoCopiado.id+"").append(campo3);
         $("#"+elementoCopiado.id+"").append(campo4);
+
     }
     campo = '';
     campo2 = '';

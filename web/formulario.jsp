@@ -323,7 +323,6 @@
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
-                alert(devolverTipoElemento(elementoSeleccionado));
 
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
@@ -527,7 +526,7 @@
                                     "</div>"+
                                     "</td>";
                             }
-                            if(kount==1){
+                            if(kount==2){
                                 contenido=contenido+"</tr>";
                                 kount=0;
                                 kountCierre=0;

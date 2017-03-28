@@ -323,7 +323,6 @@
     $(document).ready(function() {
         $('#agregarFavorita').submit(
             function(event) {
-                alert(devolverTipoElemento(elementoSeleccionado));
 
                 $('#a').val(elementoSeleccionado.querySelectorAll('.inputLabelPregunta')[0].value);
                 $('#b').val(elementoSeleccionado.querySelectorAll('.inputTipoPregunta')[0].value);
@@ -510,7 +509,7 @@
                                     "<div class='file contenedorElemento pertenecePanel pertenecePanelPredefinido' id='p_"+lista[i].idPregunta+"' draggable='true' ondragstart='start(event)' ondragend='end(event)' onclick='seleccionar(this.id)'>"+
                                     "<div class='contenedorIcono'>"+
                                     "<img src='images/icon_upload.png' width='55px' height='55px'><br/>"+
-                                    "Adjuntar archivo"+
+                                    "<label>"+lista[i].labelPregunta+"</label>"+
                                     "</div>"+
                                     "<div class='elemento elementoMuyGrande elementoPredefinido elementoAjax'>"+
                                     "<b><label>"+lista[i].labelPregunta+"</label></b><br/><br/>"+
@@ -527,7 +526,7 @@
                                     "</div>"+
                                     "</td>";
                             }
-                            if(kount==1){
+                            if(kount==2){
                                 contenido=contenido+"</tr>";
                                 kount=0;
                                 kountCierre=0;
